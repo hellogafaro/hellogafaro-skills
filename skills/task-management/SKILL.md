@@ -105,6 +105,10 @@ Every completed substantive task needs time tracked.
 
 For meeting notes or action items, extract only actions worth tracking. Do not turn every note, decision, reminder, or discussion point into a task.
 
+Do not mine past meeting summaries for new tasks during Inbox updates, scheduled routines, workload reviews, or status checks.
+
+Use meeting pages for task creation only when the user explicitly asks, the Handoff asks for it, or selected task candidates are already provided.
+
 When chatting with the user in a meeting page, General Notion AI should filter the meeting into proposed task candidates first.
 
 If the user approves 1 to 3 clear user-owned tasks with project context, General Notion AI may create them directly.
@@ -135,6 +139,10 @@ For Inbox items, read the source item for ask and context, apply validation, and
 ## Inbox sync
 
 Task-backed work stays in Inbox To do until the task is completed or canceled.
+
+Inbox task work comes from the live Tasks database, Handoffs, current Inbox items, or an explicit user request.
+
+Past meeting notes are context, not active task source.
 
 Remove closed, canceled, archived, unassigned, or no-longer-actionable Inbox items.
 

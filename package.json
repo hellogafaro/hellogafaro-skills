@@ -1,0 +1,9 @@
+{
+  "name": "@hellogafaro/agents",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node --test tests/*.test.mjs"
+  }
+}
+

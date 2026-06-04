@@ -48,10 +48,6 @@ function pageName(page) {
   return page.properties.Name.title.map((part) => part.plain_text).join("");
 }
 
-function pageType(page) {
-  return page.properties.Type.select?.name ?? "";
-}
-
 function request(pathname, method, body) {
   const args = ["api", pathname];
   if (method) args.push("-X", method);
@@ -109,7 +105,6 @@ for (const skill of skills) {
   const body = {
     properties: {
       Name: { title: [{ text: { content: skill.displayName } }] },
-      Type: { select: { name: "Skill" } },
       Description: { rich_text: [{ text: { content: skill.description } }] },
       URL: { url: skill.url }
     }
@@ -136,9 +131,8 @@ for (const skill of skills) {
 
 for (const page of existing) {
   const name = pageName(page);
-  const type = pageType(page);
 
-  if (type === "Reference" || (type === "Skill" && !activeSkillNames.has(name))) {
+  if (!activeSkillNames.has(name)) {
     request(`/v1/pages/${page.id}`, "PATCH", { in_trash: true });
     archived.push(name);
   }

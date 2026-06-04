@@ -1,6 +1,6 @@
 ---
 name: documentation-creation
-description: Create or update SOPs, guides, templates, internal reference pages, strategy docs, and process documentation in Notion without duplicating existing pages.
+description: Use when creating or updating Notion documentation, including SOPs, guides, templates, internal references, strategy docs, process pages, how-tos, and reusable operating docs without duplicates.
 ---
 
 # documentation-creation
@@ -70,4 +70,3 @@ Before stopping, make sure the document was created, updated, or intentionally l
 If documentation work remains for another agent or person, route it through Handoffs.
 
 If no matching document exists and the user asked what the process is, say what you checked and offer to create one.
-

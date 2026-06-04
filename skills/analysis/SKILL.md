@@ -1,6 +1,6 @@
 ---
 name: analysis
-description: Use for real computation over data, including period comparisons, segmentation, decomposition, cohorts, funnels, anomaly detection, seasonality, forecasting, confidence checks, charts, and tables.
+description: Use when a question needs computed evidence over data, including period comparison, segmentation, decomposition, cohorts, funnels, anomaly checks, seasonality, forecasting, confidence checks, charts, or tables.
 ---
 
 # analysis

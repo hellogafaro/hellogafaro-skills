@@ -1,6 +1,6 @@
 ---
 name: slack-communication
-description: Slack routing, drafting, posting, privacy, urgency, failure updates, and durable follow-up rules for agent and team communication.
+description: Use when work involves Slack routing, drafting, posting, replying, privacy decisions, urgency, failure updates, DM versus channel choices, or durable follow-up from Slack communication.
 ---
 
 # slack-communication
@@ -39,4 +39,3 @@ For the same systemic failure three runs in a row, DM the user once and pause sc
 ## completion
 
 Slack work is complete when the message is sent or drafted, private context stayed private, and durable follow-up is stored outside Slack when needed.
-

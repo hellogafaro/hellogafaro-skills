@@ -1,6 +1,6 @@
 ---
 name: accounts-ops
-description: Route connected client account data work through the dedicated Accounts Ops repo for Shopify, Klaviyo, Meta Ads, Google Ads, TikTok Ads, PostHog, GA4, and Search Console.
+description: Use when work needs connected client account data or provider-native reads and confirmed writes through Accounts Ops for Shopify, Klaviyo, Meta Ads, Google Ads, TikTok Ads, PostHog, GA4, or Search Console.
 ---
 
 # accounts-ops
@@ -59,4 +59,3 @@ Continue only with sources that still work.
 Do not present partial provider data as complete.
 
 Label inferences.
-

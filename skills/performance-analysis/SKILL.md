@@ -1,6 +1,6 @@
 ---
 name: performance-analysis
-description: Route and perform computed performance diagnosis across measurement trust, paid media, lifecycle email, ecommerce, forecasting, attribution, and business-impact interpretation.
+description: Use when reporting or business questions need performance diagnosis across measurement trust, paid media, lifecycle email, ecommerce, forecasting, attribution, driver analysis, and business-impact interpretation.
 ---
 
 # performance-analysis
@@ -52,4 +52,3 @@ Return the shortest complete answer.
 State what changed, why it likely changed, why it matters, what to do next, confidence, and limitations.
 
 Use charts or tables only when they clarify the decision.
-

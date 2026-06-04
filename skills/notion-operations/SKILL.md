@@ -1,6 +1,6 @@
 ---
 name: notion-operations
-description: Search, read, create, update, mention, tag, and structure Notion pages and databases without duplicates, wrong schemas, missing relations, or page-icon noise.
+description: Use when work involves Notion search, page reading, page creation, updates, mentions, tags, database properties, relations, schema lookup, dedupe, or structured Notion operations.
 ---
 
 # notion-operations
@@ -43,4 +43,3 @@ Keep Notion work accurate, deduped, linked, and easy for agents and people to co
 ## completion
 
 Notion work is complete when the correct existing page was updated or the new page was created in the right place, linked to the right sources, and no duplicate was created.
-

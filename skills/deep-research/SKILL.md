@@ -1,6 +1,6 @@
 ---
 name: deep-research
-description: Source-backed research workflow for pricing, vendor comparisons, market questions, technical choices, current external facts, and decisions that need multi-source evidence.
+description: Use when a question needs source-backed external research, current facts, pricing, vendor comparisons, market context, technical choices, public evidence, citations, or multi-source decision support.
 ---
 
 # deep-research
@@ -68,4 +68,3 @@ Sources should include name, type, URL, and date.
 - Mark contested claims clearly.
 - If a sub-question remains unanswered after two passes, say so directly.
 - No filler.
-

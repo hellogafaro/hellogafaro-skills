@@ -1,6 +1,6 @@
 ---
 name: commerce-analysis
-description: Diagnose Shopify and ecommerce business performance, including revenue, orders, AOV, refunds, discounts, product mix, inventory, new versus returning customers, promo impact, checkout behavior, and margin risk.
+description: Use when diagnosing Shopify or ecommerce business performance, including revenue, orders, AOV, refunds, discounts, product mix, inventory, new versus returning customers, promo impact, checkout behavior, or margin risk.
 ---
 
 # commerce-analysis

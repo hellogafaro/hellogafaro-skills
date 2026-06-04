@@ -1,6 +1,6 @@
 ---
 name: measurement-audit
-description: Use when work involves data trust, attribution, tracking, UTMs, GA4, PostHog, Search Console freshness, conversion events, duplicate or missing events, and platform-vs-store reconciliation.
+description: Use when work involves data trust, attribution, tracking, UTMs, GA4, PostHog, Search Console freshness, conversion events, duplicate or missing events, or platform versus store reconciliation.
 ---
 
 # measurement-audit

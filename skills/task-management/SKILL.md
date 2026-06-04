@@ -1,6 +1,6 @@
 ---
 name: task-management
-description: Create, update, review, complete, cancel, route, and time-track work across Hello Gafaro Tasks and Jol ClickUp without duplicates or missing required properties.
+description: Use when work involves task creation, updates, completion, cancellation, workload review, blockers, task extraction, priority recommendations, routing, or time tracking across Hello Gafaro Tasks and Jol ClickUp.
 ---
 
 # task-management

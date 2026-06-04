@@ -1,6 +1,6 @@
 ---
 name: paid-media-analysis
-description: Diagnose paid media across Meta Ads, Google Ads, TikTok Ads, spend pacing, CPA, ROAS, CAC, MER, CTR, CPC, CPM, CVR, frequency, fatigue, concentration, attribution, and budget decisions.
+description: Use when diagnosing paid media performance across Meta Ads, Google Ads, TikTok Ads, or other ad platforms, including pacing, CPA, ROAS, CAC, MER, CTR, CPC, CPM, CVR, fatigue, attribution, and budget decisions.
 ---
 
 # paid-media-analysis

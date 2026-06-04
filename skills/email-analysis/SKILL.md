@@ -1,6 +1,6 @@
 ---
 name: email-analysis
-description: Diagnose Klaviyo and lifecycle marketing performance, including campaigns, flows, deliverability, revenue per recipient, open rate, click rate, conversion, unsubscribes, spam, segment quality, and attributed revenue.
+description: Use when diagnosing Klaviyo, email, SMS, or lifecycle marketing performance, including campaigns, flows, deliverability, revenue per recipient, clicks, conversions, unsubscribes, spam, segment quality, or attribution.
 ---
 
 # email-analysis

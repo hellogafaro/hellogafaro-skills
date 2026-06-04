@@ -1,6 +1,6 @@
 ---
 name: memory-management
-description: Read, create, update, prune, and decide whether to save durable agent Memory while avoiding transient source state, secrets, account ids, and stale operational facts.
+description: Use when an agent must read, create, update, prune, or decide whether to save durable Memory while avoiding transient source state, secrets, account ids, credentials, and stale operational facts.
 ---
 
 # memory-management
@@ -55,4 +55,3 @@ Write what is true now in plain language. Keep it short.
 ## completion
 
 Memory work is complete when the assigned entry exists, useful durable context is current, stale notes are removed, and no transient source state was saved.
-

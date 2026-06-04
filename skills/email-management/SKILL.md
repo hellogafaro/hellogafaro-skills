@@ -1,6 +1,6 @@
 ---
 name: email-management
-description: Manage email across connected accounts, including fetch, triage, search, replies, sending approval, attachments, labels, snoozing, archiving, and Inbox sync.
+description: Use when work involves email or Gmail, including fetch, triage, search, labels, replies, drafts in chat, send approval, attachments, snoozing, archiving, account routing, or Inbox sync.
 ---
 
 # email-management

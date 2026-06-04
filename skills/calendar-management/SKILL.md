@@ -1,6 +1,6 @@
 ---
 name: calendar-management
-description: Manage calendar fetch, triage, scheduling, conflict resolution, meeting prep, out of office, routing, and Inbox sync across connected calendars.
+description: Use when work involves calendars, meetings, scheduling, rescheduling, conflict checks, availability, out of office, meeting prep, calendar triage, calendar search, or Inbox sync for calendar loops.
 ---
 
 # calendar-management

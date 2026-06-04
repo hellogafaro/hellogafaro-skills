@@ -99,6 +99,7 @@ test("skills have valid metadata", async () => {
 
     assert.equal(frontmatter.name, skill);
     assert.ok(frontmatter.description?.length > 60, `${skill} needs useful description`);
+    assert.ok(frontmatter.description.startsWith("Use when "), `${skill} description must be trigger-first`);
     assert.ok(markdown.includes(`# ${skill}`), `${skill} needs matching h1`);
     assert.ok(!markdown.includes("\u2014"), `${skill} must not use em dash`);
     assert.ok(!markdown.includes("\u2013"), `${skill} must not use en dash`);

@@ -1,6 +1,6 @@
 ---
 name: reporting
-description: Prepare, review, and summarize weekly reports, monthly reports, anomaly memos, performance summaries, KPI updates, evidence-backed findings, caveats, charts, and action-oriented outputs.
+description: Use when preparing, reviewing, or summarizing reports, including weekly reports, monthly reports, anomaly memos, performance summaries, KPI updates, evidence-backed findings, caveats, charts, and action-oriented outputs.
 ---
 
 # reporting

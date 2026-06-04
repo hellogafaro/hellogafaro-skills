@@ -1,6 +1,6 @@
 ---
 name: inbox-management
-description: Create, update, reconcile, and close active agent Inbox checkpoints so every request is resumable, current, linked to sources, and cleared when done.
+description: Use when an agent must create, update, reconcile, or close its active Inbox checkpoint so requests stay resumable, current, source-linked, and cleared or rewritten when done.
 ---
 
 # inbox-management
@@ -49,4 +49,3 @@ Every durable Inbox item starts with an inline date mention. For new items, use 
 ## completion
 
 Inbox work is complete when every active request is closed, waiting, blocked, or handed off with a live link.
-

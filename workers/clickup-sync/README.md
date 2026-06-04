@@ -13,6 +13,11 @@ It exposes a small, deterministic ClickUp API for completed Notion task sync:
 - Leave completion comments.
 - Sync a completed Notion task in one call.
 
+Prefer:
+
+- `syncExistingCompletedTask` when the ClickUp task already exists.
+- `createCompletedTask` when creating a new ClickUp mirror.
+
 ## Environment
 
 Set `CLICKUP_API_TOKEN` in the worker environment before live execution.

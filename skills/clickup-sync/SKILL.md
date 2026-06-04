@@ -36,9 +36,10 @@ Use the Notion task, project, and linked timesheet as source. ClickUp is the cli
 4. Read the source context needed to explain the problem and solution.
 5. If a ClickUp task ID or URL exists, call `getTask` and verify it matches.
 6. If no ClickUp task exists, call `getMap`, search when needed, and choose the best destination list.
-7. Call `syncCompletedTask` with the task title, ClickUp task ID or list ID, date, minutes, problem, solution, implementation, references, and Notion URL.
-8. Comment on the Notion task with the ClickUp task ID or link and confirm it was completed and successfully replicated on ClickUp.
-9. Report only changed, failed, or needs input.
+7. Call `syncExistingCompletedTask` when a ClickUp task ID or link already exists.
+8. Call `createCompletedTask` when no ClickUp task exists and the destination list is confirmed.
+9. Comment on the Notion task with the ClickUp task ID or link and confirm it was completed and successfully replicated on ClickUp.
+10. Report only changed, failed, or needs input.
 
 ## Comment quality
 

@@ -12,10 +12,16 @@ Use the Notion worker in `workers/clickup-sync`.
 - `logTime` creates a manual time entry.
 - `commentTask` adds a ClickUp task comment.
 - `syncCompletedTask` creates or updates a task, marks it done, logs time, and comments.
+- `syncExistingCompletedTask` marks an existing task done, logs time, and comments.
+- `createCompletedTask` creates a completed task, logs time, and comments.
 
 ## Main call
 
-Use `syncCompletedTask` for normal completed-task sync.
+Use `syncExistingCompletedTask` when a ClickUp task ID or link already exists.
+
+Use `createCompletedTask` when no ClickUp task exists and the destination list is confirmed.
+
+Use `syncCompletedTask` only when the caller can safely provide nullable fields.
 
 Required input:
 
@@ -25,10 +31,10 @@ Required input:
 - `minutes`
 - `date`
 
-Use either:
+Additional required input:
 
-- `clickupTaskId` when the task already exists in ClickUp.
-- `listId` when creating a new ClickUp task.
+- `clickupTaskId` for `syncExistingCompletedTask`.
+- `listId` for `createCompletedTask`.
 
 Recommended input:
 

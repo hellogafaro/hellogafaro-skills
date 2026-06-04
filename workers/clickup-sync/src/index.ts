@@ -31,6 +31,19 @@ const syncInputSchema = j.object({
   priority: j.number().nullable().describe("ClickUp priority id.")
 });
 
+const baseCompletedSchema = {
+  notionTaskTitle: j.string().describe("The Notion task title."),
+  notionTaskUrl: j.string().nullable().describe("The Notion task URL."),
+  problem: j.string().describe("Spanish problem summary."),
+  solution: j.string().describe("Spanish solution summary."),
+  implementation: j.string().nullable().describe("Spanish implementation detail."),
+  references: j.array(j.string()).nullable().describe("Commit links, PR links, source links, or useful references."),
+  minutes: j.number().describe("Confirmed minutes from Notion Timesheets. Required and must be greater than 0."),
+  date: j.string().describe("ISO date or datetime for the time entry."),
+  assigneeIds: j.array(j.number()).nullable().describe("ClickUp assignee user IDs."),
+  priority: j.number().nullable().describe("ClickUp priority id.")
+};
+
 worker.tool("getMap", {
   title: "Get ClickUp map",
   description: "Returns the read-only Jol Ebrahim ClickUp workspace map for Shopiworks sync.",
@@ -110,4 +123,24 @@ worker.tool("syncCompletedTask", {
   description: "Creates or updates a completed Shopiworks ClickUp task, marks it done, logs time, and leaves the Spanish completion comment.",
   schema: syncInputSchema,
   execute: (input) => syncCompletedTask(input)
+});
+
+worker.tool("syncExistingCompletedTask", {
+  title: "Sync existing completed ClickUp task",
+  description: "Marks an existing ClickUp task done, logs time, and leaves the Spanish completion comment.",
+  schema: j.object({
+    ...baseCompletedSchema,
+    clickupTaskId: j.string().describe("Existing ClickUp task ID.")
+  }),
+  execute: (input) => syncCompletedTask({ ...input, listId: null })
+});
+
+worker.tool("createCompletedTask", {
+  title: "Create completed ClickUp task",
+  description: "Creates a completed ClickUp task in a known list, logs time, and leaves the Spanish completion comment.",
+  schema: j.object({
+    ...baseCompletedSchema,
+    listId: j.string().describe("ClickUp list ID where the new task should be created.")
+  }),
+  execute: (input) => syncCompletedTask({ ...input, clickupTaskId: null })
 });

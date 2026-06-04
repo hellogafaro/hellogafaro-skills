@@ -220,13 +220,13 @@ export function dateToStartMs(date: string): number {
 export function buildCompletionComment(input: Pick<SyncInput, "problem" | "solution" | "implementation" | "references">): string {
   const implementation = input.implementation?.trim();
   const references = input.references?.filter(Boolean) ?? [];
-  const lines = [
-    `Problema. ${input.problem.trim()}`,
-    `Solución. ${input.solution.trim()}`
-  ];
+  const lines = [`${input.problem.trim()} ${input.solution.trim()}`];
 
-  if (implementation) lines.push(`Implementación. ${implementation}`);
-  if (references.length) lines.push(`Referencia. ${references.join(", ")}`);
+  const bullets = [];
+  if (implementation) bullets.push(`- ${implementation}`);
+  if (references.length) bullets.push(`- Cambios o enlaces relacionados en ${references.join(", ")}.`);
+
+  if (bullets.length) lines.push("", ...bullets);
 
   return lines.join("\n");
 }
@@ -248,19 +248,15 @@ export function normalizeSimpleInput(input: SimpleSyncInput): SyncInput {
 }
 
 export function buildTaskDescription(input: SyncInput): string {
-  const lines = [
-    `${input.problem.trim()} ${input.solution.trim()}`,
-    "",
-    "Contexto",
-    `- Tiempo registrado. ${input.minutes} min.`
-  ];
+  const lines = [`${input.problem.trim()} ${input.solution.trim()}`, ""];
 
   const implementation = input.implementation?.trim();
   const references = input.references?.filter(Boolean) ?? [];
 
-  if (implementation) lines.push(`- Implementación. ${implementation}`);
-  if (references.length) lines.push(`- Referencias. ${references.join(", ")}`);
-  if (input.notionTaskUrl) lines.push(`- Origen Notion. ${input.notionTaskUrl}`);
+  if (implementation) lines.push(`- ${implementation}`);
+  lines.push(`- Se registraron ${input.minutes} min.`);
+  if (references.length) lines.push(`- Cambios o enlaces relacionados en ${references.join(", ")}.`);
+  if (input.notionTaskUrl) lines.push(`- El origen en Notion está en ${input.notionTaskUrl}.`);
 
   return lines.join("\n");
 }

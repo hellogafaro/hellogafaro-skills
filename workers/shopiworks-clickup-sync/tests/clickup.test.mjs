@@ -3,7 +3,7 @@ import { test } from "node:test";
 
 const mod = await import("../src/clickup.ts");
 
-test("completion comment has value narrative shape", () => {
+test("completion comment is prose with optional context bullets", () => {
   const comment = mod.buildCompletionComment({
     problem: "El selector no mostraba claramente el color activo.",
     solution: "Añadimos un borde negro al color seleccionado.",
@@ -11,10 +11,10 @@ test("completion comment has value narrative shape", () => {
     references: ["abc1234"]
   });
 
-  assert.match(comment, /^Problema\./);
-  assert.match(comment, /Solución\./);
-  assert.match(comment, /Implementación\./);
-  assert.match(comment, /Referencia\. abc1234/);
+  assert.match(comment, /^El selector no mostraba claramente el color activo\. Añadimos un borde negro al color seleccionado\./);
+  assert.match(comment, /\n\n- La variante activa queda marcada visualmente en la ficha de producto\./);
+  assert.match(comment, /- Cambios o enlaces relacionados en abc1234\./);
+  assert.doesNotMatch(comment, /Problema\.|Solución\.|Implementación\.|Referencia\.|Referencias:/);
 });
 
 test("minutes are required for write operations", () => {
@@ -43,11 +43,11 @@ test("created task description includes context bullets", () => {
   });
 
   assert.match(description, /^Problema detectado\. Solución aplicada\./);
-  assert.match(description, /Contexto/);
-  assert.match(description, /- Tiempo registrado\. 30 min\./);
-  assert.match(description, /- Implementación\. Se ajustó el selector activo\./);
-  assert.match(description, /- Referencias\. abc1234/);
-  assert.match(description, /- Origen Notion\. https:\/\/notion\.so\/task/);
+  assert.doesNotMatch(description, /Contexto|Implementación\.|Referencias\.|Origen Notion\.|Referencias:|Tiempo registrado:/);
+  assert.match(description, /- Se ajustó el selector activo\./);
+  assert.match(description, /- Se registraron 30 min\./);
+  assert.match(description, /- Cambios o enlaces relacionados en abc1234\./);
+  assert.match(description, /- El origen en Notion está en https:\/\/notion\.so\/task\./);
 });
 
 test("simple worker input normalizes empty strings", () => {

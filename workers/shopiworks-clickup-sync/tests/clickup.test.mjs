@@ -66,3 +66,24 @@ test("simple worker input normalizes empty strings", () => {
   assert.equal(input.implementation, null);
   assert.deepEqual(input.references, ["https://github.com/one", "abc1234"]);
 });
+
+test("time entries are summarized for repair", () => {
+  const summary = mod.summarizeTimeEntry(
+    {
+      id: "time_1",
+      task: { id: "task_1" },
+      description: "Trabajo completado.",
+      duration: 60000,
+      start: 1780599600000
+    },
+    "fallback_task"
+  );
+
+  assert.deepEqual(summary, {
+    id: "time_1",
+    taskId: "task_1",
+    description: "Trabajo completado.",
+    durationMs: 60000,
+    startMs: 1780599600000
+  });
+});

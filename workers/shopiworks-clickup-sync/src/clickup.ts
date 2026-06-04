@@ -27,6 +27,14 @@ export type TaskSummary = {
   timeSpentMs: number;
 };
 
+export type TimeEntrySummary = {
+  id: string;
+  taskId: string;
+  description: string;
+  durationMs: number;
+  startMs: number;
+};
+
 export type SyncInput = {
   notionTaskTitle: string;
   notionTaskUrl?: string | null;
@@ -282,6 +290,17 @@ export function summarizeTask(task: ClickUpTask): TaskSummary {
   };
 }
 
+export function summarizeTimeEntry(entry: Record<string, unknown>, taskId: string): TimeEntrySummary {
+  const task = entry.task as { id?: string } | undefined;
+  return {
+    id: String(entry.id ?? ""),
+    taskId: task?.id ?? taskId,
+    description: String(entry.description ?? ""),
+    durationMs: Number(entry.duration ?? 0),
+    startMs: Number(entry.start ?? 0)
+  };
+}
+
 export async function getTaskRaw(taskId: string): Promise<ClickUpTask> {
   return clickupRequest<ClickUpTask>("GET", `/task/${encodeURIComponent(taskId)}`);
 }
@@ -316,8 +335,27 @@ export async function createTask(input: SyncInput): Promise<ClickUpTask> {
   return clickupRequest<ClickUpTask>("POST", `/list/${input.listId}/task`, body);
 }
 
+export async function updateTaskFields(taskId: string, input: { name: string; description: string; status: string }): Promise<ClickUpTask> {
+  const body: Record<string, unknown> = {};
+  const name = input.name.trim();
+  const description = input.description.trim();
+  const status = input.status.trim();
+
+  if (name) body.name = name;
+  if (description) body.description = description;
+  if (status) body.status = status;
+  if (!Object.keys(body).length) throw new Error("At least one field is required to update a ClickUp task.");
+
+  return clickupRequest<ClickUpTask>("PUT", `/task/${encodeURIComponent(taskId)}`, body);
+}
+
 export async function updateTaskDone(taskId: string, status: string): Promise<ClickUpTask> {
   return clickupRequest<ClickUpTask>("PUT", `/task/${encodeURIComponent(taskId)}`, { status });
+}
+
+export async function deleteTask(taskId: string): Promise<{ ok: boolean; taskId: string }> {
+  await clickupRequest<Record<string, unknown>>("DELETE", `/task/${encodeURIComponent(taskId)}`);
+  return { ok: true, taskId };
 }
 
 export async function createTaskComment(taskId: string, commentText: string): Promise<Record<string, unknown>> {
@@ -336,6 +374,16 @@ export async function createTimeEntry(taskId: string, date: string, minutes: num
     description,
     billable: true
   });
+}
+
+export async function listTimeEntries(taskId: string): Promise<{ timeEntries: TimeEntrySummary[] }> {
+  const result = await clickupRequest<{ data?: Record<string, unknown>[] }>("GET", `/team/${TEAM_ID}/time_entries?task_id=${encodeURIComponent(taskId)}`);
+  return { timeEntries: (result.data ?? []).map((entry) => summarizeTimeEntry(entry, taskId)) };
+}
+
+export async function deleteTimeEntry(timeEntryId: string): Promise<{ ok: boolean; timeEntryId: string }> {
+  await clickupRequest<Record<string, unknown>>("DELETE", `/team/${TEAM_ID}/time_entries/${encodeURIComponent(timeEntryId)}`);
+  return { ok: true, timeEntryId };
 }
 
 export async function syncCompletedTask(input: SyncInput): Promise<{

@@ -5,12 +5,16 @@ import {
   buildCompletionComment,
   createTaskComment,
   createTimeEntry,
+  deleteTask,
+  deleteTimeEntry,
   getTask,
+  listTimeEntries,
   normalizeSimpleInput,
   searchTasks,
   summarizeTask,
   syncCompletedTask,
-  updateTaskDone
+  updateTaskDone,
+  updateTaskFields
 } from "./clickup.js";
 
 type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue };
@@ -88,6 +92,14 @@ const syncResultSchema = j.object({
   comment: j.string()
 });
 
+const timeEntrySummarySchema = j.object({
+  id: j.string(),
+  taskId: j.string(),
+  description: j.string(),
+  durationMs: j.number(),
+  startMs: j.number()
+});
+
 worker.tool("getMap", {
   title: "Get ClickUp map",
   description: "Returns the read-only Jol Ebrahim ClickUp workspace map for Shopiworks sync.",
@@ -153,6 +165,32 @@ worker.tool("completeTask", {
   execute: async ({ taskId, status }) => summarizeTask(await updateTaskDone(taskId, status ?? "cerrada"))
 });
 
+worker.tool("updateTask", {
+  title: "Update ClickUp task",
+  description: "Repair tool for mistaken ClickUp task title, description, or status. Use only after verifying the target task.",
+  schema: j.object({
+    taskId: j.string(),
+    name: j.string().describe("New task title, or an empty string to leave unchanged."),
+    description: j.string().describe("New task description, or an empty string to leave unchanged."),
+    status: j.string().describe("New status, or an empty string to leave unchanged.")
+  }),
+  outputSchema: taskSummarySchema,
+  execute: async ({ taskId, name, description, status }) => summarizeTask(await updateTaskFields(taskId, { name, description, status }))
+});
+
+worker.tool("deleteTask", {
+  title: "Delete ClickUp task",
+  description: "Repair tool for deleting a mistakenly created ClickUp mirror task. Never use for legitimate client tasks.",
+  schema: j.object({
+    taskId: j.string().describe("ClickUp task ID to delete.")
+  }),
+  outputSchema: j.object({
+    ok: j.boolean(),
+    taskId: j.string()
+  }),
+  execute: ({ taskId }) => deleteTask(taskId)
+});
+
 worker.tool("logTime", {
   title: "Log ClickUp time",
   description: "Creates a manual ClickUp time entry. Requires confirmed minutes.",
@@ -172,6 +210,32 @@ worker.tool("logTime", {
     taskId,
     timeLoggedMs: Math.round(minutes * 60 * 1000)
   })
+});
+
+worker.tool("listTimeEntries", {
+  title: "List ClickUp time entries",
+  description: "Lists manual time entries for a ClickUp task before repairing time.",
+  schema: j.object({
+    taskId: j.string()
+  }),
+  outputSchema: j.object({
+    timeEntries: j.array(timeEntrySummarySchema)
+  }),
+  hints: { readOnlyHint: true },
+  execute: ({ taskId }) => listTimeEntries(taskId)
+});
+
+worker.tool("deleteTimeEntry", {
+  title: "Delete ClickUp time entry",
+  description: "Repair tool for deleting an incorrect time entry after listTimeEntries identifies the exact entry.",
+  schema: j.object({
+    timeEntryId: j.string()
+  }),
+  outputSchema: j.object({
+    ok: j.boolean(),
+    timeEntryId: j.string()
+  }),
+  execute: ({ timeEntryId }) => deleteTimeEntry(timeEntryId)
 });
 
 worker.tool("commentTask", {

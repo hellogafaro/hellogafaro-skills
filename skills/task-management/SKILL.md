@@ -5,9 +5,13 @@ description: Use when work involves task creation, updates, completion, cancella
 
 # task-management
 
-Use this skill when AI is asked to create tasks, update tasks, review workload, surface blockers, extract tasks from notes or plans, recommend what someone should work on next, complete tasks, cancel tasks, or track time.
+Use this skill when AI is asked to create tasks, update tasks, review workload, surface blockers, extract tasks from notes, meetings, or plans, recommend what someone should work on next, complete tasks, cancel tasks, or track time.
 
-General Notion AI may find, summarize, organize, propose, and draft task wording. Task system mutations route through Handoffs to the task-management agent.
+General Notion AI may find, summarize, organize, filter meeting actions, propose task wording, and execute exact user-owned daily hygiene when intent is clear.
+
+Exact user-owned daily hygiene means the user clearly gives the task or meeting, the action, and the time. Examples include marking a named task done, adding exact time to a named task, or logging exact meeting time from a meeting page with a Project relation.
+
+Route through Handoffs when the request needs new task creation, ambiguous updates, bulk changes, workload planning, blocker management, scheduling judgment, cross-person coordination, unclear time tracking, or missing required context.
 
 ## purpose
 
@@ -24,6 +28,8 @@ Keep work clear, balanced, and moving while using the right task system consiste
 - Never change task status without confirming with the responsible person unless the source explicitly proves the state.
 - Completion requires time tracking when work is substantive.
 - No completed substantive task is allowed to have missing time.
+- Meeting time inherits Project from the meeting page Project relation.
+- If a meeting page has no Project relation, ask before creating tasks or time entries from it.
 
 ## routing
 
@@ -90,10 +96,22 @@ Every completed substantive task needs time tracked.
 - Task management counts.
 - Context switching counts.
 - If duration is unknown, ask before completing.
+- For meeting time, read the meeting page Project relation first.
+- If the meeting has one Project relation, use it for the time entry.
+- If the meeting has no Project relation, ask for the project and update the meeting before logging time.
+- If the meeting has multiple Project relations, ask which project owns the time.
 
 ## working from source material
 
-For meeting notes or action items, turn each action item into one task, use stated owner and due date when available, and ask if owner or project is unclear.
+For meeting notes or action items, extract only actions worth tracking. Do not turn every note, decision, reminder, or discussion point into a task.
+
+When chatting with the user in a meeting page, General Notion AI should filter the meeting into proposed task candidates first.
+
+If the user approves 1 to 3 clear user-owned tasks with project context, General Notion AI may create them directly.
+
+If the task list is large, cross-person, ambiguous, missing project context, missing owners, missing due dates, or affects workload, create one Handoff to Dash with the selected task candidates only.
+
+Never pass the whole meeting transcript to Dash by default. Pass the filtered tasks, meeting page link, Project relation, owner, due date, source context, constraints, and acceptance criteria needed to create the tasks correctly.
 
 For plans or strategies, break into concrete tasks and split into now, next, and later when scope is larger than one week.
 

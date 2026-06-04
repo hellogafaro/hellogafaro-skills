@@ -12,6 +12,7 @@ Notion 2025-09 keeps properties on the DATA SOURCE. Query the data source id; li
 
 - Tasks: db `25ffc7982e4380c58df6fef037530baa`, data source `25ffc798-2e43-801b-9eed-000b4bc5f349`
 - Projects: data source `25ffc798-2e43-80fe-acb3-000bc6d73ce7`
+- Meetings: db `25ffc7982e438056969fff6a4672eaaa`, data source `25ffc798-2e43-805b-a32c-000b3f8ea454`
 - Timesheets: data source `e6f1b1a0-0a27-434e-b220-00f79ee95859`
 - Team: data source `18824c2f-3b29-4c8b-91ab-7e5010683a2a`
 - Inbox: db `372fc7982e438049b196d61a407c314d`
@@ -33,6 +34,13 @@ Notion 2025-09 keeps properties on the DATA SOURCE. Query the data source id; li
 ## Projects properties
 
 Inspect the Projects data source live before planning. Dash needs, at minimum, the project status, monthly hours commitment, billing date or cycle anchor, language, and whether the project is internal. If any of these fields are missing or unclear, flag that gap before using the project in workload planning.
+
+## Meetings properties
+
+- `Name` (title)
+- `Project` (relation to Projects)
+
+For tasks or time from a meeting page, read the meeting `Project` relation first. Use that project for task creation and meeting time. If empty, ask for the project and update the meeting before creating task or time records. If multiple projects are linked, ask which one owns the task or time entry.
 
 ## Resolving a person
 
@@ -95,16 +103,37 @@ ntn api /v1/data_sources/25ffc798-2e43-801b-9eed-000b4bc5f349/query -X POST -d '
 
 ## Log a time entry (Timesheets)
 
-`Time` is the title and holds a duration string. Hours and Minutes are formulas that parse it, so do not set them. Accepted forms: `15m`, `30m`, `45m`, `1h`, `1h 30m`. Log in 15-minute increments, rounding up.
+`Name` is the title. `Minutes` is the canonical duration number. `Hours` is a formula, so do not set it. `Date` is editable and required for reporting. Log in 15-minute increments, rounding up.
+
+Task-linked entries use a Notion task mention or task title as `Name`, plus `Task` and `Project`.
+
+Non-task meeting entries use one clear sentence-case name, no `Task`, and the meeting page `Project`.
 
 ```
 ntn api /v1/pages -d '{
   "parent": {"type":"data_source_id","data_source_id":"e6f1b1a0-0a27-434e-b220-00f79ee95859"},
   "properties": {
-    "Time": {"title":[{"text":{"content":"45m"}}]},
+    "Name": {"title":[{"text":{"content":"Draft June email campaign"}}]},
     "Owner": {"people":[{"id":"<notion-user-id>"}]},
     "Task": {"relation":[{"id":"<task-page-id>"}]},
-    "Project": {"relation":[{"id":"<project-page-id>"}]}
+    "Project": {"relation":[{"id":"<project-page-id>"}]},
+    "Date": {"date":{"start":"2026-06-04"}},
+    "Minutes": {"number":45}
+  }
+}'
+```
+
+## Log meeting time without a task
+
+```
+ntn api /v1/pages -d '{
+  "parent": {"type":"data_source_id","data_source_id":"e6f1b1a0-0a27-434e-b220-00f79ee95859"},
+  "properties": {
+    "Name": {"title":[{"text":{"content":"Met with Jol about Shopify size charts"}}]},
+    "Owner": {"people":[{"id":"<notion-user-id>"}]},
+    "Project": {"relation":[{"id":"<meeting-project-page-id>"}]},
+    "Date": {"date":{"start":"2026-06-04"}},
+    "Minutes": {"number":30}
   }
 }'
 ```

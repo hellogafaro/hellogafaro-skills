@@ -13,10 +13,10 @@ Calendar and Inbox are one system. Any calendar action that opens, changes, or c
 
 Load only when needed.
 
-- Calendar triage at the start of calendar triage.
-- Calendar conflicts when a conflict, move, cancellation, or tentative hold appears.
-- Calendar prep before building meeting prep.
-- Calendar edge cases for out of office, travel, recurring changes, timezone ambiguity, short notice, or source failures.
+- `references/calendar-triage.md` at the start of calendar triage.
+- `references/calendar-conflicts.md` when a conflict, move, cancellation, or tentative hold appears.
+- `references/calendar-prep.md` before building meeting prep.
+- `references/calendar-edge-cases.md` for out of office, travel, recurring changes, timezone ambiguity, short notice, or source failures.
 
 ## hard rules
 
@@ -104,4 +104,3 @@ Keep output concise.
 Mention meetings in the next 24 hours that need attention, conflicts, proposed meetings waiting for confirmation, prep gaps, and the smallest useful next action.
 
 Skip empty sections.
-

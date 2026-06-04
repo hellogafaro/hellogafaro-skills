@@ -31,8 +31,21 @@ const removedContentSkill = ["content", "creation"].join("-");
 
 const expectedResources = {
   "analysis": ["scripts/analyze_timeseries.py"],
+  "calendar-management": [
+    "references/calendar-conflicts.md",
+    "references/calendar-edge-cases.md",
+    "references/calendar-prep.md",
+    "references/calendar-triage.md"
+  ],
   "commerce-analysis": ["references/ecommerce-movement.md"],
   "email-analysis": ["references/lifecycle.md"],
+  "email-management": [
+    "references/email-edge-cases.md",
+    "references/email-inbox-sync.md",
+    "references/email-responding.md",
+    "references/email-signal-rules.md",
+    "references/email-snoozed.md"
+  ],
   "measurement-audit": ["references/attribution.md"],
   "paid-media-analysis": ["references/diagnostics.md"],
   "reporting": ["references/report-types.md"],

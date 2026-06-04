@@ -13,11 +13,11 @@ Email and Inbox are one system. Any email action that opens, changes, or closes 
 
 Load only when needed.
 
-- Signal rules before classifying email.
-- Responding rules before drafting or sending.
-- Inbox sync rules whenever an email loop affects Inbox.
-- Edge cases when the email does not fit the normal decision loop.
-- Snoozed rules when snoozing or resurfacing a snoozed item.
+- `references/email-signal-rules.md` before classifying email.
+- `references/email-responding.md` before drafting or sending.
+- `references/email-inbox-sync.md` whenever an email loop affects Inbox.
+- `references/email-edge-cases.md` when the email does not fit the normal decision loop.
+- `references/email-snoozed.md` when snoozing or resurfacing a snoozed item.
 
 ## hard rules
 
@@ -134,4 +134,3 @@ Active auto-rules live in Memory.
 Keep output concise.
 
 Report urgent threads needing action, drafts ready for approval, what was archived, and the smallest next action.
-

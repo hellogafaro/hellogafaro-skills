@@ -1,0 +1,11 @@
+Load when email does not fit the normal decision loop.
+- Out-of-office or auto-reply on a Waiting thread is not a real reply. Waiting stays open.
+- Bounce on user outbound is an Alert, not noise. Surface immediately.
+- VIP sender from an unrecognized address is a phishing flag. Do not act.
+- Forwarded chain gets summarized by active ask only. Full chain only on request.
+- Duplicate cross-account thread keeps one canonical Inbox item. Archive duplicates case by case.
+- Same sender burst with 3 or more messages collapses to one Inbox item.
+- Deadline in the email body changes urgency and Inbox timing.
+- Calendar invite by email routes to Calendar management.
+- CC-only mail is lower priority unless VIP, direct ask, or the user can add clear value.
+- New sender asking for money, wire, credentials, or payment changes is phishing-tier until verified.

@@ -6,13 +6,12 @@ import path from "node:path";
 const root = path.resolve(import.meta.dirname, "..");
 const skillsDir = path.join(root, "skills");
 const dataSourceId = "33bfc7982e4381eabeb3000bc9f775f1";
-const repoBaseUrl = "https://github.com/hellogafaro/hellogafaro-agents/blob/main";
+const repoBaseUrl = "https://github.com/hellogafaro/hellogafaro-skills/blob/main";
 
 const displayNames = {
   "accounts-ops": "Accounts Ops",
   "analysis": "Analysis",
   "calendar-management": "Calendar management",
-  "shopiworks-clickup-sync": "Shopiworks ClickUp Sync",
   "commerce-analysis": "Commerce analysis",
   "deep-research": "Deep research",
   "documentation-creation": "Documentation creation",

@@ -1,4 +1,4 @@
-# hellogafaro agents
+# hellogafaro skills
 
 Central source for Hello Gafaro agent skills and Notion worker code.
 

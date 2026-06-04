@@ -56,15 +56,7 @@ function request(pathname, method, body) {
 }
 
 function contentFor(skill) {
-  return [
-    "This Skills database row is a mapping entry.",
-    "",
-    "Read the source file:",
-    "",
-    `[${skill.displayName} skill](${skill.url})`,
-    "",
-    "Do not edit skill instructions in Notion. Update GitHub, then sync this row."
-  ].join("\n");
+  return `Read the source file for this skill: [${skill.displayName} skill](${skill.url}).`;
 }
 
 const skillIds = (await readdir(skillsDir, { withFileTypes: true }))

@@ -12,6 +12,7 @@ const displayNames = {
   "accounts-ops": "Accounts Ops",
   "analysis": "Analysis",
   "calendar-management": "Calendar management",
+  "clickup-sync": "ClickUp sync",
   "commerce-analysis": "Commerce analysis",
   "deep-research": "Deep research",
   "documentation-creation": "Documentation creation",

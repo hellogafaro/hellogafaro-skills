@@ -278,7 +278,6 @@ export function buildTaskDescription(input: SyncInput): string {
   if (implementation) lines.push(`- ${implementation}`);
   lines.push(`- Se registraron ${input.minutes} min.`);
   if (references.length) lines.push(`- Cambios o enlaces relacionados en ${references.join(", ")}.`);
-  if (input.notionTaskUrl) lines.push(`- El origen en Notion está en ${input.notionTaskUrl}.`);
 
   return lines.join("\n");
 }
@@ -386,8 +385,7 @@ export async function createTimeEntry(taskId: string, date: string, minutes: num
     tid: taskId,
     start: dateToStartMs(date),
     duration: Math.round(minutes * 60 * 1000),
-    description,
-    billable: true
+    description
   });
 }
 

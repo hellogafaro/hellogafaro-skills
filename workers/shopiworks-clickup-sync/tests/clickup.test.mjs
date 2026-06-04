@@ -47,7 +47,7 @@ test("created task description includes context bullets", () => {
   assert.match(description, /- Se ajustó el selector activo\./);
   assert.match(description, /- Se registraron 30 min\./);
   assert.match(description, /- Cambios o enlaces relacionados en abc1234\./);
-  assert.match(description, /- El origen en Notion está en https:\/\/notion\.so\/task\./);
+  assert.doesNotMatch(description, /Notion|origen|source/i);
 });
 
 test("simple worker input normalizes empty strings", () => {

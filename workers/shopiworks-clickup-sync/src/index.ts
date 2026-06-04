@@ -23,7 +23,7 @@ const worker = new Worker();
 export default worker;
 
 const syncInputSchema = j.object({
-  notionTaskTitle: j.string().describe("The Notion task title."),
+  clickupTaskTitle: j.string().describe("Natural neutral Spanish ClickUp task title. Translate the Notion task title before calling this tool."),
   notionTaskUrl: j.string().nullable().describe("The Notion task URL."),
   clickupTaskId: j.string().nullable().describe("Existing ClickUp task ID when the task already exists."),
   listId: j.string().nullable().describe("ClickUp list ID. Required only when creating a new task."),
@@ -38,7 +38,7 @@ const syncInputSchema = j.object({
 });
 
 const baseCompletedSchema = {
-  notionTaskTitle: j.string().describe("The Notion task title."),
+  clickupTaskTitle: j.string().describe("Natural neutral Spanish ClickUp task title. Translate the Notion task title before calling this tool."),
   notionTaskUrl: j.string().nullable().describe("The Notion task URL."),
   problem: j.string().describe("Spanish problem summary."),
   solution: j.string().describe("Spanish solution summary."),
@@ -51,7 +51,7 @@ const baseCompletedSchema = {
 };
 
 const simpleCompletedSchema = {
-  notionTaskTitle: j.string().describe("The Notion task title."),
+  clickupTaskTitle: j.string().describe("Natural neutral Spanish ClickUp task title. Translate the Notion task title before calling this tool."),
   notionTaskUrl: j.string().describe("The Notion task URL, or an empty string when unavailable."),
   problem: j.string().describe("Spanish problem summary."),
   solution: j.string().describe("Spanish solution summary."),

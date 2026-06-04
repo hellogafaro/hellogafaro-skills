@@ -32,7 +32,7 @@ test("map includes validated workspace and closed statuses", () => {
 
 test("created task description includes context bullets", () => {
   const description = mod.buildTaskDescription({
-    notionTaskTitle: "Fix selector",
+    clickupTaskTitle: "Corregir selector",
     notionTaskUrl: "https://notion.so/task",
     problem: "Problema detectado.",
     solution: "Solución aplicada.",
@@ -52,7 +52,7 @@ test("created task description includes context bullets", () => {
 
 test("simple worker input normalizes empty strings", () => {
   const input = mod.normalizeSimpleInput({
-    notionTaskTitle: "Fix selector",
+    clickupTaskTitle: "Corregir selector",
     notionTaskUrl: "",
     problem: "Problema detectado.",
     solution: "Solución aplicada.",
@@ -65,6 +65,14 @@ test("simple worker input normalizes empty strings", () => {
   assert.equal(input.notionTaskUrl, null);
   assert.equal(input.implementation, null);
   assert.deepEqual(input.references, ["https://github.com/one", "abc1234"]);
+});
+
+test("clickup task title must not be raw English", () => {
+  assert.throws(
+    () => mod.assertNeutralSpanishTitle("Implement black border to highlight active variant on product page"),
+    /must be natural neutral Spanish/
+  );
+  assert.doesNotThrow(() => mod.assertNeutralSpanishTitle("Resaltar la variante activa en la ficha de producto"));
 });
 
 test("time entries are summarized for repair", () => {

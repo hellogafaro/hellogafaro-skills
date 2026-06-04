@@ -36,7 +36,7 @@ export type TimeEntrySummary = {
 };
 
 export type SyncInput = {
-  notionTaskTitle: string;
+  clickupTaskTitle: string;
   notionTaskUrl?: string | null;
   clickupTaskId?: string | null;
   listId?: string | null;
@@ -51,7 +51,7 @@ export type SyncInput = {
 };
 
 export type SimpleSyncInput = {
-  notionTaskTitle: string;
+  clickupTaskTitle: string;
   notionTaskUrl: string;
   problem: string;
   solution: string;
@@ -219,6 +219,20 @@ export function assertMinutes(minutes: number): void {
   }
 }
 
+export function assertNeutralSpanishTitle(title: string): void {
+  const normalized = title.trim();
+  if (!normalized) throw new Error("clickupTaskTitle is required and must be natural neutral Spanish.");
+
+  const englishSignals = [
+    /\b(add|adjust|build|check|create|fix|implement|improve|launch|make|optimize|rebuild|remove|review|send|sync|test|update)\b/i,
+    /\b(page|product|registry|theme|variant|description|spacing|border|active|gift card|gift registry)\b/i
+  ];
+
+  if (englishSignals.some((pattern) => pattern.test(normalized))) {
+    throw new Error("clickupTaskTitle must be natural neutral Spanish. Translate the Notion task title before creating or syncing a ClickUp task.");
+  }
+}
+
 export function dateToStartMs(date: string): number {
   const parsed = new Date(date);
   if (Number.isNaN(parsed.valueOf())) throw new Error("date must be a valid ISO date or datetime.");
@@ -321,10 +335,11 @@ export async function searchTasks(query: string, includeClosed = true): Promise<
 
 export async function createTask(input: SyncInput): Promise<ClickUpTask> {
   assertMinutes(input.minutes);
+  assertNeutralSpanishTitle(input.clickupTaskTitle);
   if (!input.listId) throw new Error("listId is required when creating a ClickUp task.");
 
   const body: Record<string, unknown> = {
-    name: input.notionTaskTitle,
+    name: input.clickupTaskTitle,
     description: buildTaskDescription(input),
     status: "cerrada"
   };
@@ -418,7 +433,7 @@ export async function syncCompletedTask(input: SyncInput): Promise<{
 
   const status = closedStatusForTask(task);
   task = await updateTaskDone(task.id, status);
-  await createTimeEntry(task.id, input.date, input.minutes, `Trabajo completado. ${input.notionTaskTitle}`);
+  await createTimeEntry(task.id, input.date, input.minutes, `Trabajo completado. ${input.clickupTaskTitle}`);
   await createTaskComment(task.id, comment);
 
   const summary = summarizeTask(task);

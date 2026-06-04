@@ -10,7 +10,7 @@ const expectedSkills = [
   "accounts-ops",
   "analysis",
   "calendar-management",
-  "clickup-sync",
+  "shopiworks-clickup-sync",
   "commerce-analysis",
   "deep-research",
   "documentation-creation",
@@ -38,7 +38,7 @@ const expectedResources = {
     "references/calendar-prep.md",
     "references/calendar-triage.md"
   ],
-  "clickup-sync": ["references/clickup-worker.md"],
+  "shopiworks-clickup-sync": ["references/clickup-worker.md"],
   "commerce-analysis": ["references/ecommerce-movement.md"],
   "email-analysis": ["references/lifecycle.md"],
   "email-management": [

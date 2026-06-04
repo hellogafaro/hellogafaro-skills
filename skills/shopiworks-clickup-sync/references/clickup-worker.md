@@ -1,6 +1,6 @@
 # ClickUp worker
 
-Use the Notion worker in `workers/clickup-sync`.
+Use the Notion worker in `workers/shopiworks-clickup-sync`.
 
 ## Worker tools
 

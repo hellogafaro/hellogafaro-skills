@@ -1,4 +1,4 @@
-# clickup sync worker
+# shopiworks clickup sync worker
 
 Notion worker for Shopiworks ClickUp sync.
 

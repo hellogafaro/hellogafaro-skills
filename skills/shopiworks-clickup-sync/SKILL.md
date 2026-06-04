@@ -1,9 +1,9 @@
 ---
-name: clickup-sync
+name: shopiworks-clickup-sync
 description: Use when work involves syncing completed Shopiworks or Jol Ebrahim tasks from Notion to ClickUp, including task lookup, task creation, completion, manual time logging, and value-focused ClickUp comments.
 ---
 
-# clickup-sync
+# shopiworks-clickup-sync
 
 Use this skill when a completed Notion task must be reflected in the Jol Ebrahim ClickUp workspace.
 

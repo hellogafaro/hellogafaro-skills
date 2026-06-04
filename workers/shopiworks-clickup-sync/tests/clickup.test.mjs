@@ -30,18 +30,24 @@ test("map includes validated workspace and closed statuses", () => {
   assert.ok(mod.CLICKUP_MAP.statuses.closedNames.includes("Closed"));
 });
 
-test("task description includes time and notion source", () => {
+test("created task description includes context bullets", () => {
   const description = mod.buildTaskDescription({
     notionTaskTitle: "Fix selector",
     notionTaskUrl: "https://notion.so/task",
     problem: "Problema detectado.",
     solution: "Solución aplicada.",
+    implementation: "Se ajustó el selector activo.",
+    references: ["abc1234"],
     minutes: 30,
     date: "2026-06-04"
   });
 
-  assert.match(description, /Tiempo registrado\. 30 min\./);
-  assert.match(description, /Origen Notion\. https:\/\/notion\.so\/task/);
+  assert.match(description, /^Problema detectado\. Solución aplicada\./);
+  assert.match(description, /Contexto/);
+  assert.match(description, /- Tiempo registrado\. 30 min\./);
+  assert.match(description, /- Implementación\. Se ajustó el selector activo\./);
+  assert.match(description, /- Referencias\. abc1234/);
+  assert.match(description, /- Origen Notion\. https:\/\/notion\.so\/task/);
 });
 
 test("simple worker input normalizes empty strings", () => {

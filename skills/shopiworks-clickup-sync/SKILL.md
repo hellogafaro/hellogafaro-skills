@@ -42,6 +42,18 @@ Use the Notion task, project, and linked timesheet as source. ClickUp is the cli
 9. Comment on the Notion task with the ClickUp task ID or link and confirm it was completed and successfully replicated on ClickUp.
 10. Report only changed, failed, or needs input.
 
+## Lifecycle
+
+Existing ClickUp task means the client-facing task already has context.
+
+For existing tasks, only verify the match, mark done, log time, and leave the Spanish completion comment.
+
+Do not rewrite the existing ClickUp task description unless the user explicitly asks.
+
+New ClickUp task means ClickUp has no context yet.
+
+For new tasks, make the task stand alone with one or two short Spanish paragraphs covering the problem and solution, then direct bullets for implementation, references, timing, source, or proposal context.
+
 ## Worker inputs
 
 For the normal tools, every field is required by the Notion worker runtime.

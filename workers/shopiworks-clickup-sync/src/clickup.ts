@@ -249,12 +249,18 @@ export function normalizeSimpleInput(input: SimpleSyncInput): SyncInput {
 
 export function buildTaskDescription(input: SyncInput): string {
   const lines = [
-    buildCompletionComment(input),
+    `${input.problem.trim()} ${input.solution.trim()}`,
     "",
-    `Tiempo registrado. ${input.minutes} min.`
+    "Contexto",
+    `- Tiempo registrado. ${input.minutes} min.`
   ];
 
-  if (input.notionTaskUrl) lines.push(`Origen Notion. ${input.notionTaskUrl}`);
+  const implementation = input.implementation?.trim();
+  const references = input.references?.filter(Boolean) ?? [];
+
+  if (implementation) lines.push(`- Implementación. ${implementation}`);
+  if (references.length) lines.push(`- Referencias. ${references.join(", ")}`);
+  if (input.notionTaskUrl) lines.push(`- Origen Notion. ${input.notionTaskUrl}`);
 
   return lines.join("\n");
 }

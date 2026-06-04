@@ -23,6 +23,10 @@ Use `createCompletedTask` when no ClickUp task exists and the destination list i
 
 Do not call `completeTask`, `logTime`, and `commentTask` separately for the normal flow. The main tools already do all three writes in order.
 
+Existing-task sync only updates completion state, time, and comment.
+
+Created-task sync also creates the task description. The description should stand alone with one or two short Spanish paragraphs, then direct context bullets for implementation, references, source, timing, or proposal notes.
+
 Required input:
 
 - `notionTaskTitle`

@@ -20,11 +20,11 @@ Notion 2025-09 keeps properties on the DATA SOURCE. Query the data source id; li
 ## Tasks properties
 
 - `Name` (title)
-- `Owner` (people): the assignee, a Notion user
-- `Agent` (relation to Team): AI-agent assignment, empty for human tasks
+- `Owner` (people): the human supervisor accountable for the task
+- `Assignee` (people): the person or agent executing the task
 - `Project` (relation to Projects)
 - `Priority` (select): High, Medium, Low
-- `Status` (status): Backlog, Not started, In progress, Under review, Blocked, Completed, Canceled
+- `Status` (status): Backlog, Not started, In progress, Under review, Blocked, Done, Canceled
 - `Due date` (date)
 - `Recurrence` (select): One-time, Daily, Weekly, Monthly, Quarterly
 - `Assets` (files)
@@ -42,12 +42,18 @@ Inspect the Projects data source live before planning. Dash needs, at minimum, t
 
 For tasks or time from a meeting page, read the meeting `Project` relation first. Use that project for task creation and meeting time. If empty, ask for the project and update the meeting before creating task or time records. If multiple projects are linked, ask which one owns the task or time entry.
 
-## Resolving a person
+## Resolving people and agents
 
-`Owner` is a people property and takes a Notion user id, not a Team row. The Team database holds Name, Slack, and Role for the roster and for choosing an owner by capability. To map a Slack sender or a name to the Notion user:
+`Owner` and `Assignee` are people properties and take Notion user ids, not Team row ids.
+
+Owner is usually a human supervisor. Assignee is the executing person or agent.
+
+The Team database holds each person's or agent's Notion value. Use Team to choose the right owner or assignee by capability, then use its Notion people value in the task property.
+
+To resolve a missing user id:
 
 - List workspace users: `api /v1/users page_size==100`, then match by name.
-- Use the Team database to pick who should own the work (capability, role), then resolve that name to a user id as above.
+- Use the Team database to pick who should supervise or execute the work, then resolve that Notion value.
 
 ## Create a task
 
@@ -56,7 +62,8 @@ ntn api /v1/pages -d '{
   "parent": {"type":"data_source_id","data_source_id":"25ffc798-2e43-801b-9eed-000b4bc5f349"},
   "properties": {
     "Name": {"title":[{"text":{"content":"Draft June email campaign"}}]},
-    "Owner": {"people":[{"id":"<notion-user-id>"}]},
+    "Owner": {"people":[{"id":"<owner-user-id>"}]},
+    "Assignee": {"people":[{"id":"<assignee-user-or-agent-id>"}]},
     "Project": {"relation":[{"id":"<project-page-id>"}]},
     "Priority": {"select":{"name":"Medium"}},
     "Status": {"status":{"name":"Not started"}},
@@ -76,12 +83,12 @@ ntn api /v1/pages/<task-page-id> -X PATCH -d '{
 
 ## Active-count check (the 3-active limit)
 
-Query active tasks for one owner and count the results:
+Query active tasks for one assignee and count the results:
 
 ```
 ntn api /v1/data_sources/25ffc798-2e43-801b-9eed-000b4bc5f349/query -X POST -d '{
   "filter": {"and": [
-    {"property":"Owner","people":{"contains":"<notion-user-id>"}},
+    {"property":"Assignee","people":{"contains":"<assignee-user-or-agent-id>"}},
     {"or": [
       {"property":"Status","status":{"equals":"In progress"}},
       {"property":"Status","status":{"equals":"Under review"}},
@@ -91,13 +98,13 @@ ntn api /v1/data_sources/25ffc798-2e43-801b-9eed-000b4bc5f349/query -X POST -d '
 }'
 ```
 
-## Completed-without-time check
+## Done-without-time check
 
-Query completed tasks, then treat any with an empty `Time tracked` relation as missing a time entry:
+Query done tasks, then treat any with an empty `Time tracked` relation as missing a time entry:
 
 ```
 ntn api /v1/data_sources/25ffc798-2e43-801b-9eed-000b4bc5f349/query -X POST -d '{
-  "filter": {"property":"Status","status":{"equals":"Completed"}}
+  "filter": {"property":"Status","status":{"equals":"Done"}}
 }'
 ```
 
@@ -140,4 +147,4 @@ ntn api /v1/pages -d '{
 
 ## Naming note
 
-The spec calls the assignee field "Assignee". The Tasks database field is `Owner`. The Inbox database uses `Assignee`. They mean the same thing. Use the real field name per database.
+Tasks use `Owner` for the supervisor and `Assignee` for the executor. Inbox and Handoffs use their own fields. Use the real field name per database.

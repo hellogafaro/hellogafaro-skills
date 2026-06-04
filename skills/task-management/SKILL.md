@@ -23,7 +23,7 @@ Keep work clear, balanced, and moving while using the right task system consiste
 - Update an existing task when the work already exists.
 - Do not create duplicate tasks.
 - Stop if required schema, owner, project, or source context cannot be verified.
-- Use live task properties for status, owner, due date, project, and priority.
+- Use live task properties for status, owner, assignee, due date, project, and priority.
 - Do not infer project from title when a Project relation exists.
 - Never change task status without confirming with the responsible person unless the source explicitly proves the state.
 - Completion requires time tracking when work is substantive.
@@ -43,7 +43,7 @@ Match project language when known.
 
 ## allowed values
 
-- Status: `Backlog`, `Not started`, `In progress`, `Under review`, `Blocked`, `Completed`, `Canceled`.
+- Status: `Backlog`, `Not started`, `In progress`, `Under review`, `Blocked`, `Done`, `Canceled`.
 - Priority: `High`, `Medium`, `Low`.
 - Recurrence: `One-time`, `Daily`, `Weekly`, `Monthly`, `Quarterly`.
 
@@ -53,17 +53,23 @@ Active tasks are `In progress`, `Under review`, and `Blocked`.
 
 ## required properties
 
-Every real task must have Owner, Project, Priority, Due date, Status, and Recurrence.
+Every real task must have Owner, Assignee, Project, Priority, Due date, Status, and Recurrence.
 
-Default owner to the requester unless someone else is specified.
+Owner is the human supervisor who is accountable for the task.
+
+Assignee is the person or agent executing the task.
+
+Default Owner to the requester unless another supervisor is specified.
+
+Default Assignee to the executing person or agent when known.
 
 Default status to `Not started`.
 
 Default recurrence to `One-time`.
 
-Do not leave Project, Priority, or Due date unclear.
+Do not leave Assignee, Project, Priority, or Due date unclear.
 
-Tasks owner property is `Owner`, not `Assignee`.
+Assignee is a people property. Use the Team database Notion column to resolve agents and team members.
 
 Read `references/tasks-schema.md` before mutating task or time-tracking records.
 
@@ -121,7 +127,7 @@ For plans or strategies, break into concrete tasks and split into now, next, and
 
 For threads or conversations, extract only actionable items, ignore chatter, and confirm before creating if intent is not explicit.
 
-For Inbox items, read the source item for ask and context, apply validation, and keep task-backed Inbox To do items linked until the task is completed or canceled.
+For Inbox items, read the source item for ask and context, apply validation, and keep task-backed Inbox To do items linked until the task is done or canceled.
 
 ## workflow
 
@@ -138,7 +144,7 @@ For Inbox items, read the source item for ask and context, apply validation, and
 
 ## Inbox sync
 
-Task-backed work stays in Inbox To do until the task is completed or canceled.
+Task-backed work stays in Inbox To do until the task is done or canceled.
 
 Inbox task work comes from the live Tasks database, Handoffs, current Inbox items, or an explicit user request.
 

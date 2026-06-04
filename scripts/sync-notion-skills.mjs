@@ -56,7 +56,7 @@ function request(pathname, method, body) {
 }
 
 function contentFor(skill) {
-  return `Read the source file for this skill: [${skill.displayName} skill](${skill.url}).`;
+  return `Read [${skill.displayName} skill](${skill.url}).`;
 }
 
 const skillIds = (await readdir(skillsDir, { withFileTypes: true }))

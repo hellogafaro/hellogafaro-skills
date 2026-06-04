@@ -27,6 +27,7 @@ Use the Notion task, project, and linked timesheet as source. ClickUp is the cli
 - Every synced Notion task gets one comment confirming the ClickUp task ID or link.
 - Use the worker, not Composio, for ClickUp operations.
 - The ClickUp map is guidance only, not a hard gate.
+- Prefer the two simple write tools. Do not use the advanced nullable-field tool unless there is no other fit.
 
 ## Workflow
 
@@ -40,6 +41,14 @@ Use the Notion task, project, and linked timesheet as source. ClickUp is the cli
 8. Call `createCompletedTask` when no ClickUp task exists and the destination list is confirmed.
 9. Comment on the Notion task with the ClickUp task ID or link and confirm it was completed and successfully replicated on ClickUp.
 10. Report only changed, failed, or needs input.
+
+## Worker inputs
+
+For the normal tools, every field is required by the Notion worker runtime.
+
+Use an empty string for `notionTaskUrl`, `implementation`, or `referencesText` when there is nothing useful to send.
+
+Never send `null` to `syncExistingCompletedTask` or `createCompletedTask`.
 
 ## Comment quality
 

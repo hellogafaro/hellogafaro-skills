@@ -7,13 +7,13 @@ Use the Notion worker in `workers/shopiworks-clickup-sync`.
 - `getMap` returns the Jol Ebrahim ClickUp map.
 - `formatCompletionComment` previews the Spanish completion comment.
 - `getTask` fetches a ClickUp task by ID.
-- `searchTasks` searches tasks across the workspace.
+- `searchTasks` searches tasks across the workspace and returns compact matches.
 - `completeTask` marks an existing task done.
 - `logTime` creates a manual time entry.
 - `commentTask` adds a ClickUp task comment.
-- `syncCompletedTask` creates or updates a task, marks it done, logs time, and comments.
 - `syncExistingCompletedTask` marks an existing task done, logs time, and comments.
 - `createCompletedTask` creates a completed task, logs time, and comments.
+- `syncCompletedTask` is the advanced nullable-field tool. Avoid it unless the simple tools cannot express the case.
 
 ## Main call
 
@@ -21,13 +21,16 @@ Use `syncExistingCompletedTask` when a ClickUp task ID or link already exists.
 
 Use `createCompletedTask` when no ClickUp task exists and the destination list is confirmed.
 
-Use `syncCompletedTask` only when the caller can safely provide nullable fields.
+Do not call `completeTask`, `logTime`, and `commentTask` separately for the normal flow. The main tools already do all three writes in order.
 
 Required input:
 
 - `notionTaskTitle`
+- `notionTaskUrl`, use an empty string when unavailable.
 - `problem`
 - `solution`
+- `implementation`, use an empty string when not useful.
+- `referencesText`, use commit links, PR links, Notion links, or an empty string.
 - `minutes`
 - `date`
 
@@ -36,13 +39,17 @@ Additional required input:
 - `clickupTaskId` for `syncExistingCompletedTask`.
 - `listId` for `createCompletedTask`.
 
-Recommended input:
+Main tool output:
 
-- `notionTaskUrl`
-- `implementation`
-- `references`
-- `assigneeIds`
-- `priority`
+- `taskId`
+- `taskUrl`
+- `status`
+- `timeLoggedMs`
+- `createdTask`
+- `markedDone`
+- `loggedTime`
+- `commented`
+- `comment`
 
 ## Map notes
 

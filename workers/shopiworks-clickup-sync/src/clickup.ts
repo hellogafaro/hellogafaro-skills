@@ -14,6 +14,19 @@ export type ClickUpTask = {
   time_spent?: number | null;
 };
 
+export type TaskSummary = {
+  id: string;
+  name: string;
+  url: string;
+  status: string;
+  statusType: string;
+  listId: string;
+  listName: string;
+  folderId: string;
+  folderName: string;
+  timeSpentMs: number;
+};
+
 export type SyncInput = {
   notionTaskTitle: string;
   notionTaskUrl?: string | null;
@@ -27,6 +40,35 @@ export type SyncInput = {
   date: string;
   assigneeIds?: number[] | null;
   priority?: number | null;
+};
+
+export type SimpleSyncInput = {
+  notionTaskTitle: string;
+  notionTaskUrl: string;
+  problem: string;
+  solution: string;
+  implementation: string;
+  referencesText: string;
+  minutes: number;
+  date: string;
+};
+
+export type SyncResult = {
+  taskId: string;
+  taskUrl: string;
+  taskName: string;
+  status: string;
+  statusType: string;
+  listId: string;
+  listName: string;
+  folderId: string;
+  folderName: string;
+  timeLoggedMs: number;
+  createdTask: boolean;
+  markedDone: boolean;
+  loggedTime: boolean;
+  commented: boolean;
+  comment: string;
 };
 
 export const CLICKUP_MAP = {
@@ -189,6 +231,22 @@ export function buildCompletionComment(input: Pick<SyncInput, "problem" | "solut
   return lines.join("\n");
 }
 
+export function parseReferencesText(referencesText: string): string[] {
+  return referencesText
+    .split(/\n|,/)
+    .map((reference) => reference.trim())
+    .filter(Boolean);
+}
+
+export function normalizeSimpleInput(input: SimpleSyncInput): SyncInput {
+  return {
+    ...input,
+    notionTaskUrl: input.notionTaskUrl.trim() || null,
+    implementation: input.implementation.trim() || null,
+    references: parseReferencesText(input.referencesText)
+  };
+}
+
 export function buildTaskDescription(input: SyncInput): string {
   const lines = [
     buildCompletionComment(input),
@@ -207,17 +265,37 @@ export function closedStatusForTask(task?: ClickUpTask): string {
   return known ?? "cerrada";
 }
 
-export async function getTask(taskId: string): Promise<ClickUpTask> {
+export function summarizeTask(task: ClickUpTask): TaskSummary {
+  return {
+    id: task.id,
+    name: task.name,
+    url: task.url ?? "",
+    status: task.status?.status ?? "",
+    statusType: task.status?.type ?? "",
+    listId: task.list?.id ?? "",
+    listName: task.list?.name ?? "",
+    folderId: task.folder?.id ?? task.project?.id ?? "",
+    folderName: task.folder?.name ?? task.project?.name ?? "",
+    timeSpentMs: task.time_spent ?? 0
+  };
+}
+
+export async function getTaskRaw(taskId: string): Promise<ClickUpTask> {
   return clickupRequest<ClickUpTask>("GET", `/task/${encodeURIComponent(taskId)}`);
 }
 
-export async function searchTasks(query: string, includeClosed = true): Promise<{ tasks: ClickUpTask[] }> {
+export async function getTask(taskId: string): Promise<TaskSummary> {
+  return summarizeTask(await getTaskRaw(taskId));
+}
+
+export async function searchTasks(query: string, includeClosed = true): Promise<{ tasks: TaskSummary[] }> {
   const params = new URLSearchParams({
     query,
     include_closed: String(includeClosed),
     subtasks: "true"
   });
-  return clickupRequest<{ tasks: ClickUpTask[] }>("GET", `/team/${TEAM_ID}/task?${params.toString()}`);
+  const result = await clickupRequest<{ tasks: ClickUpTask[] }>("GET", `/team/${TEAM_ID}/task?${params.toString()}`);
+  return { tasks: result.tasks.map(summarizeTask) };
 }
 
 export async function createTask(input: SyncInput): Promise<ClickUpTask> {
@@ -259,7 +337,16 @@ export async function createTimeEntry(taskId: string, date: string, minutes: num
 }
 
 export async function syncCompletedTask(input: SyncInput): Promise<{
-  task: ClickUpTask;
+  taskId: string;
+  taskUrl: string;
+  taskName: string;
+  status: string;
+  statusType: string;
+  listId: string;
+  listName: string;
+  folderId: string;
+  folderName: string;
+  timeLoggedMs: number;
   createdTask: boolean;
   markedDone: boolean;
   loggedTime: boolean;
@@ -273,7 +360,7 @@ export async function syncCompletedTask(input: SyncInput): Promise<{
   let createdTask = false;
 
   if (input.clickupTaskId) {
-    task = await getTask(input.clickupTaskId);
+    task = await getTaskRaw(input.clickupTaskId);
   } else {
     task = await createTask(input);
     createdTask = true;
@@ -284,8 +371,18 @@ export async function syncCompletedTask(input: SyncInput): Promise<{
   await createTimeEntry(task.id, input.date, input.minutes, `Trabajo completado. ${input.notionTaskTitle}`);
   await createTaskComment(task.id, comment);
 
+  const summary = summarizeTask(task);
   return {
-    task,
+    taskId: summary.id,
+    taskUrl: summary.url,
+    taskName: summary.name,
+    status: summary.status,
+    statusType: summary.statusType,
+    listId: summary.listId,
+    listName: summary.listName,
+    folderId: summary.folderId,
+    folderName: summary.folderName,
+    timeLoggedMs: Math.round(input.minutes * 60 * 1000),
     createdTask,
     markedDone: true,
     loggedTime: true,

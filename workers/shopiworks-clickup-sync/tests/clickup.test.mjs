@@ -43,3 +43,20 @@ test("task description includes time and notion source", () => {
   assert.match(description, /Tiempo registrado\. 30 min\./);
   assert.match(description, /Origen Notion\. https:\/\/notion\.so\/task/);
 });
+
+test("simple worker input normalizes empty strings", () => {
+  const input = mod.normalizeSimpleInput({
+    notionTaskTitle: "Fix selector",
+    notionTaskUrl: "",
+    problem: "Problema detectado.",
+    solution: "Solución aplicada.",
+    implementation: "",
+    referencesText: "https://github.com/one\nabc1234",
+    minutes: 30,
+    date: "2026-06-04"
+  });
+
+  assert.equal(input.notionTaskUrl, null);
+  assert.equal(input.implementation, null);
+  assert.deepEqual(input.references, ["https://github.com/one", "abc1234"]);
+});

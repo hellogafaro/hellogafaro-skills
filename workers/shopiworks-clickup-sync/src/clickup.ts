@@ -314,6 +314,10 @@ export function summarizeTimeEntry(entry: Record<string, unknown>, taskId: strin
   };
 }
 
+export function shouldCommentOnClickUpTask(createdTask: boolean): boolean {
+  return !createdTask;
+}
+
 export async function getTaskRaw(taskId: string): Promise<ClickUpTask> {
   return clickupRequest<ClickUpTask>("GET", `/task/${encodeURIComponent(taskId)}`);
 }
@@ -390,7 +394,12 @@ export async function createTimeEntry(taskId: string, date: string, minutes: num
 }
 
 export async function listTimeEntries(taskId: string): Promise<{ timeEntries: TimeEntrySummary[] }> {
-  const result = await clickupRequest<{ data?: Record<string, unknown>[] }>("GET", `/team/${TEAM_ID}/time_entries?task_id=${encodeURIComponent(taskId)}`);
+  const params = new URLSearchParams({
+    task_id: taskId,
+    start_date: String(Date.UTC(2020, 0, 1)),
+    end_date: String(Date.UTC(2035, 0, 1))
+  });
+  const result = await clickupRequest<{ data?: Record<string, unknown>[] }>("GET", `/team/${TEAM_ID}/time_entries?${params.toString()}`);
   return { timeEntries: (result.data ?? []).map((entry) => summarizeTimeEntry(entry, taskId)) };
 }
 
@@ -432,7 +441,8 @@ export async function syncCompletedTask(input: SyncInput): Promise<{
   const status = closedStatusForTask(task);
   task = await updateTaskDone(task.id, status);
   await createTimeEntry(task.id, input.date, input.minutes, `Trabajo completado. ${input.clickupTaskTitle}`);
-  await createTaskComment(task.id, comment);
+  const commented = shouldCommentOnClickUpTask(createdTask);
+  if (commented) await createTaskComment(task.id, comment);
 
   const summary = summarizeTask(task);
   return {
@@ -449,7 +459,7 @@ export async function syncCompletedTask(input: SyncInput): Promise<{
     createdTask,
     markedDone: true,
     loggedTime: true,
-    commented: true,
+    commented,
     comment
   };
 }

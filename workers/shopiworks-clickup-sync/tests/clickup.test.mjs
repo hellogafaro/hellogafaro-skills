@@ -50,6 +50,11 @@ test("created task description includes context bullets", () => {
   assert.doesNotMatch(description, /Notion|origen|source/i);
 });
 
+test("new tasks do not get duplicate clickup comments", () => {
+  assert.equal(mod.shouldCommentOnClickUpTask(true), false);
+  assert.equal(mod.shouldCommentOnClickUpTask(false), true);
+});
+
 test("simple worker input normalizes empty strings", () => {
   const input = mod.normalizeSimpleInput({
     clickupTaskTitle: "Corregir selector",

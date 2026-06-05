@@ -257,7 +257,7 @@ worker.tool("commentTask", {
 
 worker.tool("syncCompletedTask", {
   title: "Sync completed task to ClickUp",
-  description: "Creates or updates a completed Shopiworks ClickUp task, marks it done, logs time, and leaves the Spanish completion comment.",
+  description: "Creates or updates a completed Shopiworks ClickUp task, marks it done, logs time, and comments only when the task already existed.",
   schema: syncInputSchema,
   outputSchema: syncResultSchema,
   execute: (input) => syncCompletedTask(input)
@@ -276,7 +276,7 @@ worker.tool("syncExistingCompletedTask", {
 
 worker.tool("createCompletedTask", {
   title: "Create completed ClickUp task",
-  description: "Creates a completed ClickUp task in a known list, logs time, and leaves the Spanish completion comment.",
+  description: "Creates a completed ClickUp task in a known list and logs time. It does not add a ClickUp comment because the description already carries the context.",
   schema: j.object({
     ...simpleCompletedSchema,
     listId: j.string().describe("ClickUp list ID where the new task should be created.")

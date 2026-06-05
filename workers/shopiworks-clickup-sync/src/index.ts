@@ -23,40 +23,31 @@ const worker = new Worker();
 export default worker;
 
 const syncInputSchema = j.object({
-  clickupTaskTitle: j.string().describe("Natural neutral Spanish ClickUp task title. Translate the Notion task title before calling this tool."),
-  notionTaskUrl: j.string().nullable().describe("The Notion task URL."),
+  clickupTaskTitle: j.string().describe("Natural neutral Spanish ClickUp task title, 80 characters or fewer. Translate and shorten the internal task title before calling this tool."),
   clickupTaskId: j.string().nullable().describe("Existing ClickUp task ID when the task already exists."),
   listId: j.string().nullable().describe("ClickUp list ID. Required only when creating a new task."),
-  problem: j.string().describe("Spanish problem summary."),
-  solution: j.string().describe("Spanish solution summary."),
-  implementation: j.string().nullable().describe("Spanish implementation detail."),
-  references: j.array(j.string()).nullable().describe("Commit links, PR links, source links, or useful references."),
+  taskBodyParagraphs: j.array(j.string()).nullable().describe("For new tasks only. Natural neutral Spanish task body paragraphs, 1 to 3 short paragraphs. No Notion, source system, sync, or internal workflow mentions."),
+  taskBodyBullets: j.array(j.string()).nullable().describe("For new tasks only. Optional natural neutral Spanish bullets for acceptance criteria or useful context."),
+  completionCommentParagraphs: j.array(j.string()).nullable().describe("For existing tasks only. Natural neutral Spanish completion comment paragraphs, 1 to 3 short paragraphs about what changed and value."),
+  completionCommentBullets: j.array(j.string()).nullable().describe("For existing tasks only. Optional natural neutral Spanish bullets for implementation notes, commits, PRs, or links."),
   minutes: j.number().describe("Confirmed minutes from Notion Timesheets. Required and must be greater than 0."),
   date: j.string().describe("ISO date or datetime for the time entry."),
-  assigneeIds: j.array(j.number()).nullable().describe("ClickUp assignee user IDs."),
+  assigneeIds: j.array(j.number()).nullable().describe("Optional ClickUp assignee user IDs. New tasks default to Johan Gafaro when omitted."),
   priority: j.number().nullable().describe("ClickUp priority id.")
 });
 
-const baseCompletedSchema = {
-  clickupTaskTitle: j.string().describe("Natural neutral Spanish ClickUp task title. Translate the Notion task title before calling this tool."),
-  notionTaskUrl: j.string().nullable().describe("The Notion task URL."),
-  problem: j.string().describe("Spanish problem summary."),
-  solution: j.string().describe("Spanish solution summary."),
-  implementation: j.string().nullable().describe("Spanish implementation detail."),
-  references: j.array(j.string()).nullable().describe("Commit links, PR links, source links, or useful references."),
+const createCompletedSchema = {
+  clickupTaskTitle: j.string().describe("Natural neutral Spanish ClickUp task title, 80 characters or fewer. Translate and shorten the internal task title."),
+  taskBodyParagraphs: j.array(j.string()).describe("Natural neutral Spanish task body paragraphs, 1 to 3 short paragraphs. Explain context, problem, and goal. Do not mention Notion, source systems, sync, or internal workflow."),
+  taskBodyBullets: j.array(j.string()).describe("Optional natural neutral Spanish bullets for acceptance criteria or useful context. Empty array allowed."),
   minutes: j.number().describe("Confirmed minutes from Notion Timesheets. Required and must be greater than 0."),
-  date: j.string().describe("ISO date or datetime for the time entry."),
-  assigneeIds: j.array(j.number()).nullable().describe("ClickUp assignee user IDs."),
-  priority: j.number().nullable().describe("ClickUp priority id.")
+  date: j.string().describe("ISO date or datetime for the time entry.")
 };
 
-const simpleCompletedSchema = {
-  clickupTaskTitle: j.string().describe("Natural neutral Spanish ClickUp task title. Translate the Notion task title before calling this tool."),
-  notionTaskUrl: j.string().describe("The Notion task URL, or an empty string when unavailable."),
-  problem: j.string().describe("Spanish problem summary."),
-  solution: j.string().describe("Spanish solution summary."),
-  implementation: j.string().describe("Spanish implementation detail, or an empty string when not useful."),
-  referencesText: j.string().describe("Commit links, PR links, source links, or useful references separated by new lines. Empty string allowed."),
+const existingCompletedSchema = {
+  clickupTaskTitle: j.string().describe("Natural neutral Spanish ClickUp task title, 80 characters or fewer. Used only for the time entry description, not to rename the existing task."),
+  completionCommentParagraphs: j.array(j.string()).describe("Natural neutral Spanish completion comment paragraphs, 1 to 3 short paragraphs. Say what changed and the value. Do not repeat the task body."),
+  completionCommentBullets: j.array(j.string()).describe("Optional natural neutral Spanish bullets for implementation notes, commits, PRs, or links. Empty array allowed."),
   minutes: j.number().describe("Confirmed minutes from Notion Timesheets. Required and must be greater than 0."),
   date: j.string().describe("ISO date or datetime for the time entry.")
 };
@@ -110,24 +101,15 @@ worker.tool("getMap", {
 
 worker.tool("formatCompletionComment", {
   title: "Format completion comment",
-  description: "Formats the Spanish problem, solution, implementation, and reference comment without writing to ClickUp.",
+  description: "Formats a structured Spanish completion comment without writing to ClickUp.",
   schema: j.object({
-    problem: j.string(),
-    solution: j.string(),
-    implementation: j.string().describe("Spanish implementation detail, or an empty string when not useful."),
-    referencesText: j.string().describe("References separated by new lines, or an empty string.")
+    completionCommentParagraphs: j.array(j.string()).describe("Natural neutral Spanish completion comment paragraphs, 1 to 3 short paragraphs."),
+    completionCommentBullets: j.array(j.string()).describe("Optional natural neutral Spanish bullets. Empty array allowed.")
   }),
   outputSchema: j.object({ comment: j.string() }),
   hints: { readOnlyHint: true },
   execute: (input) => ({
-    comment: buildCompletionComment({
-      ...input,
-      implementation: input.implementation || null,
-      references: input.referencesText
-        .split(/\n|,/)
-        .map((reference) => reference.trim())
-        .filter(Boolean)
-    })
+    comment: buildCompletionComment(input)
   })
 });
 
@@ -267,7 +249,7 @@ worker.tool("syncExistingCompletedTask", {
   title: "Sync existing completed ClickUp task",
   description: "Marks an existing ClickUp task done, logs time, and leaves the Spanish completion comment.",
   schema: j.object({
-    ...simpleCompletedSchema,
+    ...existingCompletedSchema,
     clickupTaskId: j.string().describe("Existing ClickUp task ID.")
   }),
   outputSchema: syncResultSchema,
@@ -278,7 +260,7 @@ worker.tool("createCompletedTask", {
   title: "Create completed ClickUp task",
   description: "Creates a completed ClickUp task in a known list and logs time. It does not add a ClickUp comment because the description already carries the context.",
   schema: j.object({
-    ...simpleCompletedSchema,
+    ...createCompletedSchema,
     listId: j.string().describe("ClickUp list ID where the new task should be created.")
   }),
   outputSchema: syncResultSchema,

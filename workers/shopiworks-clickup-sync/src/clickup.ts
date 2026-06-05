@@ -2,6 +2,8 @@ const API_BASE = "https://api.clickup.com/api/v2";
 
 export const TEAM_ID = "20421257";
 export const ACCOUNT_LABEL = "jolebrahim";
+export const DEFAULT_ASSIGNEE_ID = 182449615;
+export const CLICKUP_TASK_TITLE_MAX_LENGTH = 80;
 
 export type ClickUpTask = {
   id: string;
@@ -37,13 +39,16 @@ export type TimeEntrySummary = {
 
 export type SyncInput = {
   clickupTaskTitle: string;
-  notionTaskUrl?: string | null;
   clickupTaskId?: string | null;
   listId?: string | null;
-  problem: string;
-  solution: string;
+  problem?: string | null;
+  solution?: string | null;
   implementation?: string | null;
   references?: string[] | null;
+  taskBodyParagraphs?: string[] | null;
+  taskBodyBullets?: string[] | null;
+  completionCommentParagraphs?: string[] | null;
+  completionCommentBullets?: string[] | null;
   minutes: number;
   date: string;
   assigneeIds?: number[] | null;
@@ -52,11 +57,10 @@ export type SyncInput = {
 
 export type SimpleSyncInput = {
   clickupTaskTitle: string;
-  notionTaskUrl: string;
-  problem: string;
-  solution: string;
-  implementation: string;
-  referencesText: string;
+  taskBodyParagraphs?: string[];
+  taskBodyBullets?: string[];
+  completionCommentParagraphs?: string[];
+  completionCommentBullets?: string[];
   minutes: number;
   date: string;
 };
@@ -222,6 +226,9 @@ export function assertMinutes(minutes: number): void {
 export function assertNeutralSpanishTitle(title: string): void {
   const normalized = title.trim();
   if (!normalized) throw new Error("clickupTaskTitle is required and must be natural neutral Spanish.");
+  if (normalized.length > CLICKUP_TASK_TITLE_MAX_LENGTH) {
+    throw new Error(`clickupTaskTitle must be ${CLICKUP_TASK_TITLE_MAX_LENGTH} characters or fewer.`);
+  }
 
   const englishSignals = [
     /\b(add|adjust|build|check|create|fix|implement|improve|launch|make|optimize|rebuild|remove|review|send|sync|test|update)\b/i,
@@ -239,10 +246,30 @@ export function dateToStartMs(date: string): number {
   return parsed.valueOf();
 }
 
-export function buildCompletionComment(input: Pick<SyncInput, "problem" | "solution" | "implementation" | "references">): string {
+export function normalizeLines(lines?: string[] | null): string[] {
+  return (lines ?? []).map((line) => line.trim()).filter(Boolean);
+}
+
+export function renderParagraphsWithBullets(paragraphs: string[], bullets: string[]): string {
+  const body = paragraphs.join("\n\n");
+  const list = bullets.map((bullet) => `- ${bullet}`).join("\n");
+  return [body, list].filter(Boolean).join("\n\n");
+}
+
+export function buildCompletionComment(
+  input: Pick<SyncInput, "problem" | "solution" | "implementation" | "references" | "completionCommentParagraphs" | "completionCommentBullets">
+): string {
+  const paragraphs = normalizeLines(input.completionCommentParagraphs);
+  const directBullets = normalizeLines(input.completionCommentBullets);
+  if (paragraphs.length) {
+    return renderParagraphsWithBullets(paragraphs.slice(0, 3), directBullets);
+  }
+
   const implementation = input.implementation?.trim();
   const references = input.references?.filter(Boolean) ?? [];
-  const lines = [`${input.problem.trim()} ${input.solution.trim()}`];
+  const problem = input.problem?.trim();
+  const solution = input.solution?.trim();
+  const lines = [[problem, solution].filter(Boolean).join(" ")];
 
   const bullets = [];
   if (implementation) bullets.push(`- ${implementation}`);
@@ -263,14 +290,24 @@ export function parseReferencesText(referencesText: string): string[] {
 export function normalizeSimpleInput(input: SimpleSyncInput): SyncInput {
   return {
     ...input,
-    notionTaskUrl: input.notionTaskUrl.trim() || null,
-    implementation: input.implementation.trim() || null,
-    references: parseReferencesText(input.referencesText)
+    taskBodyParagraphs: input.taskBodyParagraphs ?? null,
+    taskBodyBullets: input.taskBodyBullets ?? null,
+    completionCommentParagraphs: input.completionCommentParagraphs ?? null,
+    completionCommentBullets: input.completionCommentBullets ?? null
   };
 }
 
 export function buildTaskDescription(input: SyncInput): string {
-  const lines = [`${input.problem.trim()} ${input.solution.trim()}`, ""];
+  const paragraphs = normalizeLines(input.taskBodyParagraphs);
+  const directBullets = normalizeLines(input.taskBodyBullets);
+  if (paragraphs.length) {
+    const bullets = [...directBullets, `Se registraron ${input.minutes} min.`];
+    return renderParagraphsWithBullets(paragraphs.slice(0, 3), bullets);
+  }
+
+  const problem = input.problem?.trim();
+  const solution = input.solution?.trim();
+  const lines = [[problem, solution].filter(Boolean).join(" "), ""];
 
   const implementation = input.implementation?.trim();
   const references = input.references?.filter(Boolean) ?? [];
@@ -318,6 +355,10 @@ export function shouldCommentOnClickUpTask(createdTask: boolean): boolean {
   return !createdTask;
 }
 
+export function resolveAssigneeIds(assigneeIds?: number[] | null): number[] {
+  return assigneeIds?.length ? assigneeIds : [DEFAULT_ASSIGNEE_ID];
+}
+
 export async function getTaskRaw(taskId: string): Promise<ClickUpTask> {
   return clickupRequest<ClickUpTask>("GET", `/task/${encodeURIComponent(taskId)}`);
 }
@@ -347,7 +388,7 @@ export async function createTask(input: SyncInput): Promise<ClickUpTask> {
     status: "cerrada"
   };
 
-  if (input.assigneeIds?.length) body.assignees = input.assigneeIds;
+  body.assignees = resolveAssigneeIds(input.assigneeIds);
   if (input.priority) body.priority = input.priority;
 
   return clickupRequest<ClickUpTask>("POST", `/list/${input.listId}/task`, body);

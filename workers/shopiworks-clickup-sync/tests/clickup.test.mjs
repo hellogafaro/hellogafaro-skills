@@ -44,8 +44,8 @@ test("created task description includes context bullets", () => {
   assert.match(description, /^Problema detectado\. Solución aplicada\./);
   assert.doesNotMatch(description, /Contexto|Implementación\.|Referencias\.|Origen Notion\.|Referencias:|Tiempo registrado:/);
   assert.match(description, /- Se ajustó el selector activo\./);
-  assert.match(description, /- Se registraron 30 min\./);
   assert.match(description, /- Cambios o enlaces relacionados en abc1234\./);
+  assert.doesNotMatch(description, /30 min|registraron/i);
   assert.doesNotMatch(description, /Notion|origen|source/i);
 });
 
@@ -60,7 +60,7 @@ test("created task description accepts structured paragraphs and bullets", () =>
 
   assert.match(description, /^El selector de variantes necesitaba una lectura más clara\./);
   assert.match(description, /- La variante activa debe quedar marcada visualmente\./);
-  assert.match(description, /- Se registraron 30 min\./);
+  assert.doesNotMatch(description, /30 min|registraron/i);
   assert.doesNotMatch(description, /Notion|origen|source/i);
 });
 

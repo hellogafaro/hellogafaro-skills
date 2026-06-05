@@ -301,8 +301,7 @@ export function buildTaskDescription(input: SyncInput): string {
   const paragraphs = normalizeLines(input.taskBodyParagraphs);
   const directBullets = normalizeLines(input.taskBodyBullets);
   if (paragraphs.length) {
-    const bullets = [...directBullets, `Se registraron ${input.minutes} min.`];
-    return renderParagraphsWithBullets(paragraphs.slice(0, 3), bullets);
+    return renderParagraphsWithBullets(paragraphs.slice(0, 3), directBullets);
   }
 
   const problem = input.problem?.trim();
@@ -313,7 +312,6 @@ export function buildTaskDescription(input: SyncInput): string {
   const references = input.references?.filter(Boolean) ?? [];
 
   if (implementation) lines.push(`- ${implementation}`);
-  lines.push(`- Se registraron ${input.minutes} min.`);
   if (references.length) lines.push(`- Cambios o enlaces relacionados en ${references.join(", ")}.`);
 
   return lines.join("\n");

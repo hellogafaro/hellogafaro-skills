@@ -1,6 +1,6 @@
 ---
 name: inbox-management
-description: Use when an agent must create, update, reconcile, or close the Notion Inbox checkpoint, including date mentions, page mentions, source-linked items, waiting loops, reminders, and stale item cleanup.
+description: Use when an agent must create, update, reconcile, or close the Notion Inbox checkpoint, including 3-hour freshness checks, date mentions, page mentions, source-linked items, waiting loops, reminders, and stale item cleanup.
 ---
 
 # inbox-management
@@ -21,7 +21,8 @@ Make every active request resumable and keep stale work out of the agent queue.
 4. Write enough context for a future run to continue after interruption, crash, or lost chat context.
 5. Reconcile open items against live sources before answering status.
 6. Remove stale, completed, duplicate, or no-action items immediately.
-7. When work finishes, remove the Inbox item or rewrite it into the current blocker, waiting state, or exact next step.
+7. On every interaction, compare current time to the top Inbox sync timestamp. If the timestamp is missing or older than 3 hours, reconcile Inbox before proceeding.
+8. When work finishes, remove the Inbox item or rewrite it into the current blocker, waiting state, or exact next step.
 
 ## structure
 
@@ -34,7 +35,9 @@ Use these sections only when useful.
 - Reminders.
 - Notes.
 
-Use the Inbox page Date property as the day marker when present. For the standalone Notion Inbox page, use a top Notion date mention for today.
+Use the Inbox page Date property as the day marker when present. For the standalone Notion Inbox page, use a top Notion date mention with full date and time as the last sync marker.
+
+Update the top sync marker with `@now` in the Notion UI or API `rich_text` date mention every time Inbox is reconciled.
 
 Every durable Inbox item starts with an inline date mention. For new items, use `@now` in the Notion UI or API `rich_text` date mention so Notion stores full date and time.
 
@@ -72,7 +75,7 @@ Use these sections only:
 
 Read and write Inbox state directly in Notion Inbox page `37bfc7982e4380638696e5002e6d859f`.
 
-Use `notion-cli` and `ntn`. Never use Notion MCP.
+Use `notion-cli` and `ntn`.
 
 Reconcile before trusting:
 
@@ -125,7 +128,7 @@ Notify by default. Nothing silent.
 - Project page archived or trashed: surface in Notes.
 - Tasks DB query returns 404: resolve current data source ID before reporting task state.
 - Same task in Notion and ClickUp: keep where time tracking lives.
-- MCP failure: surface source, operation, and error. Continue with available sources.
+- Source failure: surface source, operation, and error. Continue with available sources.
 - Self-mention: surface like any other mention.
 - ClickUp status varies: filter by status type.
 - ClickUp pagination: page until exhausted.

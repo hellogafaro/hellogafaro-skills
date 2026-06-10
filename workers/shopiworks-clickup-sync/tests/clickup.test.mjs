@@ -245,3 +245,33 @@ test("existing task sync does not rewrite title or description", async () => {
   assert.equal(calls.some((call) => call.method === "POST" && call.path === "/task/existing_task/comment"), true);
   assert.equal(calls.some((call) => call.method === "POST" && call.path === "/team/20421257/time_entries" && call.body.billable === false), true);
 });
+
+test("clickup comments are not assigned and do not notify all", async () => {
+  const originalFetch = globalThis.fetch;
+  const originalToken = process.env.CLICKUP_API_TOKEN;
+  let capturedBody;
+
+  process.env.CLICKUP_API_TOKEN = "test-token";
+  globalThis.fetch = async (_url, init) => {
+    capturedBody = JSON.parse(init.body);
+    return {
+      ok: true,
+      text: async () => "{}"
+    };
+  };
+
+  try {
+    await mod.createTaskComment("task_1", "Hice el ajuste y dejé la tarea lista para revisión.");
+  } finally {
+    globalThis.fetch = originalFetch;
+    if (originalToken === undefined) {
+      delete process.env.CLICKUP_API_TOKEN;
+    } else {
+      process.env.CLICKUP_API_TOKEN = originalToken;
+    }
+  }
+
+  assert.equal(capturedBody.comment_text, "Hice el ajuste y dejé la tarea lista para revisión.");
+  assert.equal(capturedBody.notify_all, false);
+  assert.equal("assignee" in capturedBody, false);
+});

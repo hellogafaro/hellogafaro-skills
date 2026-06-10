@@ -254,7 +254,7 @@ export function normalizeLines(lines?: string[] | null): string[] {
 
 export function assertNaturalProse(label: string, lines: string[]): void {
   const keyValuePattern = /^[A-ZÁÉÍÓÚÑa-záéíóúñ][\wÁÉÍÓÚÑáéíóúñ ]{1,40}:\s+/;
-  const stiffLabels = /\b(Result evidence|Code changes|Recursos:|Resumen:|Problema:|Soluci[oó]n:|Implementaci[oó]n:|Referencias?:)\b/i;
+  const stiffLabels = /\b(Result evidence|Code changes|Resources?:|Overview:|Summary:|Context:|Recursos?:|Resumen:|Descripci[oó]n:|Contexto:|Problema:|Soluci[oó]n:|Implementaci[oó]n:|Referencias?:)\b/i;
   for (const line of lines) {
     if (keyValuePattern.test(line) || stiffLabels.test(line)) {
       throw new Error(`${label} must use natural prose, not key-value pairs or stiff labels.`);
@@ -271,9 +271,7 @@ export function renderParagraphsWithBullets(paragraphs: string[], bullets: strin
 
 export function renderTaskBody(paragraphs: string[], resources: string[]): string {
   assertNaturalProse("task body", [...paragraphs, ...resources]);
-  const sections = ["Resumen", "", paragraphs.join("\n\n")];
-  if (resources.length) sections.push("", "Recursos", "", resources.map((resource) => `- ${resource}`).join("\n"));
-  return sections.filter((section, index, all) => section !== "" || all[index - 1] !== "").join("\n");
+  return renderParagraphsWithBullets(paragraphs, resources);
 }
 
 export function renderProseChunks(chunks: string[]): string {
@@ -337,7 +335,7 @@ export function buildTaskDescription(input: SyncInput): string {
 
   const resources = [];
   if (implementation) resources.push(implementation);
-  if (references.length) resources.push(`Los recursos relacionados estan disponibles en ${references.join(", ")}.`);
+  if (references.length) resources.push(`Los recursos relacionados están disponibles en ${references.join(", ")}.`);
 
   return renderTaskBody(paragraphsFromLegacy, resources);
 }
@@ -472,7 +470,8 @@ export async function createTimeEntry(taskId: string, date: string, minutes: num
     tid: taskId,
     start: dateToStartMs(date),
     duration: Math.round(minutes * 60 * 1000),
-    description
+    description,
+    billable: false
   });
 }
 

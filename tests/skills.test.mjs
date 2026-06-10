@@ -22,6 +22,7 @@ const expectedSkills = [
   "paid-media-analysis",
   "performance-analysis",
   "reporting",
+  "shopiworks-clickup-sync",
   "slack-communication",
   "task-management"
 ];

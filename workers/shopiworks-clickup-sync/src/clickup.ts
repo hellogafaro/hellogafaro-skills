@@ -81,6 +81,8 @@ export type SyncResult = {
   loggedTime: boolean;
   commented: boolean;
   comment: string;
+  dueDateMs: number;
+  assigneeIds: number[];
 };
 
 export const CLICKUP_MAP = {
@@ -250,10 +252,34 @@ export function normalizeLines(lines?: string[] | null): string[] {
   return (lines ?? []).map((line) => line.trim()).filter(Boolean);
 }
 
+export function assertNaturalProse(label: string, lines: string[]): void {
+  const keyValuePattern = /^[A-ZÁÉÍÓÚÑa-záéíóúñ][\wÁÉÍÓÚÑáéíóúñ ]{1,40}:\s+/;
+  const stiffLabels = /\b(Result evidence|Code changes|Recursos:|Resumen:|Problema:|Soluci[oó]n:|Implementaci[oó]n:|Referencias?:)\b/i;
+  for (const line of lines) {
+    if (keyValuePattern.test(line) || stiffLabels.test(line)) {
+      throw new Error(`${label} must use natural prose, not key-value pairs or stiff labels.`);
+    }
+  }
+}
+
 export function renderParagraphsWithBullets(paragraphs: string[], bullets: string[]): string {
+  assertNaturalProse("content", [...paragraphs, ...bullets]);
   const body = paragraphs.join("\n\n");
   const list = bullets.map((bullet) => `- ${bullet}`).join("\n");
   return [body, list].filter(Boolean).join("\n\n");
+}
+
+export function renderTaskBody(paragraphs: string[], resources: string[]): string {
+  assertNaturalProse("task body", [...paragraphs, ...resources]);
+  const sections = ["Resumen", "", paragraphs.join("\n\n")];
+  if (resources.length) sections.push("", "Recursos", "", resources.map((resource) => `- ${resource}`).join("\n"));
+  return sections.filter((section, index, all) => section !== "" || all[index - 1] !== "").join("\n");
+}
+
+export function renderProseChunks(chunks: string[]): string {
+  const normalized = normalizeLines(chunks).slice(0, 3);
+  assertNaturalProse("comment", normalized);
+  return normalized.join("\n\n");
 }
 
 export function buildCompletionComment(
@@ -262,7 +288,7 @@ export function buildCompletionComment(
   const paragraphs = normalizeLines(input.completionCommentParagraphs);
   const directBullets = normalizeLines(input.completionCommentBullets);
   if (paragraphs.length) {
-    return renderParagraphsWithBullets(paragraphs.slice(0, 3), directBullets);
+    return renderProseChunks([...paragraphs, ...directBullets]);
   }
 
   const implementation = input.implementation?.trim();
@@ -271,13 +297,11 @@ export function buildCompletionComment(
   const solution = input.solution?.trim();
   const lines = [[problem, solution].filter(Boolean).join(" ")];
 
-  const bullets = [];
-  if (implementation) bullets.push(`- ${implementation}`);
-  if (references.length) bullets.push(`- Cambios o enlaces relacionados en ${references.join(", ")}.`);
+  const chunks = [...lines];
+  if (implementation) chunks.push(implementation);
+  if (references.length) chunks.push(`Los cambios relacionados se pueden revisar en ${references.join(", ")}.`);
 
-  if (bullets.length) lines.push("", ...bullets);
-
-  return lines.join("\n");
+  return renderProseChunks(chunks);
 }
 
 export function parseReferencesText(referencesText: string): string[] {
@@ -301,20 +325,21 @@ export function buildTaskDescription(input: SyncInput): string {
   const paragraphs = normalizeLines(input.taskBodyParagraphs);
   const directBullets = normalizeLines(input.taskBodyBullets);
   if (paragraphs.length) {
-    return renderParagraphsWithBullets(paragraphs.slice(0, 3), directBullets);
+    return renderTaskBody(paragraphs.slice(0, 3), directBullets);
   }
 
   const problem = input.problem?.trim();
   const solution = input.solution?.trim();
-  const lines = [[problem, solution].filter(Boolean).join(" "), ""];
+  const paragraphsFromLegacy = [[problem, solution].filter(Boolean).join(" ")].filter(Boolean);
 
   const implementation = input.implementation?.trim();
   const references = input.references?.filter(Boolean) ?? [];
 
-  if (implementation) lines.push(`- ${implementation}`);
-  if (references.length) lines.push(`- Cambios o enlaces relacionados en ${references.join(", ")}.`);
+  const resources = [];
+  if (implementation) resources.push(implementation);
+  if (references.length) resources.push(`Los recursos relacionados estan disponibles en ${references.join(", ")}.`);
 
-  return lines.join("\n");
+  return renderTaskBody(paragraphsFromLegacy, resources);
 }
 
 export function closedStatusForTask(task?: ClickUpTask): string {
@@ -350,11 +375,15 @@ export function summarizeTimeEntry(entry: Record<string, unknown>, taskId: strin
 }
 
 export function shouldCommentOnClickUpTask(createdTask: boolean): boolean {
-  return !createdTask;
+  return true;
 }
 
 export function resolveAssigneeIds(assigneeIds?: number[] | null): number[] {
   return assigneeIds?.length ? assigneeIds : [DEFAULT_ASSIGNEE_ID];
+}
+
+export function dueDateMs(date: string): number {
+  return dateToStartMs(date);
 }
 
 export async function getTaskRaw(taskId: string): Promise<ClickUpTask> {
@@ -383,7 +412,9 @@ export async function createTask(input: SyncInput): Promise<ClickUpTask> {
   const body: Record<string, unknown> = {
     name: input.clickupTaskTitle,
     description: buildTaskDescription(input),
-    status: "cerrada"
+    status: "cerrada",
+    due_date: dueDateMs(input.date),
+    due_date_time: false
   };
 
   body.assignees = resolveAssigneeIds(input.assigneeIds);
@@ -403,6 +434,19 @@ export async function updateTaskFields(taskId: string, input: { name: string; de
   if (status) body.status = status;
   if (!Object.keys(body).length) throw new Error("At least one field is required to update a ClickUp task.");
 
+  return clickupRequest<ClickUpTask>("PUT", `/task/${encodeURIComponent(taskId)}`, body);
+}
+
+export async function updateTaskRequiredFields(
+  taskId: string,
+  input: Pick<SyncInput, "date" | "assigneeIds" | "priority">
+): Promise<ClickUpTask> {
+  const body: Record<string, unknown> = {
+    due_date: dueDateMs(input.date),
+    due_date_time: false,
+    assignees: { add: resolveAssigneeIds(input.assigneeIds), rem: [] }
+  };
+  if (input.priority) body.priority = input.priority;
   return clickupRequest<ClickUpTask>("PUT", `/task/${encodeURIComponent(taskId)}`, body);
 }
 
@@ -463,6 +507,8 @@ export async function syncCompletedTask(input: SyncInput): Promise<{
   loggedTime: boolean;
   commented: boolean;
   comment: string;
+  dueDateMs: number;
+  assigneeIds: number[];
 }> {
   assertMinutes(input.minutes);
 
@@ -472,6 +518,7 @@ export async function syncCompletedTask(input: SyncInput): Promise<{
 
   if (input.clickupTaskId) {
     task = await getTaskRaw(input.clickupTaskId);
+    task = await updateTaskRequiredFields(task.id, input);
   } else {
     task = await createTask(input);
     createdTask = true;
@@ -499,6 +546,8 @@ export async function syncCompletedTask(input: SyncInput): Promise<{
     markedDone: true,
     loggedTime: true,
     commented,
-    comment
+    comment,
+    dueDateMs: dueDateMs(input.date),
+    assigneeIds: resolveAssigneeIds(input.assigneeIds)
   };
 }

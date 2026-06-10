@@ -3,7 +3,7 @@ import { test } from "node:test";
 
 const mod = await import("../src/clickup.ts");
 
-test("completion comment is prose with optional context bullets", () => {
+test("completion comment is natural prose chunks", () => {
   const comment = mod.buildCompletionComment({
     problem: "El selector no mostraba claramente el color activo.",
     solution: "Añadimos un borde negro al color seleccionado.",
@@ -12,8 +12,9 @@ test("completion comment is prose with optional context bullets", () => {
   });
 
   assert.match(comment, /^El selector no mostraba claramente el color activo\. Añadimos un borde negro al color seleccionado\./);
-  assert.match(comment, /\n\n- La variante activa queda marcada visualmente en la ficha de producto\./);
-  assert.match(comment, /- Cambios o enlaces relacionados en abc1234\./);
+  assert.match(comment, /\n\nLa variante activa queda marcada visualmente en la ficha de producto\./);
+  assert.match(comment, /\n\nLos cambios relacionados se pueden revisar en abc1234\./);
+  assert.doesNotMatch(comment, /\n- /);
   assert.doesNotMatch(comment, /Problema\.|Solución\.|Implementación\.|Referencia\.|Referencias:/);
 });
 
@@ -41,10 +42,11 @@ test("created task description includes context bullets", () => {
     date: "2026-06-04"
   });
 
-  assert.match(description, /^Problema detectado\. Solución aplicada\./);
+  assert.match(description, /^Resumen\n\nProblema detectado\. Solución aplicada\./);
   assert.doesNotMatch(description, /Contexto|Implementación\.|Referencias\.|Origen Notion\.|Referencias:|Tiempo registrado:/);
+  assert.match(description, /\n\nRecursos\n\n/);
   assert.match(description, /- Se ajustó el selector activo\./);
-  assert.match(description, /- Cambios o enlaces relacionados en abc1234\./);
+  assert.match(description, /- Los recursos relacionados estan disponibles en abc1234\./);
   assert.doesNotMatch(description, /30 min|registraron/i);
   assert.doesNotMatch(description, /Notion|origen|source/i);
 });
@@ -58,14 +60,15 @@ test("created task description accepts structured paragraphs and bullets", () =>
     date: "2026-06-04"
   });
 
-  assert.match(description, /^El selector de variantes necesitaba una lectura más clara\./);
+  assert.match(description, /^Resumen\n\nEl selector de variantes necesitaba una lectura más clara\./);
+  assert.match(description, /\n\nRecursos\n\n/);
   assert.match(description, /- La variante activa debe quedar marcada visualmente\./);
   assert.doesNotMatch(description, /30 min|registraron/i);
   assert.doesNotMatch(description, /Notion|origen|source/i);
 });
 
-test("new tasks do not get duplicate clickup comments", () => {
-  assert.equal(mod.shouldCommentOnClickUpTask(true), false);
+test("all synced tasks get clickup comments", () => {
+  assert.equal(mod.shouldCommentOnClickUpTask(true), true);
   assert.equal(mod.shouldCommentOnClickUpTask(false), true);
 });
 
@@ -90,6 +93,22 @@ test("simple worker input keeps structured fields", () => {
   assert.deepEqual(input.taskBodyBullets, []);
   assert.deepEqual(input.completionCommentParagraphs, ["Solución aplicada."]);
   assert.deepEqual(input.completionCommentBullets, ["https://github.com/one"]);
+});
+
+test("content rejects key-value style labels", () => {
+  assert.throws(
+    () => mod.renderProseChunks(["Code changes: abc1234"]),
+    /must use natural prose/
+  );
+  assert.throws(
+    () => mod.renderTaskBody(["El cambio aclara el flujo."], ["Repo: https://github.com/example/repo"]),
+    /must use natural prose/
+  );
+});
+
+test("date and assignees are normalized for required fields", () => {
+  assert.equal(mod.dueDateMs("2026-06-04"), Date.parse("2026-06-04"));
+  assert.deepEqual(mod.resolveAssigneeIds(null), [182449615]);
 });
 
 test("clickup task title must not be raw English", () => {

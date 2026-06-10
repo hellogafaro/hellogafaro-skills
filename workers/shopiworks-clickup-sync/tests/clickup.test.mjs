@@ -172,3 +172,76 @@ test("time entries are always non-billable", async () => {
   assert.equal(capturedBody.billable, false);
   assert.equal(capturedBody.duration, 3600000);
 });
+
+test("existing task sync does not rewrite title or description", async () => {
+  const originalFetch = globalThis.fetch;
+  const originalToken = process.env.CLICKUP_API_TOKEN;
+  const calls = [];
+
+  process.env.CLICKUP_API_TOKEN = "test-token";
+  globalThis.fetch = async (url, init) => {
+    const path = String(url).replace("https://api.clickup.com/api/v2", "");
+    const body = init.body ? JSON.parse(init.body) : null;
+    calls.push({ method: init.method, path, body });
+
+    if (init.method === "GET" && path === "/task/existing_task") {
+      return {
+        ok: true,
+        text: async () => JSON.stringify({
+          id: "existing_task",
+          name: "Título existente",
+          url: "https://app.clickup.com/t/existing_task",
+          status: { status: "en progreso", type: "custom" },
+          list: { id: "list_1", name: "Lista" },
+          folder: { id: "folder_1", name: "Folder" },
+          time_spent: 0
+        })
+      };
+    }
+
+    if (init.method === "PUT" && path === "/task/existing_task") {
+      return {
+        ok: true,
+        text: async () => JSON.stringify({
+          id: "existing_task",
+          name: "Título existente",
+          url: "https://app.clickup.com/t/existing_task",
+          status: { status: body.status ?? "en progreso", type: body.status ? "closed" : "custom" },
+          list: { id: "list_1", name: "Lista" },
+          folder: { id: "folder_1", name: "Folder" },
+          time_spent: 0
+        })
+      };
+    }
+
+    return {
+      ok: true,
+      text: async () => "{}"
+    };
+  };
+
+  try {
+    await mod.syncCompletedTask({
+      clickupTaskId: "existing_task",
+      clickupTaskTitle: "Ajustar el flujo existente",
+      completionCommentParagraphs: ["Hice el ajuste y dejé la tarea cerrada para revisión."],
+      completionCommentBullets: [],
+      minutes: 30,
+      date: "2026-06-10T12:00:00.000Z"
+    });
+  } finally {
+    globalThis.fetch = originalFetch;
+    if (originalToken === undefined) {
+      delete process.env.CLICKUP_API_TOKEN;
+    } else {
+      process.env.CLICKUP_API_TOKEN = originalToken;
+    }
+  }
+
+  const putBodies = calls.filter((call) => call.method === "PUT").map((call) => call.body);
+  assert.equal(putBodies.some((body) => "name" in body || "description" in body), false);
+  assert.equal(putBodies.some((body) => body.status === "cerrada"), true);
+  assert.equal(putBodies.some((body) => body.due_date && body.assignees), true);
+  assert.equal(calls.some((call) => call.method === "POST" && call.path === "/task/existing_task/comment"), true);
+  assert.equal(calls.some((call) => call.method === "POST" && call.path === "/team/20421257/time_entries" && call.body.billable === false), true);
+});

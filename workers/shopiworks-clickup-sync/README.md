@@ -41,6 +41,21 @@ npm test
 ntn workers exec -l getMap
 ```
 
+Run a full disposable Notion and ClickUp smoke test:
+
+```bash
+ntn workers env pull --yes --file .env
+npm run smoke:e2e
+```
+
+The smoke test creates two disposable Notion tasks, two ClickUp tasks, Notion time entries, and Notion confirmation comments. It verifies both the new ClickUp mirror workflow and the existing ClickUp task workflow, including non-billable ClickUp time.
+
+Clean a smoke test run with the IDs from the output:
+
+```bash
+npm run smoke:e2e:cleanup -- /path/to/cleanup.json
+```
+
 Live calls require:
 
 ```bash

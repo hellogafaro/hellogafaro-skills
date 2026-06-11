@@ -40,6 +40,7 @@ The description is the main trigger surface. It must tell the agent when to load
 - Keep the main file under 100 lines when practical.
 - Put the most important behavior near the top.
 - Prefer direct rules over explanation.
+- Save tokens: include everything the agent needs, but as concisely as possible.
 - Keep examples short and only include them when they prevent mistakes.
 - Do not include time-sensitive facts unless the skill also says how to verify them.
 - Keep references one level deep.
@@ -50,5 +51,6 @@ The description is the main trigger surface. It must tell the agent when to load
 - Description includes specific triggers.
 - `#` heading matches the skill name.
 - Instructions are concise and actionable.
+- The skill is as short as it can be without losing critical guidance.
 - Extra material is split into references only when useful.
 - Scripts are used only when they improve reliability or reduce repeated code.

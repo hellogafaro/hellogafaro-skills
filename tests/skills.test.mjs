@@ -24,6 +24,7 @@ const expectedSkills = [
   "notion-operations",
   "paid-media-analysis",
   "performance-analysis",
+  "plan",
   "reporting",
   "skill-creation",
   "shopiworks-clickup-sync",

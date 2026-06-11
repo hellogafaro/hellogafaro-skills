@@ -282,8 +282,10 @@ def _embed_pdf_pages(pdf_path: Path, story: list, page_w: float, label_style) ->
         f"[Attached PDF: {pdf_path.name}, {num_pages} page(s)]", label_style))
     story.append(Spacer(1, 6))
 
-    # Embed each page as a rendered image using macOS qlmanage
-    import subprocess, tempfile
+    # Embed each page as a rendered image using macOS qlmanage.
+    # Load image bytes into memory before temp dir is deleted so reportlab
+    # can access them during doc.build() after this function returns.
+    import subprocess, tempfile, io as _io
     with tempfile.TemporaryDirectory() as td:
         try:
             subprocess.run(
@@ -294,24 +296,28 @@ def _embed_pdf_pages(pdf_path: Path, story: list, page_w: float, label_style) ->
             if not rendered:
                 return
             for img_path in rendered:
-                if _check_pillow():
-                    from PIL import Image as PILImage
-                    img = PILImage.open(str(img_path))
-                    w, h = img.size
-                else:
-                    from reportlab.lib.utils import ImageReader
-                    ir = ImageReader(str(img_path))
-                    w, h = ir.getSize()
+                from PIL import Image as PILImage
+                img = PILImage.open(str(img_path))
+                if img.mode in ("RGBA", "P"):
+                    img = img.convert("RGB")
+                w, h = img.size
+                buf = _io.BytesIO()
+                img.save(buf, format="JPEG", quality=90)
+                buf.seek(0)
                 aspect = h / w
                 display_w = page_w
                 display_h = display_w * aspect
-                if display_h > 9 * inch:
-                    display_h = 9 * inch
+                max_h = page_h * 0.85
+                if display_h > max_h:
+                    display_h = max_h
                     display_w = display_h / aspect
-                story.append(RLImage(str(img_path), width=display_w, height=display_h))
+                if display_w > page_w:
+                    display_w = page_w
+                    display_h = display_w * aspect
+                story.append(RLImage(buf, width=display_w, height=display_h))
                 story.append(Spacer(1, 8))
-        except Exception:
-            pass  # already noted the attachment above
+        except Exception as e:
+            print(f"  warning: could not render PDF pages for {pdf_path.name} — {e}", file=sys.stderr)
 
 
 # ---------------------------------------------------------------------------

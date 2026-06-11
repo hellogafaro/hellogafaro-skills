@@ -16,6 +16,7 @@ const expectedSkills = [
   "documentation-creation",
   "email-analysis",
   "email-management",
+  "git-operations",
   "handoff",
   "inbox-management",
   "measurement-audit",

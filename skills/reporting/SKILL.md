@@ -9,11 +9,11 @@ Use this skill when AI is asked to prepare, review, or summarize weekly reportin
 
 Use `performance-analysis` when the report needs diagnosis beyond a simple metric read.
 
-## purpose
+## Purpose
 
 Produce accurate, useful reporting outputs that use the right data window and explain what changed, why it matters, and what to do next.
 
-## inputs
+## Inputs
 
 Use selected text, current page context, project context, and the reporting request.
 
@@ -21,7 +21,7 @@ Identify the correct client project before reporting.
 
 Match the project's language when writing client-facing output.
 
-## core rules
+## Core rules
 
 - Use Accounts Ops as the primary reporting data access path.
 - Prefer structured reporting queries over raw data dumps.
@@ -33,7 +33,7 @@ Match the project's language when writing client-facing output.
 - If a metric changed materially but is not clearly broken, classify it as a warning rather than a problem.
 - If tracking, attribution, source freshness, or missing data blocks interpretation, stop and report the trust gap.
 
-## workflow
+## Workflow
 
 1. Identify report type, audience, project, account, language, period, and comparison window.
 2. Search existing reports before creating anything.
@@ -44,7 +44,7 @@ Match the project's language when writing client-facing output.
 7. Write answer-first findings with caveats near the claim they affect.
 8. Create or update the Notion report only after the output is coherent.
 
-## output structure
+## Output structure
 
 Use the smallest structure that answers the request.
 
@@ -66,7 +66,7 @@ Anomaly memos usually need:
 4. Confidence.
 5. Next check.
 
-## writing rules
+## Writing rules
 
 - Lead with the finding.
 - Do not narrate data collection.
@@ -77,7 +77,7 @@ Anomaly memos usually need:
 - Label partial data as partial.
 - Never fabricate missing platform numbers.
 
-## completion
+## Completion
 
 Reporting work is complete when the report or answer has the correct project, period, evidence, caveats, next action, and source links.
 

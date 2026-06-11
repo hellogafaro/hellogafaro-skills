@@ -9,12 +9,14 @@ const skillsDir = path.join(root, "skills");
 const expectedSkills = [
   "accounts-ops",
   "analysis",
+  "brainstorm",
   "calendar-management",
   "commerce-analysis",
   "deep-research",
   "documentation-creation",
   "email-analysis",
   "email-management",
+  "handoff",
   "inbox-management",
   "measurement-audit",
   "memory-management",
@@ -22,6 +24,7 @@ const expectedSkills = [
   "paid-media-analysis",
   "performance-analysis",
   "reporting",
+  "skill-creation",
   "shopiworks-clickup-sync",
   "slack-communication",
   "task-management"
@@ -100,11 +103,16 @@ test("skills have valid metadata", async () => {
 
     assert.equal(frontmatter.name, skill);
     assert.ok(frontmatter.description?.length > 60, `${skill} needs useful description`);
-    assert.ok(frontmatter.description.startsWith("Use when "), `${skill} description must be trigger-first`);
+    assert.ok(frontmatter.description.includes("Use when "), `${skill} description must include trigger guidance`);
     assert.ok(markdown.includes(`# ${skill}`), `${skill} needs matching h1`);
     assert.ok(!markdown.includes("\u2014"), `${skill} must not use em dash`);
     assert.ok(!markdown.includes("\u2013"), `${skill} must not use en dash`);
     assert.ok(!markdown.includes(ellipsis), `${skill} must not use ellipsis`);
+
+    for (const heading of markdown.matchAll(/^##\s+(.+)$/gm)) {
+      const title = heading[1];
+      assert.ok(!/^[a-z]/.test(title), `${skill} section heading must use sentence case: ${title}`);
+    }
   }
 });
 

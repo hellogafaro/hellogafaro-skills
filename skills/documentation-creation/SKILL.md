@@ -9,11 +9,11 @@ Use this skill when AI is asked to create or update SOPs, guides, operating proc
 
 Do not use this skill for reports. Use `reporting` for reports, performance summaries, KPI updates, and analysis writeups.
 
-## purpose
+## Purpose
 
 Create documentation that is clear, scannable, accurate, and useful to someone reading it months later with no extra context.
 
-## sources
+## Sources
 
 - Soul defines voice, writing, and formatting standards.
 - Collaboration defines source lookup, routing, Memory, Inbox, and failure handling.
@@ -21,7 +21,7 @@ Create documentation that is clear, scannable, accurate, and useful to someone r
 - Projects is the source of truth for project language, client context, and linked work.
 - Reporting owns reports and performance writeups.
 
-## document types
+## Document types
 
 Use Documentation for SOPs, how-tos, internal reference material, and operating processes.
 
@@ -29,7 +29,7 @@ Use Template for reusable starting points for recurring work.
 
 Use Strategy for plans, approaches, strategic thinking, and decision frameworks.
 
-## workflow
+## Workflow
 
 1. Identify the document type, topic, project, language, and intended reader.
 2. Search existing documents before creating anything.
@@ -40,7 +40,7 @@ Use Strategy for plans, approaches, strategic thinking, and decision frameworks.
 7. Explain what will change and get confirmation before saving material updates.
 8. Update in place unless the user explicitly asks for a new version.
 
-## structures
+## Structures
 
 Documentation pages use Purpose, Steps, Edge cases, and Owner.
 
@@ -48,7 +48,7 @@ Template pages use When to use, Template content, and How to customize.
 
 Strategy pages use Context, Approach, Key decisions, Success criteria, and Timeline when applicable.
 
-## rules
+## Rules
 
 - Write for the person who will read the page months later with no extra context.
 - Use simple language.
@@ -63,7 +63,7 @@ Strategy pages use Context, Approach, Key decisions, Success criteria, and Timel
 - Surface overlap before creating a new page when a similar document exists.
 - Flag process changes clearly before saving them.
 
-## completion
+## Completion
 
 Before stopping, make sure the document was created, updated, or intentionally left unchanged.
 

@@ -9,18 +9,18 @@ Use this skill when an agent needs to decide whether to use Slack, draft a Slack
 
 Slack is timely communication. Notion remains the durable work record.
 
-## purpose
+## Purpose
 
 Use Slack only when it is the right channel and keep private context private.
 
-## routing
+## Routing
 
 - Project updates go in the project channel when the update belongs to the project team.
 - Cross-project risk goes in the agreed risk channel when the risk affects more than one project.
 - Private blockers, sensitive context, and user decisions go in DM.
 - Reply where the request was triggered unless routing, privacy, or urgency says otherwise.
 
-## rules
+## Rules
 
 - Never post private context in shared channels.
 - Never post secrets, credentials, account ids, tokens, financial private data, or personal context.
@@ -30,12 +30,12 @@ Use Slack only when it is the right channel and keep private context private.
 - Keep Slack messages concise, natural, and useful.
 - Use emoji only when the context is informal and Soul allows it.
 
-## failure handling
+## Failure handling
 
 For systemic failure, report once in the agreed error channel with agent, trigger, action, error, and affected source.
 
 For the same systemic failure three runs in a row, DM the user once and pause scheduled runs until acknowledged.
 
-## completion
+## Completion
 
 Slack work is complete when the message is sent or drafted, private context stayed private, and durable follow-up is stored outside Slack when needed.

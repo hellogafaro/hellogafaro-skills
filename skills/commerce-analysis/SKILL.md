@@ -7,13 +7,13 @@ description: Use when diagnosing Shopify or ecommerce business performance, incl
 
 Use this to understand business performance, not channel-reported performance.
 
-## depth
+## Depth
 
 1. Quick read means revenue, orders, AOV, product, or customer metric.
 2. Diagnostic means business result moved and cause is unclear.
 3. Deep analysis means product mix, customer cohort, promo, margin, inventory, or channel attribution decision.
 
-## workflow
+## Workflow
 
 1. Identify account id, date window, comparison window, currency, and business question.
 2. Pull Shopify data through `accounts-ops`.
@@ -21,7 +21,7 @@ Use this to understand business performance, not channel-reported performance.
 4. Pair with `analysis` for cohorts, decomposition, forecasts, or charts.
 5. Pair with `measurement-audit` when Shopify and platform data disagree.
 
-## minimum diagnostic tree
+## Minimum diagnostic tree
 
 - Revenue, orders, AOV, units, refunds, discounts, taxes, and shipping when relevant.
 - New versus returning customers.
@@ -31,11 +31,11 @@ Use this to understand business performance, not channel-reported performance.
 - Operational context such as stockouts, fulfillment, refunds, payment issues, and returns.
 - Margin risk when cost or gross margin fields are available.
 
-## references
+## References
 
 Read `references/ecommerce-movement.md` when Shopify performance moved and the reason is unclear.
 
-## rules
+## Rules
 
 - Shopify is usually the revenue source of truth.
 - Do not compare gross sales, net sales, and platform conversion value as if they are the same metric.

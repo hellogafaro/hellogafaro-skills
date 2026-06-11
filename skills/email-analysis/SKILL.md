@@ -7,13 +7,13 @@ description: Use when diagnosing Klaviyo, email, SMS, or lifecycle marketing per
 
 Use this to inspect email and lifecycle performance.
 
-## depth
+## Depth
 
 1. Quick read means one campaign, flow, or metric.
 2. Diagnostic means revenue, engagement, deliverability, or segment quality moved.
 3. Deep analysis means flow health, lifecycle revenue, promo impact, cohort impact, or cross-channel attribution conflict.
 
-## workflow
+## Workflow
 
 1. Identify account id, date window, comparison window, campaign or flow scope, and business question.
 2. Pull needed Klaviyo data through `accounts-ops`.
@@ -21,7 +21,7 @@ Use this to inspect email and lifecycle performance.
 4. Pair with `measurement-audit` when attribution or tracking is suspect.
 5. Pair with `analysis` for cohorts, time series, segmentation, or forecasting.
 
-## minimum diagnostic tree
+## Minimum diagnostic tree
 
 - Sends, delivered, bounced, spam complaints, and unsubscribes.
 - Opens, clicks, click-to-open, conversion, revenue, and revenue per recipient.
@@ -31,11 +31,11 @@ Use this to inspect email and lifecycle performance.
 - Offer and calendar context across promo timing, discount depth, product focus, and send frequency.
 - Fatigue through engagement decay, unsubscribe rise, spam rise, and revenue per recipient decay.
 
-## references
+## References
 
 Read `references/lifecycle.md` when campaign or flow movement needs deeper lifecycle diagnosis.
 
-## rules
+## Rules
 
 - Do not treat opens as a reliable primary metric when privacy effects may distort them.
 - Revenue per recipient is usually more useful than total attributed revenue for campaign quality.

@@ -13,11 +13,11 @@ Do not use this skill to write final report structure. Use `reporting` for repor
 
 Do not use this skill to access provider APIs directly. Use `accounts-ops` for live provider data.
 
-## purpose
+## Purpose
 
 Turn performance movement into a source-backed explanation with the right level of evidence.
 
-## routing
+## Routing
 
 - Use `analysis` for computed comparisons, segmentation, decomposition, cohorts, funnels, anomalies, forecasts, and charts.
 - Use `measurement-audit` when source trust, tracking, attribution, UTMs, or platform mismatch affects the answer.
@@ -25,7 +25,7 @@ Turn performance movement into a source-backed explanation with the right level 
 - Use `email-analysis` for Klaviyo campaigns, flows, deliverability, revenue per recipient, list quality, and lifecycle movement.
 - Use `commerce-analysis` for Shopify revenue, orders, AOV, refunds, discounts, product mix, customer mix, inventory, and store-level truth.
 
-## workflow
+## Workflow
 
 1. Define business question, date window, comparison window, metric, grain, account, provider, and source of truth.
 2. Pull the smallest dataset that can answer the question.
@@ -35,7 +35,7 @@ Turn performance movement into a source-backed explanation with the right level 
 6. Separate facts, interpretation, confidence, recommendation, and limitations.
 7. Use code when calculation, reshaping, validation, forecasting, or charts are clearer and safer in code.
 
-## methods
+## Methods
 
 - Period comparison for direct performance movement.
 - Variance decomposition when the total changed and the driver is unclear.
@@ -45,7 +45,7 @@ Turn performance movement into a source-backed explanation with the right level 
 - Anomaly checks against trailing average, same weekday, seasonal baseline, and source freshness.
 - Simple forecasts only when data quality and volume support it.
 
-## output
+## Output
 
 Return the shortest complete answer.
 

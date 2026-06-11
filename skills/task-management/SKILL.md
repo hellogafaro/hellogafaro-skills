@@ -13,11 +13,11 @@ Exact user-owned daily hygiene means the user clearly gives the task or meeting,
 
 Route through Handoffs when the request needs new task creation, ambiguous updates, bulk changes, workload planning, blocker management, scheduling judgment, cross-person coordination, unclear time tracking, or missing required context.
 
-## purpose
+## Purpose
 
 Keep work clear, balanced, and moving while using the right task system consistently.
 
-## hard rules
+## Hard rules
 
 - Search before creating.
 - Update an existing task when the work already exists.
@@ -31,7 +31,7 @@ Keep work clear, balanced, and moving while using the right task system consiste
 - Meeting time inherits Project from the meeting page Project relation.
 - If a meeting page has no Project relation, ask before creating tasks or time entries from it.
 
-## routing
+## Routing
 
 Hello Gafaro internal and client work uses the Notion Tasks database.
 
@@ -41,7 +41,7 @@ Hello Gafaro and Notion task work is English by default unless project language 
 
 Match project language when known.
 
-## allowed values
+## Allowed values
 
 - Status: `Backlog`, `Not started`, `In progress`, `Under review`, `Blocked`, `Done`, `Canceled`.
 - Priority: `High`, `Medium`, `Low`.
@@ -51,7 +51,7 @@ No one should have more than 3 active tasks at once.
 
 Active tasks are `In progress`, `Under review`, and `Blocked`.
 
-## required properties
+## Required properties
 
 Every real task must have Owner, Assignee, Project, Priority, Due date, Status, and Recurrence.
 
@@ -73,7 +73,7 @@ Assignee is a people property. Use the Team database Notion column to resolve ag
 
 Read `references/tasks-schema.md` before mutating task or time-tracking records.
 
-## task format
+## Task format
 
 - Create one task per clear action or outcome.
 - Start the title with a verb.
@@ -86,7 +86,7 @@ Read `references/tasks-schema.md` before mutating task or time-tracking records.
 - Start each acceptance criterion with a verb.
 - Keep due dates and other property data out of the description.
 
-## time tracking
+## Time tracking
 
 Every completed substantive task needs time tracked.
 
@@ -107,7 +107,7 @@ Every completed substantive task needs time tracked.
 - If the meeting has no Project relation, ask for the project and update the meeting before logging time.
 - If the meeting has multiple Project relations, ask which project owns the time.
 
-## working from source material
+## Working from source material
 
 For meeting notes or action items, extract only actions worth tracking. Do not turn every note, decision, reminder, or discussion point into a task.
 
@@ -129,7 +129,7 @@ For threads or conversations, extract only actionable items, ignore chatter, and
 
 For Inbox items, read the source item for ask and context, apply validation, and keep task-backed Inbox To do items linked until the task is done or canceled.
 
-## workflow
+## Workflow
 
 1. Identify request type.
 2. Search existing tasks.
@@ -156,6 +156,6 @@ Rewrite stale Inbox items with the current next action.
 
 Do not duplicate source URLs.
 
-## completion
+## Completion
 
 Task work is complete when the live source is updated, required time tracking is handled, Inbox is current, and any needed Handoff exists.

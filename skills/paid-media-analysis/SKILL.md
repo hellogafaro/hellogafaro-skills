@@ -9,13 +9,13 @@ Use this to diagnose paid media performance.
 
 Do not use it to create or mutate campaigns unless the user explicitly asks and approval is clear.
 
-## depth
+## Depth
 
 1. Quick read means one platform, one metric, and obvious direction.
 2. Diagnostic means spend or efficiency moved, cause is unclear, or recommendation is needed.
 3. Deep analysis means budget decision, scale or cut decision, conflicting attribution, forecast, or multi-platform mix shift.
 
-## workflow
+## Workflow
 
 1. Identify platform, account id, date window, comparison window, business goal, and active campaigns.
 2. Pull only needed fields through `accounts-ops`.
@@ -23,7 +23,7 @@ Do not use it to create or mutate campaigns unless the user explicitly asks and 
 4. Pair with `analysis` for decomposition, fatigue checks, lag, pacing, forecasting, or charts.
 5. Explain the mechanism as price, traffic quality, conversion rate, spend mix, creative, audience, landing page, or tracking.
 
-## minimum diagnostic tree
+## Minimum diagnostic tree
 
 - Volume means spend, impressions, clicks, conversions, revenue, or conversion value.
 - Price means CPM, CPC, and CPA.
@@ -34,7 +34,7 @@ Do not use it to create or mutate campaigns unless the user explicitly asks and 
 - Budget pacing means spend versus planned run rate and sudden budget or bid changes.
 - Attribution means platform conversions versus Shopify, GA4, or PostHog when available.
 
-## platform references
+## Platform references
 
 Read only the needed provider reference in `/Users/jg/Dev/hellogafaro-accounts-ops`.
 
@@ -44,7 +44,7 @@ Read only the needed provider reference in `/Users/jg/Dev/hellogafaro-accounts-o
 
 Read `references/diagnostics.md` when performance moved and the driver is not obvious.
 
-## rules
+## Rules
 
 - Do not optimize for platform ROAS alone when business revenue disagrees.
 - Do not blame creative until mix, tracking, and landing page effects were checked enough for the ask.

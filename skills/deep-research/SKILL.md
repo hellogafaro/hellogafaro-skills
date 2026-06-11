@@ -9,7 +9,7 @@ Use this skill when given a topic or question that needs current, external, sour
 
 Do not rely on snippets. Read full source content where possible.
 
-## process
+## Process
 
 1. Clarify scope if the research question is ambiguous.
 2. Define what done means.
@@ -22,7 +22,7 @@ Do not rely on snippets. Read full source content where possible.
 9. Cross-reference agreement, disagreement, methodology, recency, bias, and sample size.
 10. Never fabricate citations.
 
-## source types
+## Source types
 
 - Primary sources include peer-reviewed papers, official reports, government data, company docs, and product docs.
 - Practitioner sources include industry blogs, expert commentary, conference talks, and technical documentation.
@@ -30,7 +30,7 @@ Do not rely on snippets. Read full source content where possible.
 
 Organic sources are community signal, not primary evidence.
 
-## credibility
+## Credibility
 
 Use this hierarchy as a tiebreaker.
 
@@ -42,7 +42,7 @@ Use this hierarchy as a tiebreaker.
 
 Flag when a conclusion relies heavily on lower-tier sources.
 
-## output
+## Output
 
 Use this structure unless the user asks for a different format.
 
@@ -60,7 +60,7 @@ Analysis should synthesize across sources rather than summarize each source sepa
 
 Sources should include name, type, URL, and date.
 
-## constraints
+## Constraints
 
 - Lead with the most important finding.
 - Read full pages where possible.

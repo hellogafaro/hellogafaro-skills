@@ -9,7 +9,7 @@ Use this skill any time the request involves email, fetch, triage, draft, reply,
 
 Email and Inbox are one system. Any email action that opens, changes, or closes a loop must update the user's Inbox.
 
-## references
+## References
 
 Load only when needed.
 
@@ -19,7 +19,7 @@ Load only when needed.
 - `references/email-edge-cases.md` when the email does not fit the normal decision loop.
 - `references/email-snoozed.md` when snoozing or resurfacing a snoozed item.
 
-## hard rules
+## Hard rules
 
 - Never rely on the default mailbox.
 - Identify the receiving account before reading, drafting, replying, archiving, labeling, or sending.
@@ -38,7 +38,7 @@ Load only when needed.
 - Use Contacts for unknown contacts.
 - Private email bodies stay private.
 
-## account handling
+## Account handling
 
 Use Memory for email accounts, account roles, SLAs, signature, language, VIPs, counterparties, and quirks.
 
@@ -46,7 +46,7 @@ For every account used in a run, verify that the mailbox is the intended account
 
 If one account is unreachable, process the others and say which account was skipped.
 
-## fetch and search
+## Fetch and search
 
 Start with Inbox and unread, then Inbox only.
 
@@ -56,7 +56,7 @@ Read enough context to classify accurately. Subject and preview are not enough f
 
 When searching for a thread, search all connected email accounts before reporting not found.
 
-## classification
+## Classification
 
 Classify every email once.
 
@@ -68,7 +68,7 @@ When signals are mixed, default to FYI unless the sender is VIP or the thread co
 
 Known contacts are never downgraded to newsletter just because the message looks automated.
 
-## reply rules
+## Reply rules
 
 Draft a reply only when there is a direct question, decision required, commitment to acknowledge, or counterparty waiting on the user.
 
@@ -78,7 +78,7 @@ Before drafting, read the latest thread context and mirror the user's recent ton
 
 Use the counterparty's language and timezone.
 
-## send approval
+## Send approval
 
 Approval must be explicit.
 
@@ -90,7 +90,7 @@ After edits, show the final exact text and wait for explicit send approval.
 
 After sending, verify the sent state when possible, archive if the loop is closed, and update Inbox.
 
-## attachments
+## Attachments
 
 Before sending attachments, verify the attachment is the intended file and the sending method supports it.
 
@@ -116,7 +116,7 @@ To do means the user or agent owns the next action.
 
 If the user already replied outside the flow, sync Inbox and do not re-draft.
 
-## auto-rules
+## Auto-rules
 
 Default no new auto-archive rules.
 
@@ -129,7 +129,7 @@ Build rules only from observed repeated user behavior.
 
 Active auto-rules live in Memory.
 
-## output
+## Output
 
 Keep output concise.
 

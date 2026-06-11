@@ -346,6 +346,15 @@ export function closedStatusForTask(task?: ClickUpTask): string {
   return known ?? "cerrada";
 }
 
+export function closedStatusForList(listId: string): string {
+  for (const folder of CLICKUP_MAP.folders) {
+    const hasList = folder.lists.some((list) => list.id === listId);
+    if (hasList && folder.statuses.includes("Closed")) return "Closed";
+  }
+
+  return "cerrada";
+}
+
 export function summarizeTask(task: ClickUpTask): TaskSummary {
   return {
     id: task.id,
@@ -410,7 +419,7 @@ export async function createTask(input: SyncInput): Promise<ClickUpTask> {
   const body: Record<string, unknown> = {
     name: input.clickupTaskTitle,
     description: buildTaskDescription(input),
-    status: "cerrada",
+    status: closedStatusForList(input.listId),
     due_date: dueDateMs(input.date),
     due_date_time: false
   };

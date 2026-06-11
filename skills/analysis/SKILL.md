@@ -9,7 +9,7 @@ Use this when judgment depends on computed evidence.
 
 Pair with a domain skill such as `paid-media-analysis`, `email-analysis`, `commerce-analysis`, or `measurement-audit` when the question is about a specific channel.
 
-## depth
+## Depth
 
 Use the lightest level that can answer the ask.
 
@@ -19,7 +19,7 @@ Use the lightest level that can answer the ask.
 
 Do not run every diagnostic by default. Escalate only when the ask or risk justifies it.
 
-## workflow
+## Workflow
 
 1. Define business question, date window, comparison window, metric, grain, and source.
 2. Pull data with the smallest provider or Notion request that can answer it.
@@ -29,7 +29,7 @@ Do not run every diagnostic by default. Escalate only when the ask or risk justi
 6. Analyze at the right depth.
 7. Return facts, interpretation, confidence, recommendation, and limitations.
 
-## methods
+## Methods
 
 - Period comparison against prior period, same period last year, target, or trailing average.
 - Variance decomposition by channel, campaign, product, segment, device, geography, cohort, or funnel step.
@@ -39,7 +39,7 @@ Do not run every diagnostic by default. Escalate only when the ask or risk justi
 - Anomaly detection against trailing average, same weekday, seasonal baseline, and source freshness.
 - Forecasting with simple baselines first, then stronger models only when data supports them.
 
-## forecast guardrails
+## Forecast guardrails
 
 - Do not forecast from broken, tiny, sparse, or structurally changed data without saying the forecast is weak.
 - Always compare the forecast against a naive baseline.
@@ -47,7 +47,7 @@ Do not run every diagnostic by default. Escalate only when the ask or risk justi
 - Include confidence bands or a range when possible.
 - Mark promo periods, holidays, stockouts, tracking breaks, and campaign launches as structural context.
 
-## script
+## Script
 
 For time-series checks, use `scripts/analyze_timeseries.py`.
 
@@ -62,7 +62,7 @@ python3 skills/analysis/scripts/analyze_timeseries.py \
 
 The script expects CSV input and writes JSON to stdout.
 
-## rules
+## Rules
 
 - Never fabricate numbers.
 - Separate fact, interpretation, confidence, and recommendation.

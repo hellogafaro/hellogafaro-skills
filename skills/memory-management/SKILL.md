@@ -9,11 +9,11 @@ Use this skill when an agent needs to read, create, update, prune, or decide whe
 
 Memory is durable context. It is not current source state.
 
-## purpose
+## Purpose
 
 Keep future runs smarter without turning Memory into stale task, email, calendar, or provider state.
 
-## workflow
+## Workflow
 
 1. Fetch the Memory database entry assigned to the current user before creating anything.
 2. Create one assigned Memory entry only when none exists.
@@ -23,7 +23,7 @@ Keep future runs smarter without turning Memory into stale task, email, calendar
 6. Remove or rewrite stale Memory when it is no longer useful.
 7. Do not let Memory updates trigger agents.
 
-## write to Memory
+## Write to Memory
 
 - Durable user preferences.
 - Routing facts.
@@ -34,7 +34,7 @@ Keep future runs smarter without turning Memory into stale task, email, calendar
 
 Write what is true now in plain language. Keep it short.
 
-## do not write to Memory
+## Do not write to Memory
 
 - Current task status.
 - Current reporting numbers.
@@ -44,7 +44,7 @@ Write what is true now in plain language. Keep it short.
 - Temporary blockers.
 - Secrets, account ids, API keys, tokens, labels, or credentials.
 
-## priority
+## Priority
 
 1. Soul and agent instructions.
 2. Selected skills.
@@ -52,6 +52,6 @@ Write what is true now in plain language. Keep it short.
 4. Live source systems.
 5. Memory.
 
-## completion
+## Completion
 
 Memory work is complete when the assigned entry exists, useful durable context is current, stale notes are removed, and no transient source state was saved.

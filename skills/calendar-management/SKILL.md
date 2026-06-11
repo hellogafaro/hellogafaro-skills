@@ -9,7 +9,7 @@ Use this skill any time the request involves calendar, fetch, triage, scheduling
 
 Calendar and Inbox are one system. Any calendar action that opens, changes, or closes a loop must update the user's Inbox.
 
-## references
+## References
 
 Load only when needed.
 
@@ -18,7 +18,7 @@ Load only when needed.
 - `references/calendar-prep.md` before building meeting prep.
 - `references/calendar-edge-cases.md` for out of office, travel, recurring changes, timezone ambiguity, short notice, or source failures.
 
-## hard rules
+## Hard rules
 
 - Use all connected calendars needed for the user.
 - Verify the calendar source before reporting state or making changes.
@@ -30,7 +30,7 @@ Load only when needed.
 - Counterparty timezone is the timezone shown in scheduling messages.
 - Never make the counterparty convert time.
 
-## fetch
+## Fetch
 
 Fetch today's calendar and the next 7 days by default.
 
@@ -46,7 +46,7 @@ Drop past events unless a follow-up exists.
 
 If a source is unreachable, process the other sources and surface the skipped source.
 
-## scheduling
+## Scheduling
 
 Use Memory for working hours, meeting caps, lunch window, buffers, default length, prep blocks, focus preferences, and exceptions.
 
@@ -58,7 +58,7 @@ Respect buffers and avoid back-to-back meetings.
 
 Keep at least one 30-minute unblocked slot per half day when possible.
 
-## triage
+## Triage
 
 For every new meeting request or unclear event, check purpose, whether the user is needed, async fit, confirmation, conflicts, and prep needs.
 
@@ -68,7 +68,7 @@ If the user is not needed, suggest delegate, async, or decline.
 
 If the meeting is proposed but not confirmed, add Waiting in Inbox instead of treating it as scheduled.
 
-## conflicts
+## Conflicts
 
 Priority order is user explicit request, VIP or key customer, existing commitment, then new request.
 
@@ -76,7 +76,7 @@ For same-tier conflicts, recommend what to keep or move and explain why.
 
 Same-day cancellation, move, or reschedule by a counterparty becomes an Alert in Inbox.
 
-## meeting prep
+## Meeting prep
 
 Every status or day run checks meetings in the next 24 hours.
 
@@ -97,7 +97,7 @@ Past meetings leave Inbox unless a follow-up remains.
 - Promised follow-up becomes To do.
 - Remove stale meeting prep when the meeting passes or is canceled.
 
-## output
+## Output
 
 Keep output concise.
 

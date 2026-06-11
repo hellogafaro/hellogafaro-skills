@@ -9,11 +9,11 @@ Use this skill when an agent needs to create, update, reconcile, or close its ac
 
 Inbox is active work state. It is not long-term memory and not a duplicate task database.
 
-## purpose
+## Purpose
 
 Make every active request resumable and keep stale work out of the agent queue.
 
-## workflow
+## Workflow
 
 1. Fetch the Inbox database entry assigned to the current user before creating anything.
 2. Create one assigned Inbox entry only when none exists.
@@ -24,7 +24,7 @@ Make every active request resumable and keep stale work out of the agent queue.
 7. On every interaction, compare current time to the top Inbox sync timestamp. If the timestamp is missing or older than 3 hours, reconcile Inbox before proceeding.
 8. When work finishes, remove the Inbox item or rewrite it into the current blocker, waiting state, or exact next step.
 
-## structure
+## Structure
 
 Use these sections only when useful.
 
@@ -56,7 +56,7 @@ Use these sections only:
 - Reminders.
 - Notes.
 
-## rules
+## Rules
 
 - Inbox is for work the agent owns, must act on, or must know today.
 - Do not add FYI with no action, old completed work, duplicate source state, or maybe useful later notes.
@@ -71,7 +71,7 @@ Use these sections only:
 - Tomorrow and later stay out unless they are meeting context, a true reminder, or blocking today's work.
 - Friday deep run: every open task that cannot close today gets rescheduled before the run ends.
 
-## reconciliation
+## Reconciliation
 
 Read and write Inbox state directly in Notion Inbox page `37bfc7982e4380638696e5002e6d859f`.
 
@@ -93,7 +93,7 @@ Fetch current sources before writing:
 - Notion mentions and comments: user-owned, recent, or self-mentions.
 - Email and calendar: follow their skills.
 
-## close loops
+## Close loops
 
 - Reply sent and no response needed: archive source and remove item.
 - Reply sent and response needed: archive source and move to Waiting.
@@ -109,7 +109,7 @@ Fetch current sources before writing:
 - Recurring task completed: clear current cycle only.
 - No next action: no Inbox.
 
-## reminders
+## Reminders
 
 Date-anchored commitments with no better source go in Reminders.
 
@@ -119,7 +119,7 @@ Calendar event not always required. When skipped, the item is manually maintaine
 
 Remove reminders when past and resolved or superseded.
 
-## edge cases
+## Edge cases
 
 Notify by default. Nothing silent.
 
@@ -137,6 +137,6 @@ Notify by default. Nothing silent.
 - ClickUp Complete with no time tracked: surface log time prompt.
 - Project paused or archived: remove tied items unless closure action remains.
 
-## completion
+## Completion
 
 Inbox work is complete when every active request is closed, waiting, blocked, or handed off with a live link.

@@ -11,11 +11,11 @@ Accounts Ops implementation lives in `/Users/jg/Dev/hellogafaro-accounts-ops`.
 
 This repo only defines how agents should route and use that capability. Do not duplicate provider auth, proxy, or API mechanics here.
 
-## purpose
+## Purpose
 
 Use one owned operations surface for provider-native reads and confirmed writes without exposing credentials or scattering account logic across agents.
 
-## providers
+## Providers
 
 - Shopify.
 - Klaviyo.
@@ -26,7 +26,7 @@ Use one owned operations surface for provider-native reads and confirmed writes 
 - Google Analytics.
 - Search Console.
 
-## hard rules
+## Hard rules
 
 - Use `/Users/jg/Dev/hellogafaro-accounts-ops` for all provider mechanics.
 - Query data only for existing connected account ids.
@@ -39,7 +39,7 @@ Use one owned operations surface for provider-native reads and confirmed writes 
 - For long date windows, query month by month and aggregate client-side.
 - Do not perform writes unless the user explicitly asks and the provider method is appropriate.
 
-## workflow
+## Workflow
 
 1. Identify client, account id, provider, date window, metric, and question.
 2. Open `/Users/jg/Dev/hellogafaro-accounts-ops/AGENTS.md` and the relevant source files before running provider work.
@@ -48,7 +48,7 @@ Use one owned operations surface for provider-native reads and confirmed writes 
 5. Execute the read or explicitly confirmed write.
 6. Return evidence with platform, account id, date window, endpoint, metric definition, comparison, and limitations when relevant.
 
-## failures
+## Failures
 
 Missing account, missing credential, provider 401, provider 403, quota, and provider errors are source failures.
 

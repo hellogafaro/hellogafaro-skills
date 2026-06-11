@@ -1,0 +1,433 @@
+#!/usr/bin/env python3
+"""create-chargeback-pdf — build labeled PDFs from mixed text and files.
+
+Usage:
+  create-chargeback-pdf check
+      Print which PDF libraries are available and which rendering mode will be used.
+
+  create-chargeback-pdf make \\
+      --title "Customer Communication" \\
+      --add-text "Introductory note here." \\
+      --add-file ~/Downloads/whatsapp-1.jpeg \\
+      --add-text "Customer confirms receipt." \\
+      --add-file ~/Downloads/tracking.pdf \\
+      --out ~/Downloads/chargeback-12346/customer-communication.pdf
+
+Flags for `make`:
+  --title TEXT      Document title. Rendered as heading on first page. (required)
+  --add-text TEXT   Insert a text block at this position. Repeatable.
+  --add-file PATH   Insert an image or PDF at this position. Repeatable.
+  --out PATH        Output PDF path. Parent directory is created if needed. (required)
+
+Supported input file types: JPEG, PNG, WEBP, PDF
+HEIC is supported when Pillow with HEIC support is installed.
+
+Rendering modes (tried in order):
+  1. reportlab  — full layout engine, handles text + images natively
+  2. html       — writes a styled HTML file and instructs the user to print to PDF
+
+Missing files are skipped with a warning. The script never exits non-zero for
+missing input files, only for missing required flags or unrecoverable errors.
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import sys
+import textwrap
+from pathlib import Path
+
+# ---------------------------------------------------------------------------
+# Library detection
+# ---------------------------------------------------------------------------
+
+def _check_reportlab() -> bool:
+    try:
+        import reportlab  # noqa: F401
+        return True
+    except ImportError:
+        return False
+
+
+def _check_pypdf() -> bool:
+    try:
+        import pypdf  # noqa: F401
+        return True
+    except ImportError:
+        try:
+            import pikepdf  # noqa: F401
+            return True
+        except ImportError:
+            return False
+
+
+def _check_pillow() -> bool:
+    try:
+        from PIL import Image  # noqa: F401
+        return True
+    except ImportError:
+        return False
+
+
+def mode() -> str:
+    if _check_reportlab():
+        return "reportlab"
+    return "html"
+
+
+# ---------------------------------------------------------------------------
+# check subcommand
+# ---------------------------------------------------------------------------
+
+def cmd_check(_args: argparse.Namespace) -> None:
+    print("create-chargeback-pdf — library check")
+    print(f"  reportlab : {'yes' if _check_reportlab() else 'no'}")
+    print(f"  pypdf/pikepdf : {'yes' if _check_pypdf() else 'no'}")
+    print(f"  Pillow    : {'yes' if _check_pillow() else 'no'}")
+    print(f"  rendering mode : {mode()}")
+    if mode() == "html":
+        print()
+        print("  reportlab is not installed. The 'make' command will produce an HTML")
+        print("  file instead of a PDF. Open it in Chrome or Safari and use")
+        print("  File > Print > Save as PDF to get the final PDF.")
+        print()
+        print("  To install reportlab:")
+        print("    pip install reportlab")
+        if not _check_pillow():
+            print("    pip install Pillow   # needed for image support")
+
+
+# ---------------------------------------------------------------------------
+# Content item helpers
+# ---------------------------------------------------------------------------
+
+def _parse_items(args: argparse.Namespace) -> list[tuple[str, str]]:
+    """Return ordered list of (kind, value) tuples from sys.argv order."""
+    items: list[tuple[str, str]] = []
+    raw = sys.argv[sys.argv.index("make") + 1:]
+    i = 0
+    while i < len(raw):
+        if raw[i] == "--add-text" and i + 1 < len(raw):
+            items.append(("text", raw[i + 1]))
+            i += 2
+        elif raw[i] == "--add-file" and i + 1 < len(raw):
+            items.append(("file", raw[i + 1]))
+            i += 2
+        else:
+            i += 1
+    return items
+
+
+# ---------------------------------------------------------------------------
+# reportlab renderer
+# ---------------------------------------------------------------------------
+
+def _make_reportlab(title: str, items: list[tuple[str, str]], out: Path) -> None:
+    from reportlab.lib.pagesizes import LETTER
+    from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+    from reportlab.lib.units import inch
+    from reportlab.lib import colors
+    from reportlab.platypus import (
+        SimpleDocTemplate, Paragraph, Spacer, Image as RLImage,
+        PageBreak, HRFlowable,
+    )
+    from reportlab.lib.enums import TA_LEFT
+
+    out.parent.mkdir(parents=True, exist_ok=True)
+
+    styles = getSampleStyleSheet()
+    title_style = ParagraphStyle(
+        "Title2",
+        parent=styles["Heading1"],
+        fontSize=18,
+        spaceAfter=12,
+        textColor=colors.HexColor("#1a1a1a"),
+    )
+    section_style = ParagraphStyle(
+        "SectionLabel",
+        parent=styles["Normal"],
+        fontSize=9,
+        textColor=colors.HexColor("#888888"),
+        spaceAfter=4,
+    )
+    body_style = ParagraphStyle(
+        "Body2",
+        parent=styles["Normal"],
+        fontSize=11,
+        leading=16,
+        spaceAfter=10,
+        alignment=TA_LEFT,
+    )
+
+    doc = SimpleDocTemplate(
+        str(out),
+        pagesize=LETTER,
+        leftMargin=inch,
+        rightMargin=inch,
+        topMargin=inch,
+        bottomMargin=inch,
+        title=title,
+    )
+
+    story = [
+        Paragraph(title, title_style),
+        HRFlowable(width="100%", thickness=1, color=colors.HexColor("#dddddd"), spaceAfter=16),
+    ]
+
+    page_w = LETTER[0] - 2 * inch
+    page_h = LETTER[1] - 2 * inch  # max usable height per page
+
+    for kind, value in items:
+        if kind == "text":
+            # Preserve line breaks; wrap long lines
+            for line in value.splitlines():
+                line = line.strip()
+                if line:
+                    story.append(Paragraph(line, body_style))
+                else:
+                    story.append(Spacer(1, 6))
+            story.append(Spacer(1, 8))
+
+        elif kind == "file":
+            p = Path(value).expanduser()
+            if not p.exists():
+                print(f"  warning: file not found, skipping — {p}", file=sys.stderr)
+                continue
+
+            ext = p.suffix.lower()
+            story.append(Paragraph(p.name, section_style))
+
+            if ext in (".jpg", ".jpeg", ".png", ".webp", ".heic", ".tiff", ".tif"):
+                try:
+                    # Use Pillow to get dimensions; convert HEIC/WEBP if needed
+                    if _check_pillow():
+                        from PIL import Image as PILImage
+                        import io
+                        img = PILImage.open(str(p))
+                        if img.mode in ("RGBA", "P"):
+                            img = img.convert("RGB")
+                        buf = io.BytesIO()
+                        img.save(buf, format="JPEG", quality=92)
+                        buf.seek(0)
+                        w, h = img.size
+                    else:
+                        buf = str(p)
+                        from reportlab.lib.utils import ImageReader
+                        ir = ImageReader(str(p))
+                        w, h = ir.getSize()
+
+                    aspect = h / w
+                    display_w = min(page_w, w)
+                    display_h = display_w * aspect
+                    max_h = page_h * 0.85
+                    if display_h > max_h:
+                        display_h = max_h
+                        display_w = display_h / aspect
+                    if display_w > page_w:
+                        display_w = page_w
+                        display_h = display_w * aspect
+
+                    if isinstance(buf, io.BytesIO):
+                        rl_img = RLImage(buf, width=display_w, height=display_h)
+                    else:
+                        rl_img = RLImage(buf, width=display_w, height=display_h)
+                    story.append(rl_img)
+                    story.append(Spacer(1, 12))
+                except Exception as e:
+                    print(f"  warning: could not embed image {p.name} — {e}", file=sys.stderr)
+
+            elif ext == ".pdf":
+                try:
+                    # Extract pages and embed as images via Pillow+pypdf, or just note them
+                    _embed_pdf_pages(p, story, page_w, section_style)
+                except Exception as e:
+                    print(f"  warning: could not embed PDF {p.name} — {e}", file=sys.stderr)
+                    story.append(Paragraph(f"[Could not embed {p.name}: {e}]", body_style))
+            else:
+                print(f"  warning: unsupported file type, skipping — {p.name}", file=sys.stderr)
+
+    doc.build(story)
+    print(f"  saved: {out}")
+
+
+def _embed_pdf_pages(pdf_path: Path, story: list, page_w: float, label_style) -> None:
+    """Embed PDF pages as images using pypdf + Pillow, or note page count."""
+    from reportlab.platypus import Image as RLImage, Spacer
+    from reportlab.lib.units import inch
+    import io
+
+    try:
+        import pypdf
+        reader = pypdf.PdfReader(str(pdf_path))
+        num_pages = len(reader.pages)
+    except ImportError:
+        try:
+            import pikepdf
+            pdf = pikepdf.open(str(pdf_path))
+            num_pages = len(pdf.pages)
+            pdf.close()
+        except ImportError:
+            num_pages = None
+
+    if num_pages is None:
+        story.append(__import__("reportlab.platypus", fromlist=["Paragraph"]).Paragraph(
+            f"[Attached: {pdf_path.name}]", label_style))
+        return
+
+    # Try rendering pages via qlmanage (macOS) as a fallback image approach
+    # Primary: use reportlab to embed pages directly via PdfReader + canvas trick
+    # Simplest reliable cross-platform: note the attachment
+    story.append(__import__("reportlab.platypus", fromlist=["Paragraph"]).Paragraph(
+        f"[Attached PDF: {pdf_path.name}, {num_pages} page(s)]", label_style))
+    story.append(Spacer(1, 6))
+
+    # Embed each page as a rendered image using macOS qlmanage
+    import subprocess, tempfile
+    with tempfile.TemporaryDirectory() as td:
+        try:
+            subprocess.run(
+                ["qlmanage", "-t", "-s", "1600", "-o", td, str(pdf_path)],
+                capture_output=True, timeout=30,
+            )
+            rendered = sorted(Path(td).glob("*.png")) + sorted(Path(td).glob("*.jpg"))
+            if not rendered:
+                return
+            for img_path in rendered:
+                if _check_pillow():
+                    from PIL import Image as PILImage
+                    img = PILImage.open(str(img_path))
+                    w, h = img.size
+                else:
+                    from reportlab.lib.utils import ImageReader
+                    ir = ImageReader(str(img_path))
+                    w, h = ir.getSize()
+                aspect = h / w
+                display_w = page_w
+                display_h = display_w * aspect
+                if display_h > 9 * inch:
+                    display_h = 9 * inch
+                    display_w = display_h / aspect
+                story.append(RLImage(str(img_path), width=display_w, height=display_h))
+                story.append(Spacer(1, 8))
+        except Exception:
+            pass  # already noted the attachment above
+
+
+# ---------------------------------------------------------------------------
+# HTML fallback renderer
+# ---------------------------------------------------------------------------
+
+def _make_html(title: str, items: list[tuple[str, str]], out: Path) -> None:
+    import base64
+    import html as html_lib
+
+    out.parent.mkdir(parents=True, exist_ok=True)
+    html_out = out.with_suffix(".html")
+
+    parts = [
+        "<!DOCTYPE html><html><head><meta charset='utf-8'>",
+        f"<title>{html_lib.escape(title)}</title>",
+        "<style>",
+        "body{font-family:sans-serif;max-width:760px;margin:40px auto;color:#1a1a1a;font-size:14px;line-height:1.6}",
+        "h1{font-size:22px;border-bottom:1px solid #ddd;padding-bottom:8px}",
+        "p{margin:0 0 10px}",
+        ".label{font-size:11px;color:#888;margin-bottom:4px}",
+        "img{max-width:100%;height:auto;display:block;margin:12px 0}",
+        "@media print{body{margin:0}img{page-break-inside:avoid}}",
+        "</style></head><body>",
+        f"<h1>{html_lib.escape(title)}</h1>",
+    ]
+
+    for kind, value in items:
+        if kind == "text":
+            for line in value.splitlines():
+                line = line.strip()
+                if line:
+                    parts.append(f"<p>{html_lib.escape(line)}</p>")
+        elif kind == "file":
+            p = Path(value).expanduser()
+            if not p.exists():
+                print(f"  warning: file not found, skipping — {p}", file=sys.stderr)
+                continue
+            ext = p.suffix.lower()
+            parts.append(f"<p class='label'>{html_lib.escape(p.name)}</p>")
+            if ext in (".jpg", ".jpeg", ".png", ".webp", ".gif"):
+                data = base64.b64encode(p.read_bytes()).decode()
+                mime = "image/jpeg" if ext in (".jpg", ".jpeg") else f"image/{ext[1:]}"
+                parts.append(f"<img src='data:{mime};base64,{data}'>")
+            elif ext == ".pdf":
+                parts.append(f"<p><em>[PDF attached: {html_lib.escape(p.name)}]</em></p>")
+            else:
+                parts.append(f"<p><em>[File: {html_lib.escape(p.name)}]</em></p>")
+
+    parts.append("</body></html>")
+
+    html_out.write_text("\n".join(parts), encoding="utf-8")
+    print(f"  saved: {html_out}")
+    print()
+    print("  reportlab is not installed. An HTML file was created instead.")
+    print("  Open it in Chrome or Safari and use File > Print > Save as PDF.")
+
+
+# ---------------------------------------------------------------------------
+# make subcommand
+# ---------------------------------------------------------------------------
+
+def cmd_make(args: argparse.Namespace) -> None:
+    if not args.title:
+        print("error: --title is required", file=sys.stderr)
+        sys.exit(1)
+    if not args.out:
+        print("error: --out is required", file=sys.stderr)
+        sys.exit(1)
+
+    out = Path(args.out).expanduser()
+    items = _parse_items(args)
+
+    if not items:
+        print("error: provide at least one --add-text or --add-file", file=sys.stderr)
+        sys.exit(1)
+
+    print(f"  mode: {mode()}")
+    print(f"  title: {args.title}")
+    print(f"  items: {len(items)}")
+
+    if mode() == "reportlab":
+        _make_reportlab(args.title, items, out)
+    else:
+        _make_html(args.title, items, out)
+
+
+# ---------------------------------------------------------------------------
+# CLI
+# ---------------------------------------------------------------------------
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        prog="create-chargeback-pdf",
+        description="Build labeled PDFs from mixed text and files for Shopify chargeback responses.",
+    )
+    sub = parser.add_subparsers(dest="command")
+
+    sub.add_parser("check", help="Print available libraries and rendering mode.")
+
+    make_p = sub.add_parser("make", help="Build a PDF from mixed text and files.")
+    make_p.add_argument("--title", default="")
+    make_p.add_argument("--add-text", dest="texts", action="append", default=[])
+    make_p.add_argument("--add-file", dest="files", action="append", default=[])
+    make_p.add_argument("--out", default="")
+
+    args = parser.parse_args()
+
+    if args.command == "check":
+        cmd_check(args)
+    elif args.command == "make":
+        cmd_make(args)
+    else:
+        parser.print_help()
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    main()

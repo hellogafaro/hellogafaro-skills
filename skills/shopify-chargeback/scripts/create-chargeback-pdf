@@ -240,7 +240,7 @@ def _make_reportlab(title: str, items: list[tuple[str, str]], out: Path) -> None
             elif ext == ".pdf":
                 try:
                     # Extract pages and embed as images via Pillow+pypdf, or just note them
-                    _embed_pdf_pages(p, story, page_w, section_style)
+                    _embed_pdf_pages(p, story, page_w, page_h, section_style)
                 except Exception as e:
                     print(f"  warning: could not embed PDF {p.name} — {e}", file=sys.stderr)
                     story.append(Paragraph(f"[Could not embed {p.name}: {e}]", body_style))
@@ -251,7 +251,7 @@ def _make_reportlab(title: str, items: list[tuple[str, str]], out: Path) -> None
     print(f"  saved: {out}")
 
 
-def _embed_pdf_pages(pdf_path: Path, story: list, page_w: float, label_style) -> None:
+def _embed_pdf_pages(pdf_path: Path, story: list, page_w: float, page_h: float, label_style) -> None:
     """Embed PDF pages as images using pypdf + Pillow, or note page count."""
     from reportlab.platypus import Image as RLImage, Spacer
     from reportlab.lib.units import inch

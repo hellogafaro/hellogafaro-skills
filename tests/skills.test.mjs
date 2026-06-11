@@ -38,6 +38,8 @@ const expectedResources = {
   "calendar-management": [
     "references/calendar-conflicts.md",
     "references/calendar-edge-cases.md",
+    "references/calendar-fetch-scheduling.md",
+    "references/calendar-inbox-sync.md",
     "references/calendar-prep.md",
     "references/calendar-triage.md"
   ],
@@ -45,15 +47,34 @@ const expectedResources = {
   "email-analysis": ["references/lifecycle.md"],
   "email-management": [
     "references/email-edge-cases.md",
+    "references/email-attachments.md",
+    "references/email-auto-rules.md",
     "references/email-inbox-sync.md",
     "references/email-responding.md",
     "references/email-signal-rules.md",
     "references/email-snoozed.md"
   ],
+  "inbox-management": [
+    "references/edge-cases.md",
+    "references/loop-states.md",
+    "references/reconciliation.md"
+  ],
   "measurement-audit": ["references/attribution.md"],
   "paid-media-analysis": ["references/diagnostics.md"],
   "reporting": ["references/report-types.md"],
-  "task-management": ["references/tasks-schema.md"]
+  "shopiworks-clickup-sync": [
+    "references/clickup-content.md",
+    "references/worker-tools.md"
+  ],
+  "task-management": [
+    "references/completion.md",
+    "references/inbox-sync.md",
+    "references/source-material.md",
+    "references/task-format.md",
+    "references/task-queries.md",
+    "references/tasks-schema.md",
+    "references/time-tracking.md"
+  ]
 };
 
 const forbiddenSkills = [
@@ -103,7 +124,7 @@ test("skills have valid metadata", async () => {
 
     assert.equal(frontmatter.name, skill);
     assert.ok(frontmatter.description?.length > 60, `${skill} needs useful description`);
-    assert.ok(frontmatter.description.includes("Use when "), `${skill} description must include trigger guidance`);
+    assert.ok(frontmatter.description.startsWith("Use when "), `${skill} description must be trigger-first`);
     assert.ok(markdown.includes(`# ${skill}`), `${skill} needs matching h1`);
     assert.ok(!markdown.includes("\u2014"), `${skill} must not use em dash`);
     assert.ok(!markdown.includes("\u2013"), `${skill} must not use en dash`);

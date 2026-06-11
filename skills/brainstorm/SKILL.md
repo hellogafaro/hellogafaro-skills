@@ -1,6 +1,6 @@
 ---
 name: brainstorm
-description: Use when the user wants to stress-test a plan, design, product decision, architecture, or implementation approach through focused questions.
+description: Use when the user wants an interactive thinking session to stress-test an unresolved plan, design, product decision, architecture, or implementation approach through focused questions, without producing a durable artifact by default.
 ---
 
 # brainstorm

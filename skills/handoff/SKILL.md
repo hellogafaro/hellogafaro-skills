@@ -1,6 +1,6 @@
 ---
 name: handoff
-description: Use when work needs to be compacted into a Notion handoff document for another agent to pick up.
+description: Use when current work must be compacted into a Notion handoff document so another agent or future session can continue from the right context.
 ---
 
 # handoff

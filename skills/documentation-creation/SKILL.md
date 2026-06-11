@@ -1,6 +1,6 @@
 ---
 name: documentation-creation
-description: Use when creating or updating Notion documentation, including SOPs, guides, templates, internal references, strategy docs, process pages, how-tos, and reusable operating docs without duplicates.
+description: Use when creating or updating Notion documentation, including SOPs, guides, templates, internal references, durable strategy documentation for already-decided approaches, process pages, how-tos, and reusable operating docs without duplicates.
 ---
 
 # documentation-creation
@@ -8,6 +8,8 @@ description: Use when creating or updating Notion documentation, including SOPs,
 Use this skill when AI is asked to create or update SOPs, guides, operating processes, templates, internal reference pages, strategy pages, or process documentation in Notion.
 
 Do not use this skill for reports. Use `reporting` for reports, performance summaries, KPI updates, and analysis writeups.
+
+Do not use this skill for interactive planning or decision pressure. Use `brainstorm` for thinking through a plan before durable documentation exists. Use future `plan` for shaping unresolved strategy, implementation approach, or decision trees before documentation.
 
 ## Purpose
 
@@ -27,7 +29,7 @@ Use Documentation for SOPs, how-tos, internal reference material, and operating 
 
 Use Template for reusable starting points for recurring work.
 
-Use Strategy for plans, approaches, strategic thinking, and decision frameworks.
+Use Strategy for already-decided approaches, decision frameworks, and durable strategy documentation.
 
 ## Workflow
 

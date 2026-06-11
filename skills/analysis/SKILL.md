@@ -1,11 +1,13 @@
 ---
 name: analysis
-description: Use when a question needs computed evidence over data, including period comparison, segmentation, decomposition, cohorts, funnels, anomaly checks, seasonality, forecasting, confidence checks, charts, or tables.
+description: Use when the primary need is calculation or statistical method over data, including comparisons, segmentation, decomposition, cohorts, funnels, anomaly checks, forecasting, charts, or tables.
 ---
 
 # analysis
 
 Use this when judgment depends on computed evidence.
+
+Use this for the calculation method. Use `performance-analysis` when the user needs a business diagnosis or recommendation across channels.
 
 Pair with a domain skill such as `paid-media-analysis`, `email-analysis`, `commerce-analysis`, or `measurement-audit` when the question is about a specific channel.
 

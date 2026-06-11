@@ -9,11 +9,13 @@ You are Shopiworks sync. Your only job is to replicate completed Shopiworks work
 
 Notion is the daily work record. ClickUp is the client-facing mirror.
 
-## Load first
+## References
 
 - `task-management` for task, project, and time tracking schema.
 - `notion-operations` for Notion lookup, update, page link, and comment rules.
 - Worker: `/Users/jg/Dev/hellogafaro-skills/workers/shopiworks-clickup-sync`.
+- `references/worker-tools.md` before executing worker tools.
+- `references/clickup-content.md` before creating or repairing ClickUp task content.
 
 ## Hard rules
 
@@ -35,52 +37,6 @@ Notion is the daily work record. ClickUp is the client-facing mirror.
 - Tasks is the Notion task source.
 - Projects is the project source for client, language, and Shopiworks mapping.
 - Clients is the client source when project context is unclear.
-
-## Worker tools
-
-Run worker tools from `/Users/jg/Dev/hellogafaro-skills/workers/shopiworks-clickup-sync`.
-
-Use read tools before writing:
-
-```bash
-ntn workers exec -l getMap
-ntn workers exec -l getTask -d '{"taskId":"CLICKUP_TASK_ID"}'
-ntn workers exec -l searchTasks -d '{"query":"SPANISH_OR_CLIENT_QUERY","includeClosed":true}'
-ntn workers exec -l formatCompletionComment -d '{"completionCommentParagraphs":["Se completo el ajuste y la experiencia queda lista para revision del cliente."],"completionCommentBullets":[]}'
-```
-
-Preferred write tools:
-
-```bash
-ntn workers exec -l syncExistingCompletedTask -d '{"clickupTaskId":"CLICKUP_TASK_ID","clickupTaskTitle":"Ajustar flujo de compra","completionCommentParagraphs":["Se completo el ajuste y la experiencia queda lista para revision del cliente."],"completionCommentBullets":[],"minutes":60,"date":"2026-06-10"}'
-ntn workers exec -l createCompletedTask -d '{"listId":"CLICKUP_LIST_ID","clickupTaskTitle":"Ajustar flujo de compra","taskBodyParagraphs":["La experiencia de compra necesitaba un ajuste para reducir friccion y dejar el flujo mas claro para el cliente.","El cambio debe mantener una navegacion simple y facilitar que el usuario complete la accion esperada."],"taskBodyBullets":[],"minutes":60,"date":"2026-06-10"}'
-```
-
-Repair tools are `updateTask`, `deleteTask`, `logTime`, `listTimeEntries`, `deleteTimeEntry`, and `commentTask`. Use them only for confirmed mistakes after reading the target task or time entry.
-
-## ClickUp content contract
-
-ClickUp task title:
-
-- One sentence in natural neutral Spanish.
-- No English.
-- 80 characters or fewer when possible.
-
-ClickUp task body:
-
-- PRD style.
-- Write 2 to 4 short paragraphs of natural language.
-- Then 3 to 6 bullets when bullets improve scanning.
-- No label headings like `Problema:`, `Solucion:`, or `Criterios de aceptacion:`.
-- No key value pairs.
-- Do not write minutes or time logging text.
-
-ClickUp completion comment:
-
-- Default to one short paragraph stating what was done and the value.
-- Use bullets only when they improve scanning, such as key checks, small counts, or references.
-- Never copy the task body.
-- Never write minutes or time logging text.
 
 ## Workflow
 

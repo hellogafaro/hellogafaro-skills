@@ -1,4 +1,4 @@
-Load when email does not fit the normal decision loop.
+Load for bounces, out-of-office auto-replies, email calendar invites, phishing or payment-change risk, duplicate threads, CC-only mail, and other nonstandard loops.
 - Out-of-office or auto-reply on a Waiting thread is not a real reply. Waiting stays open.
 - Bounce on user outbound is an Alert, not noise. Surface immediately.
 - VIP sender from an unrecognized address is a phishing flag. Do not act.

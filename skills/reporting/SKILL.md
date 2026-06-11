@@ -1,17 +1,17 @@
 ---
 name: reporting
-description: Use when preparing, reviewing, or summarizing reports, including weekly reports, monthly reports, anomaly memos, performance summaries, KPI updates, evidence-backed findings, caveats, charts, and action-oriented outputs.
+description: Use when preparing, reviewing, or summarizing the final reporting artifact or client-facing writeup, including weekly reports, monthly reports, anomaly memos, KPI updates, caveats, source links, charts, and action-oriented outputs.
 ---
 
 # reporting
 
 Use this skill when AI is asked to prepare, review, or summarize weekly reporting, monthly reporting, anomaly memos, performance summaries, reporting questions, KPI updates, or analysis writeups.
 
-Use `performance-analysis` when the report needs diagnosis beyond a simple metric read.
+Use this for the final reporting artifact or client-facing writeup. Use `performance-analysis` when the report needs diagnosis beyond a simple metric read.
 
 ## Purpose
 
-Produce accurate, useful reporting outputs that use the right data window and explain what changed, why it matters, and what to do next.
+Package already-gathered evidence and any needed diagnosis into a clear reporting output with the right period, caveats, and next actions.
 
 ## Inputs
 
@@ -48,7 +48,7 @@ Match the project's language when writing client-facing output.
 
 Use the smallest structure that answers the request.
 
-Read `references/report-types.md` when deciding between a quick answer, anomaly memo, weekly report, or monthly report.
+Read `references/report-types.md` before creating weekly, monthly, or anomaly report artifacts.
 
 Monthly and weekly reports usually need:
 

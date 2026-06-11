@@ -1,6 +1,6 @@
 ---
 name: task-management
-description: Use when work involves task creation, updates, completion, cancellation, workload review, blockers, task extraction, priority recommendations, routing, or time tracking across Hello Gafaro Tasks and Jol ClickUp.
+description: Use when work involves task creation, updates, completion, cancellation, workload review, blockers, task extraction, priority recommendations, task routing, or time tracking across Hello Gafaro Tasks and Jol ClickUp.
 ---
 
 # task-management
@@ -13,9 +13,23 @@ Exact user-owned daily hygiene means the user clearly gives the task or meeting,
 
 Route through Handoffs when the request needs new task creation, ambiguous updates, bulk changes, workload planning, blocker management, scheduling judgment, cross-person coordination, unclear time tracking, or missing required context.
 
+Use `inbox-management` for the agent's active checkpoint. Use this skill for durable Tasks, Timesheets, workload, and task status.
+
 ## Purpose
 
 Keep work clear, balanced, and moving while using the right task system consistently.
+
+## References
+
+Load only when needed.
+
+- `references/tasks-schema.md` before creating or updating task properties.
+- `references/task-queries.md` before querying, creating, or updating task records.
+- `references/task-format.md` when creating or rewriting task content.
+- `references/time-tracking.md` when completing tasks or logging time.
+- `references/source-material.md` when extracting tasks from meetings, plans, threads, or Inbox items.
+- `references/inbox-sync.md` when task-backed work affects Inbox.
+- `references/completion.md` when marking tasks done.
 
 ## Hard rules
 
@@ -63,71 +77,9 @@ Default Owner to the requester unless another supervisor is specified.
 
 Default Assignee to the executing person or agent when known.
 
-Default status to `Not started`.
-
-Default recurrence to `One-time`.
-
 Do not leave Assignee, Project, Priority, or Due date unclear.
 
 Assignee is a people property. Use the Team database Notion column to resolve agents and team members.
-
-Read `references/tasks-schema.md` before mutating task or time-tracking records.
-
-## Task format
-
-- Create one task per clear action or outcome.
-- Start the title with a verb.
-- Keep the title under 10 words.
-- Avoid client or project names in the title unless needed for clarity.
-- Do not use colons in titles.
-- Include month and year for time-bound campaigns when needed.
-- First description sentence states what will be delivered and why it matters.
-- Add 2 to 4 acceptance criteria bullets.
-- Start each acceptance criterion with a verb.
-- Keep due dates and other property data out of the description.
-
-## Time tracking
-
-Every completed substantive task needs time tracked.
-
-- Log only against real tasks.
-- Project relation is always required on time entries.
-- Task relation is required when the work is task-related.
-- Task relation is optional for non-task work such as meetings.
-- When a task relation exists, the time entry title must be the task page reference.
-- When no task relation exists, the title should be one clear sentence about what was done.
-- Inbox items, reminders, alerts, and meeting prep placeholders are not tasks unless they link to a task page.
-- If the item was only a reminder, remove or update it and do not create a time entry.
-- Use 15-minute increments, rounded up.
-- Task management counts.
-- Context switching counts.
-- If duration is unknown, ask before completing.
-- For meeting time, read the meeting page Project relation first.
-- If the meeting has one Project relation, use it for the time entry.
-- If the meeting has no Project relation, ask for the project and update the meeting before logging time.
-- If the meeting has multiple Project relations, ask which project owns the time.
-
-## Working from source material
-
-For meeting notes or action items, extract only actions worth tracking. Do not turn every note, decision, reminder, or discussion point into a task.
-
-Do not mine past meeting summaries for new tasks during Inbox updates, scheduled routines, workload reviews, or status checks.
-
-Use meeting pages for task creation only when the user explicitly asks, the Handoff asks for it, or selected task candidates are already provided.
-
-When chatting with the user in a meeting page, General Notion AI should filter the meeting into proposed task candidates first.
-
-If the user approves 1 to 3 clear user-owned tasks with project context, General Notion AI may create them directly.
-
-If the task list is large, cross-person, ambiguous, missing project context, missing owners, missing due dates, or affects workload, create one Handoff to Dash with the selected task candidates only.
-
-Never pass the whole meeting transcript to Dash by default. Pass the filtered tasks, meeting page link, Project relation, owner, due date, source context, constraints, and acceptance criteria needed to create the tasks correctly.
-
-For plans or strategies, break into concrete tasks and split into now, next, and later when scope is larger than one week.
-
-For threads or conversations, extract only actionable items, ignore chatter, and confirm before creating if intent is not explicit.
-
-For Inbox items, read the source item for ask and context, apply validation, and keep task-backed Inbox To do items linked until the task is done or canceled.
 
 ## Workflow
 
@@ -142,26 +94,6 @@ For Inbox items, read the source item for ask and context, apply validation, and
 9. Flag anyone with 3 or more active tasks.
 10. Recommend the single most impactful next action.
 
-## Inbox sync
-
-Task-backed work stays in Inbox To do until the task is done or canceled.
-
-Inbox task work comes from the live Tasks database, Handoffs, current Inbox items, or an explicit user request.
-
-Past meeting notes are context, not active task source.
-
-Remove closed, canceled, archived, unassigned, or no-longer-actionable Inbox items.
-
-Rewrite stale Inbox items with the current next action.
-
-Do not duplicate source URLs.
-
 ## Completion
 
-When marking a task done, always add the time entry and one concise final comment with the result.
-
-The final comment is the result log, not a restatement of the original task. ALWAYS write completion comments in first person as the actor who did the work, even when recording work the user completed. Use natural phrasing like `I updated the page`, `I checked the source`, `I left a note`, or `I made the change`. NEVER write task completion comments in third person like `Johan updated the page` or `Codex checked the source`. Prefer 2 to 3 short natural-language prose chunks so the result is easy to digest. Do not use key-value pairs or stiff labels. Add any completion context that belongs with the result, such as key numbers, decisions, links, screenshots, or files, only when needed to understand or verify the result.
-
-For development tasks, the final comment MUST include linked commit IDs, PR links, deployment links, or other code-result links when they exist. Mention them inside natural prose, not as labels or key-value pairs. Use the commit ID as the visible link text, not a raw full URL. These links belong in the comment, not in the pre-work bullets.
-
-Task work is complete when the live source is updated, REQUIRED time tracking is handled, the final result comment is posted, Inbox is current, and any needed Handoff exists.
+Task work is complete when the live source is updated, required time tracking is handled, the final result comment is posted, Inbox is current, and any needed Handoff exists.

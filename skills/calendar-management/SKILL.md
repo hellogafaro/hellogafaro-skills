@@ -13,10 +13,12 @@ Calendar and Inbox are one system. Any calendar action that opens, changes, or c
 
 Load only when needed.
 
-- `references/calendar-triage.md` at the start of calendar triage.
+- `references/calendar-triage.md` at the start of every calendar run.
 - `references/calendar-conflicts.md` when a conflict, move, cancellation, or tentative hold appears.
 - `references/calendar-prep.md` before building meeting prep.
 - `references/calendar-edge-cases.md` for out of office, travel, recurring changes, timezone ambiguity, short notice, or source failures.
+- `references/calendar-fetch-scheduling.md` for fetch windows and scheduling defaults.
+- `references/calendar-inbox-sync.md` when calendar state affects Inbox.
 
 ## Hard rules
 
@@ -29,73 +31,6 @@ Load only when needed.
 - Do not schedule into out of office, focus blocks, protected lunch, or unavailable time without explicit override.
 - Counterparty timezone is the timezone shown in scheduling messages.
 - Never make the counterparty convert time.
-
-## Fetch
-
-Fetch today's calendar and the next 7 days by default.
-
-For deep planning, fetch the next 14 days.
-
-Filter before surfacing events.
-
-1. Event end time is in the future.
-2. User attendee response is not declined.
-3. Event is not canceled.
-
-Drop past events unless a follow-up exists.
-
-If a source is unreachable, process the other sources and surface the skipped source.
-
-## Scheduling
-
-Use Memory for working hours, meeting caps, lunch window, buffers, default length, prep blocks, focus preferences, and exceptions.
-
-Default meeting length is 30 minutes unless scope clearly needs more.
-
-Offer 3 slots max, spaced across days when possible.
-
-Respect buffers and avoid back-to-back meetings.
-
-Keep at least one 30-minute unblocked slot per half day when possible.
-
-## Triage
-
-For every new meeting request or unclear event, check purpose, whether the user is needed, async fit, confirmation, conflicts, and prep needs.
-
-If purpose is unclear, ask for agenda or propose async.
-
-If the user is not needed, suggest delegate, async, or decline.
-
-If the meeting is proposed but not confirmed, add Waiting in Inbox instead of treating it as scheduled.
-
-## Conflicts
-
-Priority order is user explicit request, VIP or key customer, existing commitment, then new request.
-
-For same-tier conflicts, recommend what to keep or move and explain why.
-
-Same-day cancellation, move, or reschedule by a counterparty becomes an Alert in Inbox.
-
-## Meeting prep
-
-Every status or day run checks meetings in the next 24 hours.
-
-Prepare context for important, external, VIP, or unclear meetings.
-
-Prep includes why the meeting exists, who is attending, relevant source links, recent messages, prior promises, open questions, suggested agenda, and whether the user is actually needed.
-
-Tentative or declined events get no prep unless the user asks.
-
-Past meetings leave Inbox unless a follow-up remains.
-
-## Inbox sync
-
-- Meeting confirmed in the next 24 hours becomes a Meeting item.
-- Meeting proposed but unconfirmed becomes Waiting.
-- Same-day cancellation or move becomes Alert.
-- Out of office or travel becomes Reminder or Alert when it affects the day.
-- Promised follow-up becomes To do.
-- Remove stale meeting prep when the meeting passes or is canceled.
 
 ## Output
 

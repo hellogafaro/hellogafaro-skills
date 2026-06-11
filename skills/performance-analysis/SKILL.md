@@ -1,6 +1,6 @@
 ---
 name: performance-analysis
-description: Use when reporting or business questions need performance diagnosis across measurement trust, paid media, lifecycle email, ecommerce, forecasting, attribution, driver analysis, and business-impact interpretation.
+description: Use when a business or marketing performance movement needs a source-backed diagnosis, driver explanation, confidence level, or recommendation across measurement, paid media, lifecycle email, ecommerce, attribution, and business impact.
 ---
 
 # performance-analysis
@@ -8,6 +8,8 @@ description: Use when reporting or business questions need performance diagnosis
 Use this skill when reporting work needs diagnosis beyond a simple metric read.
 
 It covers computed analysis, measurement trust, paid media, Klaviyo, Shopify, attribution, forecasting, and business-impact interpretation.
+
+Use this as the diagnosis router. Use `analysis` for the calculation method and `reporting` for the final reporting artifact or client-facing writeup.
 
 Do not use this skill to write final report structure. Use `reporting` for reporting output and workflow.
 

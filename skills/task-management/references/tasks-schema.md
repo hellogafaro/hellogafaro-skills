@@ -1,10 +1,6 @@
-# Tasks schema and query recipes
+# Tasks schema
 
-Exact ids, property types, and the `ntn` calls behind the task-management skill.
-
-```
-ntn <args>
-```
+Exact ids and property types behind the task-management skill.
 
 ## Database and data source ids
 
@@ -54,96 +50,6 @@ To resolve a missing user id:
 
 - List workspace users: `api /v1/users page_size==100`, then match by name.
 - Use the Team database to pick who should supervise or execute the work, then resolve that Notion value.
-
-## Create a task
-
-```
-ntn api /v1/pages -d '{
-  "parent": {"type":"data_source_id","data_source_id":"25ffc798-2e43-801b-9eed-000b4bc5f349"},
-  "properties": {
-    "Name": {"title":[{"text":{"content":"Draft June email campaign"}}]},
-    "Owner": {"people":[{"id":"<owner-user-id>"}]},
-    "Assignee": {"people":[{"id":"<assignee-user-or-agent-id>"}]},
-    "Project": {"relation":[{"id":"<project-page-id>"}]},
-    "Priority": {"select":{"name":"Medium"}},
-    "Status": {"status":{"name":"Not started"}},
-    "Recurrence": {"select":{"name":"One-time"}},
-    "Due date": {"date":{"start":"2026-06-15"}}
-  }
-}'
-```
-
-## Update status (only after the owner confirms)
-
-```
-ntn api /v1/pages/<task-page-id> -X PATCH -d '{
-  "properties": {"Status": {"status":{"name":"In progress"}}}
-}'
-```
-
-## Active-count check (the 3-active limit)
-
-Query active tasks for one assignee and count the results:
-
-```
-ntn api /v1/data_sources/25ffc798-2e43-801b-9eed-000b4bc5f349/query -X POST -d '{
-  "filter": {"and": [
-    {"property":"Assignee","people":{"contains":"<assignee-user-or-agent-id>"}},
-    {"or": [
-      {"property":"Status","status":{"equals":"In progress"}},
-      {"property":"Status","status":{"equals":"Under review"}},
-      {"property":"Status","status":{"equals":"Blocked"}}
-    ]}
-  ]}
-}'
-```
-
-## Done-without-time check
-
-Query done tasks, then treat any with an empty `Time tracked` relation as missing a time entry:
-
-```
-ntn api /v1/data_sources/25ffc798-2e43-801b-9eed-000b4bc5f349/query -X POST -d '{
-  "filter": {"property":"Status","status":{"equals":"Done"}}
-}'
-```
-
-## Log a time entry (Timesheets)
-
-`Name` is the title. `Minutes` is the canonical duration number. `Hours` is a formula, so do not set it. `Date` is editable and required for reporting. Log in 15-minute increments, rounding up.
-
-Task-linked entries use a Notion task mention or task title as `Name`, plus `Task` and `Project`.
-
-Non-task meeting entries use one clear sentence-case name, no `Task`, and the meeting page `Project`.
-
-```
-ntn api /v1/pages -d '{
-  "parent": {"type":"data_source_id","data_source_id":"e6f1b1a0-0a27-434e-b220-00f79ee95859"},
-  "properties": {
-    "Name": {"title":[{"text":{"content":"Draft June email campaign"}}]},
-    "Owner": {"people":[{"id":"<notion-user-id>"}]},
-    "Task": {"relation":[{"id":"<task-page-id>"}]},
-    "Project": {"relation":[{"id":"<project-page-id>"}]},
-    "Date": {"date":{"start":"2026-06-04"}},
-    "Minutes": {"number":45}
-  }
-}'
-```
-
-## Log meeting time without a task
-
-```
-ntn api /v1/pages -d '{
-  "parent": {"type":"data_source_id","data_source_id":"e6f1b1a0-0a27-434e-b220-00f79ee95859"},
-  "properties": {
-    "Name": {"title":[{"text":{"content":"Met with Jol about Shopify size charts"}}]},
-    "Owner": {"people":[{"id":"<notion-user-id>"}]},
-    "Project": {"relation":[{"id":"<meeting-project-page-id>"}]},
-    "Date": {"date":{"start":"2026-06-04"}},
-    "Minutes": {"number":30}
-  }
-}'
-```
 
 ## Naming note
 

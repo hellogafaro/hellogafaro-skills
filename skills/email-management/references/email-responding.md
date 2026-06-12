@@ -12,6 +12,7 @@ Subject: \[subject\]
 Send this?
 \~\~\~
 Wait for explicit send approval. Edited draft text, ok, looks good, approved, or silence only approve wording. They do not approve sending.
+Approval resets after any edit or discovery. If recipients, cc, bcc, subject, body, links, attachments, sending account, thread, or source content change after approval, show the final exact version again and wait for a fresh send instruction. Do not ask for approval until every one of those is known and shown.
 ## After send approval
 Verify the sending account is the receiving account. Reply in-thread when the message belongs to a thread. Send a new email only when it is a new conversation.
 After sending, verify sent state when possible. Archive closed loops. Move response-needed loops to Waiting. Remove or rewrite stale Inbox items.

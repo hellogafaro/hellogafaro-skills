@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "check": "node --test tests/*.test.mjs",
-    "sync:notion-skills": "node scripts/sync-notion-skills.mjs"
+    "sync:notion-skills": "node scripts/sync-notion-skills.mjs",
+    "deploy": "node scripts/deploy-skills.mjs"
   }
 }

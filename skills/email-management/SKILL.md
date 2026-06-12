@@ -18,6 +18,7 @@ Load only when needed.
 - `references/email-inbox-sync.md` whenever an email loop affects Inbox.
 - `references/email-edge-cases.md` for bounces, out-of-office auto-replies, email calendar invites, phishing or payment-change risk, duplicate threads, CC-only mail, and other nonstandard loops.
 - `references/email-snoozed.md` when snoozing or resurfacing a snoozed item.
+- `references/email-fetch.md` before fetching, counting, or triaging inbox mail.
 - `references/email-attachments.md` before sending attachments.
 - `references/email-auto-rules.md` before suggesting or creating repeated email rules.
 
@@ -36,6 +37,8 @@ Load only when needed.
 - Draft in chat or page content by default.
 - Never send without explicit send approval.
 - Edited draft text is not send approval.
+- Never send on earlier or implied approval after recipients, subject, body, links, attachments, sender account, thread, or source content are discovered, edited, or changed. Show the final exact version again and get a fresh send instruction.
+- Never treat early intent ("let's send", "send it over", "we should email them", "looks good", "ok", "approved"), edited wording, or silence as approval to send a final email that has not been shown in its exact final form.
 - Never delete or trash. Archive only.
 - Use Contacts for unknown contacts.
 - Private email bodies stay private.
@@ -48,15 +51,21 @@ For every account used in a run, verify that the mailbox is the intended account
 
 If one account is unreachable, process the others and say which account was skipped.
 
+For local connected-account work, pass the account selector on every command and use the proper connected account, never delegation through another mailbox. The exact account selectors live in Memory. If a mailbox returns a delegation-denied error, treat it as a wrong or missing account selector first and retry with the correct account before reporting the mailbox blocked or the thread missing.
+
 ## Fetch and search
 
-Start with Inbox and unread, then Inbox only.
+Triage is always the inbox, walked in order: unread, then read, then snoozed. Surface every layer even when an earlier one is empty. Never stop at unread.
 
-Never read all mail without a specific reason.
+The goal is inbox zero: every message in the inbox processed to closed, archived, replied, or tracked. Unread takes priority over read, but read mail still in the inbox is unprocessed work and counts against zero.
 
-Read enough context to classify accurately. Subject and preview are not enough for support, vendor, customer, legal, finance, or active project threads.
+Scope unread to the inbox. Open client and counterparty threads also hide in read inbox mail, so check sent mail before treating one as closed.
+
+Never read all mail without a specific reason. Read enough context to classify accurately. Subject and preview are not enough for support, vendor, customer, legal, finance, or active project threads.
 
 When searching for a thread, search all connected email accounts before reporting not found.
+
+See `references/email-fetch.md` for query scoping and connected-tool fetch mechanics.
 
 ## Output
 

@@ -1,6 +1,7 @@
 Load whenever an email action affects the user's Inbox.
 Email and Inbox are one system. Every opened email loop must end closed, waiting, assigned as to do, flagged as alert, or handed off.
 Every email that needs a reply belongs in Inbox To do until it is answered, even before a draft exists. Reply needed means the user or assistant owns the next action, which is To do, not Waiting. Waiting is only for loops where someone else owns the next response.
+Create one To do per reply-needed thread. Do not merge separate threads into one item, even from the same sender. The To do set must mirror every open reply-needed thread one to one.
 ## Action table
 <table header-row="true">
 <tr>

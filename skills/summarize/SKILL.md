@@ -17,6 +17,7 @@ Create a concise natural-text completion summary the user can forward to a proje
 - Include every PR with number or URL when PRs were opened or updated.
 - Mention GitHub repositories by owner/name, not local filesystem paths, unless the local path is the deliverable.
 - Include the temporary handoff task Markdown file path when one was created.
+- End with a natural-language estimate of how long the work would take a capable human to do, rounded to 15-minute increments. Estimate realistic human effort from the scope and verification, not elapsed agent time or commit timestamps.
 - Do not mention irrelevant dirty files, generated metadata, local cache files, or files intentionally left untouched unless they affect the handoff.
 - Do not include tool noise, command transcripts, process narration, or generic caveats.
 - Do not say what was not done unless it changes the project manager's next step.
@@ -45,5 +46,6 @@ Default order:
 3. QA or verification run.
 4. Handoff task Markdown file path if created.
 5. Any real blocker or next project-manager action.
+6. Human effort estimate in natural language.
 
 Keep the answer compact. The goal is accurate handoff, not a diary.

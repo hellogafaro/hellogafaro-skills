@@ -18,4 +18,5 @@ Fetch current sources before writing:
 - Notion Tasks DB: current data source ID, Owner is User, Status not Done and not Canceled, due today or overdue.
 - ClickUp tasks: assigned to User, filter by status type, page fully.
 - Notion mentions and comments: user-owned, recent, or self-mentions.
-- Email and calendar: follow their skills.
+- Email: follow the email-management skill.
+- Calendar: for Inbox-only reconciliation, fetch today only. Do not fetch or summarize tomorrow, the next 7 days, or future calendar context unless the user explicitly asks for day planning, scheduling, calendar review, or a future meeting already exists as an Inbox item that must be verified.

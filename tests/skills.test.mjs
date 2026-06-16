@@ -26,6 +26,7 @@ const expectedSkills = [
   "performance-analysis",
   "plan",
   "reporting",
+  "shopify-chargeback",
   "skill-creation",
   "shopiworks-clickup-sync",
   "slack-communication",

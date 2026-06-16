@@ -84,7 +84,7 @@ Write like a real person, not a lawyer.
 - No unnecessary parentheses.
 - Short sentences. One idea each.
 - Bullet points for lists of facts.
-- First person from the merchant. "We shipped the order on..." "The customer told us..."
+- First person from the merchant. Use wording like "We shipped the order on June 3" or "The customer told us they received it."
 - Lead with the strongest fact. Make reversing the dispute feel like the obvious call.
 
 ## Rules

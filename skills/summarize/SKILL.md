@@ -18,9 +18,10 @@ Create a concise natural-text completion summary the user can forward to a proje
 - Include every PR with number or URL when PRs were opened or updated.
 - Mention GitHub repositories by owner/name, not local filesystem paths, unless the local path is the deliverable.
 - Put the temporary handoff task Markdown file or URL near the end in its own sentence when one was created.
-- Name temporary handoff files in kebab case with the task slug and timestamp so they are unique, such as `/tmp/tsk-701-lennys-storefront-slowdown-20260616-1430.md`.
+- Name temporary handoff files in kebab case with the task slug and timestamp so they are unique, such as `/tmp/task-id-short-task-slug-20260616-1430.md`.
 - End with a concise senior-level human effort estimate, rounded to 15-minute increments. Use plain wording like `This would have taken a senior-level human about 1 hour.` Estimate from the real scope and verification, not elapsed agent time or commit timestamps.
 - Do not pad the effort estimate with generic phrases like `capable human doing this end to end` or repeat the whole work list inside the estimate sentence.
+- Use only generic placeholder content in examples, filenames, and sample wording. Do not include real client names, task ids, repositories, URLs, people, or project details in the skill itself.
 - Do not mention irrelevant dirty files, generated metadata, local cache files, or files intentionally left untouched unless they affect the handoff.
 - Do not include tool noise, command transcripts, process narration, or generic caveats.
 - Do not say what was not done unless it changes the project manager's next step.

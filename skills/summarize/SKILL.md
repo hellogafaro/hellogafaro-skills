@@ -19,8 +19,8 @@ Create a concise natural-text completion summary the user can forward to a proje
 - Mention GitHub repositories by owner/name, not local filesystem paths, unless the local path is the deliverable.
 - Put the temporary handoff task Markdown file or URL near the end in its own sentence when one was created.
 - Name temporary handoff files in kebab case with the task slug and timestamp so they are unique, such as `/tmp/task-id-short-task-slug-20260616-1430.md`.
-- End with a concise senior-level human effort estimate, rounded to 15-minute increments. Use plain wording like `This would have taken a senior-level human about 1 hour.` Estimate from the real scope and verification, not elapsed agent time or commit timestamps.
-- Do not pad the effort estimate with generic phrases like `capable human doing this end to end` or repeat the whole work list inside the estimate sentence.
+- End with a concise tracked-time sentence, rounded to 15-minute increments, such as `Add 1 hour of tracked time for this work.` Estimate the amount as senior-level human effort from the real scope and verification, not elapsed agent time or commit timestamps.
+- Do not pad the time estimate with generic phrases like `capable human doing this end to end`, hypothetical wording like `would have taken`, or a repeated list of the work.
 - Use only generic placeholder content in examples, filenames, and sample wording. Do not include real client names, task ids, repositories, URLs, people, or project details in the skill itself.
 - Do not mention irrelevant dirty files, generated metadata, local cache files, or files intentionally left untouched unless they affect the handoff.
 - Do not include tool noise, command transcripts, process narration, or generic caveats.
@@ -48,6 +48,6 @@ Default order:
 3. QA or verification run.
 4. Handoff task Markdown file path if created.
 5. Any real blocker or next project-manager action.
-6. Senior-level human effort estimate as the final sentence.
+6. Tracked-time estimate as the final sentence.
 
 Keep the answer compact. The goal is accurate handoff, not a diary.

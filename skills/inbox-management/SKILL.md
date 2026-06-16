@@ -57,6 +57,8 @@ Use numbered list items so the user can reference `To do 3` or `Waiting 1`.
 
 Mention or link the source page when a source exists. Prefer real Notion page mentions for Notion tasks and pages. Use named links only when mentions are unavailable.
 
+For task-backed To do items, always include the task unique ID in visible text, such as `TSK-483`, alongside the task mention or link.
+
 Do not create timestamp-free main entries.
 
 ## Rules

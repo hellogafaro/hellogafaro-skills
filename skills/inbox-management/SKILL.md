@@ -64,6 +64,7 @@ Do not create timestamp-free main entries.
 ## Rules
 
 - Inbox is for work the agent owns, must act on, or must know today.
+- Task-backed To do items must be owned by or assigned to the user. Never add another person's task to the user's Inbox unless the user has a separate explicit next action on that task.
 - Do not add FYI with no action, old completed work, duplicate source state, or maybe useful later notes.
 - Every durable item needs a concise next action and source link when available.
 - Do not keep completed work in Inbox.

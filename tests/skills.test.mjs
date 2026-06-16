@@ -30,6 +30,7 @@ const expectedSkills = [
   "skill-creation",
   "shopiworks-clickup-sync",
   "slack-communication",
+  "summarize",
   "task-management"
 ];
 

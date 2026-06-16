@@ -29,6 +29,7 @@ const TARGETS = [
   join(HOME, 'Dev', 'ops', '.claude', 'skills'),   // Claude Code, ops project
   join(HOME, 'Dev', 'ops', '.agents', 'skills'),   // Codex / agents, ops project
   join(HOME, '.claude', 'skills'),                  // Claude Code, global
+  join(HOME, '.agents', 'skills'),                  // Agent skills, global
   join(HOME, '.codex', 'skills'),                   // Codex, global
 ];
 

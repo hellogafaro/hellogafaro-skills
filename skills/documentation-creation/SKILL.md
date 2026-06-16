@@ -69,6 +69,6 @@ Strategy pages use Context, Approach, Key decisions, Success criteria, and Timel
 
 Before stopping, make sure the document was created, updated, or intentionally left unchanged.
 
-If documentation work remains for another agent or person, route it through Handoffs.
+If documentation work remains for another agent or person, use `handoff` for a local transfer packet or focused ask that points to the document, task, source page, or file that owns the durable context.
 
 If no matching document exists and the user asked what the process is, say what you checked and offer to create one.

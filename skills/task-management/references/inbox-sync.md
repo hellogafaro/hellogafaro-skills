@@ -2,7 +2,7 @@
 
 Task-backed work stays in Inbox To do until the task is done or canceled.
 
-Inbox task work comes from the live Tasks database, Handoffs, current Inbox items, or an explicit user request.
+Inbox task work comes from the live Tasks database, current Inbox items, explicit user requests, or local handoff/ask packets that reference a durable source.
 
 Past meeting notes are context, not active task source.
 

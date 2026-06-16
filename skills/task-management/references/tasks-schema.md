@@ -53,4 +53,4 @@ To resolve a missing user id:
 
 ## Naming note
 
-Tasks use `Owner` for the supervisor and `Assignee` for the executor. Inbox and Handoffs use their own fields. Use the real field name per database.
+Tasks use `Owner` for the supervisor and `Assignee` for the executor. Inbox uses its own fields. Local handoff packets are not a database and must point back to the durable source.

@@ -8,4 +8,4 @@ Prefer 2 to 3 short natural-language prose chunks so the result is easy to diges
 
 For development tasks, the final comment must include linked commit IDs, PR links, deployment links, or other code-result links when they exist. Mention them inside natural prose, not as labels or key-value pairs. Use the commit ID as the visible link text, not a raw full URL. These links belong in the comment, not in the pre-work bullets.
 
-Task work is complete when the live source is updated, required time tracking is handled, the final result comment is posted, Inbox is current, and any needed Handoff exists.
+Task work is complete when the live source is updated, required time tracking is handled, the final result comment is posted, Inbox is current, and any needed local handoff packet or inter-agent ask has been created.

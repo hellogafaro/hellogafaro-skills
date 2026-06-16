@@ -81,4 +81,4 @@ Anomaly memos usually need:
 
 Reporting work is complete when the report or answer has the correct project, period, evidence, caveats, next action, and source links.
 
-If another agent needs to act, route through Handoffs.
+If another agent needs to act, use `handoff` for a local transfer packet or focused ask that points to the report, task, source page, or file that owns the durable context.

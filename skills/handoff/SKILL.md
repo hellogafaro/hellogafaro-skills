@@ -1,20 +1,32 @@
 ---
 name: handoff
-description: Use when current work must be compacted into a Notion handoff document so another agent or future session can continue from the right context.
+description: Use when current work must be compacted into a local handoff packet for another agent, future session, or one-off inter-agent ask.
 ---
 
 # handoff
 
-Write a handoff document summarising the current conversation so a fresh agent can continue the work.
+Create a short local handoff packet so another agent or fresh session can continue without rereading the whole conversation.
 
-Save to the Notion Handoffs data source, not the current workspace or temporary directory.
+Handoff is not the durable work record. Tasks carry durable work context, owner, assignee, due date, status, project, and source links. If durable work exists or is being created, update the real task first and make the handoff reference it.
 
-- Database URL: `https://app.notion.com/p/hellogafaro/374fc7982e4380d2ab12e011098c60c3`
-- Data source ID: `374fc798-2e43-815d-9a47-000bdd0ad982`
+## Modes
 
-Use `ntn pages create --parent data-source:374fc798-2e43-815d-9a47-000bdd0ad982` to create the page.
+- Full handoff: compact current work for a future agent or session.
+- Ask packet: prepare a focused request for another agent, such as Codex asking Claude to inspect, decide, draft, or verify something.
 
-Include a "Suggested skills" section in the document, which suggests skills that the agent should invoke.
+## Output
+
+Save the handoff as a local Markdown file in the OS temp directory, not Notion and not the current workspace.
+
+Include:
+
+- Goal.
+- Current state.
+- Durable source of truth, usually task URL or source file path.
+- What has already been checked or changed.
+- Blockers and risks.
+- Exact next action.
+- Suggested skills.
 
 Do not duplicate content already captured in other artifacts (PRDs, plans, ADRs, issues, commits, diffs). Reference them by path or URL instead.
 
@@ -22,4 +34,4 @@ Redact any sensitive information, such as API keys, passwords, or personally ide
 
 If the user passed arguments, treat them as a description of what the next session will focus on and tailor the doc accordingly.
 
-Return the created Notion page URL or ID.
+Return the local file path. If the packet is meant for another active agent, also provide the concise prompt to send.

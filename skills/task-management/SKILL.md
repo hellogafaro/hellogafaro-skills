@@ -11,7 +11,7 @@ General Notion AI may find, summarize, organize, filter meeting actions, propose
 
 Exact user-owned daily hygiene means the user clearly gives the task or meeting, the action, and the time. Examples include marking a named task done, adding exact time to a named task, or logging exact meeting time from a meeting page with a Project relation.
 
-Route through Handoffs when the request needs new task creation, ambiguous updates, bulk changes, workload planning, blocker management, scheduling judgment, cross-person coordination, unclear time tracking, or missing required context.
+Tasks are the durable routing surface. When work needs task creation, ambiguous updates, bulk changes, workload planning, blocker management, scheduling judgment, cross-person coordination, unclear time tracking, or missing required context, create or update the real task with enough context to carry the work. Use `handoff` only for a local transfer packet or focused inter-agent ask that points back to the task.
 
 Use `inbox-management` for the agent's active checkpoint. Use this skill for durable Tasks, Timesheets, workload, and task status.
 
@@ -96,4 +96,4 @@ Assignee is a people property. Use the Team database Notion column to resolve ag
 
 ## Completion
 
-Task work is complete when the live source is updated, required time tracking is handled, the final result comment is posted, Inbox is current, and any needed Handoff exists.
+Task work is complete when the live source is updated, required time tracking is handled, the final result comment is posted, Inbox is current, and any needed local handoff packet or inter-agent ask has been created.

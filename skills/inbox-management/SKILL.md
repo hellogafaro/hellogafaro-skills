@@ -32,7 +32,7 @@ Load only when needed.
 
 1. Fetch the Inbox database entry assigned to the current user before creating anything.
 2. Create one assigned Inbox entry only when none exists.
-3. For every direct request, queued assignment, or accepted Handoff, create or update one Inbox item before doing the work.
+3. For every direct request, queued assignment, accepted local handoff, or inter-agent ask, create or update one Inbox item before doing the work.
 4. Write enough context for a future run to continue after interruption, crash, or lost chat context.
 5. When work finishes, remove the Inbox item or rewrite it into the current blocker, waiting state, or exact next step.
 

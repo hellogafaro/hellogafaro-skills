@@ -7,7 +7,7 @@ description: Use when work needs connected client account data or provider-nativ
 
 Use this skill when the request involves connected client account data in Shopify, Klaviyo, Meta Ads, Google Ads, TikTok Ads, PostHog, Google Analytics, or Search Console.
 
-Accounts Ops implementation lives in `/Users/jg/Dev/hellogafaro-accounts-ops`.
+Accounts Ops implementation lives in `/Users/jg/Dev/hellogafaro-accounts`.
 
 This repo only defines how agents should route and use that capability. Do not duplicate provider auth, proxy, or API mechanics here.
 
@@ -28,7 +28,7 @@ Use one owned operations surface for provider-native reads and confirmed writes 
 
 ## Hard rules
 
-- Use `/Users/jg/Dev/hellogafaro-accounts-ops` for all provider mechanics.
+- Use `/Users/jg/Dev/hellogafaro-accounts` for all provider mechanics.
 - Query data only for existing connected account ids.
 - If account id is unknown, list accounts first.
 - Do not manage OAuth, credentials, account setup, or webhooks unless the user explicitly asks and the owning repo supports it.
@@ -42,8 +42,8 @@ Use one owned operations surface for provider-native reads and confirmed writes 
 ## Workflow
 
 1. Identify client, account id, provider, date window, metric, and question.
-2. Open `/Users/jg/Dev/hellogafaro-accounts-ops/AGENTS.md` and the relevant source files before running provider work.
-3. Use the owning repo scripts, tests, or worker routes for API operations.
+2. Open `/Users/jg/Dev/hellogafaro-accounts/AGENTS.md`, `skills/hellogafaro-accounts/SKILL.md`, and only the needed provider reference before running provider work.
+3. Use the owning repo's authenticated `/accounts/{account_id}/{provider}` Worker routes. Load `PUBLIC_URL` and `BEARER_TOKEN` from that repo's local environment without printing either value.
 4. Build the smallest native provider request.
 5. Execute the read or explicitly confirmed write.
 6. Return evidence with platform, account id, date window, endpoint, metric definition, comparison, and limitations when relevant.

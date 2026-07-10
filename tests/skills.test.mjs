@@ -144,7 +144,8 @@ test("skills have valid metadata", async () => {
 test("accounts ops stays a router", async () => {
   const markdown = await readFile(path.join(skillsDir, "accounts-ops", "SKILL.md"), "utf8");
 
-  assert.ok(markdown.includes("/Users/jg/Dev/hellogafaro-accounts-ops"));
+  assert.ok(markdown.includes("/Users/jg/Dev/hellogafaro-accounts"));
+  assert.ok(markdown.includes("/accounts/{account_id}/{provider}"));
   assert.ok(!markdown.includes("refresh token"));
   assert.ok(!markdown.includes("client secret"));
 });

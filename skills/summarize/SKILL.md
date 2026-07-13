@@ -19,13 +19,25 @@ Create a concise natural-text completion summary the user can forward to a proje
 - Mention GitHub repositories by owner/name, not local filesystem paths, unless the local path is the deliverable.
 - Put the temporary handoff task Markdown file or URL near the end in its own sentence when one was created.
 - Name temporary handoff files in kebab case with the task slug and timestamp so they are unique, such as `/tmp/task-id-short-task-slug-20260616-1430.md`.
-- End with a concise tracked-time sentence, rounded to 15-minute increments, such as `Add 1 hour of tracked time for this work.` Estimate the amount as senior-level human effort from the real scope and verification, not elapsed agent time or commit timestamps.
+- End with a concise tracked-time sentence, rounded to 15-minute increments, such as `Add 1 hour of tracked time for this work.` Follow the tracked-time calibration below.
 - Do not pad the time estimate with generic phrases like `capable human doing this end to end`, hypothetical wording like `would have taken`, or a repeated list of the work.
 - Use only generic placeholder content in examples, filenames, and sample wording. Do not include real client names, task ids, repositories, URLs, people, or project details in the skill itself.
 - Do not mention irrelevant dirty files, generated metadata, local cache files, or files intentionally left untouched unless they affect the handoff.
 - Do not include tool noise, command transcripts, process narration, or generic caveats.
 - Do not say what was not done unless it changes the project manager's next step.
 - Do not bury the actual deliverable under diagnosis detail. Summarize the finding only as much as needed for the PM to understand what changed and what remains open.
+
+## Tracked-time calibration
+
+Estimate active, billable hands-on time for a competent senior who is already familiar with the client, repository, tooling, and established patterns.
+
+- Estimate the incremental work completed, not the cost of rebuilding the deliverable from scratch.
+- Do not infer time from lines changed, files touched, test count, validation breadth, conversation length, or the number of agent steps.
+- Do not count agent exploration, retries, tool latency, regenerated previews, or repeated feedback turns as full human labor. Count only the equivalent focused human work that was necessary.
+- Credit reuse of existing architecture, helpers, fixtures, conventions, and prior context instead of pricing the work as greenfield implementation.
+- Internally sanity-check the estimate across orientation, implementation, QA, and handoff, but output only the final total unless the user asks for the breakdown.
+- Do not add speculative contingency, project-management overhead, or replacement-cost padding.
+- Treat a user-provided or user-corrected estimate as the strongest calibration for the current task and similar future work unless the scope materially differs.
 
 ## Source review
 

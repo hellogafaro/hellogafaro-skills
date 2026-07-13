@@ -27,7 +27,7 @@ const expectedSkills = [
   "plan",
   "reporting",
   "shopify-chargeback",
-  "skill-creation",
+  "skills-management",
   "shopiworks-clickup-sync",
   "slack-communication",
   "summarize",
@@ -66,6 +66,14 @@ const expectedResources = {
   "measurement-audit": ["references/attribution.md"],
   "paid-media-analysis": ["references/diagnostics.md"],
   "reporting": ["references/report-types.md"],
+  "skills-management": [
+    "references/prerequisites.md",
+    "references/creation.md",
+    "references/updating.md",
+    "references/management.md",
+    "references/github-cli.md",
+    "references/migration-troubleshooting.md"
+  ],
   "shopiworks-clickup-sync": [
     "references/clickup-content.md",
     "references/worker-tools.md"
@@ -87,6 +95,7 @@ const forbiddenSkills = [
   removedMeetingSkill,
   "memory",
   "notion",
+  "skill-creation",
   "slack"
 ];
 

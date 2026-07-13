@@ -12,7 +12,7 @@ Notion skill database rows should act as a mapping layer. The durable skill inst
 
 ## accounts ops
 
-Provider API implementation lives in `/Users/jg/Dev/hellogafaro-accounts`.
+Provider API implementation lives in `$HOME/Dev/hellogafaro-accounts`.
 
 The `accounts-ops` skill in this repo is a router and usage contract. Do not duplicate provider auth, proxy, or API mechanics here.
 

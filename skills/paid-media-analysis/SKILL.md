@@ -36,7 +36,7 @@ Do not use it to create or mutate campaigns unless the user explicitly asks and 
 
 ## Platform references
 
-Read only the needed provider reference in `/Users/jg/Dev/hellogafaro-accounts/skills/hellogafaro-accounts/references`.
+Read only the needed provider reference in `$HOME/Dev/hellogafaro-accounts/skills/hellogafaro-accounts/references`.
 
 - Meta Ads.
 - Google Ads.

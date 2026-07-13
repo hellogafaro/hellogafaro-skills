@@ -156,6 +156,9 @@ test("accounts ops stays a router", async () => {
 
   assert.ok(markdown.includes("$HOME/Dev/hellogafaro-accounts"));
   assert.ok(markdown.includes("/accounts/{account_id}/{provider}"));
+  assert.ok(markdown.includes("HELLOGAFARO_ACCOUNTS_URL"));
+  assert.ok(markdown.includes("HELLOGAFARO_ACCOUNTS_BEARER_TOKEN"));
+  assert.ok(!markdown.includes("HELLO_GAFARO_ACCOUNTS_URL"));
   assert.ok(!markdown.includes("refresh token"));
   assert.ok(!markdown.includes("client secret"));
 });

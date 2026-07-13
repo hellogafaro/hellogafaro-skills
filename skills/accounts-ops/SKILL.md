@@ -43,7 +43,7 @@ Use one owned operations surface for provider-native reads and confirmed writes 
 
 1. Identify client, account id, provider, date window, metric, and question.
 2. Open `$HOME/Dev/hellogafaro-accounts/AGENTS.md`, `skills/hellogafaro-accounts/SKILL.md`, and only the needed provider reference before running provider work.
-3. Use the owning repo's authenticated `/accounts/{account_id}/{provider}` Worker routes. Load `PUBLIC_URL` and `BEARER_TOKEN` from that repo's local environment without printing either value.
+3. Use `$HOME/Dev/hellogafaro-accounts/skills/hellogafaro-accounts/scripts/accounts-api.sh` from the consumer app root for `/accounts/{account_id}/{provider}` requests. It loads `HELLOGAFARO_ACCOUNTS_URL` and `HELLOGAFARO_ACCOUNTS_BEARER_TOKEN` from the app's local environment without printing either value.
 4. Build the smallest native provider request.
 5. Execute the read or explicitly confirmed write.
 6. Return evidence with platform, account id, date window, endpoint, metric definition, comparison, and limitations when relevant.

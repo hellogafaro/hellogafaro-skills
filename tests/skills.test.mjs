@@ -36,6 +36,7 @@ const expectedSkills = [
 
 const removedMeetingSkill = ["meeting", "notes"].join("-");
 const removedContentSkill = ["content", "creation"].join("-");
+const removedAccountsOpsSkill = ["hellogafaro", "accounts", "ops"].join("-");
 
 const expectedResources = {
   "analysis": ["scripts/analyze_timeseries.py"],
@@ -91,7 +92,7 @@ const expectedResources = {
 
 const forbiddenSkills = [
   removedContentSkill,
-  "hellogafaro-accounts-ops",
+  removedAccountsOpsSkill,
   removedMeetingSkill,
   "memory",
   "notion",
@@ -177,6 +178,7 @@ test("deprecated runtime references are gone", async () => {
   const entries = await readdir(root, { recursive: true });
   const oldNotionWrapper = ["skills", "notion", "scripts", "ntn.ts"].join("/");
   const deprecatedRepo = ["hellogafaro", "agents", "DEPRECATED"].join("-");
+  const deprecatedAccountsRepo = ["hellogafaro", "accounts", "ops"].join("-");
 
   for (const entry of entries) {
     if (!entry.endsWith(".md") && !entry.endsWith(".mjs")) continue;
@@ -186,5 +188,6 @@ test("deprecated runtime references are gone", async () => {
 
     assert.ok(!text.includes(oldNotionWrapper), `${entry} points to old notion wrapper`);
     assert.ok(!text.includes(deprecatedRepo), `${entry} points to deprecated repo`);
+    assert.ok(!text.includes(deprecatedAccountsRepo), `${entry} points to deprecated accounts repo`);
   }
 });

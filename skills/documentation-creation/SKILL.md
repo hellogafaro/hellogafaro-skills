@@ -9,7 +9,7 @@ Use this skill when AI is asked to create or update SOPs, guides, operating proc
 
 Do not use this skill for reports. Use `reporting` for reports, performance summaries, KPI updates, and analysis writeups.
 
-Do not use this skill for interactive planning or decision pressure. Use `brainstorm` for thinking through a plan before durable documentation exists. Use future `plan` for shaping unresolved strategy, implementation approach, or decision trees before documentation.
+Do not use this skill for interactive planning or decision pressure. Use `brainstorm` for thinking through a plan before durable documentation exists. Use the agent's built-in Plan mode for shaping unresolved strategy, implementation approach, or decision trees before documentation.
 
 ## Purpose
 

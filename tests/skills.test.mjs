@@ -24,7 +24,6 @@ const expectedSkills = [
   "notion-operations",
   "paid-media-analysis",
   "performance-analysis",
-  "plan",
   "reporting",
   "shopify-chargeback",
   "skills-management",

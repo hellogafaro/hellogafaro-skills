@@ -18,7 +18,7 @@ Do not use it to create or mutate campaigns unless the user explicitly asks and 
 ## Workflow
 
 1. Identify platform, account id, date window, comparison window, business goal, and active campaigns.
-2. Pull only needed fields through `accounts-ops`.
+2. Pull only needed fields through `accounts-management`.
 3. Pair with `measurement-audit` when attribution or tracking could change the answer.
 4. Pair with `analysis` for decomposition, fatigue checks, lag, pacing, forecasting, or charts.
 5. Explain the mechanism as price, traffic quality, conversion rate, spend mix, creative, audience, landing page, or tracking.

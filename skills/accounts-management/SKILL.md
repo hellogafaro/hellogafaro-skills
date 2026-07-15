@@ -1,9 +1,9 @@
 ---
-name: accounts-ops
+name: accounts-management
 description: Use when work needs connected client account data or provider-native reads and confirmed writes through Accounts Ops for Shopify, Klaviyo, Meta Ads, Google Ads, TikTok Ads, PostHog, GA4, or Search Console.
 ---
 
-# accounts-ops
+# accounts-management
 
 Use this skill when the request involves connected client account data in Shopify, Klaviyo, Meta Ads, Google Ads, TikTok Ads, PostHog, Google Analytics, or Search Console.
 

@@ -10,11 +10,11 @@ Notion skill database rows should act as a mapping layer. The durable skill inst
 - `workers/` contains Notion worker code when a custom agent needs code outside instructions.
 - `tests/` keeps the skill inventory and metadata honest.
 
-## accounts ops
+## accounts management
 
 Provider API implementation lives in `$HOME/Dev/hellogafaro-accounts`.
 
-The `accounts-ops` skill in this repo is a router and usage contract. Do not duplicate provider auth, proxy, or API mechanics here.
+The `accounts-management` skill in this repo is a router and usage contract. Do not duplicate provider auth, proxy, or API mechanics here.
 
 ## rules
 

@@ -16,7 +16,7 @@ Use this to understand business performance, not channel-reported performance.
 ## Workflow
 
 1. Identify account id, date window, comparison window, currency, and business question.
-2. Pull Shopify data through `accounts-ops`.
+2. Pull Shopify data through `accounts-management`.
 3. Pair with paid media or email skills when diagnosing channel drivers.
 4. Pair with `analysis` for cohorts, decomposition, forecasts, or charts.
 5. Pair with `measurement-audit` when Shopify and platform data disagree.

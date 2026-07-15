@@ -7,7 +7,7 @@ const root = path.resolve(import.meta.dirname, "..");
 const skillsDir = path.join(root, "skills");
 
 const expectedSkills = [
-  "accounts-ops",
+  "accounts-management",
   "analysis",
   "brainstorm",
   "calendar-management",
@@ -151,8 +151,8 @@ test("skills have valid metadata", async () => {
   }
 });
 
-test("accounts ops stays a router", async () => {
-  const markdown = await readFile(path.join(skillsDir, "accounts-ops", "SKILL.md"), "utf8");
+test("accounts management stays a router", async () => {
+  const markdown = await readFile(path.join(skillsDir, "accounts-management", "SKILL.md"), "utf8");
 
   assert.ok(markdown.includes("$HOME/Dev/hellogafaro-accounts"));
   assert.ok(markdown.includes("/accounts/{account_id}/{provider}"));

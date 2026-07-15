@@ -13,7 +13,7 @@ Use this as the diagnosis router. Use `analysis` for the calculation method and 
 
 Do not use this skill to write final report structure. Use `reporting` for reporting output and workflow.
 
-Do not use this skill to access provider APIs directly. Use `accounts-ops` for live provider data.
+Do not use this skill to access provider APIs directly. Use `accounts-management` for live provider data.
 
 ## Purpose
 

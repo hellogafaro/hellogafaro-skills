@@ -1,6 +1,6 @@
 # hellogafaro skills
 
-Central source for Hello Gafaro agent skills and Notion worker code.
+Central source for Hello Gafaro agent skills and supporting scripts.
 
 Notion skill database rows should act as a mapping layer. The durable skill instructions live in this repo under `skills/{skill-id}/SKILL.md`.
 

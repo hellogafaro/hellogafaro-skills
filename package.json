@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "check": "node --test tests/*.test.mjs",
+    "check": "node --test tests/*.test.mjs && bun test skills/shopiworks-clickup-sync/scripts/clickup.test.ts",
     "sync:notion-skills": "node scripts/sync-notion-skills.mjs"
   }
 }

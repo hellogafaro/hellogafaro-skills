@@ -76,7 +76,11 @@ const expectedResources = {
   ],
   "shopiworks-clickup-sync": [
     "references/clickup-content.md",
-    "references/worker-tools.md"
+    "references/clickup-operations.md",
+    "references/clickup-routing.md",
+    "references/clickup-safety.md",
+    "scripts/clickup.ts",
+    "scripts/clickup.test.ts"
   ],
   "task-management": [
     "references/completion.md",

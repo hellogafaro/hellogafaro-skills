@@ -5,11 +5,11 @@ description: Use when creating or updating Notion documentation, including SOPs,
 
 # documentation-creation
 
-Use this skill when AI is asked to create or update SOPs, guides, operating processes, templates, internal reference pages, strategy pages, or process documentation in Notion.
+Use this skill when an agent is asked to create or update SOPs, guides, operating processes, templates, internal reference pages, strategy pages, or process documentation in Notion.
 
 Do not use this skill for reports. Use `reporting` for reports, performance summaries, KPI updates, and analysis writeups.
 
-Do not use this skill for interactive planning or decision pressure. Use `brainstorm` for thinking through a plan before durable documentation exists. Use the agent's built-in Plan mode for shaping unresolved strategy, implementation approach, or decision trees before documentation.
+Do not use this skill for interactive planning or decision pressure. Use `brainstorm` for thinking through a plan before durable documentation exists.
 
 ## Purpose
 
@@ -17,8 +17,9 @@ Create documentation that is clear, scannable, accurate, and useful to someone r
 
 ## Sources
 
-- Soul defines voice, writing, and formatting standards.
-- Collaboration defines source lookup, routing, Memory, Inbox, and failure handling.
+- `AGENTS.md` defines voice, writing, source boundaries, routing, privacy, and failure handling.
+- `MEMORY.md` provides durable personal preferences and working context when relevant.
+- `INBOX.md` provides active work context when relevant.
 - Documents is the source of truth for saved documentation.
 - Projects is the source of truth for project language, client context, and linked work.
 - Reporting owns reports and performance writeups.
@@ -35,12 +36,13 @@ Use Strategy for already-decided approaches, decision frameworks, and durable st
 
 1. Identify the document type, topic, project, language, and intended reader.
 2. Search existing documents before creating anything.
-3. Read the current page before updating an existing document.
-4. Ask one concise question if the topic, project, language, document type, or intended use is unclear.
-5. Organize the page using the matching structure for the document type.
-6. Write in natural language with short paragraphs and bullets only where scanning helps.
-7. Explain what will change and get confirmation before saving material updates.
-8. Update in place unless the user explicitly asks for a new version.
+3. Use the selected Composio Notion connection and fetch the live schema or page before writing.
+4. Read the current page before updating an existing document.
+5. Ask one concise question if the topic, project, language, document type, or intended use is unclear.
+6. Organize the page using the matching structure for the document type.
+7. Write in natural language with short paragraphs and bullets only where scanning helps.
+8. Explain what will change and get confirmation before saving material updates.
+9. Update in place unless the user explicitly asks for a new version.
 
 ## Structures
 

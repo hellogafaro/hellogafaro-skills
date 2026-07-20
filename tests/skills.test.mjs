@@ -197,3 +197,29 @@ test("deprecated runtime references are gone", async () => {
     assert.ok(!text.includes(deprecatedAccountsRepo), `${entry} points to deprecated accounts repo`);
   }
 });
+
+test("sidekick skills use repository state and live Composio discovery", async () => {
+  const entries = await readdir(skillsDir, { recursive: true });
+  const forbiddenPhrases = [
+    "Notion Inbox",
+    "Memory database",
+    "General Notion AI",
+    "Codex asking Claude",
+    "Plan mode"
+  ];
+  const hardcodedNotionId = /\b(?:[0-9a-f]{32}|[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\b/i;
+
+  for (const entry of entries) {
+    if (!entry.endsWith(".md")) continue;
+
+    const file = path.join(skillsDir, entry);
+    const text = await readFile(file, "utf8");
+
+    assert.ok(!/\bntn\b/.test(text), `${entry} points to the removed Notion CLI`);
+    assert.ok(!hardcodedNotionId.test(text), `${entry} hardcodes a Notion identifier`);
+
+    for (const phrase of forbiddenPhrases) {
+      assert.ok(!text.includes(phrase), `${entry} contains deprecated sidekick guidance: ${phrase}`);
+    }
+  }
+});

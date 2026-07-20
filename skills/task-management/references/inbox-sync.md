@@ -1,8 +1,8 @@
 # Inbox sync
 
-Task-backed work stays in Inbox To do until the task is done or canceled.
+Task-backed work stays in `INBOX.md` To do until the task is done or canceled.
 
-Inbox task work comes from the live Tasks database, current Inbox items, explicit user requests, or local handoff/ask packets that reference a durable source.
+Inbox task work comes from the live Tasks database, current `INBOX.md` items, explicit user requests, or local handoff/ask packets that reference a durable source.
 
 Past meeting notes are context, not active task source.
 

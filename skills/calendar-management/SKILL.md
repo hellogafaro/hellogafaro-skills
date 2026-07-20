@@ -7,7 +7,7 @@ description: Use when work involves calendars, meetings, scheduling, reschedulin
 
 Use this skill any time the request involves calendar, fetch, triage, scheduling, conflict resolution, meeting prep, out of office, or routing meetings into Inbox.
 
-Calendar and Inbox are one system. Any calendar action that opens, changes, or closes a loop must update the user's Inbox.
+Calendar and Inbox are one system. Any calendar action that opens, changes, or closes a loop must update the repository-root `INBOX.md`.
 
 ## References
 
@@ -22,7 +22,8 @@ Load only when needed.
 
 ## Hard rules
 
-- Use all connected calendars needed for the user.
+- Inspect live Composio calendar connections and use every account needed for the request.
+- Select the intended account explicitly whenever more than one calendar connection exists.
 - Verify the calendar source before reporting state or making changes.
 - Never create, delete, cancel, move, reschedule, or invite people without explicit confirmation.
 - `Schedule`, `book`, or `add` means draft event details and wait for confirmation.

@@ -18,7 +18,7 @@ If a source is unreachable, process the other sources and surface the skipped so
 
 ## Scheduling
 
-Use Memory for working hours, meeting caps, lunch window, buffers, default length, prep blocks, focus preferences, and exceptions.
+Use `MEMORY.md` for durable working hours, meeting caps, lunch window, buffers, default length, prep blocks, focus preferences, and exceptions. Verify live calendar state before applying them.
 
 Default meeting length is 30 minutes unless scope clearly needs more.
 

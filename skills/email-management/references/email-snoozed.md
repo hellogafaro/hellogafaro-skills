@@ -1,11 +1,11 @@
 Load when snoozing an email or resurfacing a snoozed item.
 ## Snooze pattern
 Use native snooze only when the connected tool supports it reliably. Otherwise archive the message, add a durable dated Inbox item, and preserve the source link.
-Dated Inbox items use a Notion date mention with the target date and time when known.
-Do not rely on memory alone. The Inbox item is the durable resurfacing layer.
+Dated Inbox items use an ISO 8601 timestamp with the target date and time when known.
+Do not rely on `MEMORY.md` alone. The Inbox item is the durable resurfacing layer.
 
 ## Snooze label convention
-The user marks snoozed mail with a dedicated snooze label. The exact label name and id live in Memory.
+Inspect the live mailbox for its existing snooze label or native snooze behavior. Do not store provider label IDs in `MEMORY.md`.
 To snooze: apply the snooze label, archive the message out of the inbox, and write the dated Inbox Reminder with the resurface date and a link back to the thread.
 Every snoozed email carries the snooze label. If a snoozed email is missing it, add it.
 On reply or done, remove the snooze label and clear the matching reminder.

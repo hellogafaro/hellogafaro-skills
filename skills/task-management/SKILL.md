@@ -5,15 +5,15 @@ description: Use when work involves task creation, updates, completion, cancella
 
 # task-management
 
-Use this skill when AI is asked to create tasks, update tasks, review workload, surface blockers, extract tasks from notes, meetings, or plans, recommend what someone should work on next, complete tasks, cancel tasks, or track time.
+Use this skill when an agent is asked to create tasks, update tasks, review workload, surface blockers, extract tasks from notes, meetings, or plans, recommend what someone should work on next, complete tasks, cancel tasks, or track time.
 
-General Notion AI may find, summarize, organize, filter meeting actions, propose task wording, and execute exact user-owned daily hygiene when intent is clear.
+An agent may find, summarize, organize, filter meeting actions, propose task wording, and execute exact user-owned daily hygiene when intent is clear.
 
 Exact user-owned daily hygiene means the user clearly gives the task or meeting, the action, and the time. Examples include marking a named task done, adding exact time to a named task, or logging exact meeting time from a meeting page with a Project relation.
 
 Tasks are the durable routing surface. When work needs task creation, ambiguous updates, bulk changes, workload planning, blocker management, scheduling judgment, cross-person coordination, unclear time tracking, or missing required context, create or update the real task with enough context to carry the work. Use `handoff` only for a local transfer packet or focused inter-agent ask that points back to the task.
 
-Use `inbox-management` for the agent's active checkpoint. Use this skill for durable Tasks, Timesheets, workload, and task status.
+Use `inbox-management` for the active checkpoint in root `INBOX.md`. Use this skill for durable Tasks, Timesheets, workload, and task status.
 
 ## Purpose
 
@@ -47,7 +47,7 @@ Load only when needed.
 
 ## Routing
 
-Hello Gafaro internal and client work uses the Notion Tasks database and Timesheets data source.
+Hello Gafaro internal and client work uses the Notion Tasks database and Timesheets data source through the selected Composio connection.
 
 Jol Ebrahim work uses ClickUp and Spanish by default.
 
@@ -96,4 +96,4 @@ Assignee is a people property. Use the Team database Notion column to resolve ag
 
 ## Completion
 
-Task work is complete when the live source is updated, required time tracking is handled, the final result comment is posted, Inbox is current, and any needed local handoff packet or inter-agent ask has been created.
+Task work is complete when the live source is updated, required time tracking is handled, the final result comment is posted, `INBOX.md` is current, and any needed local handoff packet or inter-agent ask has been created.

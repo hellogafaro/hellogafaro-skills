@@ -19,39 +19,25 @@ Every completed substantive task needs time tracked.
 - If the meeting has no Project relation, ask for the project and update the meeting before logging time.
 - If the meeting has multiple Project relations, ask which project owns the time.
 
-## Log a time entry
+## Resolve the live schema
 
-`Name` is the title. `Minutes` is the canonical duration number. `Hours` is a formula, so do not set it. `Date` is editable and required for reporting.
+Use the selected Composio Notion connection.
 
-Task-linked entries use a Notion task mention or task title as `Name`, plus `Task` and `Project`.
+1. Discover the Timesheets database live.
+2. Inspect its schema with `NOTION_FETCH_DATABASE`.
+3. Confirm the exact title, Owner, Task, Project, Date, and Minutes property names and types.
+4. Resolve task, project, meeting, and people values from live rows or workspace users.
 
-```
-ntn api /v1/pages -d '{
-  "parent": {"type":"data_source_id","data_source_id":"e6f1b1a0-0a27-434e-b220-00f79ee95859"},
-  "properties": {
-    "Name": {"title":[{"text":{"content":"Draft June email campaign"}}]},
-    "Owner": {"people":[{"id":"<notion-user-id>"}]},
-    "Task": {"relation":[{"id":"<task-page-id>"}]},
-    "Project": {"relation":[{"id":"<project-page-id>"}]},
-    "Date": {"date":{"start":"2026-06-04"}},
-    "Minutes": {"number":45}
-  }
-}'
-```
+Never store or reuse workspace IDs in the skill.
+
+## Log task time
+
+Use `NOTION_INSERT_ROW_DATABASE` with the verified Timesheets database and schema.
+
+The entry needs the task title or reference as its title, the responsible Owner, the Task relation, the Project relation, the work date, and the rounded Minutes value. Do not set formula properties.
 
 ## Log meeting time without a task
 
-Non-task meeting entries use one clear sentence-case name, no `Task`, and the meeting page `Project`.
+Use one clear sentence-case title, no Task relation, and the meeting page's single verified Project relation.
 
-```
-ntn api /v1/pages -d '{
-  "parent": {"type":"data_source_id","data_source_id":"e6f1b1a0-0a27-434e-b220-00f79ee95859"},
-  "properties": {
-    "Name": {"title":[{"text":{"content":"Met with Jol about Shopify size charts"}}]},
-    "Owner": {"people":[{"id":"<notion-user-id>"}]},
-    "Project": {"relation":[{"id":"<meeting-project-page-id>"}]},
-    "Date": {"date":{"start":"2026-06-04"}},
-    "Minutes": {"number":30}
-  }
-}'
-```
+Fetch the created row after every write and confirm that relations, date, and minutes persisted.

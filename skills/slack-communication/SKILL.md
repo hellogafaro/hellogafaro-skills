@@ -7,7 +7,7 @@ description: Use when work involves Slack routing, drafting, posting, replying, 
 
 Use this skill when an agent needs to decide whether to use Slack, draft a Slack message, post to Slack, reply in Slack, or route a Slack-triggered request.
 
-Slack is timely communication. Notion remains the durable work record.
+Slack is timely communication. Notion tasks and collaboration pages remain durable shared records, while `INBOX.md` holds active sidekick state.
 
 ## Purpose
 
@@ -26,7 +26,8 @@ Use Slack only when it is the right channel and keep private context private.
 - Never post secrets, credentials, account ids, tokens, financial private data, or personal context.
 - Never DM to report doing nothing.
 - Never use Slack as durable source of truth for assigned work.
-- Create or update the relevant Inbox item, task, page, or local handoff packet when state must persist.
+- Inspect live Composio Slack connections and select the intended account explicitly when more than one exists.
+- Create or update the relevant `INBOX.md` item, task, page, or local handoff packet when state must persist.
 - Keep Slack messages concise, natural, and useful.
 - Use emoji only when the context is informal and Soul allows it.
 

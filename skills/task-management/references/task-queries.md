@@ -1,62 +1,39 @@
 # Task queries
 
-Use `ntn` for task queries and updates.
+Use the local Composio CLI and the live Notion connection for every task query or update.
 
-```
-ntn <args>
-```
+## Connection and schema
+
+1. List live Notion connections.
+2. Select the intended workspace explicitly with `--account` when more than one exists.
+3. Find the Tasks database by name with `NOTION_SEARCH_NOTION_PAGE` or `NOTION_FETCH_DATA`.
+4. Inspect the live schema with `NOTION_FETCH_DATABASE` before building filters or properties.
+5. Never reuse a database ID, data-source ID, property name, option, or relation target without verifying it live in the current workspace.
+
+## Search before creating
+
+Query likely matches with `NOTION_QUERY_DATABASE_WITH_FILTER`. Search by title, project, owner, assignee, and active status as needed. Paginate until `has_more` is false.
+
+If a likely duplicate exists, surface it and update it when it owns the same work.
 
 ## Create a task
 
-```
-ntn api /v1/pages -d '{
-  "parent": {"type":"data_source_id","data_source_id":"25ffc798-2e43-801b-9eed-000b4bc5f349"},
-  "properties": {
-    "Name": {"title":[{"text":{"content":"Draft June email campaign"}}]},
-    "Owner": {"people":[{"id":"<owner-user-id>"}]},
-    "Assignee": {"people":[{"id":"<assignee-user-or-agent-id>"}]},
-    "Project": {"relation":[{"id":"<project-page-id>"}]},
-    "Priority": {"select":{"name":"Medium"}},
-    "Status": {"status":{"name":"Not started"}},
-    "Recurrence": {"select":{"name":"One-time"}},
-    "Due date": {"date":{"start":"2026-06-15"}}
-  }
-}'
-```
+Use `NOTION_INSERT_ROW_DATABASE` for the verified Tasks database. Set every required property from the fetched schema and use only verified relation row IDs and people values.
 
-## Update status
+After creation, fetch the created row and confirm persisted values.
 
-Only update status after the owner confirms or the source explicitly proves the state.
+## Update a task
 
-```
-ntn api /v1/pages/<task-page-id> -X PATCH -d '{
-  "properties": {"Status": {"status":{"name":"In progress"}}}
-}'
-```
+Fetch the current row immediately before the write. Use `NOTION_UPDATE_ROW_DATABASE` to update only intended properties.
+
+Only update status after the responsible person confirms it or the source explicitly proves it.
+
+Verify the row after every update. Treat a nominal HTTP success with `successful: false` as a failure.
 
 ## Active-count check
 
-Query active tasks for one assignee and count the results:
-
-```
-ntn api /v1/data_sources/25ffc798-2e43-801b-9eed-000b4bc5f349/query -X POST -d '{
-  "filter": {"and": [
-    {"property":"Assignee","people":{"contains":"<assignee-user-or-agent-id>"}},
-    {"or": [
-      {"property":"Status","status":{"equals":"In progress"}},
-      {"property":"Status","status":{"equals":"Under review"}},
-      {"property":"Status","status":{"equals":"Blocked"}}
-    ]}
-  ]}
-}'
-```
+Query live Tasks for the intended Assignee where Status is In progress, Under review, or Blocked. Paginate fully and count the returned rows before assigning more work.
 
 ## Done-without-time check
 
-Query done tasks, then treat any with an empty `Time tracked` relation as missing a time entry:
-
-```
-ntn api /v1/data_sources/25ffc798-2e43-801b-9eed-000b4bc5f349/query -X POST -d '{
-  "filter": {"property":"Status","status":{"equals":"Done"}}
-}'
-```
+Query live Tasks where Status is Done. Treat a task with an empty live Time tracked relation as missing a time entry.

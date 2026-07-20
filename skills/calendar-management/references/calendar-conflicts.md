@@ -13,7 +13,7 @@ Internal cancellation target is at least 4 hours.
 External cancellation target is at least 24 hours.
 Same-day cancellation by the user becomes an Alert. Draft apology or reschedule message and wait for confirmation before sending.
 ## Incoming changes
-Counterparty moved or canceled a meeting. Flag it in Inbox.
+Counterparty moved or canceled a meeting. Flag it in `INBOX.md`.
 Same-day change is always an Alert. Update or remove prep accordingly.
 ## Tentative holds
 Tentative holds expire after 24 hours for tier 1, 48 hours for tier 2, and 72 hours for tier 3.

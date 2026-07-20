@@ -1,7 +1,7 @@
 Load before classifying email.
 ## VIP and contacts
-VIPs, known senders, account roles, and recurring exceptions live in the user's Memory.
-Verify unknown senders against the Contacts database, <mention-page url="https://app.notion.com/p/348fc7982e43807eb683fb1c2c299656"/>.
+Durable VIP, known-sender, account-role, and recurring-exception preferences live in `MEMORY.md`.
+Verify unknown senders against the live Contacts database through the selected Composio Notion connection.
 A Contacts match means known contact. Treat as review minimum. Never downgrade a known contact to noise just because the message looks automated.
 ## Elevate
 Elevate when the thread contains a direct ask, decision request, deadline, urgent language, complaint, blocked work, access issue, financial issue, legal issue, VIP sender, active client, active vendor, or a Waiting item with a real reply.

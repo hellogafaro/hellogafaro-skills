@@ -13,7 +13,7 @@ Include only what helps the user walk in ready.
 - Suggested agenda or talking points.
 - Whether the user is actually needed.
 ## Persistence
-Check prior Inbox entries, email threads, pages, and project context before building the brief. Recurring meetings should reference last discussion, promised follow-ups, and unresolved items.
+Check prior `INBOX.md` entries, email threads, pages, and project context before building the brief. Recurring meetings should reference last discussion, promised follow-ups, and unresolved items.
 After the meeting, convert promised follow-up into To do. Remove prep when the meeting passes and no follow-up remains.
 ## Saving notes to a meeting page
 Save meeting prep and notes as a comment on the meeting page. Bullet points only, no title or header line. Keep each bullet a short memory jogger.

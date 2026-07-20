@@ -7,7 +7,7 @@ description: Use when work involves email or Gmail, including fetch, triage, sea
 
 Use this skill any time the request involves email, fetch, triage, draft, reply, archive, snooze, label, attachments, or search.
 
-Email and Inbox are one system. Any email action that opens, changes, or closes a loop must update the user's Inbox.
+Email and Inbox are one system. Any email action that opens, changes, or closes a loop must update the repository-root `INBOX.md`.
 
 ## References
 
@@ -45,13 +45,13 @@ Load only when needed.
 
 ## Account handling
 
-Use Memory for email accounts, account roles, SLAs, signature, language, VIPs, counterparties, and quirks.
+Use `MEMORY.md` for durable voice, signature, language, VIP, counterparty, SLA, and source-quirk preferences. Do not store account selectors or connection state there.
 
-For every account used in a run, verify that the mailbox is the intended account before taking action.
+List live Composio email connections and select the intended account explicitly for every account used in a run.
 
 If one account is unreachable, process the others and say which account was skipped.
 
-For local connected-account work, pass the account selector on every command and use the proper connected account, never delegation through another mailbox. The exact account selectors live in Memory. If a mailbox returns a delegation-denied error, treat it as a wrong or missing account selector first and retry with the correct account before reporting the mailbox blocked or the thread missing.
+Pass the live Composio account selector on every command and use the proper connected account, never delegation through another mailbox. If selection is ambiguous, ask before acting. If a mailbox returns a delegation-denied error, inspect live connections and retry only with the verified intended account before reporting the mailbox blocked or the thread missing.
 
 ## Fetch and search
 

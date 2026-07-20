@@ -1,56 +1,45 @@
 # Tasks schema
 
-Exact ids and property types behind the task-management skill.
+Resolve every database, data source, relation target, user, property, and option live through the selected Composio Notion connection.
 
-## Database and data source ids
+## Discovery
 
-Notion 2025-09 keeps properties on the DATA SOURCE. Query the data source id; link relations by the page id of a row.
+Discover Tasks, Projects, Meetings, Timesheets, and Team by name. Fetch each database schema before querying or writing.
 
-- Tasks: db `25ffc7982e4380c58df6fef037530baa`, data source `25ffc798-2e43-801b-9eed-000b4bc5f349`
-- Projects: data source `25ffc798-2e43-80fe-acb3-000bc6d73ce7`
-- Meetings: db `25ffc7982e438056969fff6a4672eaaa`, data source `25ffc798-2e43-805b-a32c-000b3f8ea454`
-- Timesheets: data source `e6f1b1a0-0a27-434e-b220-00f79ee95859`
-- Team: data source `18824c2f-3b29-4c8b-91ab-7e5010683a2a`
-- Inbox: db `372fc7982e438049b196d61a407c314d`
+Do not hardcode database IDs, data-source IDs, page IDs, user IDs, property names, relation targets, or option labels in skills or `MEMORY.md`.
 
-## Tasks properties
+## Required task concepts
 
-- `Name` (title)
-- `Owner` (people): the human supervisor accountable for the task
-- `Assignee` (people): the person or agent executing the task
-- `Project` (relation to Projects)
-- `Priority` (select): High, Medium, Low
-- `Status` (status): Backlog, Not started, In progress, Under review, Blocked, Done, Canceled
-- `Due date` (date)
-- `Recurrence` (select): One-time, Daily, Weekly, Monthly, Quarterly
-- `Assets` (files)
-- `Time tracked` (relation to Timesheets)
-- `ID` (unique_id, read-only)
+The live Tasks schema must provide equivalents for:
 
-## Projects properties
+- Name or title.
+- Owner: human supervisor accountable for the task.
+- Assignee: person or agent executing the task.
+- Project relation.
+- Priority.
+- Status.
+- Due date.
+- Recurrence.
+- Assets when available.
+- Time tracked relation.
+- Read-only unique task ID.
 
-Inspect the Projects data source live before planning. Dash needs, at minimum, the project status, monthly hours commitment, billing date or cycle anchor, language, and whether the project is internal. If any of these fields are missing or unclear, flag that gap before using the project in workload planning.
+Verify the allowed live Priority, Status, and Recurrence values before every write. The values documented in the main skill are expected business values, not a substitute for schema inspection.
 
-## Meetings properties
+## Projects
 
-- `Name` (title)
-- `Project` (relation to Projects)
+Inspect Projects live before planning. Workload planning needs project status, monthly hours commitment, billing date or cycle anchor, language, and whether the project is internal. Flag missing or unclear fields before using the project in a workload decision.
 
-For tasks or time from a meeting page, read the meeting `Project` relation first. Use that project for task creation and meeting time. If empty, ask for the project and update the meeting before creating task or time records. If multiple projects are linked, ask which one owns the task or time entry.
+## Meetings
+
+For tasks or time from a meeting page, read its live Project relation first. Use that project when exactly one is linked. If empty, ask for the project and update the meeting before creating task or time records. If multiple projects are linked, ask which one owns the task or time entry.
 
 ## Resolving people and agents
 
-`Owner` and `Assignee` are people properties and take Notion user ids, not Team row ids.
+Owner and Assignee use the live people values required by the current Tasks schema, not Team row IDs.
 
-Owner is usually a human supervisor. Assignee is the executing person or agent.
-
-The Team database holds each person's or agent's Notion value. Use Team to choose the right owner or assignee by capability, then use its Notion people value in the task property.
-
-To resolve a missing user id:
-
-- List workspace users: `api /v1/users page_size==100`, then match by name.
-- Use the Team database to pick who should supervise or execute the work, then resolve that Notion value.
+Use Team to choose the right supervisor or executor by capability, then resolve the required workspace user value live.
 
 ## Naming note
 
-Tasks use `Owner` for the supervisor and `Assignee` for the executor. Inbox uses its own fields. Local handoff packets are not a database and must point back to the durable source.
+Tasks use Owner for the supervisor and Assignee for the executor. `INBOX.md` is a local checkpoint, not a database. Local handoff packets must point back to the durable task or source.

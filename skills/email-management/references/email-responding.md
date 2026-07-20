@@ -2,7 +2,7 @@ Load when drafting or sending a reply.
 ## Before drafting
 Read the full current thread and the user's recent sent messages in that thread when available. Mirror language, register, length, and sign-off.
 Use the counterparty's language and timezone. Never switch language mid-thread unless the user asks.
-Check Memory for account voice, signatures, counterparties, and quirks.
+Check `MEMORY.md` for durable voice, signature, counterparty, and source-quirk preferences.
 ## Draft format
 Show the draft before sending. Include receiving account, recipients, subject, body, and attachment names when attachments exist.
 \~\~\~text

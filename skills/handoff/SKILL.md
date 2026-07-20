@@ -12,7 +12,7 @@ Handoff is not the durable work record. Tasks carry durable work context, owner,
 ## Modes
 
 - Full handoff: compact current work for a future agent or session.
-- Ask packet: prepare a focused request for another agent, such as Codex asking Claude to inspect, decide, draft, or verify something.
+- Ask packet: prepare a focused request for another agent to inspect, decide, draft, or verify something.
 
 ## Output
 

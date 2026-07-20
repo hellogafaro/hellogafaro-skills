@@ -1,6 +1,6 @@
-Load whenever an email action affects the user's Inbox.
+Load whenever an email action affects `INBOX.md`.
 Email and Inbox are one system. Every opened email loop must end closed, waiting, assigned as to do, flagged as alert, or handed off.
-Every email that needs a reply belongs in Inbox To do until it is answered, even before a draft exists. Reply needed means the user or assistant owns the next action, which is To do, not Waiting. Waiting is only for loops where someone else owns the next response.
+Every email that needs a reply belongs in `INBOX.md` To do until it is answered, even before a draft exists. Reply needed means the user or active agent owns the next action, which is To do, not Waiting. Waiting is only for loops where someone else owns the next response.
 Create one To do per reply-needed thread. Do not merge separate threads into one item, even from the same sender. The To do set must mirror every open reply-needed thread one to one.
 ## Action table
 <table header-row="true">
@@ -38,6 +38,6 @@ Create one To do per reply-needed thread. Do not merge separate threads into one
 </tr>
 </table>
 ## Item format
-Use the Inbox section rules from Collaboration. New durable items start with a Notion date mention with time, usually @now in the Notion UI.
+Use the section rules from `inbox-management`. New durable items start with an ISO 8601 timestamp.
 Keep item text concise. Link the natural action text to the source. Do not write Source or Sources labels.
 Sub-bullets only for essential detail. No key-value dumps. No parenthetical clutter.

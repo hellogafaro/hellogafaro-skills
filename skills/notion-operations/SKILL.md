@@ -9,6 +9,8 @@ Use this skill when an agent needs to search, read, create, update, mention, tag
 
 Use workspace pages and databases as live sources. Do not guess schema, page ids, property names, or relation targets.
 
+Use the local Composio CLI for Notion access. Inspect live Notion connections and select the intended account explicitly when more than one exists.
+
 ## Purpose
 
 Keep Notion work accurate, deduped, linked, and easy for agents and people to continue.
@@ -16,19 +18,21 @@ Keep Notion work accurate, deduped, linked, and easy for agents and people to co
 ## Workflow
 
 1. Search before creating.
-2. Read the existing page before updating it.
-3. Use the correct database or page for the work type.
-4. Use database properties and relations for assignment, routing, ownership, project, client, source, and skill links.
-5. Use real page mentions or named links when referencing important pages.
-6. Link the correct project when project context exists.
-7. Update in place unless the user explicitly asks for a new page or version.
-8. If required context is missing, state the gap and propose adding it.
+2. Discover the current database or page through the selected Composio connection.
+3. Fetch the live schema before querying or writing database properties.
+4. Read the existing page before updating it.
+5. Use the correct database or page for the work type.
+6. Use database properties and relations for assignment, routing, ownership, project, client, source, and skill links.
+7. Use real page mentions or named links when referencing important pages.
+8. Link the correct project when project context exists.
+9. Update in place unless the user explicitly asks for a new page or version.
+10. Verify every write by fetching the persisted result.
+11. If required context is missing, state the gap and propose adding it.
 
 ## Mentions and tagging
 
 - Use current-user filters for agent-specific lookup when available.
-- For Memory and Inbox, assigned means the Owner property contains the current user.
-- Prefer Owner filters over title mentions.
+- Prefer structured Owner and Assignee filters over title mentions.
 - Use inline mentions only for human-readable context or notifications.
 - Do not rely on inline page mentions as structured tags.
 
@@ -39,6 +43,12 @@ Keep Notion work accurate, deduped, linked, and easy for agents and people to co
 - Use sentence case.
 - Do not duplicate the page title in the body.
 - For templates and docs, follow the matching specialist skill.
+
+## Scope
+
+Use Notion for durable tasks, timesheets, projects, clients, meetings, documents, reports, comments, team information, and collaboration pages.
+
+The sidekick Inbox and Memory are repository files. Do not look for or maintain them in Notion.
 
 ## Completion
 

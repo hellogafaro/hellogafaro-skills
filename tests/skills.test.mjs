@@ -157,7 +157,9 @@ test("skills have valid metadata", async () => {
 test("accounts management stays a router", async () => {
   const markdown = await readFile(path.join(skillsDir, "accounts-management", "SKILL.md"), "utf8");
 
-  assert.ok(markdown.includes("$HOME/Dev/hellogafaro-accounts"));
+  assert.ok(markdown.includes("hellogafaro/hellogafaro-accounts"));
+  assert.ok(markdown.includes("<accounts-ops-root>"));
+  assert.ok(!markdown.includes("$HOME/Dev"));
   assert.ok(markdown.includes("/accounts/{account_id}/{provider}"));
   assert.ok(markdown.includes("HELLOGAFARO_ACCOUNTS_URL"));
   assert.ok(markdown.includes("HELLOGAFARO_ACCOUNTS_BEARER_TOKEN"));

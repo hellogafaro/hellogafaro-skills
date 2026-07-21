@@ -197,6 +197,7 @@ test("deprecated runtime references are gone", async () => {
     assert.ok(!text.includes(oldNotionWrapper), `${entry} points to old notion wrapper`);
     assert.ok(!text.includes(deprecatedRepo), `${entry} points to deprecated repo`);
     assert.ok(!text.includes(deprecatedAccountsRepo), `${entry} points to deprecated accounts repo`);
+    assert.ok(!/\$HOME\/[^\s`]*hellogafaro-accounts/i.test(text), `${entry} hardcodes an Accounts Ops checkout path`);
   }
 });
 

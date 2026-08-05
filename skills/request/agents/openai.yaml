@@ -1,4 +1,0 @@
-interface:
-  display_name: "Request"
-  short_description: "Create a concise, context-rich request"
-  default_prompt: "Use $request to prepare a concise request I can send immediately."

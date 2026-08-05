@@ -25,7 +25,6 @@ const expectedSkills = [
   "paid-media-analysis",
   "performance-analysis",
   "reporting",
-  "request",
   "shopify-chargeback",
   "skills-management",
   "shopiworks-clickup-sync",

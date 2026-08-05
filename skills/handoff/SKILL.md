@@ -1,17 +1,11 @@
 ---
 name: handoff
-description: Use when the user wants either a concise context-rich request they can copy and send, or a local continuation packet that lets another agent or future session resume current work.
+description: Use when the user wants a concise context-rich handoff they can copy and send to a human or AI, with a separate file only when the required context is too large for a practical message.
 ---
 
 # handoff
 
-Package work so someone else can act without rediscovering the important context.
-
-## Choose the output
-
-- Copy-ready request: use when the user wants an ask, prompt, or message to send onward. Return the request directly and create no file.
-- Continuation packet: use when another agent or future session must resume current work. Save a local handoff file.
-- Infer the mode from the request. When it remains unclear, default to the copy-ready request because it is easier to use and does not create state.
+Create one concise text handoff that lets someone else act without rediscovering the important context.
 
 ## Gather context
 
@@ -23,20 +17,21 @@ Package work so someone else can act without rediscovering the important context
 - Verify uncertain facts instead of presenting guesses as context. Ask one concise question only when missing information materially changes the handoff.
 - Never include credentials, secrets, unrelated private context, tool noise, or a dump of every source inspected.
 
-## Copy-ready request
+## Write the handoff
 
-- Write one universal request. Do not create separate human and AI variants or ask who will receive it.
+- Write one universal handoff. Do not create separate human, AI, or agent variants or ask who will receive it.
 - Lead with the desired outcome, then provide the minimum context and links needed to act well.
-- Use natural prose rather than a rigid template. Keep simple requests as short as two sentences and use a few short paragraphs only when needed.
-- Include constraints, deliverables, and completion conditions only when they clarify the work. Do not pad the request with generic instructions or obvious process.
-- Use raw URLs and no Markdown formatting inside the request.
+- Use natural prose rather than a rigid template. Keep simple handoffs as short as two sentences and use a few short paragraphs only when needed.
+- Include constraints, deliverables, current state, and completion conditions only when they clarify the work. Do not pad with generic instructions or obvious process.
+- Use raw URLs and no Markdown formatting inside the handoff.
 - Return exactly one fenced `text` code block and nothing else.
-- Do not execute or send the request, create a task, or create a handoff file unless separately asked.
+- Do not execute or send the handoff, create a task, or change source records unless separately asked.
 
-## Continuation packet
+## Overflow
 
-- Update the durable task first when one exists. The handoff file is not the work record.
-- Save a short Markdown file in the OS temp directory, not Notion or the current workspace.
-- Include the goal, current state, durable source of truth, relevant checks or changes, blockers and risks, exact next action, and useful skills.
-- Reference existing tasks, documents, commits, diffs, and other artifacts instead of duplicating them.
-- Tailor the packet to any focus the user supplied and return its local path.
+- Keep the handoff text-based by default. Do not create a file merely because the work is complex.
+- Create a short Markdown file in the OS temp directory only when the material context cannot fit into a practical message without losing execution-critical detail and the host can provide a usable file.
+- Put detailed continuation state in the file, reference existing artifacts instead of duplicating them, and keep secrets out.
+- Return a compact `text` code block with the actionable summary and the file path so the user can send or attach it.
+
+Use `summarize` instead when the goal is to report completed work rather than ask someone to act or continue.

@@ -4,7 +4,7 @@ Load for bounces, out-of-office auto-replies, email calendar invites, phishing o
 - VIP sender from an unrecognized address is a phishing flag. Do not act.
 - Forwarded chain gets summarized by active ask only. Full chain only on request.
 - Duplicate cross-account thread keeps one canonical Inbox item. Archive duplicates case by case.
-- Same sender burst with 3 or more messages collapses to one Inbox item.
+- Same-sender messages collapse only when one action closes the whole burst. Never merge separate threads merely because sender or subject matches.
 - Deadline in the email body changes urgency and Inbox timing.
 - Calendar invite by email routes to Calendar management.
 - CC-only mail is lower priority unless VIP, direct ask, or the user can add clear value.

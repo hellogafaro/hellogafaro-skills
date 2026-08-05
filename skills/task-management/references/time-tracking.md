@@ -1,6 +1,6 @@
 # Time tracking
 
-Every completed substantive task needs time tracked.
+Every completed linked workspace Task needs time tracked.
 
 - Log only against real tasks.
 - Project relation is always required on time entries.
@@ -8,12 +8,12 @@ Every completed substantive task needs time tracked.
 - Task relation is optional for non-task work such as meetings.
 - When a task relation exists, the time entry title must be the task page reference.
 - When no task relation exists, the title should be one clear sentence about what was done.
-- Inbox items, reminders, alerts, and meeting prep placeholders are not tasks unless they link to a task page.
+- Local Inbox items, reminders, and meeting prep placeholders are not Tasks unless they link to a Task page.
 - If the item was only a reminder, remove or update it and do not create a time entry.
 - Use 15-minute increments, rounded up.
 - Task management counts.
 - Context switching counts.
-- If duration is unknown, ask before completing.
+- If duration is unknown, always ask before completing. Never infer or default it.
 - For meeting time, read the meeting page Project relation first.
 - If the meeting has one Project relation, use it for the time entry.
 - If the meeting has no Project relation, ask for the project and update the meeting before logging time.

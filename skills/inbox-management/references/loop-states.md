@@ -1,23 +1,39 @@
 # Loop states
 
-- Reply sent and no response needed: archive the source and remove the item.
-- Reply sent and response needed: archive the source and move the item to Waiting.
-- User or active agent owns the next action: To do.
-- Someone external owns the next response: Waiting.
-- Waiting thread gets bumped: update and promote the same item to To do, never duplicate it.
-- Waiting older than 24 hours: suggest a gentle nudge.
-- Waiting older than 3 to 5 days: suggest a stronger nudge or escalation.
-- Duplicate source copies: keep one canonical item.
-- Same sender burst: collapse it only when one action closes the whole burst.
-- User replied outside the flow: sync Inbox and do not re-draft.
-- Real task exists or is created: keep a concise To do with task ID and link until complete.
-- Recurring task completed: clear the current cycle only.
-- No next action: no Inbox item.
+## Tasks
 
-Date-anchored commitments with no better source go in Reminders.
+- A linked Task stays unchecked until the canonical Task is actually complete.
+- On completion, follow `task-management`: obtain the real duration, log time, add the concise result comment, mark the Task Done, then check the Inbox item.
+- If the canonical Task is Done and the Inbox item is unchecked, check it automatically. If time is missing, keep it Done and ask to repair time. Never reopen it.
+- A local personal task with no canonical Task needs only its checkbox.
+- A blocked task stays unchecked. Add one child bullet with the reason and mark the canonical Task Blocked when linked.
+- Cancel a linked task at its source, then remove its Inbox projection. Deleting an Inbox item removes only the projection.
 
-Default to an all-day calendar event on the deadline date when a real reminder is needed and the user approves scheduling it.
+## Rescheduling
 
-A calendar event is not always required. When skipped, maintain the Reminder directly in `INBOX.md`.
+Completion and rescheduling are different states.
 
-Remove reminders when past and resolved or superseded.
+- For a linked Task, update its canonical Due date first.
+- For a local task, move it to the target dated Inbox, creating that page only when needed.
+- Replace today's active checkbox with a gray ordinary bullet such as `Rescheduled to 12 August: Task title`.
+- Preserve the source link, remove yellow importance, and exclude the marker from carryover.
+
+## Email
+
+- A reply needed today is an unchecked task linked to the thread.
+- After sending, check the reply task.
+- Do not keep passive Waiting items in the daily stream.
+- Create a dated calendar follow-up only when the response matters or the user asks.
+- A real incoming reply can create a new action on refresh.
+
+## Reminders
+
+- A passive reminder appears only on its exact date and never carries forward.
+- Acknowledge or dismiss it by removing the Inbox projection while preserving the historical calendar event.
+- Cancel or move it at the calendar source first, then update the Inbox.
+
+## Timed events
+
+- Keep meetings, appointments, travel, workouts, focus blocks, and physical events as timed toggles.
+- Update moved events in place and remove canceled events.
+- Keep overlapping events and mention the conflict in Brief. Recommend a resolution without changing either event automatically.

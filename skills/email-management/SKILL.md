@@ -7,7 +7,7 @@ description: Use when work involves email or Gmail, including fetch, triage, sea
 
 Use this skill any time the request involves email, fetch, triage, draft, reply, archive, snooze, label, attachments, or search.
 
-Email and Inbox are one system. Any email action that opens, changes, or closes a loop must update the repository-root `INBOX.md`.
+Email and Inbox are one system. Any email action that changes a user-owned loop must update its Inbox projection when one exists.
 
 ## References
 
@@ -32,7 +32,7 @@ Load only when needed.
 - Read the full thread before classifying, archiving, or replying.
 - Refetch live before every status report, classification, reply decision, archive action, or send action.
 - Inbox label staying on a message is not proof the user has not acted.
-- Check sent mail when verifying whether an email-linked Inbox item is still open.
+- Check sent mail only when verifying whether an existing email-linked Inbox item is still open.
 - Never create email drafts unless the user explicitly asks for a mail-client draft.
 - Draft in chat or page content by default.
 - Never send without explicit send approval.
@@ -45,7 +45,7 @@ Load only when needed.
 
 ## Account handling
 
-Use `MEMORY.md` for durable voice, signature, language, VIP, counterparty, SLA, and source-quirk preferences. Do not store account selectors or connection state there.
+Use `Memory` for durable voice, signature, language, VIP, counterparty, SLA, and source-quirk preferences. Do not store connection selectors or live connection state there.
 
 List live Composio email connections and select the intended account explicitly for every account used in a run.
 
@@ -55,9 +55,9 @@ Pass the live Composio account selector on every command and use the proper conn
 
 ## Fetch and search
 
-Triage is always the inbox, walked in order: unread, then read, then snoozed. Surface every layer even when an earlier one is empty. Never stop at unread.
+Triage the inbox in order: unread, then read mail still in inbox. Inspect snoozed mail when it has resurfaced, an existing loop depends on it, or the user asks.
 
-The goal is inbox zero: every message in the inbox processed to closed, archived, replied, or tracked. Unread takes priority over read, but read mail still in the inbox is unprocessed work and counts against zero.
+Unread takes priority over read, but read mail still in the inbox may remain unprocessed work. During Inbox preparation, project only concrete replies, decisions, deadlines, and blockers rather than every unprocessed message.
 
 Scope unread to the inbox. Open client and counterparty threads also hide in read inbox mail, so check sent mail before treating one as closed.
 

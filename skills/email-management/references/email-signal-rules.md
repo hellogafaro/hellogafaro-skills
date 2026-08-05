@@ -1,6 +1,6 @@
 Load before classifying email.
 ## VIP and contacts
-Durable VIP, known-sender, account-role, and recurring-exception preferences live in `MEMORY.md`.
+Durable VIP, known-sender, account-role, and recurring-exception preferences live in `Memory`.
 Verify unknown senders against the live Contacts database through the selected Composio Notion connection.
 A Contacts match means known contact. Treat as review minimum. Never downgrade a known contact to noise just because the message looks automated.
 ## Elevate

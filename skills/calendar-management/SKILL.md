@@ -7,7 +7,7 @@ description: Use when work involves calendars, meetings, scheduling, reschedulin
 
 Use this skill any time the request involves calendar, fetch, triage, scheduling, conflict resolution, meeting prep, out of office, or routing meetings into Inbox.
 
-Calendar and Inbox are one system. Any calendar action that opens, changes, or closes a loop must update the repository-root `INBOX.md`.
+Calendar and Inbox are one system. Relevant timed events and reminders project into the dated Inbox without duplicating the calendar as a second schedule.
 
 ## References
 
@@ -25,10 +25,9 @@ Load only when needed.
 - Inspect live Composio calendar connections and use every account needed for the request.
 - Select the intended account explicitly whenever more than one calendar connection exists.
 - Verify the calendar source before reporting state or making changes.
-- Never create, delete, cancel, move, reschedule, or invite people without explicit confirmation.
-- `Schedule`, `book`, or `add` means draft event details and wait for confirmation.
-- `Cancel`, `remove`, or `delete` means show what will be changed and wait for confirmation.
-- `Move` or `reschedule` means show current slot and proposed slot, then wait for confirmation.
+- Act on an explicit complete request to create, cancel, move, reschedule, or invite. Ask only when the target, date, time, timezone, attendees, or intended scope is ambiguous.
+- For inferred calendar changes, show the recommendation and wait for approval.
+- For recurring events, confirm whether the request affects one instance or the series unless the user already said so.
 - Do not schedule into out of office, focus blocks, protected lunch, or unavailable time without explicit override.
 - Counterparty timezone is the timezone shown in scheduling messages.
 - Never make the counterparty convert time.

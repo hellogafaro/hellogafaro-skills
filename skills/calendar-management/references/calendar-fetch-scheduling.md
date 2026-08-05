@@ -2,28 +2,16 @@
 
 ## Fetch
 
-Fetch today's calendar and the next 7 days by default.
+For Inbox preparation, fetch the exact target date across every connected calendar. Use Memory to interpret account roles and source quirks. Exclude canceled events and events the user declined. Deduplicate mirrored events by canonical identity and stable event details.
 
-For deep planning, fetch the next 14 days.
+Keep timed events in chronological order. Include all-day events only when they are relevant or actionable. Fetch tomorrow or later only when the user asks or that context materially changes today's plan.
 
-Filter before surfacing events.
-
-1. Event end time is in the future.
-2. User attendee response is not declined.
-3. Event is not canceled.
-
-Drop past events unless a follow-up exists.
-
-If a source is unreachable, process the other sources and surface the skipped source.
+For availability or planning requests, fetch the narrowest future window that answers the question, normally 7 days and at most 14 days for deep planning.
 
 ## Scheduling
 
-Use `MEMORY.md` for durable working hours, meeting caps, lunch window, buffers, default length, prep blocks, focus preferences, and exceptions. Verify live calendar state before applying them.
+Use `Memory` for durable timezone, working hours, meeting caps, lunch window, buffers, default length, prep blocks, focus preferences, and exceptions. Verify live calendar state before applying them.
 
-Default meeting length is 30 minutes unless scope clearly needs more.
+Default meeting length is 30 minutes unless scope clearly needs more. Offer at most three slots, respect buffers, and avoid unavailable blocks.
 
-Offer 3 slots max, spaced across days when possible.
-
-Respect buffers and avoid back-to-back meetings.
-
-Keep at least one 30-minute unblocked slot per half day when possible.
+Create an all-day calendar event for `remember X on Friday` and a timed event when a time is supplied. `Do X on Friday` belongs in the future Inbox or canonical Task instead.

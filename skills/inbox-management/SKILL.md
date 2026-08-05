@@ -1,76 +1,82 @@
 ---
 name: inbox-management
-description: Use when an agent must create, update, reconcile, or close the repo-root INBOX.md checkpoint, including freshness checks, active work, waiting loops, reminders, alerts, meetings, and stale item cleanup.
+description: Use when an agent must prepare, update, reconcile, or review the sidekick Inbox, including the daily Brief, mixed To do stream, Notes, carryover, bookmarks, completion, rescheduling, reminders, meetings, and source reconciliation.
 ---
 
 # inbox-management
 
-Use this skill when an agent needs to create, update, reconcile, or close active work in the repository-root `INBOX.md`.
+Use this skill whenever work changes or depends on the sidekick Inbox.
 
-Inbox is active sidekick state. It is not long-term memory and not a duplicate task database.
+Inbox is the dated human checkpoint for what matters now. It is not long-term Memory, a second task database, or a transcript of every connected source.
 
-## Purpose
+## Host mapping
 
-Make every active request resumable and keep stale work out of the sidekick queue.
+Resolve `Inbox` through the host environment before reading or writing it.
 
-## Hard rules
+- In a file-backed environment, Inbox may be a repository file.
+- In Notion, Inbox is one page per user and date in the configured Inbox database. The user mention plus Date is unique.
+- Never hardcode a repository path, database ID, user ID, or connection selector in this skill.
 
-- On every interaction, compare current time to `Last updated`. If it is missing or older than 3 hours, reconcile Inbox before proceeding.
-- Reconcile open items against live sources before answering status.
-- Remove stale, completed, duplicate, canceled, or no-action items immediately.
-- Every durable Inbox item needs a source link unless it is a manually maintained Reminder.
-- Live sources override Inbox when they conflict.
+Use the host's native blocks, links, mentions, and formatting. Search before creating and stop on duplicate pages instead of guessing.
+
+## Structure
+
+Every dated Inbox has exactly these sections, in this order:
+
+- Brief.
+- To do.
+- Notes.
+
+Do not add placeholder or guidance text.
+
+Brief is AI-owned. Write 80 to 150 words in two or three short prose paragraphs. Summarize meaningful outcomes, carried or blocked work, material schedule changes, and where attention belongs. Do not repeat the stream item by item.
+
+To do is one deliberately mixed ordered stream:
+
+- Tasks use the host's native checkbox. Link or mention the canonical Task when one exists.
+- Meetings and other timed events use a toggle whose title begins with the local start and end time. Children contain only useful prep or supporting links.
+- Passive reminders use ordinary bullets.
+- Optional context uses one nested bullet when it materially helps.
+
+Notes is user-owned. Preserve it exactly during preparation and refresh. Change only the requested block.
+
+## Preparation
+
+On `prepare Inbox`, `refresh Inbox`, `what is my day`, or an equivalent request:
+
+1. Resolve the requested date. An explicit date wins, then the open Inbox page Date, then today from the host context.
+2. Find the current user's page for that date. Create it only when missing. Stop and report duplicates.
+3. Read the existing page, current Memory, the latest prior Inbox page in this format, assigned Tasks, every connected email and calendar source, and live state for existing items. Use Memory to interpret known account roles and flag an unknown new account instead of silently ignoring it.
+4. Carry unchecked tasks from the latest prior Inbox page. Do not carry completed tasks, meetings, passive reminders, canceled work, or rescheduled markers.
+5. Reconcile and deduplicate against canonical sources.
+6. Preserve completed items, Notes, deliberate order, nested context, and manual bookmarks. Make local ordering changes only.
+7. Rewrite Brief last.
+
+Future Inbox pages are created only for explicit future work or notes. Keep their Brief empty unless the user asks for a preview. Preparing that date later preserves its Notes.
+
+## Importance
+
+Use explicit user direction first, then Memory, then live urgency and consequences. Memory shapes judgment; live sources control current facts.
+
+Mark at most three top-level items as important using the host's yellow background. Existing yellow formatting is the canonical bookmark state. Preserve it on refresh, fill an empty slot only when justified, and remove it when the item leaves the active stream. If more than three items are yellow, ask which to keep and recommend the strongest three.
+
+## Item rules
+
+- Add only a clear user-owned action, direct request, decision, deadline, blocker, relevant timed commitment, or requested reminder.
+- One source loop becomes one Inbox item. Source identity wins over wording during deduplication.
+- Link the whole natural title to the best canonical source when available.
+- Do not add FYI, newsletters, chatter, stale work, duplicate state, or maybe-useful-later material.
+- Conversation alone does not create an item. Add one only when the user asks, preparation finds a concrete action, or the work must persist.
+- Live sources override Inbox for current state. If a source is unavailable, preserve the item and report uncertainty.
 
 ## References
 
 Load only when needed.
 
-- `references/reconciliation.md` before reconciling Inbox against live sources.
-- `references/loop-states.md` when deciding whether an item is To do, Waiting, Alert, Reminder, or closed.
-- `references/edge-cases.md` when source state is missing, inconsistent, duplicated, or failed.
-
-## Workflow
-
-1. Open the repository-root `INBOX.md` before operational work.
-2. Create it from the standard section structure when missing.
-3. For every direct request, queued assignment, accepted local handoff, or inter-agent ask, create or update one Inbox item before doing the work.
-4. Write enough context for a future agent or session to continue after interruption, crash, or lost chat context.
-5. When work finishes, remove the item or rewrite it into the current blocker, waiting state, or exact next step.
-6. Set `Last updated` to the current ISO 8601 timestamp after every Inbox change or reconciliation.
-
-## Structure
-
-Keep these sections in this order, with concise italic guidance under each heading.
-
-- To do.
-- Waiting.
-- Alerts.
-- Meetings.
-- Reminders.
-- Notes.
-
-Use numbered list items so the user can reference `To do 3` or `Waiting 1`.
-
-Every durable item starts with an ISO 8601 timestamp. Link the natural action text to its live source.
-
-For task-backed To do items, include the visible task ID, such as `TSK-483`, and the task link.
-
-Do not write `Source:` or `Sources:` labels. Do not create timestamp-free main entries.
-
-## Rules
-
-- Inbox is for work the user or active agent owns, must act on, or must know today.
-- Task-backed To do items must be owned by or assigned to the user. Never add another person's task unless the user has a separate explicit next action on it.
-- Do not add FYI with no action, old completed work, duplicate source state, or maybe-useful-later notes.
-- Every durable item needs a concise next action and source link when available.
-- Do not keep completed work in Inbox.
-- Rewrite stale items into the current next action.
-- No source, no Inbox item, except manually maintained Reminders.
-- Inbox text is a concise reminder, not full scope.
-- Avoid key-value dumps and long context.
-- Tomorrow and later stay out unless they are meeting context, a true reminder, or blocking today's work.
-- Friday deep run: every open task that cannot close today gets rescheduled before the run ends.
+- `references/reconciliation.md` before a full preparation or refresh.
+- `references/loop-states.md` for completion, cancellation, rescheduling, waiting, and reminders.
+- `references/edge-cases.md` for duplicates, source failures, stale Memory, and repeated carryover.
 
 ## Completion
 
-Inbox work is complete when every active request is closed, waiting, blocked, or handed off with a live link and `Last updated` is current.
+Inbox work is complete when the requested date is deduplicated and reconciled, its three sections are valid, source-backed mutations happened before projection changes, Notes were preserved, and every write was verified through the host.

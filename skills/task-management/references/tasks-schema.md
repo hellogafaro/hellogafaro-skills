@@ -6,7 +6,7 @@ Resolve every database, data source, relation target, user, property, and option
 
 Discover Tasks, Projects, Meetings, Timesheets, and Team by name. Fetch each database schema before querying or writing.
 
-Do not hardcode database IDs, data-source IDs, page IDs, user IDs, property names, relation targets, or option labels in skills or `MEMORY.md`.
+Do not hardcode database IDs, data-source IDs, page IDs, user IDs, property names, relation targets, or option labels in skills or `Memory`.
 
 ## Required task concepts
 
@@ -42,4 +42,4 @@ Use Team to choose the right supervisor or executor by capability, then resolve 
 
 ## Naming note
 
-Tasks use Owner for the supervisor and Assignee for the executor. `INBOX.md` is a local checkpoint, not a database. Local handoff packets must point back to the durable task or source.
+Tasks use Owner for the supervisor and Assignee for the executor. Inbox is only a dated projection; the Task remains canonical.

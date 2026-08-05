@@ -9,4 +9,4 @@ Build rules only from observed repeated user behavior.
 - Never silently invent a new rule.
 - Never auto-archive VIPs.
 
-Inspect active provider rules live. Store only the durable user decision or preference in `MEMORY.md`, never a copy of provider rule state.
+Inspect active provider rules live. Store only the durable user decision or preference in `Memory`, never a copy of provider rule state.

@@ -1,17 +1,14 @@
 # Edge cases
 
-Notify by default. Nothing silent.
-
-- Empty Project relation: surface it in Notes with task ID, title, and link.
-- Multiple Project relations: surface the data error in Notes.
-- Project page archived or trashed: surface it in Notes.
-- Task query fails: rediscover the live data source and schema before reporting task state.
-- Same task in Notion and ClickUp: keep it where time tracking lives.
-- Source failure: surface source, operation, and error. Continue with available sources.
-- Self-mention: surface it like any other mention.
-- ClickUp status varies: filter by status type.
-- ClickUp pagination: page until exhausted.
-- Item written manually by the user: preserve it unless its source confirms closure.
-- High-priority task with no due date: flag it in Notes.
-- ClickUp Complete with no time tracked: surface a log-time prompt.
-- Project paused or archived: remove tied items unless a closure action remains.
+- Missing dated Inbox: create it with Brief, To do, and Notes.
+- Duplicate Inbox pages for the same user and date: stop and report both. Never merge by guesswork.
+- Missing Memory: create the host's empty standard Memory structure.
+- Duplicate Memory records for one user: stop and report them.
+- Source failure: preserve the existing item, name the unavailable source, and continue with verified sources.
+- Canonical write failure: do not change the Inbox projection as if the write succeeded.
+- Stale Memory: live state controls current facts. Repair Memory only when the durable correction is clear; otherwise ask.
+- Manually written item: preserve it unless the user removes it or a linked source proves closure.
+- Same item from multiple sources: deduplicate by canonical Task mention, email thread, calendar event, or equivalent normalized local text. Never merge separate threads or events merely because their titles match.
+- Three consecutive carryovers of the same local task: surface it in Brief and ask whether to do, schedule, promote, or remove it. Never choose automatically.
+- More than three yellow items: preserve them, report the overflow, and recommend the strongest three.
+- Past Inbox pages: treat them as journal history. Do not reconcile them against today's source state unless the user asks for a correction.

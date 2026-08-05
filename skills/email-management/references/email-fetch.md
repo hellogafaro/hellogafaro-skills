@@ -6,7 +6,7 @@ Triage is always the inbox, in this order. Surface every layer even when an earl
 
 1. Unread in inbox. Scope unread to the inbox. Never query unread alone: bare unread returns archived and category mail that sits outside the inbox and is out of scope. Unread that is not in the inbox does not count and is left alone.
 2. Read in inbox. Read does not mean handled. Open client and counterparty threads hide here. Check sent mail before treating one as closed.
-3. Snoozed. Surface last, but always surface. A snoozed item not mirrored in the Inbox Reminders has fallen through. See `email-snoozed.md`.
+3. Snoozed. Inspect only when it resurfaced, an existing loop depends on it, or the user asks. See `email-snoozed.md`.
 
 Always say which view a count reflects: the whole inbox, or one layer.
 

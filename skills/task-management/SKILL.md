@@ -11,9 +11,9 @@ An agent may find, summarize, organize, filter meeting actions, propose task wor
 
 Exact user-owned daily hygiene means the user clearly gives the task or meeting, the action, and the time. Examples include marking a named task done, adding exact time to a named task, or logging exact meeting time from a meeting page with a Project relation.
 
-Tasks are the durable routing surface. When work needs task creation, ambiguous updates, bulk changes, workload planning, blocker management, scheduling judgment, cross-person coordination, unclear time tracking, or missing required context, create or update the real task with enough context to carry the work. Use `handoff` only for a local transfer packet or focused inter-agent ask that points back to the task.
+Tasks are the durable routing surface. When work needs task creation, ambiguous updates, bulk changes, workload planning, blocker management, scheduling judgment, cross-person coordination, unclear time tracking, or missing required context, create or update the real task with enough context to carry the work.
 
-Use `inbox-management` for the active checkpoint in root `INBOX.md`. Use this skill for durable Tasks, Timesheets, workload, and task status.
+Use `inbox-management` for the active dated checkpoint. Use this skill for durable Tasks, Timesheets, workload, and task status.
 
 ## Purpose
 
@@ -40,8 +40,8 @@ Load only when needed.
 - Use live task properties for status, owner, assignee, due date, project, and priority.
 - Do not infer project from title when a Project relation exists.
 - Never change task status without confirming with the responsible person unless the source explicitly proves the state.
-- Completion requires time tracking when work is substantive.
-- No completed substantive task is allowed to have missing time.
+- Completion of a linked workspace Task requires the actual duration, a time entry, and a concise result comment.
+- If duration was not explicitly supplied, always ask before completing. Never invent or default it.
 - Meeting time inherits Project from the meeting page Project relation.
 - If a meeting page has no Project relation, ask before creating tasks or time entries from it.
 
@@ -96,4 +96,4 @@ Assignee is a people property. Use the Team database Notion column to resolve ag
 
 ## Completion
 
-Task work is complete when the live source is updated, required time tracking is handled, the final result comment is posted, `INBOX.md` is current, and any needed local handoff packet or inter-agent ask has been created.
+Task work is complete when the live source is updated, time is logged, the final result comment is posted, and every affected Inbox projection is current.

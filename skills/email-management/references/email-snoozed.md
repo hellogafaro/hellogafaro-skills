@@ -1,16 +1,9 @@
-Load when snoozing an email or resurfacing a snoozed item.
-## Snooze pattern
-Use native snooze only when the connected tool supports it reliably. Otherwise archive the message, add a durable dated Inbox item, and preserve the source link.
-Dated Inbox items use an ISO 8601 timestamp with the target date and time when known.
-Do not rely on `MEMORY.md` alone. The Inbox item is the durable resurfacing layer.
+# Snoozed email
 
-## Snooze label convention
-Inspect the live mailbox for its existing snooze label or native snooze behavior. Do not store provider label IDs in `MEMORY.md`.
-To snooze: apply the snooze label, archive the message out of the inbox, and write the dated Inbox Reminder with the resurface date and a link back to the thread.
-Every snoozed email carries the snooze label. If a snoozed email is missing it, add it.
-On reply or done, remove the snooze label and clear the matching reminder.
-Snoozed mail and Inbox Reminders stay one to one. Reconcile both directions during triage: a snooze label with no reminder has fallen through, and a reminder whose thread lost its label needs the label restored or the reminder cleared.
-## When the date arrives
-Fetch the original thread if context is needed.
-Promote the Inbox item to active To do or Waiting based on who owns the next action.
-Remove the snoozed reminder only after the current state is reconciled.
+Use native snooze only when the connected tool supports it reliably. Inspect the live mailbox for its actual snooze behavior and never store provider label IDs in `Memory`.
+
+Snoozed mail does not need a standing Inbox item. When the date arrives, fetch the original thread and add a dated Inbox action only if the user now owns a concrete reply, decision, deadline, or blocker.
+
+When native snooze is unavailable and the user needs guaranteed resurfacing, archive the thread and create a dated calendar reminder linked to it. A passive reminder belongs to the exact date and never carries forward.
+
+On reply, completion, cancellation, or rescheduling, update the canonical email or calendar source first and then reconcile the Inbox projection.

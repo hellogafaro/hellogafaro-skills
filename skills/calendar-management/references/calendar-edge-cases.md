@@ -1,6 +1,6 @@
 Load for out of office, travel, recurring changes, timezone confusion, short-notice requests, or source failures.
 ## Out of office and travel
-Detect out of office windows from calendar blocks or explicit user mention. Add them to `INBOX.md` when they affect the day or near-term planning.
+Detect out-of-office windows from calendar blocks or explicit user mention. Add them to `Inbox` only when they materially affect that date.
 Protect the day before and day after travel when possible. Flag meetings inside unavailable windows with a specific move recommendation.
 ## Recurring changes
 Edit only the specific instance unless the user explicitly says to change the whole series.
@@ -9,8 +9,7 @@ Confirm before touching a recurring event. Canceled instance removes that prep i
 By the user. Alert, draft apology or reschedule note, wait for send confirmation.
 By counterparty. Alert, remove prep, surface freed slot only if useful.
 ## Timezones
-Default timezone comes from the current environment or `MEMORY.md`. For international attendees, show user time plus attendee local time in confirmations.
-Ambiguous time with no timezone uses the user's timezone, then confirm before booking.
+Default timezone comes from `Memory`; an existing event's timezone remains canonical. If a future timed request has no usable timezone, ask and save the durable answer. For international attendees, show user time plus attendee local time in confirmations.
 ## Short notice
 Same-day requests require triage before accepting. Less than 2 hours notice for external meetings should be flagged unless VIP or urgent.
 ## Source failure

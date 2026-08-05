@@ -201,11 +201,9 @@ test("deprecated runtime references are gone", async () => {
   }
 });
 
-test("sidekick skills use repository state and live Composio discovery", async () => {
+test("sidekick skills use portable host state and live Composio discovery", async () => {
   const entries = await readdir(skillsDir, { recursive: true });
   const forbiddenPhrases = [
-    "Notion Inbox",
-    "Memory database",
     "General Notion AI",
     "Codex asking Claude",
     "Plan mode"
@@ -225,4 +223,14 @@ test("sidekick skills use repository state and live Composio discovery", async (
       assert.ok(!text.includes(phrase), `${entry} contains deprecated sidekick guidance: ${phrase}`);
     }
   }
+
+  const inbox = await readFile(path.join(skillsDir, "inbox-management", "SKILL.md"), "utf8");
+  const memory = await readFile(path.join(skillsDir, "memory-management", "SKILL.md"), "utf8");
+  const notion = await readFile(path.join(skillsDir, "notion-operations", "SKILL.md"), "utf8");
+
+  assert.match(inbox, /Resolve `Inbox` through the host environment/);
+  assert.match(memory, /Resolve `Memory` through the host environment/);
+  assert.match(notion, /user mention in its title property plus the exact Date property/);
+  assert.ok(!inbox.includes("repository-root `INBOX.md`"));
+  assert.ok(!memory.includes("repository-root `MEMORY.md`"));
 });

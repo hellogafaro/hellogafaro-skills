@@ -18,8 +18,8 @@ Create documentation that is clear, scannable, accurate, and useful to someone r
 ## Sources
 
 - `AGENTS.md` defines voice, writing, source boundaries, routing, privacy, and failure handling.
-- `MEMORY.md` provides durable personal preferences and working context when relevant.
-- `INBOX.md` provides active work context when relevant.
+- `Memory` provides durable personal preferences and working context when relevant.
+- `Inbox` provides active work context when relevant.
 - Documents is the source of truth for saved documentation.
 - Projects is the source of truth for project language, client context, and linked work.
 - Reporting owns reports and performance writeups.
@@ -46,7 +46,7 @@ Use Strategy for already-decided approaches, decision frameworks, and durable st
 
 ## Structures
 
-Documentation pages use Purpose, Steps, Edge cases, and Owner.
+Documentation pages use Purpose, Steps, Edge cases, and ownership only when ownership materially helps.
 
 Template pages use When to use, Template content, and How to customize.
 
@@ -71,6 +71,6 @@ Strategy pages use Context, Approach, Key decisions, Success criteria, and Timel
 
 Before stopping, make sure the document was created, updated, or intentionally left unchanged.
 
-If documentation work remains for another agent or person, use `handoff` for a local transfer packet or focused ask that points to the document, task, source page, or file that owns the durable context.
+If documentation work remains, state the exact document, task, source page, or file that owns the durable context and the smallest next action.
 
 If no matching document exists and the user asked what the process is, say what you checked and offer to create one.

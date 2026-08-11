@@ -12,9 +12,7 @@ Notion skill database rows should act as a mapping layer. The durable skill inst
 
 ## accounts management
 
-Provider API implementation lives in the canonical `hellogafaro/hellogafaro-accounts` repository. The `accounts-operations` skill resolves an existing local checkout without assuming a workspace path or capitalization.
-
-The `accounts-operations` skill in this repo is a research-first router and usage contract. Do not duplicate provider auth or proxy mechanics here.
+The `accounts-operations` skill is a self-contained client for the live Hello Gafaro Accounts API. It includes the request wrapper, API contract, and provider routing references; it never requires an implementation repository checkout.
 
 ## rules
 

@@ -21,7 +21,7 @@ Skills:
 - paid-media-analysis
 - performance-analysis
 - reporting
-- accounts-ops
+- accounts-operations
 
 Cursor cloud environment: **Shopify Dev**
 

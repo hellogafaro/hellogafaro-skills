@@ -39,6 +39,7 @@ const removedAccountsOpsSkill = ["hellogafaro", "accounts", "ops"].join("-");
 
 const expectedResources = {
   "accounts-operations": [
+    "references/api.md",
     "references/edge-cases.md",
     "references/shopify.md",
     "references/klaviyo.md",
@@ -47,7 +48,8 @@ const expectedResources = {
     "references/tiktok-ads.md",
     "references/posthog.md",
     "references/google-analytics.md",
-    "references/search-console.md"
+    "references/search-console.md",
+    "scripts/accounts-api.sh"
   ],
   "analysis": ["scripts/analyze_timeseries.py"],
   "calendar-management": [
@@ -165,14 +167,15 @@ test("skills have valid metadata", async () => {
   }
 });
 
-test("accounts operations stays a research-first router", async () => {
+test("accounts operations is a self-contained live API client", async () => {
   const markdown = await readFile(path.join(skillsDir, "accounts-operations", "SKILL.md"), "utf8");
 
-  assert.ok(markdown.includes("hellogafaro/hellogafaro-accounts"));
-  assert.ok(markdown.includes("<accounts-ops-root>"));
-  assert.ok(!markdown.includes("$HOME/Dev"));
+  assert.ok(markdown.includes("self-contained"));
+  assert.ok(markdown.includes("references/api.md"));
+  assert.ok(markdown.includes("scripts/accounts-api.sh"));
+  assert.ok(!markdown.includes("hellogafaro/hellogafaro-accounts"));
+  assert.ok(!markdown.includes("<accounts-ops-root>"));
   assert.ok(markdown.includes("/accounts/{account_id}/{provider}"));
-  assert.ok(markdown.includes("HELLOGAFARO_ACCOUNTS_URL"));
   assert.ok(markdown.includes("HELLOGAFARO_ACCOUNTS_BEARER_TOKEN"));
   assert.ok(markdown.includes("Browse the linked official provider documentation"));
   assert.ok(!markdown.includes("HELLO_GAFARO_ACCOUNTS_URL"));

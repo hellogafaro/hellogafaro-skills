@@ -3,7 +3,7 @@
 Read this before provider work.
 
 - Unknown account: list accounts; never guess an id.
-- Multiple matching accounts or checkouts: resolve with the user before querying.
+- Multiple matching accounts: resolve with the user before querying.
 - Missing credential, 401, or 403: report the source failure; do not retry with another account.
 - New or changed call: research the current official API reference, version, scopes, request shape, response schema, pagination, quotas, and deprecations first.
 - Long date range: split by month unless the current provider documentation recommends a stricter window; aggregate only compatible periods.

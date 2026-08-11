@@ -5,21 +5,22 @@ description: Use when work needs connected client account data or provider-nativ
 
 # accounts-operations
 
-Use the authenticated raw-provider proxy in `hellogafaro/hellogafaro-accounts`. Do not invent provider endpoints, fields, API versions, or limits.
+Use the live authenticated Accounts API. This skill is self-contained and does not require an implementation repository checkout. Do not invent provider endpoints, fields, API versions, or limits.
 
 ## Workflow
 
 1. Identify the client, account id, provider, operation, date window, and whether a write is requested.
-2. Locate and validate one existing `hellogafaro/hellogafaro-accounts` checkout. Do not assume its path or clone it without approval.
-3. Read `<accounts-ops-root>/AGENTS.md`, `<accounts-ops-root>/skills/hellogafaro-accounts/SKILL.md`, [references/edge-cases.md](references/edge-cases.md), and the needed provider reference below.
-4. Browse the linked official provider documentation before constructing every new or changed operation. Treat checked-in references as routing and safety guidance, not an API catalog.
-5. List accounts when the account id is unknown. Use the canonical request script from the consumer root; it loads `HELLOGAFARO_ACCOUNTS_URL` and `HELLOGAFARO_ACCOUNTS_BEARER_TOKEN` without printing either value.
-6. Send provider-native calls through `POST /accounts/{account_id}/{provider}` with `{ method, url, params, body }`. Use no provider credentials, authorization headers, or absolute upstream URLs.
-7. Run the smallest read that answers the question. Perform a write only when the user explicitly asks and the operation is supported by the current official documentation.
-8. Return provider, account id, official source, endpoint, date window, metric definition, result, and limitations.
+2. Read [references/api.md](references/api.md), [references/edge-cases.md](references/edge-cases.md), and the needed provider reference below.
+3. Browse the linked official provider documentation before constructing every new or changed operation. Treat checked-in references as routing and safety guidance, not an API catalog.
+4. List accounts when the account id is unknown. Use [scripts/accounts-api.sh](scripts/accounts-api.sh) from the consumer root; it reads `HELLOGAFARO_ACCOUNTS_BEARER_TOKEN` from the environment or `.env` without printing it. `HELLOGAFARO_ACCOUNTS_URL` is optional and defaults to the live API.
+5. Send provider-native calls through `POST /accounts/{account_id}/{provider}` with `{ method, url, params, body }`. Use no provider credentials, authorization headers, or absolute upstream URLs.
+6. Run the smallest read that answers the question. Perform a write only when the user explicitly asks and the operation is supported by the current official documentation.
+7. Return provider, account id, official source, endpoint, date window, metric definition, result, and limitations.
 
 ## Provider references
 
+- [references/api.md](references/api.md)
+- [references/edge-cases.md](references/edge-cases.md)
 - [references/shopify.md](references/shopify.md)
 - [references/klaviyo.md](references/klaviyo.md)
 - [references/meta-ads.md](references/meta-ads.md)
@@ -36,3 +37,4 @@ Use the authenticated raw-provider proxy in `hellogafaro/hellogafaro-accounts`. 
 - Preserve upstream response semantics. Label sampling, thresholding, partial pages, stale data, and inferences.
 - Prefer sparse fields, server-side filtering, cursor pagination, and month-by-month aggregation for long windows.
 - Stop on authentication, authorization, missing credential, quota, or provider errors. Do not represent partial provider data as complete.
+- Never clone or locate the Accounts implementation repository to operate the live API.

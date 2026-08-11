@@ -1,10 +1,22 @@
 # Shopify support routes
 
+## Select one primary reference
+
+Classify the issue before opening live support:
+
+| Category | Reference | Typical scope |
+|---|---|---|
+| Billing | [billing.md](billing.md) | Invoices, subscriptions, plans, charges, credits, refunds, and billing ownership. |
+| Shipping | [shipping.md](shipping.md) | Shopify Shipping labels, carriers, delivery failures, claims, insurance, tracers, and service refunds. |
+| General | [general.md](general.md) | Storefront, checkout, orders, apps, account access, domains, technical defects, and anything outside billing or shipping. |
+
+Read exactly one primary reference unless the issue genuinely crosses categories. Keep shared conversation behavior in `SKILL.md`; use these references for domain ownership, evidence, escalation paths, and completion criteria.
+
 ## Choose the primary door
 
 | Issue | Primary record/owner | Use live chat for |
 |---|---|---|
-| Card chargeback or payment dispute | Shopify Admin dispute record; third-party payment provider if it processed the payment | Evidence questions, record access, a Shopify-side defect, or escalation. Preserve the response deadline first. |
+| Card chargeback or payment dispute | Dedicated `shopify-chargeback` skill | Route out of this skill unless the task is only to contact live support about record access or a Shopify-side defect. |
 | Shopify Payments payout, reserve, hold, or verification | Shopify Payments/payout record | Eligibility, review status, account-specific escalation, and the case trail. |
 | Shopify Shipping label, carrier delay, service refund, or claim | Shopify Support/Shopify Shipping when the label was bought through Shopify | Carrier trace, claim eligibility, service refund process, and label-account escalation. Use the carrier directly only when the merchant bought the label directly. |
 | Order, fulfillment, refund, or inventory behavior | Shopify Admin order/fulfillment record | Product behavior, audit trail, or escalation after collecting the order/timeline. |
@@ -20,15 +32,7 @@
 - Verify the merchant/store name at the top of Help Center and Admin before sharing any order or billing data.
 - Use the Help Center account/store switcher if the wrong organization is selected. Record the intended store name in the opening message.
 - Keep the support chat in one browser tab. Open Admin, order, tracking, or email in separate tabs so the chat session survives navigation and security redirects.
-- If chat is unavailable, verify login and organization selection, then use the existing Support Inbox/email thread. Do not cold-email a generic Shopify address unless Shopify explicitly instructed it.
-
-## Evidence by issue
-
-- **Dispute:** order timeline, fulfillment proof, customer communication, refund status, tracking, policy/terms, and deadline.
-- **Shipping:** label purchase source, carrier service, tracking, promised window, actual scan history, order/refund proof, and delivery/loss status.
-- **Technical:** affected URL, timestamps/timezone, role/account, browser/device, exact repro steps, error text/request ID, screenshots/video, and expected vs actual result.
-- **Billing/payments:** invoice/payout IDs, amount/currency, dates, screenshots, plan/app name, and transaction context.
-- **Access/account:** organization/store, affected staff role, account email, exact verification or permission state. Never transmit passwords or MFA codes.
+- If chat is unavailable and calling tools exist, use phone support. Otherwise, verify login and organization selection, then use the existing Support Inbox or email thread. Do not cold-email a generic Shopify address unless Shopify explicitly instructed it.
 
 ## Escalation questions
 
@@ -43,4 +47,4 @@ Use these when an advisor says they need time or the result depends on a later e
 
 ## Stop conditions
 
-End support work when the issue is fixed and verified, or when the case has a durable reference, owner, next action, and deadline. Treat a required user security step or third-party-owner handoff as a valid stop only after documenting it. Do not end with a vague instruction to "check back later."
+End support work when the issue is fixed and verified, or when the case has a durable reference, owner, next action, and deadline. If Shopify cannot provide a deadline, record that explicitly along with the continuation channel. Treat a required user security step or third-party-owner handoff as a valid stop only after documenting it. Do not end with a vague instruction to "check back later."

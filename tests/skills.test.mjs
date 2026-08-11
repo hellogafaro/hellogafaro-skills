@@ -79,7 +79,12 @@ const expectedResources = {
   "measurement-audit": ["references/attribution.md"],
   "paid-media-analysis": ["references/diagnostics.md"],
   "reporting": ["references/report-types.md"],
-  "shopify-live-support": ["references/support-routes.md"],
+  "shopify-live-support": [
+    "references/support-routes.md",
+    "references/billing.md",
+    "references/shipping.md",
+    "references/general.md"
+  ],
   "skills-management": [
     "references/prerequisites.md",
     "references/creation.md",

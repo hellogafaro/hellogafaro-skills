@@ -69,10 +69,10 @@ Ask briefly, then act:
 
 Load only when needed.
 
-- `references/skill-packs.md` — pack definitions, skill lists, cloud environment mapping.
-- `references/agents-template.md` — starter AGENTS.md for new projects.
-- `references/environment-json.md` — minimal `.cursor/environment.json` patterns.
-- `references/update-log.md` — maintainer log for pack, prompt, and template changes.
+- `references/skill-packs.md`: pack definitions, skill lists, cloud environment mapping.
+- `references/agents-template.md`: starter AGENTS.md for new projects.
+- `references/environment-json.md`: minimal `.cursor/environment.json` patterns.
+- `references/update-log.md`: maintainer log for pack, prompt, and template changes.
 
 ## Maintainer update block
 

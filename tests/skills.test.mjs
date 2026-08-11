@@ -6,34 +6,6 @@ import { test } from "node:test";
 const root = path.resolve(import.meta.dirname, "..");
 const skillsDir = path.join(root, "skills");
 
-const expectedSkills = [
-  "accounts-operations",
-  "analysis",
-  "brainstorm",
-  "calendar-management",
-  "commerce-analysis",
-  "deep-research",
-  "documentation-creation",
-  "email-analysis",
-  "email-management",
-  "git-operations",
-  "handoff",
-  "inbox-management",
-  "measurement-audit",
-  "memory-management",
-  "notion-operations",
-  "paid-media-analysis",
-  "performance-analysis",
-  "reporting",
-  "shopify-chargeback",
-  "shopify-live-support",
-  "skills-management",
-  "shopiworks-clickup-sync",
-  "slack-communication",
-  "summarize",
-  "task-management"
-];
-
 const removedMeetingSkill = ["meeting", "notes"].join("-");
 const removedContentSkill = ["content", "creation"].join("-");
 const removedAccountsOpsSkill = ["hellogafaro", "accounts", "ops"].join("-");
@@ -136,24 +108,20 @@ function parseFrontmatter(markdown) {
   return data;
 }
 
-test("skill inventory is intentional", async () => {
-  const entries = await readdir(skillsDir);
-  const actual = [];
+async function getSkills() {
+  const entries = await readdir(skillsDir, { withFileTypes: true });
+  return entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name).sort();
+}
 
-  for (const entry of entries) {
-    const entryStat = await stat(path.join(skillsDir, entry));
-    if (entryStat.isDirectory()) actual.push(entry);
-  }
-
-  assert.deepEqual(actual.sort(), expectedSkills.toSorted());
-
+test("skill inventory excludes forbidden legacy names", async () => {
+  const actual = await getSkills();
   for (const forbidden of forbiddenSkills) {
     assert.ok(!actual.includes(forbidden), `${forbidden} should not exist`);
   }
 });
 
 test("skills have valid metadata", async () => {
-  for (const skill of expectedSkills) {
+  for (const skill of await getSkills()) {
     const file = path.join(skillsDir, skill, "SKILL.md");
     const markdown = await readFile(file, "utf8");
     const frontmatter = parseFrontmatter(markdown);

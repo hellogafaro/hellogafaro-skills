@@ -17,20 +17,24 @@ HELLOGAFARO_ACCOUNTS_URL=https://accounts.ongafaro.com
 HELLOGAFARO_ACCOUNTS_ENV_FILE=/absolute/path/to/.env
 ```
 
-Never print the token, place it in a command, commit it, or send it to a provider. Use `scripts/accounts-api.sh`, which injects the Accounts authorization header.
+Never print, commit, or send the token to a provider. Use any available HTTP client and send it only to the Accounts API:
+
+```http
+Authorization: Bearer {HELLOGAFARO_ACCOUNTS_BEARER_TOKEN}
+```
 
 ## Accounts
 
 List accounts when the account id is unknown:
 
-```bash
-scripts/accounts-api.sh GET /accounts
+```http
+GET /accounts
 ```
 
 Read one account:
 
-```bash
-scripts/accounts-api.sh GET /accounts/{account_id}
+```http
+GET /accounts/{account_id}
 ```
 
 ## Provider requests
@@ -54,9 +58,11 @@ Request envelope:
 
 Example:
 
-```bash
-scripts/accounts-api.sh POST /accounts/{account_id}/shopify \
-  --json '{"method":"POST","url":"/admin/api/{api_version}/graphql.json","body":{"query":"query { shop { name } }"}}'
+```http
+POST /accounts/{account_id}/shopify
+Content-Type: application/json
+
+{"method":"POST","url":"/admin/api/{api_version}/graphql.json","body":{"query":"query { shop { name } }"}}
 ```
 
 Supported provider ids are `shopify`, `klaviyo`, `meta-ads`, `google-ads`, `tiktok-ads`, `posthog`, `google-analytics`, and `google-search-console`.

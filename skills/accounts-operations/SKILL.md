@@ -12,8 +12,8 @@ Use the live authenticated Accounts API. This skill is self-contained and does n
 1. Identify the client, account id, provider, operation, date window, and whether a write is requested.
 2. Read [references/api.md](references/api.md), [references/edge-cases.md](references/edge-cases.md), and the needed provider reference below.
 3. Browse the linked official provider documentation before constructing every new or changed operation. Treat checked-in references as routing and safety guidance, not an API catalog.
-4. List accounts when the account id is unknown. Use [scripts/accounts-api.sh](scripts/accounts-api.sh) from the consumer root; it reads `HELLOGAFARO_ACCOUNTS_BEARER_TOKEN` from the environment or `.env` without printing it. `HELLOGAFARO_ACCOUNTS_URL` is optional and defaults to the live API.
-5. Send provider-native calls through `POST /accounts/{account_id}/{provider}` with `{ method, url, params, body }`. Use no provider credentials, authorization headers, or absolute upstream URLs.
+4. List accounts when the account id is unknown. Use any available HTTP client. Read `HELLOGAFARO_ACCOUNTS_BEARER_TOKEN` from the environment, host secrets, or an uncommitted `.env` without printing it. `HELLOGAFARO_ACCOUNTS_URL` is optional and defaults to the live API.
+5. Send provider-native calls through `POST /accounts/{account_id}/{provider}` with `{ method, url, params, body }`. Put no provider credentials, provider authorization headers, or absolute upstream URLs inside that request envelope.
 6. Run the smallest read that answers the question. Perform a write only when the user explicitly asks and the operation is supported by the current official documentation.
 7. Return provider, account id, official source, endpoint, date window, metric definition, result, and limitations.
 

@@ -48,8 +48,7 @@ const expectedResources = {
     "references/tiktok-ads.md",
     "references/posthog.md",
     "references/google-analytics.md",
-    "references/search-console.md",
-    "scripts/accounts-api.sh"
+    "references/search-console.md"
   ],
   "analysis": ["scripts/analyze_timeseries.py"],
   "calendar-management": [
@@ -167,12 +166,12 @@ test("skills have valid metadata", async () => {
   }
 });
 
-test("accounts operations is a self-contained live API client", async () => {
+test("accounts operations is a self-contained live API contract", async () => {
   const markdown = await readFile(path.join(skillsDir, "accounts-operations", "SKILL.md"), "utf8");
 
   assert.ok(markdown.includes("self-contained"));
   assert.ok(markdown.includes("references/api.md"));
-  assert.ok(markdown.includes("scripts/accounts-api.sh"));
+  assert.ok(markdown.includes("any available HTTP client"));
   assert.ok(!markdown.includes("hellogafaro/hellogafaro-accounts"));
   assert.ok(!markdown.includes("<accounts-ops-root>"));
   assert.ok(markdown.includes("/accounts/{account_id}/{provider}"));

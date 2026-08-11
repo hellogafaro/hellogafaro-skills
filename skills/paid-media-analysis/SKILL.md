@@ -18,7 +18,7 @@ Do not use it to create or mutate campaigns unless the user explicitly asks and 
 ## Workflow
 
 1. Identify platform, account id, date window, comparison window, business goal, and active campaigns.
-2. Pull only needed fields through `accounts-management`.
+2. Pull only needed fields through `accounts-operations`.
 3. Pair with `measurement-audit` when attribution or tracking could change the answer.
 4. Pair with `analysis` for decomposition, fatigue checks, lag, pacing, forecasting, or charts.
 5. Explain the mechanism as price, traffic quality, conversion rate, spend mix, creative, audience, landing page, or tracking.
@@ -36,7 +36,7 @@ Do not use it to create or mutate campaigns unless the user explicitly asks and 
 
 ## Platform references
 
-Read only the needed provider reference under `<accounts-ops-root>/skills/hellogafaro-accounts/references`, using the checkout resolved through `accounts-management`.
+Read only the needed provider reference under `<accounts-ops-root>/skills/hellogafaro-accounts/references`, using the checkout resolved through `accounts-operations`.
 
 - Meta Ads.
 - Google Ads.

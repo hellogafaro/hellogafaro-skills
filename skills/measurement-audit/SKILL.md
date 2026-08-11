@@ -27,7 +27,7 @@ Use this before trusting numbers when sources conflict, tracking changed, attrib
 
 ## Provider routes
 
-- GA4 and Search Console use `accounts-management`, then the matching provider reference in the owning repo.
+- GA4 and Search Console use `accounts-operations`, then the matching provider reference in the owning repo.
 - PostHog uses Accounts Ops for HogQL event, session, funnel, retention, and attribution inspection.
 - Shopify is commerce truth for orders, revenue, refunds, and discount context when available.
 - Ad platforms and Klaviyo are channel truth, not final business truth.

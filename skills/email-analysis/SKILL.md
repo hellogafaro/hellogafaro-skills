@@ -16,7 +16,7 @@ Use this to inspect email and lifecycle performance.
 ## Workflow
 
 1. Identify account id, date window, comparison window, campaign or flow scope, and business question.
-2. Pull needed Klaviyo data through `accounts-management`.
+2. Pull needed Klaviyo data through `accounts-operations`.
 3. Pair with `commerce-analysis` when email revenue needs Shopify validation.
 4. Pair with `measurement-audit` when attribution or tracking is suspect.
 5. Pair with `analysis` for cohorts, time series, segmentation, or forecasting.

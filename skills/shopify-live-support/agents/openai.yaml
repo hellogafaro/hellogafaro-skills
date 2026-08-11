@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shopify Live Support"
+  short_description: "Route and escalate Shopify support chats"
+  default_prompt: "Use $shopify-live-support to resolve a Shopify support issue through a documented case."

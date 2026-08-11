@@ -26,6 +26,7 @@ const expectedSkills = [
   "performance-analysis",
   "reporting",
   "shopify-chargeback",
+  "shopify-live-support",
   "skills-management",
   "shopiworks-clickup-sync",
   "slack-communication",
@@ -78,6 +79,7 @@ const expectedResources = {
   "measurement-audit": ["references/attribution.md"],
   "paid-media-analysis": ["references/diagnostics.md"],
   "reporting": ["references/report-types.md"],
+  "shopify-live-support": ["references/support-routes.md"],
   "skills-management": [
     "references/prerequisites.md",
     "references/creation.md",

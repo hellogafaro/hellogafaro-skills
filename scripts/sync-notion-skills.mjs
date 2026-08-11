@@ -9,7 +9,7 @@ const dataSourceId = "33bfc7982e4381eabeb3000bc9f775f1";
 const repoBaseUrl = "https://github.com/hellogafaro/hellogafaro-skills/blob/main";
 
 const displayNames = {
-  "accounts-management": "Accounts management",
+  "accounts-operations": "Accounts operations",
   "analysis": "Analysis",
   "calendar-management": "Calendar management",
   "commerce-analysis": "Commerce analysis",

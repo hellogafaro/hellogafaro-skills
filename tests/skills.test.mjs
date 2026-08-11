@@ -7,7 +7,7 @@ const root = path.resolve(import.meta.dirname, "..");
 const skillsDir = path.join(root, "skills");
 
 const expectedSkills = [
-  "accounts-management",
+  "accounts-operations",
   "analysis",
   "brainstorm",
   "calendar-management",
@@ -38,6 +38,17 @@ const removedContentSkill = ["content", "creation"].join("-");
 const removedAccountsOpsSkill = ["hellogafaro", "accounts", "ops"].join("-");
 
 const expectedResources = {
+  "accounts-operations": [
+    "references/edge-cases.md",
+    "references/shopify.md",
+    "references/klaviyo.md",
+    "references/meta-ads.md",
+    "references/google-ads.md",
+    "references/tiktok-ads.md",
+    "references/posthog.md",
+    "references/google-analytics.md",
+    "references/search-console.md"
+  ],
   "analysis": ["scripts/analyze_timeseries.py"],
   "calendar-management": [
     "references/calendar-conflicts.md",
@@ -154,8 +165,8 @@ test("skills have valid metadata", async () => {
   }
 });
 
-test("accounts management stays a router", async () => {
-  const markdown = await readFile(path.join(skillsDir, "accounts-management", "SKILL.md"), "utf8");
+test("accounts operations stays a research-first router", async () => {
+  const markdown = await readFile(path.join(skillsDir, "accounts-operations", "SKILL.md"), "utf8");
 
   assert.ok(markdown.includes("hellogafaro/hellogafaro-accounts"));
   assert.ok(markdown.includes("<accounts-ops-root>"));
@@ -163,6 +174,7 @@ test("accounts management stays a router", async () => {
   assert.ok(markdown.includes("/accounts/{account_id}/{provider}"));
   assert.ok(markdown.includes("HELLOGAFARO_ACCOUNTS_URL"));
   assert.ok(markdown.includes("HELLOGAFARO_ACCOUNTS_BEARER_TOKEN"));
+  assert.ok(markdown.includes("Browse the linked official provider documentation"));
   assert.ok(!markdown.includes("HELLO_GAFARO_ACCOUNTS_URL"));
   assert.ok(!markdown.includes("refresh token"));
   assert.ok(!markdown.includes("client secret"));

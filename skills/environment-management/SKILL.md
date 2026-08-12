@@ -14,7 +14,8 @@ Prepare self-contained repositories for reliable human and agent collaboration.
 3. Ask one short question when requirements are not already explicit: "What specific tools, platforms, services, and workflows does this repository need?"
 4. Separate ownership:
    - Cursor User Rules hold personal cross-project preferences.
-   - `AGENTS.md` holds verified project-specific guidance shared through Git.
+   - `AGENTS.md` holds only durable, verified project-specific guidance shared through Git.
+   - `README.md` stays platform-agnostic and useful to any contributor.
    - `.agents/skills` holds baseline and relevant platform skills.
    - Project manifests and lockfiles hold provider and framework CLIs.
    - Cursor secrets hold credentials; committed files document names only.
@@ -46,5 +47,6 @@ Prepare self-contained repositories for reliable human and agent collaboration.
 ## Safety
 
 - Never guess credentials, install every available skill, overwrite project instructions, or mix skill installation methods for the same installed copy.
+- Never put skill-management commands, agent-platform setup, temporary branches, active TODOs, completed work history, or ephemeral warnings in `AGENTS.md` or `README.md`.
 - Never commit tokens, login caches, `.env` values, private keys, or generated authentication state.
 - Treat deployment, production mutations, PR creation, merges, and publishing as separate actions requiring explicit authorization.

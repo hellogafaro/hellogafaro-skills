@@ -6,7 +6,11 @@ Inspect the repository, ask what external services it needs, install the baselin
 
 ## Shopify application
 
-Install the baseline skills, the relevant Shopify AI Toolkit skills, and project-scoped `@shopify/cli`. Document the required Shopify secret names and authentication mode. Add ports or terminals only when the app's verified development command needs them.
+Install the baseline skills, the relevant Shopify AI Toolkit skills, and
+project-scoped `@shopify/cli`. Document `SHOPIFY_CLI_THEME_TOKEN` only for theme
+work and pass the store with `--store`. Keep README setup package-manager-native
+and platform-agnostic. Add ports or terminals only when the verified development
+command needs them.
 
 ## Cloudflare Worker
 

@@ -6,7 +6,9 @@ Install Shopify's official AI Toolkit when the repository builds Shopify apps, t
 
 Authentication is workflow-specific:
 
-- Theme automation supports `SHOPIFY_CLI_THEME_TOKEN` from Theme Access plus explicit store configuration.
+- Theme automation supports `SHOPIFY_CLI_THEME_TOKEN` from Theme Access. Pass the
+  store explicitly with `--store <store>.myshopify.com`; the store name is
+  configuration, not a secret.
 - App development may require interactive Shopify CLI authentication or app-specific credentials.
 
 Use configured Cursor secrets. Ask for the exact missing supported credential; never treat a theme token as a universal Shopify login. Never print credentials or commit login caches.

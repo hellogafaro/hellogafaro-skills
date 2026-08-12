@@ -15,7 +15,19 @@ Keep `AGENTS.md` project-specific and concise. Include only verified information
 - deployment boundaries and known limitations
 - required secret names without values
 
-Keep stack, installation, and broad architecture documentation in `README.md` or linked docs. Do not duplicate Cursor User Rules.
+Do not include skill installation or update commands, agent-platform branding,
+temporary branch names, active task lists, completed work history, migration
+history, transient warnings, or exhaustive file tables. Link a durable project
+document only when it materially affects current work.
+
+Keep stack, installation, and broad architecture documentation in `README.md` or
+linked docs. The README must work for humans and tools outside Cursor. Do not
+mention Cursor, cloud agents, installed skills, or secret dashboards. Prefer the
+repository's existing package manager; when introducing JavaScript tooling,
+prefer Bun, then pnpm, unless the project already standardizes on another tool.
+Do not document generated or temporary files as permanent project structure.
+
+Do not duplicate Cursor User Rules.
 
 ## Compatibility links
 

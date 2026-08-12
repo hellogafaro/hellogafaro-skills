@@ -1,0 +1,4 @@
+interface:
+  display_name: "Environment Management"
+  short_description: "Set up reliable agent-ready repositories"
+  default_prompt: "Use $environment-management to inspect this repository and set up its agent instructions, skills, CLIs, secrets contract, and Cursor Cloud environment."

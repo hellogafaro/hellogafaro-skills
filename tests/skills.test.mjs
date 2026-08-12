@@ -43,6 +43,19 @@ const expectedResources = {
     "references/email-signal-rules.md",
     "references/email-snoozed.md"
   ],
+  "environment-management": [
+    "references/project-setup.md",
+    "references/skills.md",
+    "references/cursor.md",
+    "references/shopify.md",
+    "references/cloudflare.md",
+    "references/examples.md",
+    "assets/cursor/Dockerfile",
+    "assets/cursor/environment.json",
+    "assets/cursor/install.sh",
+    "assets/cursor/update.sh",
+    "assets/cursor/start.sh"
+  ],
   "inbox-management": [
     "references/edge-cases.md",
     "references/loop-states.md",

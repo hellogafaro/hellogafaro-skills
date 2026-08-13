@@ -21,7 +21,11 @@ Never print, commit, or send the token to a provider. Use any available HTTP cli
 
 ```http
 Authorization: Bearer {HELLOGAFARO_ACCOUNTS_BEARER_TOKEN}
+User-Agent: HelloGafaro-Accounts/1.0
 ```
+
+Send this stable `User-Agent` on every request. Cloudflare rejects some HTTP
+clients' default signatures before they reach the Accounts API.
 
 ## Accounts
 

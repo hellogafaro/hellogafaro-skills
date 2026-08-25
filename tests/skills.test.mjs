@@ -11,7 +11,7 @@ const removedContentSkill = ["content", "creation"].join("-");
 const removedAccountsOpsSkill = ["hellogafaro", "accounts", "ops"].join("-");
 
 const expectedResources = {
-  "hellogafaro-studio-ops": [
+  "accounts-operations": [
     "references/shopify.md",
     "references/klaviyo.md",
     "references/meta-ads.md",
@@ -152,8 +152,8 @@ test("skills have valid metadata", async () => {
   }
 });
 
-test("hellogafaro-studio-ops is a self-contained live API contract", async () => {
-  const markdown = await readFile(path.join(skillsDir, "hellogafaro-studio-ops", "SKILL.md"), "utf8");
+test("accounts-operations is a self-contained live API contract", async () => {
+  const markdown = await readFile(path.join(skillsDir, "accounts-operations", "SKILL.md"), "utf8");
 
   assert.ok(markdown.includes("self-contained"));
   assert.ok(markdown.includes("PUBLIC_URL"));

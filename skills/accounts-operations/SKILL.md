@@ -1,9 +1,9 @@
 ---
-name: hellogafaro-studio-ops
+name: accounts-operations
 description: Use when work needs connected client account data, account or connection management, or provider-native reads and confirmed writes through Hello Gafaro Studio for Shopify, Klaviyo, Meta Ads, Google Ads, TikTok Ads, PostHog, GA4, or Search Console.
 ---
 
-# hellogafaro-studio-ops
+# accounts-operations
 
 Call the live Studio REST API directly with curl, never through MCP. This skill is self-contained and does not require an implementation repository checkout.
 

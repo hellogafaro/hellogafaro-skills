@@ -10,9 +10,9 @@ Notion skill database rows should act as a mapping layer. The durable skill inst
 - `workers/` contains Notion worker code when a custom agent needs code outside instructions.
 - `tests/` keeps the skill inventory and metadata honest.
 
-## accounts management
+## studio operations
 
-The `accounts-operations` skill is a self-contained usage contract for the live Hello Gafaro Accounts API. It includes API and provider routing references, permits any available HTTP client, and never requires an implementation repository checkout.
+The `hellogafaro-studio-ops` skill is a self-contained usage contract for the live Hello Gafaro Studio API. It includes account and connection management, provider routing references, permits any available HTTP client, and never requires an implementation repository checkout.
 
 ## environment management
 

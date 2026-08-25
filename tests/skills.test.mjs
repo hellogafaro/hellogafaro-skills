@@ -11,9 +11,7 @@ const removedContentSkill = ["content", "creation"].join("-");
 const removedAccountsOpsSkill = ["hellogafaro", "accounts", "ops"].join("-");
 
 const expectedResources = {
-  "accounts-operations": [
-    "references/api.md",
-    "references/edge-cases.md",
+  "hellogafaro-studio-ops": [
     "references/shopify.md",
     "references/klaviyo.md",
     "references/meta-ads.md",
@@ -154,20 +152,18 @@ test("skills have valid metadata", async () => {
   }
 });
 
-test("accounts operations is a self-contained live API contract", async () => {
-  const markdown = await readFile(path.join(skillsDir, "accounts-operations", "SKILL.md"), "utf8");
+test("hellogafaro-studio-ops is a self-contained live API contract", async () => {
+  const markdown = await readFile(path.join(skillsDir, "hellogafaro-studio-ops", "SKILL.md"), "utf8");
 
   assert.ok(markdown.includes("self-contained"));
-  assert.ok(markdown.includes("references/api.md"));
-  assert.ok(markdown.includes("any available HTTP client"));
+  assert.ok(markdown.includes("PUBLIC_URL"));
+  assert.ok(markdown.includes("BEARER_TOKEN"));
   assert.ok(!markdown.includes("hellogafaro/hellogafaro-accounts"));
-  assert.ok(!markdown.includes("<accounts-ops-root>"));
-  assert.ok(markdown.includes("/accounts/{account_id}/{provider}"));
-  assert.ok(markdown.includes("HELLOGAFARO_ACCOUNTS_BEARER_TOKEN"));
-  assert.ok(markdown.includes("Browse the linked official provider documentation"));
-  assert.ok(!markdown.includes("HELLO_GAFARO_ACCOUNTS_URL"));
-  assert.ok(!markdown.includes("refresh token"));
-  assert.ok(!markdown.includes("client secret"));
+  assert.ok(!markdown.includes("HELLOGAFARO_ACCOUNTS"));
+  assert.ok(!markdown.includes("accounts.ongafaro.com"));
+  assert.ok(markdown.includes("/connections/{connection_id}"));
+  assert.ok(markdown.includes("/accounts/{id}/credentials"));
+  assert.ok(markdown.includes("decrypted credentials"));
 });
 
 test("expected bundled resources exist", async () => {

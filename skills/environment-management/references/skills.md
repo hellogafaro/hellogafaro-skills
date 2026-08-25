@@ -12,7 +12,7 @@ Install this skill and these six baseline skills from `hellogafaro/hellogafaro-s
 - skills-management
 - summarize
 
-Do not install `accounts-operations` or `git-operations` by default.
+Do not install `hellogafaro-studio-ops` or `git-operations` by default.
 
 ```bash
 gh skill install hellogafaro/hellogafaro-skills \

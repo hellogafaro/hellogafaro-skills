@@ -10,7 +10,7 @@ Use Notion as the daily work record and ClickUp as the client-facing mirror. Cho
 ## References
 
 - Use `task-management` for task, project, and time-tracking schema.
-- Use `notion-operations` for Notion lookup, page links, updates, and confirmation comments.
+- Use `notion-cli` for Notion lookup, page links, updates, and confirmation comments.
 - Read `references/clickup-operations.md` before running `scripts/clickup.ts`.
 - Read `references/clickup-content.md` before writing ClickUp content.
 - Read `references/clickup-routing.md` when the workspace, space, folder, list, status, or member is not already confirmed.

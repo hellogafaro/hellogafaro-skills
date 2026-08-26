@@ -21,7 +21,6 @@ const expectedResources = {
     "references/google-analytics.md",
     "references/search-console.md"
   ],
-  "analysis": ["scripts/analyze_timeseries.py"],
   "calendar-management": [
     "references/calendar-conflicts.md",
     "references/calendar-edge-cases.md",
@@ -30,8 +29,6 @@ const expectedResources = {
     "references/calendar-prep.md",
     "references/calendar-triage.md"
   ],
-  "commerce-analysis": ["references/ecommerce-movement.md"],
-  "email-analysis": ["references/lifecycle.md"],
   "email-management": [
     "references/email-edge-cases.md",
     "references/email-attachments.md",
@@ -59,9 +56,6 @@ const expectedResources = {
     "references/loop-states.md",
     "references/reconciliation.md"
   ],
-  "measurement-audit": ["references/attribution.md"],
-  "paid-media-analysis": ["references/diagnostics.md"],
-  "reporting": ["references/report-types.md"],
   "shopify-live-support": [
     "references/support-routes.md",
     "references/billing.md",
@@ -92,15 +86,23 @@ const expectedResources = {
     "references/task-queries.md",
     "references/tasks-schema.md",
     "references/time-tracking.md"
-  ]
+  ],
+  "unslop": ["LICENSE.md"]
 };
 
 const forbiddenSkills = [
   removedContentSkill,
   removedAccountsOpsSkill,
   removedMeetingSkill,
+  "analysis",
+  "commerce-analysis",
+  "email-analysis",
+  "measurement-audit",
   "memory",
   "notion",
+  "notion-operations",
+  "paid-media-analysis",
+  "performance-analysis",
   "skill-creation",
   "slack"
 ];
@@ -199,7 +201,7 @@ test("deprecated runtime references are gone", async () => {
   }
 });
 
-test("sidekick skills use portable host state and live Composio discovery", async () => {
+test("sidekick skills use portable host state", async () => {
   const entries = await readdir(skillsDir, { recursive: true });
   const forbiddenPhrases = [
     "General Notion AI",
@@ -214,7 +216,6 @@ test("sidekick skills use portable host state and live Composio discovery", asyn
     const file = path.join(skillsDir, entry);
     const text = await readFile(file, "utf8");
 
-    assert.ok(!/\bntn\b/.test(text), `${entry} points to the removed Notion CLI`);
     assert.ok(!hardcodedNotionId.test(text), `${entry} hardcodes a Notion identifier`);
 
     for (const phrase of forbiddenPhrases) {
@@ -224,11 +225,9 @@ test("sidekick skills use portable host state and live Composio discovery", asyn
 
   const inbox = await readFile(path.join(skillsDir, "inbox-management", "SKILL.md"), "utf8");
   const memory = await readFile(path.join(skillsDir, "memory-management", "SKILL.md"), "utf8");
-  const notion = await readFile(path.join(skillsDir, "notion-operations", "SKILL.md"), "utf8");
 
   assert.match(inbox, /Resolve `Inbox` through the host environment/);
   assert.match(memory, /Resolve `Memory` through the host environment/);
-  assert.match(notion, /user mention in its title property plus the exact Date property/);
   assert.ok(!inbox.includes("repository-root `INBOX.md`"));
   assert.ok(!memory.includes("repository-root `MEMORY.md`"));
 });

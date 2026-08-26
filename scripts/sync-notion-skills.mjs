@@ -10,22 +10,16 @@ const repoBaseUrl = "https://github.com/hellogafaro/hellogafaro-skills/blob/main
 
 const displayNames = {
   "accounts-operations": "Accounts operations",
-  "analysis": "Analysis",
   "calendar-management": "Calendar management",
-  "commerce-analysis": "Commerce analysis",
   "deep-research": "Deep research",
   "documentation-creation": "Documentation creation",
-  "email-analysis": "Email analysis",
   "email-management": "Email management",
   "inbox-management": "Inbox management",
-  "measurement-audit": "Measurement audit",
   "memory-management": "Memory management",
-  "notion-operations": "Notion operations",
-  "paid-media-analysis": "Paid media analysis",
-  "performance-analysis": "Performance analysis",
   "reporting": "Reporting",
   "slack-communication": "Slack communication",
-  "task-management": "Task management"
+  "task-management": "Task management",
+  "unslop": "Unslop"
 };
 
 function runNtn(args) {

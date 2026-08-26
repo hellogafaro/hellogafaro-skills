@@ -21,13 +21,6 @@ const expectedResources = {
     "references/google-analytics.md",
     "references/search-console.md"
   ],
-  "calendar-management": [
-    "references/calendar-conflicts.md",
-    "references/calendar-edge-cases.md",
-    "references/calendar-fetch-scheduling.md",
-    "references/calendar-prep.md",
-    "references/calendar-triage.md"
-  ],
   "environment-management": [
     "references/project-setup.md",
     "references/skills.md",
@@ -71,6 +64,7 @@ const forbiddenSkills = [
   removedAccountsOpsSkill,
   removedMeetingSkill,
   "analysis",
+  "calendar-management",
   "commerce-analysis",
   "deep-research",
   "email-analysis",

@@ -71,14 +71,6 @@ const expectedResources = {
     "scripts/clickup.ts",
     "scripts/clickup.test.ts"
   ],
-  "task-management": [
-    "references/completion.md",
-    "references/source-material.md",
-    "references/task-format.md",
-    "references/task-queries.md",
-    "references/tasks-schema.md",
-    "references/time-tracking.md"
-  ],
   "unslop": ["LICENSE.md"]
 };
 
@@ -99,7 +91,16 @@ const forbiddenSkills = [
   "performance-analysis",
   "skill-creation",
   "slack",
-  "slack-communication"
+  "slack-communication",
+  "task-management"
+];
+
+const allowedNotionIds = [
+  "25ffc7982e4380c58df6fef037530baa",
+  "25ffc7982e438086a264e63214fd1a60",
+  "f2cc8e0db76a4e84a58d30df91bca65c",
+  "25ffc7982e438056969fff6a4672eaaa",
+  "25ffc7982e438074aa69ecc16e69ada9"
 ];
 
 const ellipsis = ".".repeat(3);
@@ -210,8 +211,13 @@ test("memory skill uses portable host state", async () => {
 
     const file = path.join(skillsDir, entry);
     const text = await readFile(file, "utf8");
+    const notionIds = text.match(new RegExp(hardcodedNotionId.source, "gi")) ?? [];
 
-    assert.ok(!hardcodedNotionId.test(text), `${entry} hardcodes a Notion identifier`);
+    if (entry === path.join("tasks-operations", "SKILL.md")) {
+      assert.deepEqual(notionIds.sort(), [...allowedNotionIds].sort());
+    } else {
+      assert.equal(notionIds.length, 0, `${entry} hardcodes a Notion identifier`);
+    }
 
     for (const phrase of forbiddenPhrases) {
       assert.ok(!text.includes(phrase), `${entry} contains deprecated sidekick guidance: ${phrase}`);

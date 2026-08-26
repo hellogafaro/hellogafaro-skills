@@ -16,7 +16,7 @@ const displayNames = {
   "email-management": "Email management",
   "memory-management": "Memory management",
   "reporting": "Reporting",
-  "task-management": "Task management",
+  "tasks-operations": "Tasks operations",
   "unslop": "Unslop"
 };
 

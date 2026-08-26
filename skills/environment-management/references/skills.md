@@ -6,7 +6,7 @@ Install this skill and these six baseline skills from `hellogafaro/hellogafaro-s
 
 - environment-management
 - brainstorm
-- deep-research
+- research
 - documentation-creation
 - handoff
 - skills-management
@@ -16,7 +16,7 @@ Do not install `accounts-operations` or `git-operations` by default.
 
 ```bash
 gh skill install hellogafaro/hellogafaro-skills \
-  environment-management brainstorm deep-research documentation-creation \
+  environment-management brainstorm research documentation-creation \
   handoff skills-management summarize --dir .agents/skills
 ```
 

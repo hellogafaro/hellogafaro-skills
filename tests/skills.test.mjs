@@ -96,6 +96,7 @@ const forbiddenSkills = [
   removedMeetingSkill,
   "analysis",
   "commerce-analysis",
+  "deep-research",
   "email-analysis",
   "measurement-audit",
   "memory",

@@ -11,7 +11,7 @@ const repoBaseUrl = "https://github.com/hellogafaro/hellogafaro-skills/blob/main
 const displayNames = {
   "accounts-operations": "Accounts operations",
   "calendar-management": "Calendar management",
-  "deep-research": "Deep research",
+  "research": "Research",
   "documentation-creation": "Documentation creation",
   "email-management": "Email management",
   "inbox-management": "Inbox management",

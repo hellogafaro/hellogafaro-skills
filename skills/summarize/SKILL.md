@@ -1,65 +1,43 @@
 ---
 name: summarize
-description: Use when the user asks for a summary, wrap-up, recap, completion note, PM handoff summary, or what was done after an agent task across engineering, marketing, operations, analysis, documentation, or any other work.
+description: Use when the user asks for a concise completion summary, recap, wrap-up, PM handoff note, or factual account of work delivered and verified.
 ---
 
 # summarize
 
-Create a concise natural-text completion summary the user can forward to a project manager without cleanup.
+Write a compact completion summary that the user can forward without cleanup.
 
-## Core rules
+## Content
 
-- Do not add a title or heading.
-- Write in natural prose, not a report template.
-- Keep the layout tight: usually two to four short paragraphs, or compact bullets only when many repos, commits, PRs, or deliverables must be listed.
-- Include only meaningful work completed, delivered, or verified.
-- Include all commits, PRs, repositories, deliverables, and QA that matter.
-- Include every commit with short hash and message when commits were made.
-- Include every PR with number or URL when PRs were opened or updated.
-- Mention GitHub repositories by owner/name, not local filesystem paths, unless the local path is the deliverable.
-- Put the temporary handoff task Markdown file or URL near the end in its own sentence when one was created.
-- Name temporary handoff files in kebab case with the task slug and timestamp so they are unique, such as `/tmp/task-id-short-task-slug-20260616-1430.md`.
-- End with a concise tracked-time sentence, rounded to 15-minute increments, such as `Add 1 hour of tracked time for this work.` Follow the tracked-time calibration below.
-- Do not pad the time estimate with generic phrases like `capable human doing this end to end`, hypothetical wording like `would have taken`, or a repeated list of the work.
-- Use only generic placeholder content in examples, filenames, and sample wording. Do not include real client names, task ids, repositories, URLs, people, or project details in the skill itself.
-- Do not mention irrelevant dirty files, generated metadata, local cache files, or files intentionally left untouched unless they affect the handoff.
-- Do not include tool noise, command transcripts, process narration, or generic caveats.
-- Do not say what was not done unless it changes the project manager's next step.
-- Do not bury the actual deliverable under diagnosis detail. Summarize the finding only as much as needed for the PM to understand what changed and what remains open.
+- Start with what was delivered and why it matters.
+- State where it landed, including repositories, branches, commits, PRs, or durable artifact links that matter.
+- Include verification that actually ran and any blocker or next action that changes the handoff.
+- Include every relevant commit with its short hash and message, and every relevant PR with its number or URL.
+- Name GitHub repositories by owner and name. Use a local path only when the path is itself a deliverable.
+- Mention a temporary handoff file near the end when one was created.
+- Exclude tool noise, command transcripts, process narration, repeated diagnosis, irrelevant dirty files, and generic caveats.
+- Do not say what was not done unless it changes the next step.
 
-## Tracked-time calibration
+Use one to three short paragraphs by default. Use compact bullets only when several repositories, commits, PRs, or deliverables need separate lines. Do not add a heading unless the user asks for one.
 
-Estimate active, billable hands-on time for a competent senior who is already familiar with the client, repository, tooling, and established patterns.
+## Verification
 
-- Estimate the incremental work completed, not the cost of rebuilding the deliverable from scratch.
-- Do not infer time from lines changed, files touched, test count, validation breadth, conversation length, or the number of agent steps.
-- Do not count agent exploration, retries, tool latency, regenerated previews, or repeated feedback turns as full human labor. Count only the equivalent focused human work that was necessary.
-- Credit reuse of existing architecture, helpers, fixtures, conventions, and prior context instead of pricing the work as greenfield implementation.
-- Internally sanity-check the estimate across orientation, implementation, QA, and handoff, but output only the final total unless the user asks for the breakdown.
-- Do not add speculative contingency, project-management overhead, or replacement-cost padding.
-- Treat a user-provided or user-corrected estimate as the strongest calibration for the current task and similar future work unless the scope materially differs.
+Review live state before making claims. Check the relevant Git status, commits, pushed branch, PR state, artifact, and QA result. If a required source is blocked, name only the missing source and why it affects the summary.
 
-## Source review
+## Tracked time
 
-Before writing, review the live state that can change the summary:
+End with one tracked-time sentence unless the user asks to omit it or the summary contains no billable work.
 
-- Git status, recent commits, pushed branch, and PR state for code work.
-- Created or updated Notion tasks, docs, reports, dashboards, decks, spreadsheets, or other deliverables.
-- QA actually run, including tests, builds, lint, screenshots, previews, data checks, or review steps.
-- Any temporary handoff task Markdown file created for the user or next agent.
-- The final URL or filesystem path of any handoff/time document, if one exists.
+- Use user-provided actual time when available. A user correction overrides later estimates for comparable work.
+- Otherwise estimate the active time a competent person would need with the context available at the start of the task.
+- Count necessary investigation, decisions, implementation, review, QA, and handoff. Ignoring real diagnosis or verification produces estimates that are too low.
+- Exclude unattended waits, tool latency, retries that add no insight, automated execution, duplicated effort, and conversation length. Pricing the work as a rebuild produces estimates that are too high.
+- Credit existing helpers, patterns, prior context, and generated work, while counting the human judgment still required to use and verify them.
+- Set a plausible lower bound by asking whether the required understanding, change, and verification could fit in less time.
+- Set a plausible upper bound by naming the necessary work that fills the extra time. Remove time that has no concrete work behind it.
+- Choose the midpoint of the narrowest defensible range, then round once to the nearest 15 minutes. Do not sum separately rounded subtasks.
+- Do not estimate from line count, file count, test count, agent steps, or elapsed wall time alone.
 
-If a source is blocked, say only the blocked source and why it matters.
+Output only the final total unless the user asks for the calculation.
 
-## Output shape
-
-Default order:
-
-1. What was delivered.
-2. Where it landed, including repository, branch, commits, PRs, or durable artifact links.
-3. QA or verification run.
-4. Handoff task Markdown file path if created.
-5. Any real blocker or next project-manager action.
-6. Tracked-time estimate as the final sentence.
-
-Keep the answer compact. The goal is accurate handoff, not a diary.
+Before sending, read and apply `unslop`. Preserve hashes, URLs, identifiers, filenames, numbers, verification status, and tracked time.

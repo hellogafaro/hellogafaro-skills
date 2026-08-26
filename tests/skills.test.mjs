@@ -54,6 +54,7 @@ const forbiddenSkills = [
   "calendar-management",
   "commerce-analysis",
   "deep-research",
+  "documentation-creation",
   "email-analysis",
   "email-management",
   "environment-management",

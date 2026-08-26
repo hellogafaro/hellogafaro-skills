@@ -12,7 +12,7 @@ const displayNames = {
   "accounts-operations": "Accounts operations",
   "calendar-operations": "Calendar operations",
   "research": "Research",
-  "documentation-creation": "Documentation creation",
+  "documents-operations": "Documents operations",
   "email-operations": "Email operations",
   "reporting": "Reporting",
   "tasks-operations": "Tasks operations",

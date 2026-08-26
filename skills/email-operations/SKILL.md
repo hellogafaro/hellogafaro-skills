@@ -25,7 +25,7 @@ Require explicit approval before archive, label, move, mark read or unread, star
 
 Review inbox mail before broader mail. Check unread inbox threads first, then read threads still in the inbox. Check sent mail only when needed to determine whether the user replied or closed the loop. Read state, labels, and inbox membership do not prove action.
 
-Group results by numbered mailbox and lettered thread. Within each mailbox, show urgent threads first and order the rest by usefulness. Do not create category sections. Keep each item to a descriptive title and, when useful, one action line. Mention attachments only when relevant. End with one proposed batch action or question only when it moves the work forward.
+Group results by lettered mailbox and numbered thread. Within each mailbox, show urgent threads first and order the rest by usefulness. Do not create category sections. Keep each item to a descriptive title and, when useful, one action line. Mention attachments only when relevant. End with one proposed batch action or question only when it moves the work forward.
 
 Use `URGENT` only for a same-day deadline or genuinely time-sensitive work. Use `RISK` when an unsafe action is plausible, including money, changed payment details, credentials, legal action, or account access. Recommend independent verification through a known channel.
 

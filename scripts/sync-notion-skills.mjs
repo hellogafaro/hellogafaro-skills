@@ -13,7 +13,7 @@ const displayNames = {
   "calendar-management": "Calendar management",
   "research": "Research",
   "documentation-creation": "Documentation creation",
-  "email-management": "Email management",
+  "email-operations": "Email operations",
   "memory-management": "Memory management",
   "reporting": "Reporting",
   "tasks-operations": "Tasks operations",

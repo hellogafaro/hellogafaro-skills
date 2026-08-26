@@ -28,14 +28,6 @@ const expectedResources = {
     "references/calendar-prep.md",
     "references/calendar-triage.md"
   ],
-  "email-management": [
-    "references/email-edge-cases.md",
-    "references/email-attachments.md",
-    "references/email-auto-rules.md",
-    "references/email-responding.md",
-    "references/email-signal-rules.md",
-    "references/email-snoozed.md"
-  ],
   "environment-management": [
     "references/project-setup.md",
     "references/skills.md",
@@ -82,6 +74,7 @@ const forbiddenSkills = [
   "commerce-analysis",
   "deep-research",
   "email-analysis",
+  "email-management",
   "inbox-management",
   "measurement-audit",
   "memory",

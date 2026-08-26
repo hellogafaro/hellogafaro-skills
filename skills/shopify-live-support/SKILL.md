@@ -9,6 +9,8 @@ description: Use when routing, conducting, or closing Shopify support conversati
 
 Resolve a Shopify support issue through chat or phone, or leave it with a named owner, documented case, concrete next action, and deadline. When the user asks for Shopify live support without naming a channel, default to chat. If the user requests phone support and calling tools are available, place and conduct the call yourself. Involve the user only for an unavoidable identity, authentication, or consent step.
 
+Use `unslop` for every user-facing message so it sounds like a real merchant rather than a support script.
+
 ## 1. Classify before contact
 
 Read [support-routes.md](references/support-routes.md), then read exactly one primary issue reference:
@@ -30,21 +32,21 @@ For card-network chargebacks, use the dedicated `shopify-chargeback` skill. Prep
 
 Use chat unless the user specifies phone or chat is unavailable. For phone support, use the available calling tool to place and conduct the call. Keep the same case packet, authorization boundaries, advocacy sequence, and completion criteria across both channels. Do not redirect a callable support workflow to the user.
 
-For chat, use the collaborative browser.
+For chat, use the browser automation available in the current host. Do not require provider-specific browser commands.
 
-1. Call `preview_status`. If no automation-capable tab is attached, call `preview_open`.
-2. Use `preview_navigate` to open `https://help.shopify.com/` in a dedicated support tab. Keep any Shopify Admin evidence tab separate; never navigate the active chat tab away.
-3. Snapshot before each interaction. Use snapshot locators with `preview_click`, `preview_type`, `preview_wait_for`, and `preview_scroll`.
-4. Sign in, then verify the top-right active organization/store. Change it from the store switcher before beginning contact. State the selected store in the first message when several stores could be confused.
-5. Choose **Chat with a human**, then **Chat**. If the pre-chat assistant asks to connect with an advisor, select **Connect** and wait for the advisor to join.
+1. Inspect the current browser state and reuse an authenticated Shopify support tab when available. Otherwise open `https://help.shopify.com/` in a dedicated tab.
+2. Keep Shopify Admin evidence separate from the live support tab. Never navigate an active chat away.
+3. Inspect the page before each interaction and target controls by their current role, label, or visible text.
+4. Sign in and verify the active organization and store before contact. Ask the user to complete MFA, identity checks, or other user-owned security steps.
+5. Open human support chat and wait until an advisor has joined before sending the case.
 
 ### Recover from UI changes
 
-Treat the UI as a state machine, not a fixed sequence of selectors: Help Center, contact menu, queue, connect, live chat, closure warning, and ended transcript. After every action, verify the expected state from a fresh snapshot or visible text.
+Treat the UI as a state machine, not a fixed sequence of selectors: Help Center, contact menu, queue, connect, live chat, closure warning, and ended transcript. After every action, inspect the page and verify the expected state from visible text or controls.
 
-- If the expected state is absent, resnapshot and use the current semantic role, visible text, or accessible name. Reuse the latest confirmed locator, not an old CSS path or coordinate.
-- If the browser tool or network response is uncertain, call `preview_status` and inspect the existing tab before retrying. Never resend a message, open a second chat, or navigate away until the current state is known.
-- Use `preview_evaluate` only to inspect or activate a current, visible control when snapshot locators are insufficient. Verify the resulting state immediately.
+- If the expected state is absent, inspect the page again and use its current semantic role, visible text, or accessible name. Do not rely on stale selectors or coordinates.
+- If a browser action or network response is uncertain, inspect the existing tab before retrying. Never resend a message, open a second chat, or navigate away until the current state is known.
+- Use browser evaluation only when ordinary page controls are insufficient. Limit it to inspecting or activating a current visible control, then verify the result.
 - Recover cookie banners, menus, login redirects, and store-switcher changes in place. Stop only for user-owned MFA, identity verification, or a genuinely unavailable browser.
 
 Do not open a replacement chat while an active one exists. If a security challenge, MFA, or owner verification appears, ask the user to complete it; never bypass it.

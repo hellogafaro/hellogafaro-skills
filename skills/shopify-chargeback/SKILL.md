@@ -1,97 +1,50 @@
 ---
 name: shopify-chargeback
-description: Use when preparing a Shopify chargeback or dispute response, building dispute evidence, or fighting a payment dispute for an order. Guides gathering every possible proof and assembling one PDF per Shopify field.
+description: Use when investigating a Shopify payment dispute, preparing chargeback evidence, building the required response documents, or submitting an approved response through Shopify.
 ---
 
 # shopify-chargeback
 
-Win the dispute by compiling the strongest possible evidence. Guide the user step by step, ask for every signal that helps, read every file, and assemble one self-contained PDF per Shopify upload field. Never submit without explicit approval.
+Build the strongest truthful response for the live Shopify dispute. Inspect the current dispute before deciding what evidence or documents it needs. Never invent facts, overstate what evidence proves, or submit without explicit approval.
 
-## How Shopify accepts evidence
+## Inspect the live dispute
 
-Shopify gives these inputs. Each file input accepts ONE PDF, max 4 MB.
+Use the browser available in the current host. Continue from an existing authenticated Shopify tab when possible. Otherwise open Shopify Admin, select the intended store, and ask the user to complete login, MFA, identity checks, or other user-owned security steps.
 
-1. Reason why the dispute is invalid (dropdown, no file)
-2. Customer communication (one PDF)
-3. Shipping documentation (one PDF)
-4. Proof of service (one PDF)
-5. Customer activity (text box, no file)
-6. Any other evidence (one PDF)
+Find the order and open its dispute. Read the complete live record and response form. Capture the dispute reason and code, amount and currency, deadline and timezone, status, customer and order identifiers, transaction details, Shopify risk findings, requested response fields, accepted formats, size limits, and any saved draft. Treat the live form as the source for submission requirements because they may differ by dispute type or change over time.
 
-## Output folder and file names
+Use an authenticated Shopify API or connected account for reliable read-only order, customer, payment, fulfillment, or activity data when it is available and useful. Use the browser for requirements or state shown only in Shopify Admin. Do not switch stores, accounts, or sources silently.
 
-Create one folder for the case, then write exactly these files. Names must match the fields so the user can map them at a glance.
+## Gather the case
 
-```
-~/Downloads/chargeback-<order-number>/
-    proof-of-service.pdf
-    customer-communication.pdf
-    shipping-documentation.pdf
-    additional-evidence.pdf
-    shopify-claim.pdf          # reference copy of the dispute, not uploaded
-```
+Match evidence to the dispute reason. Inspect every source before citing it. Gather only real evidence that helps the reviewer decide, including when available:
 
-Each PDF must stand alone. Open every PDF with the same short case summary at the top, because the reviewer may only open one. A single file can appear in more than one PDF when it fits more than one field. For example a photo of the package with the shipping label belongs in both proof of service and shipping documentation.
+- the dispute notice and order record;
+- payment and fraud analysis, including AVS, CVV, risk level, payment attempts, and IP evidence;
+- fulfillment, tracking, delivery confirmation, signature, and delivery photos;
+- product, packaging, shipping-label, service, contract, or accepted-policy evidence;
+- complete relevant customer communication from email, chat, messaging, social, or phone notes;
+- prior undisputed orders, account history, logins, and verified transactional or marketing engagement;
+- refunds, cancellations, replacements, acknowledgements, or other events that change the case.
 
-## Step by step
+Follow connected sources when they contain relevant evidence. Keep unrelated private information out of the case. Never expose passwords, credentials, full payment details, or unnecessary customer data. Translate relevant non-English evidence into the response language and preserve the original beside it.
 
-Ask for each item one at a time. Read and inspect every file before moving on. Tell the user when something is missing and why it would help, so they can go find it.
+Ask one focused question at a time for evidence that is missing and could materially strengthen or change the response. Explain what it would prove. Do not delay a complete case for weak or unavailable evidence.
 
-1. **Dispute PDF.** The Shopify dispute file, often a number like `8807383280.pdf`. Read it. Note cardholder name, reason, disputed amount, date, and card network reason code. Copy it into the folder as `shopify-claim.pdf`.
+## Build the response
 
-2. **Dispute reason.** Recommend the correct dropdown option and say why in one sentence. Options: cardholder withdrew the dispute, cardholder was refunded, the purchase was made by the rightful cardholder, other. Most legitimate sales use "the purchase was made by the rightful cardholder."
+Create the case in the active work location or a directory confirmed by the user. Preserve originals. Use a document-creation skill when available, or the current host's native document and PDF capabilities. Produce one self-contained file for each live upload field. Use the exact field names when naming files so their destination is obvious.
 
-3. **Order PDF.** The Shopify printable order summary. Note order number, customer, items, total, payment method, and fulfillment status.
+Each document should open with a short case summary, then present the strongest evidence first. Include only facts relevant to that field. Add clear captions, readable dates, identifiers, and short explanations of what each item proves. Reuse evidence across files when the live form calls for it.
 
-4. **Fraud analysis.** The Shopify order risk screenshot. Capture the risk level, AVS result (billing street and ZIP match), CVV, number of payment attempts, IP location, and distance from the shipping address. A Low risk score with a matching billing address is strong proof.
+Apply `unslop` to every narrative, caption, translation, and form response. Write as the merchant in plain, natural language. Lead with the strongest verified fact. Avoid legal theater, generic claims, repetition, em dashes, and unsupported conclusions.
 
-5. **Shipping and delivery.** Shopify shipping summary, carrier tracking, proof of delivery, signature, and any delivery photo.
+Check every generated file. Confirm the pages are readable, correctly ordered, complete, within the live upload limit, and free of accidental secrets or unrelated personal data. Show the user the proposed response reason, field-to-file mapping, and complete text-field answers.
 
-6. **Product and packaging.** Photos of the product, the packaging, and the shipping label with the customer name and tracking number.
+## Upload and submit
 
-7. **All customer communication.** Ask for every channel: email threads, website chat, WhatsApp, Instagram or Facebook DMs, SMS, phone notes. Any message where the customer acknowledges the order, the purchase, or receipt is the strongest evidence you can get. Translate non English messages and put the translation next to the screenshot.
+Preparing the case does not authorize uploading or submission. Obtain explicit approval for the exact final response. Refresh the dispute immediately before acting and stop if its status, deadline, requirements, or saved response changed.
 
-8. **Customer relationship and activity.** Ask all of these, because they go in the Customer activity text box and prove a real, engaged customer:
-   - Is this a repeat customer? How many prior orders, and were any paid with the same card and not disputed?
-   - When was the account created, and did the customer log in before the purchase?
-   - Is the customer on the newsletter or marketing list?
-   - Do they open or click marketing emails?
-   - Did they get and open the order confirmation and shipping emails?
-   - Any loyalty, reviews, or referrals?
+After approval, upload each file to its verified field and confirm the form retained it. Review the final reason, text, files, order, store, amount, and deadline before submitting. Never refund, cancel, edit the order, contact the customer, or make another Shopify change unless separately authorized.
 
-9. **Anything else.** Signed terms or refund policy shown at checkout, contracts, work orders, or any other document that supports the sale.
-
-## Assemble the PDFs
-
-Combine the gathered text and files into the field PDFs. Generate each PDF with whatever reliable method exists on the machine, for example a short inline script using a PDF library, or by building an HTML file and printing it to PDF. Do not depend on a bundled script.
-
-- `proof-of-service.pdf`: case summary, order details, fraud analysis, product and label photo, any contract or accepted terms.
-- `customer-communication.pdf`: case summary, then every message thread, each non English screenshot with its English translation and a one line note on what it proves.
-- `shipping-documentation.pdf`: case summary, shipping summary, carrier delivery confirmation, package and label photo.
-- `additional-evidence.pdf`: case summary, plus anything that did not fit above, such as account history, repeat purchase history, newsletter and email engagement screenshots.
-
-Keep each file under 4 MB. If a file is too large, downscale images before embedding.
-
-## Customer activity text
-
-Write a short paragraph for the text box using the facts from step 8. Lead with the strongest one, such as a repeat customer who paid with the same card before without disputing, or a customer who opened the order emails and logged in before buying.
-
-## Tone for everything the user submits
-
-Write like a real person, not a lawyer.
-
-- No em dashes or en dashes. Use a comma or a new sentence.
-- No unnecessary parentheses.
-- Short sentences. One idea each.
-- Bullet points for lists of facts.
-- First person from the merchant. Use wording like "We shipped the order on June 3" or "The customer told us they received it."
-- Lead with the strongest fact. Make reversing the dispute feel like the obvious call.
-
-## Rules
-
-- Read and inspect every file. Never describe a file you have not opened.
-- Compile every available proof. Ask for more when a channel might exist.
-- One self contained PDF per field, named to match the field, under 4 MB.
-- Translate non English evidence so the reviewer can read the key admissions.
-- Never invent facts, quotes, or documents. Persuade only by clear presentation of real evidence.
-- Never submit the response or move originals without explicit approval.
+After submission, verify the dispute status and save the confirmation or reference available in Shopify. Report what was submitted, the deadline or next review state, and any item Shopify did not accept.

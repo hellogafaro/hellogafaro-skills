@@ -35,14 +35,6 @@ const expectedResources = {
     "references/github-cli.md",
     "references/migration-troubleshooting.md"
   ],
-  "shopiworks-clickup-sync": [
-    "references/clickup-content.md",
-    "references/clickup-operations.md",
-    "references/clickup-routing.md",
-    "references/clickup-safety.md",
-    "scripts/clickup.ts",
-    "scripts/clickup.test.ts"
-  ],
   "unslop": ["LICENSE.md"]
 };
 

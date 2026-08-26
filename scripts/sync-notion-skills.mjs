@@ -14,7 +14,6 @@ const displayNames = {
   "research": "Research",
   "documentation-creation": "Documentation creation",
   "email-operations": "Email operations",
-  "memory-management": "Memory management",
   "reporting": "Reporting",
   "tasks-operations": "Tasks operations",
   "unslop": "Unslop"

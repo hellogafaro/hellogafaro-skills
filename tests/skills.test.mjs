@@ -21,19 +21,6 @@ const expectedResources = {
     "references/google-analytics.md",
     "references/search-console.md"
   ],
-  "environment-management": [
-    "references/project-setup.md",
-    "references/skills.md",
-    "references/cursor.md",
-    "references/shopify.md",
-    "references/cloudflare.md",
-    "references/examples.md",
-    "assets/cursor/Dockerfile",
-    "assets/cursor/environment.json",
-    "assets/cursor/install.sh",
-    "assets/cursor/update.sh",
-    "assets/cursor/start.sh"
-  ],
   "shopify-live-support": [
     "references/support-routes.md",
     "references/billing.md",
@@ -69,9 +56,11 @@ const forbiddenSkills = [
   "deep-research",
   "email-analysis",
   "email-management",
+  "environment-management",
   "inbox-management",
   "measurement-audit",
   "memory",
+  "memory-management",
   "notion",
   "notion-operations",
   "paid-media-analysis",
@@ -184,7 +173,7 @@ test("deprecated runtime references are gone", async () => {
   }
 });
 
-test("memory skill uses portable host state", async () => {
+test("skills use portable host state", async () => {
   const entries = await readdir(skillsDir, { recursive: true });
   const forbiddenPhrases = [
     "General Notion AI",
@@ -210,9 +199,4 @@ test("memory skill uses portable host state", async () => {
       assert.ok(!text.includes(phrase), `${entry} contains deprecated sidekick guidance: ${phrase}`);
     }
   }
-
-  const memory = await readFile(path.join(skillsDir, "memory-management", "SKILL.md"), "utf8");
-
-  assert.match(memory, /Resolve `Memory` through the host environment/);
-  assert.ok(!memory.includes("repository-root `MEMORY.md`"));
 });

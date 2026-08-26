@@ -1,37 +1,34 @@
 ---
 name: handoff
-description: Use when the user wants a concise context-rich handoff they can copy and send to a human or AI, with a separate file only when the required context is too large for a practical message.
+description: Use when the user wants a copyable context-rich handoff that lets another person, model, or agent continue unresolved work without repeating important discovery.
 ---
 
 # handoff
 
-Create one concise text handoff that lets someone else act without rediscovering the important context.
+Pack the active outcome, material context, current work, and next action into one handoff another person, model, or agent can continue without repeating important discovery.
 
 ## Gather context
 
-- Resolve the real outcome behind the ask.
-- Inspect every available relevant live source before writing. This may include the canonical Notion task and its relations, project documents, repositories, issues, pull requests, communication threads, meetings, attachments, prior decisions, and current work state.
-- Follow links to canonical sources and prefer current source state over summaries or memory.
-- Include the canonical Notion task URL when one exists, plus any source URL needed to understand, continue, or complete the work.
-- Keep only context that prevents rediscovery or wrong work: why the request exists, current state, prior work, decisions, constraints, required assets, expected result, and what meaningful completion looks like.
-- Verify uncertain facts instead of presenting guesses as context. Ask one concise question only when missing information materially changes the handoff.
-- Never include credentials, secrets, unrelated private context, tool noise, or a dump of every source inspected.
+- Derive the assignment from the user's active goal and unresolved work. The open email, task, page, file, or tool is context, not proof of what the recipient must do.
+- Start with the current session. Capture the outcome, why it matters, work already completed, current state, decisions, attempts, failures, blockers, unresolved questions, artifacts, and exact next action.
+- Identify missing facts that could change execution. Research only those gaps through the relevant specialist skill, using current internet, email, calendar, Notion, repository, file, or other connected sources as needed. Keep gathering read-only.
+- Follow canonical sources and prefer live state over summaries or memory. Do not search a system merely because it is available or ask the user to paste content that an available source can provide.
+- For technical work, inspect relevant files, branch, diff, commits, pull requests, tests, logs, configuration, and deployment state when they affect continuation.
+- Keep all context that prevents repeated work or a wrong decision. Remove duplicated conversation, research narration, tool output, source inventories, and facts that do not change execution.
+- Include a canonical task, document, thread, repository, pull request, or other raw URL only when the recipient needs it to act. Resolve identifiers and people to readable names.
+- Verify uncertain facts. Ask one concise question only when the missing answer materially changes the assignment or next action. If a source is unavailable, continue with verified context and mention the limitation only when it affects execution.
+- Never expose credentials, secrets, citation tokens, placeholders, or unrelated private context.
 
 ## Write the handoff
 
-- Write one universal handoff. Do not create separate human, AI, or agent variants or ask who will receive it.
-- Lead with the desired outcome, then provide the minimum context and links needed to act well.
-- Use natural prose rather than a rigid template. Keep simple handoffs as short as two sentences and use a few short paragraphs only when needed.
-- Include constraints, deliverables, current state, and completion conditions only when they clarify the work. Do not pad with generic instructions or obvious process.
-- Use raw URLs and no Markdown formatting inside the handoff.
+- Write one universal handoff. Do not create separate human, model, or agent variants.
+- Open with a direct sentence stating the exact outcome or next action inherited from the active context. Never invent a new assignment or mistake the current source for the assignment.
+- Continue in natural compact prose with the material context and work in progress. State what has been done, what was learned, what remains, and what successful completion means.
+- Use as many paragraphs as readability requires. Do not use headings, labels, bullets, lists, a fixed paragraph count, permission boilerplate, or generic process.
+- Apply `unslop`. Keep facts, dates, numbers, decisions, constraints, file paths, links, and commands exact while removing filler and repetition.
+- Use raw URLs and no other Markdown formatting inside the handoff.
 - Return exactly one fenced `text` code block and nothing else.
-- Do not execute or send the handoff, create a task, or change source records unless separately asked.
-
-## Overflow
-
-- Keep the handoff text-based by default. Do not create a file merely because the work is complex.
-- Create a short Markdown file in the OS temp directory only when the material context cannot fit into a practical message without losing execution-critical detail and the host can provide a usable file.
-- Put detailed continuation state in the file, reference existing artifacts instead of duplicating them, and keep secrets out.
-- Return a compact `text` code block with the actionable summary and the file path so the user can send or attach it.
+- Keep the full handoff in that block. Do not create an overflow file.
+- Do not execute or send the handoff, create or update tasks, or change any source unless the user separately asks. A handoff never expands existing authorization.
 
 Use `summarize` instead when the goal is to report completed work rather than ask someone to act or continue.

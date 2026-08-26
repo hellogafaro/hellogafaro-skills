@@ -13,8 +13,6 @@ Exact user-owned daily hygiene means the user clearly gives the task or meeting,
 
 Tasks are the durable routing surface. When work needs task creation, ambiguous updates, bulk changes, workload planning, blocker management, scheduling judgment, cross-person coordination, unclear time tracking, or missing required context, create or update the real task with enough context to carry the work.
 
-Use `inbox-management` for the active dated checkpoint. Use this skill for durable Tasks, Timesheets, workload, and task status.
-
 ## Purpose
 
 Keep work clear, balanced, and moving while using the right task system consistently.
@@ -27,8 +25,7 @@ Load only when needed.
 - `references/task-queries.md` before querying, creating, or updating task records.
 - `references/task-format.md` when creating or rewriting task content.
 - `references/time-tracking.md` when completing tasks or logging time.
-- `references/source-material.md` when extracting tasks from meetings, plans, threads, or Inbox items.
-- `references/inbox-sync.md` when task-backed work affects Inbox.
+- `references/source-material.md` when extracting tasks from meetings, plans, or threads.
 - `references/completion.md` when marking tasks done.
 
 ## Hard rules
@@ -96,4 +93,4 @@ Assignee is a people property. Use the Team database Notion column to resolve ag
 
 ## Completion
 
-Task work is complete when the live source is updated, time is logged, the final result comment is posted, and every affected Inbox projection is current.
+Task work is complete when the live source is updated, time is logged, and the final result comment is posted.

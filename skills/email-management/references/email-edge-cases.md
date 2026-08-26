@@ -3,9 +3,9 @@ Load for bounces, out-of-office auto-replies, email calendar invites, phishing o
 - Bounce on user outbound is an Alert, not noise. Surface immediately.
 - VIP sender from an unrecognized address is a phishing flag. Do not act.
 - Forwarded chain gets summarized by active ask only. Full chain only on request.
-- Duplicate cross-account thread keeps one canonical Inbox item. Archive duplicates case by case.
+- Duplicate cross-account mail keeps one canonical thread. Archive duplicates case by case.
 - Same-sender messages collapse only when one action closes the whole burst. Never merge separate threads merely because sender or subject matches.
-- Deadline in the email body changes urgency and Inbox timing.
+- Deadline in the email body changes urgency and follow-up timing.
 - Calendar invite by email routes to Calendar management.
 - CC-only mail is lower priority unless VIP, direct ask, or the user can add clear value.
 - New sender asking for money, wire, credentials, or payment changes is phishing-tier until verified.

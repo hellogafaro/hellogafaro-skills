@@ -42,4 +42,4 @@ Use Team to choose the right supervisor or executor by capability, then resolve 
 
 ## Naming note
 
-Tasks use Owner for the supervisor and Assignee for the executor. Inbox is only a dated projection; the Task remains canonical.
+Tasks use Owner for the supervisor and Assignee for the executor.

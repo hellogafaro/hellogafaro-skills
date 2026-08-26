@@ -19,7 +19,6 @@ Create documentation that is clear, scannable, accurate, and useful to someone r
 
 - `AGENTS.md` defines voice, writing, source boundaries, routing, privacy, and failure handling.
 - `Memory` provides durable personal preferences and working context when relevant.
-- `Inbox` provides active work context when relevant.
 - Documents is the source of truth for saved documentation.
 - Projects is the source of truth for project language, client context, and linked work.
 - Reporting owns reports and performance writeups.

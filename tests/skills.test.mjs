@@ -25,7 +25,6 @@ const expectedResources = {
     "references/calendar-conflicts.md",
     "references/calendar-edge-cases.md",
     "references/calendar-fetch-scheduling.md",
-    "references/calendar-inbox-sync.md",
     "references/calendar-prep.md",
     "references/calendar-triage.md"
   ],
@@ -33,7 +32,6 @@ const expectedResources = {
     "references/email-edge-cases.md",
     "references/email-attachments.md",
     "references/email-auto-rules.md",
-    "references/email-inbox-sync.md",
     "references/email-responding.md",
     "references/email-signal-rules.md",
     "references/email-snoozed.md"
@@ -50,11 +48,6 @@ const expectedResources = {
     "assets/cursor/install.sh",
     "assets/cursor/update.sh",
     "assets/cursor/start.sh"
-  ],
-  "inbox-management": [
-    "references/edge-cases.md",
-    "references/loop-states.md",
-    "references/reconciliation.md"
   ],
   "shopify-live-support": [
     "references/support-routes.md",
@@ -80,7 +73,6 @@ const expectedResources = {
   ],
   "task-management": [
     "references/completion.md",
-    "references/inbox-sync.md",
     "references/source-material.md",
     "references/task-format.md",
     "references/task-queries.md",
@@ -98,6 +90,7 @@ const forbiddenSkills = [
   "commerce-analysis",
   "deep-research",
   "email-analysis",
+  "inbox-management",
   "measurement-audit",
   "memory",
   "notion",
@@ -105,7 +98,8 @@ const forbiddenSkills = [
   "paid-media-analysis",
   "performance-analysis",
   "skill-creation",
-  "slack"
+  "slack",
+  "slack-communication"
 ];
 
 const ellipsis = ".".repeat(3);
@@ -202,7 +196,7 @@ test("deprecated runtime references are gone", async () => {
   }
 });
 
-test("sidekick skills use portable host state", async () => {
+test("memory skill uses portable host state", async () => {
   const entries = await readdir(skillsDir, { recursive: true });
   const forbiddenPhrases = [
     "General Notion AI",
@@ -224,11 +218,8 @@ test("sidekick skills use portable host state", async () => {
     }
   }
 
-  const inbox = await readFile(path.join(skillsDir, "inbox-management", "SKILL.md"), "utf8");
   const memory = await readFile(path.join(skillsDir, "memory-management", "SKILL.md"), "utf8");
 
-  assert.match(inbox, /Resolve `Inbox` through the host environment/);
   assert.match(memory, /Resolve `Memory` through the host environment/);
-  assert.ok(!inbox.includes("repository-root `INBOX.md`"));
   assert.ok(!memory.includes("repository-root `MEMORY.md`"));
 });

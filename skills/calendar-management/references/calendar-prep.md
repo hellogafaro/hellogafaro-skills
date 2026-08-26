@@ -13,9 +13,9 @@ Include only what helps the user walk in ready.
 - Suggested agenda or talking points.
 - Whether the user is actually needed.
 ## Persistence
-Check prior `Inbox` entries, email threads, pages, and project context before building prep. Recurring meetings should reference last discussion, promised follow-ups, and unresolved items.
+Check prior email threads, pages, and project context before building prep. Recurring meetings should reference last discussion, promised follow-ups, and unresolved items.
 After the meeting, create or update follow-up only when the user asks or confirms the action. Do not mine meeting notes automatically.
 ## Saving notes to a meeting page
-Keep ordinary Inbox prep inside the event toggle as brief child bullets or named supporting links. Save prep elsewhere only when the user asks.
+Keep ordinary prep in the event description as brief bullets or named supporting links. Save prep elsewhere only when the user asks.
 
 Notion AI Meeting Notes are a separate source. Read them only for explicit preparation, review, follow-up, or task extraction requests.

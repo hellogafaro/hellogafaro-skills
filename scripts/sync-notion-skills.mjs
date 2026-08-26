@@ -14,10 +14,8 @@ const displayNames = {
   "research": "Research",
   "documentation-creation": "Documentation creation",
   "email-management": "Email management",
-  "inbox-management": "Inbox management",
   "memory-management": "Memory management",
   "reporting": "Reporting",
-  "slack-communication": "Slack communication",
   "task-management": "Task management",
   "unslop": "Unslop"
 };

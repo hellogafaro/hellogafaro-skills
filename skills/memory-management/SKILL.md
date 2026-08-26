@@ -7,7 +7,7 @@ description: Use when an agent must read, create, update, prune, or decide wheth
 
 Use this skill whenever work depends on or changes the sidekick's durable personal context.
 
-Memory improves judgment across sessions. It is not current Inbox, task, email, calendar, provider, or connection state.
+Memory improves judgment across sessions. It is not current task, email, calendar, provider, or connection state.
 
 ## Host mapping
 

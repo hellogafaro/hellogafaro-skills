@@ -1,6 +1,6 @@
 Load for out of office, travel, recurring changes, timezone confusion, short-notice requests, or source failures.
 ## Out of office and travel
-Detect out-of-office windows from calendar blocks or explicit user mention. Add them to `Inbox` only when they materially affect that date.
+Detect out-of-office windows from calendar blocks or explicit user mention. Surface them only when they materially affect the requested date or schedule.
 Protect the day before and day after travel when possible. Flag meetings inside unavailable windows with a specific move recommendation.
 ## Recurring changes
 Edit only the specific instance unless the user explicitly says to change the whole series.

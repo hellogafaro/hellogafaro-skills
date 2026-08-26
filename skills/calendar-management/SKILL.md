@@ -1,13 +1,11 @@
 ---
 name: calendar-management
-description: Use when work involves calendars, meetings, scheduling, rescheduling, conflict checks, availability, out of office, meeting prep, calendar triage, calendar search, or Inbox sync for calendar loops.
+description: Use when work involves calendars, meetings, scheduling, rescheduling, conflict checks, availability, out of office, meeting prep, calendar triage, or calendar search.
 ---
 
 # calendar-management
 
-Use this skill any time the request involves calendar, fetch, triage, scheduling, conflict resolution, meeting prep, out of office, or routing meetings into Inbox.
-
-Calendar and Inbox are one system. Relevant timed events and reminders project into the dated Inbox without duplicating the calendar as a second schedule.
+Use this skill any time the request involves calendar, fetch, triage, scheduling, conflict resolution, meeting prep, or out of office.
 
 ## References
 
@@ -18,7 +16,6 @@ Load only when needed.
 - `references/calendar-prep.md` before building meeting prep.
 - `references/calendar-edge-cases.md` for out of office, travel, recurring changes, timezone ambiguity, short notice, or source failures.
 - `references/calendar-fetch-scheduling.md` for fetch windows and scheduling defaults.
-- `references/calendar-inbox-sync.md` when calendar state affects Inbox.
 
 ## Hard rules
 

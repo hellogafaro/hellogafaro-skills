@@ -19,7 +19,7 @@ Search narrowly by mailbox, sender, recipient, subject, date, label, or stable I
 
 Never delete or trash received or sent email. Minimize quoted bodies, forwarded chains, personal data, credentials, and sensitive attachments.
 
-Require explicit approval before archive, label, move, mark read or unread, star, snooze, mute, unsubscribe, rule, or provider-draft actions. A clear request for a displayed batch counts as approval for that scope. Sending follows the stricter rule below.
+Require explicit approval before label, move, mark read or unread, star, snooze, mute, unsubscribe, rule, or provider-draft actions. Require explicit approval to archive a thread unless it qualifies for the send-completion rule below. A clear request for a displayed batch counts as approval for that scope. `Archive` or `mark as done` approves archiving the selected resolved thread but never authorizes an unapproved reply. Sending follows the stricter rule below.
 
 ## Review and triage
 
@@ -29,7 +29,7 @@ Group results by lettered mailbox and numbered thread. Start a queue with the fi
 
 Use `URGENT` only for a same-day deadline or genuinely time-sensitive work. Use `RISK` when an unsafe action is plausible, including money, changed payment details, credentials, legal action, or account access. Use `OVERDUE` when the latest unanswered inbound has waited at least seven full days while the thread remains in the inbox. These are display flags, not provider labels. For `RISK`, recommend independent verification through a known channel. For `OVERDUE`, push for a decision to reply, archive, unsubscribe, or snooze.
 
-Keep an inbox thread unread only when a reply, deliberate reading, or other work is still pending. Otherwise propose the smallest clean-inbox action. Never archive, unsubscribe, snooze, or change read state without approval.
+Treat the inbox as a current-action queue. Keep a thread in the inbox while the user's next action is pending and has not been completed or captured elsewhere. Waiting for the recipient's response is not a reason to keep a thread in the inbox. After the reply is sent or any remaining work is captured in an approved task, archive as the normal clean-inbox action under the send-completion rule below. Keep an inbox thread unread only when a reply, deliberate reading, or other work is still pending. Never unsubscribe, snooze, or change read state without approval.
 
 Treat automated replies as informational. Surface bounces, calendar invitations, direct asks, deadlines, and meaningful CC-only messages. Keep copies from different accounts separate unless stable provider IDs prove duplication. Do not merge separate threads merely because sender or subject matches.
 
@@ -43,14 +43,14 @@ Draft in chat unless the user explicitly requests and approves a provider draft.
 
 Never send without a fresh imperative instruction authorizing the exact final version shown in the current turn. `Looks good`, `approved`, `fine`, edits, and silence approve wording only. Any change to sender, recipients, subject, body, links, attachments, or thread resets send approval.
 
-Immediately before sending, refetch the thread. Stop if a new message changes the reply. Verify mailbox, recipients, thread, links, attachment filenames, and attachment references. After sending, verify the sent message when supported. Report failures with the smallest recovery step. Do not archive unless that action was also displayed and approved.
+Immediately before sending, refetch the thread. Stop if a new message changes the reply. Verify mailbox, recipients, thread, links, attachment filenames, and attachment references. After sending, verify the sent message when supported. A fresh instruction to send the exact approved reply also authorizes archiving that thread after verified delivery when no further action remains for the user because the work is complete or continuing work is captured in an approved task. This send-completion rule applies while waiting for the recipient's response and does not require a separate archive prompt. Do not archive when delivery is uncertain, a new message changes the state, or the user's next action remains incomplete and uncaptured. Verify the archive and report that the reply was sent and the thread archived. Report failures with the smallest recovery step.
 
 ## Tasks and follow-ups
 
 Surface required replies, decisions, deadlines, blockers, meetings, document updates, bounces, and open loops. Work one selected thread at a time: gather its context, complete or organize the needed work, then draft the reply. Do not turn every email into process debris.
 
-For actionable email, propose a Notion task through `tasks-operations`. Contribute the canonical thread link, minimum verified context, and smallest next action; let that skill own task fields and writing. Create or update tasks only when the user asks or approves the displayed set. Search before creating. A task never replaces a required reply.
+For actionable email, propose a Notion task through `tasks-operations`. Contribute the canonical thread link, minimum verified context, and smallest next action; let that skill own task fields and writing. Create or update tasks only when the user asks or approves the displayed set. Search before creating. A task never replaces a required reply. Before proposing or performing archive, confirm that decisions and commitments are understood, the required reply is complete, and any continuing work is finished or captured in an approved task.
 
 Use provider labels only for a real useful state and only with approval. A label does not prove that a task or follow-up exists elsewhere.
 
-Finish when the requested mailboxes were covered, relevant threads were read, complete claims were fully paginated, drafts match the user's voice, recipients are safe, private content is minimal, approved writes were verified, and every material open loop has a clear next action. Fix safe failures; report the rest by mailbox and operation.
+Finish when the requested mailboxes were covered, relevant threads were read, complete claims were fully paginated, drafts match the user's voice, recipients are safe, private content is minimal, approved writes were verified, resolved threads left the inbox, and every material open loop has a clear next action. Fix safe failures; report the rest by mailbox and operation.

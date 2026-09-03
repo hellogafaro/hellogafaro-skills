@@ -12,6 +12,7 @@ const removedAccountsOpsSkill = ["hellogafaro", "accounts", "ops"].join("-");
 
 const expectedResources = {
   "accounts-operations": [
+    "references/api.md",
     "references/shopify.md",
     "references/klaviyo.md",
     "references/meta-ads.md",
@@ -125,6 +126,8 @@ test("accounts-operations is a self-contained live API contract", async () => {
   assert.ok(markdown.includes("self-contained"));
   assert.ok(markdown.includes("PUBLIC_URL"));
   assert.ok(markdown.includes("BEARER_TOKEN"));
+  assert.ok(markdown.includes("connections_execute"));
+  assert.ok(!markdown.includes("never through MCP"));
   assert.ok(!markdown.includes("hellogafaro/hellogafaro-accounts"));
   assert.ok(!markdown.includes("HELLOGAFARO_ACCOUNTS"));
   assert.ok(!markdown.includes("accounts.ongafaro.com"));

@@ -4,9 +4,9 @@ Studio exposes the Klaviyo private API verbatim. The Worker only handles authent
 
 ## Agent Tool
 
-Use the single `klaviyo` provider tool with HTTPie/Postman-style input: `account_id`, `method`, provider-relative `url`, `params`, and `body`. Use provider-native paths such as `/segments`, `/segments/{id}`, `/segments/{id}/profiles`, `/profiles`, or `/campaign-values-reports`. Do not include the Klaviyo host, private API key, auth headers, revision headers, or tokens.
+Pass `connection_id`, `method`, `path`, `params`, and `body` to Studio `connections_execute` or `POST /connections/{connection_id}`. Use official private API paths including `/api`, such as `/api/segments`, `/api/profiles`, or `/api/campaign-values-reports`. Do not include the Klaviyo host, private API key, auth headers, revision headers, or tokens.
 
-Upstream reference: https://developers.klaviyo.com/en/reference/api_overview (revision `2026-04-15`).
+Upstream reference: https://developers.klaviyo.com/en/reference/api_overview. Confirm the current `revision` header value from that page. Studio injects it.
 
 ## Endpoint
 
@@ -16,7 +16,7 @@ Single catch-all:
 ANY /accounts/{account_id}/connections/klaviyo/<klaviyo-path>
 ```
 
-The `<klaviyo-path>` is whatever Klaviyo documents, for example `/profiles`, `/segments/{id}`, `/segments/{id}/profiles`, `/campaign-values-reports/`, `/profile-bulk-import-jobs`. The Worker prepends `https://a.klaviyo.com/api`, injects the API key and `revision: 2026-04-15`, and forwards method, query params, and body.
+`<klaviyo-path>` is whatever Klaviyo documents after `https://a.klaviyo.com`, including `/api`. Examples: `/api/profiles`, `/api/segments/{id}`, `/api/campaign-values-reports/`, `/api/profile-bulk-import-jobs`. Studio prepends `https://a.klaviyo.com` only, injects the API key and `revision` header, and forwards method, query params, and body. Catalog paths below omit `/api` for brevity; send `/api/profiles`, not `/profiles`.
 
 Auth is automatic. The agent passes only `account_id` (in the path) and the Klaviyo request shape. Never include `Authorization`, `revision`, or the API key.
 
@@ -275,7 +275,7 @@ The legacy `/track` and `/identify` endpoints take Klaviyo's public site token, 
 Find a profile by email with sparse fields:
 
 ```bash
-curl -X GET "$PUBLIC_URL/accounts/dunder-mifflin/connections/klaviyo/profiles?filter=equals(email,%22jane@example.com%22)&fields[profile]=email,first_name,last_name,subscriptions" \
+curl -X GET "$PUBLIC_URL/accounts/dunder-mifflin/connections/klaviyo/api/profiles?filter=equals(email,%22jane@example.com%22)&fields[profile]=email,first_name,last_name,subscriptions" \
   -H "Authorization: Bearer $BEARER_TOKEN"
 ```
 

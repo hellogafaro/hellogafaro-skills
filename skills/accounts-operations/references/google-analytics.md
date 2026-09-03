@@ -4,7 +4,7 @@ Studio exposes the GA4 Data API and Admin API verbatim. The Worker handles auth,
 
 ## Agent Tool
 
-Use the single `googleAnalytics` provider tool with HTTPie/Postman-style input: `account_id`, `method`, provider-relative `url`, `params`, and `body`. Use `/data/...` for GA4 Data API and `/admin/...` for Admin API, such as `/data/v1beta/properties/123:runReport` or `/admin/v1beta/accountSummaries`. Do not include Google hosts, OAuth tokens, auth headers, or API keys.
+Pass `connection_id`, `method`, `path`, `params`, and `body` to Studio `connections_execute` or `POST /connections/{connection_id}`. Use `/data/` for GA4 Data API and `/admin/` for Admin API, such as `/data/v1beta/properties/123:runReport` or `/admin/v1beta/accountSummaries`. Keep the API version in the path. Do not include Google hosts, OAuth tokens, auth headers, or API keys.
 
 Upstream:
 

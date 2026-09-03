@@ -4,11 +4,9 @@ Studio exposes the Google Ads REST API verbatim. The Worker handles auth, refres
 
 ## Agent Tool
 
-Use the single `googleAds` provider tool with HTTPie/Postman-style input: `account_id`, `method`, provider-relative `url`, `params`, and `body`. Use provider-native Google Ads REST paths such as `/v23/customers/{customer_id}/googleAds:searchStream`. Put GAQL in the JSON body. Do not include `googleads.googleapis.com`, OAuth tokens, `developer-token`, `login-customer-id`, auth headers, or API keys.
+Pass `connection_id`, `method`, `path`, `params`, and `body` to Studio `connections_execute` or `POST /connections/{connection_id}`. Use official Google Ads REST paths including the current version, such as `/v25/customers/{customer_id}/googleAds:searchStream`. Put GAQL in the JSON body. Do not include `googleads.googleapis.com`, OAuth tokens, `developer-token`, `login-customer-id`, auth headers, or API keys.
 
-Upstream: https://developers.google.com/google-ads/api/rest/overview. Proxy pinned to REST version `v23`.
-
-> Status: v23 is the current GA version supported by Google Ads at time of writing. The Worker pins v23. Plan to bump when v24+ ships and stabilizes.
+Upstream: https://developers.google.com/google-ads/api/rest/overview and https://developers.google.com/google-ads/api/docs/release-notes. Confirm the current REST version before a new call. Catalog examples below use `/v23/`; replace that segment with the current version.
 
 ## Endpoint
 
@@ -16,7 +14,7 @@ Upstream: https://developers.google.com/google-ads/api/rest/overview. Proxy pinn
 ANY /accounts/{account_id}/connections/google-ads/<api-path>
 ```
 
-The Worker accepts provider-native REST paths with or without the `/v23/` prefix, prepends `https://googleads.googleapis.com/v23`, and injects:
+Studio prepends `https://googleads.googleapis.com` only. Always include the REST version in `path` (`/v25/customers/{customer_id}/googleAds:search`). Studio injects:
 
 - `Authorization: Bearer <access_token>` (refreshed on demand)
 - `developer-token: <developer_token>`
@@ -145,7 +143,7 @@ Cross-resource: `POST /v23/customers/{customer_id}/googleAds:mutate` accepts a h
 
 ## Account discovery
 
-- `GET /v23/customers:listAccessibleCustomers` — every customer the OAuth user can see. Returns `{ "resourceNames": ["customers/<id>", ...] }`. Ignores `{customer_id}`.
+- `GET /v25/customers:listAccessibleCustomers` — every customer the OAuth grant can see, including other Hello Gafaro clients. Returns `{ "resourceNames": ["customers/<id>", ...] }`. Ignores `{customer_id}`. Identify the operating account with `SELECT customer.id, customer.descriptive_name FROM customer` before querying metrics. Do not use the first id.
 - Hierarchy walk: GAQL on `customer_client` selecting `customer_client.client_customer`, `customer_client.level`, `customer_client.manager`, `customer_client.descriptive_name`, `customer_client.currency_code`, `customer_client.time_zone`, `customer_client.id`. Filter `WHERE customer_client.level <= 1` and recurse.
 
 ## Conversions
@@ -190,7 +188,7 @@ Customer Match / store-sales:
 Top-spend campaigns for the last 30 days:
 
 ```bash
-curl -X POST "$PUBLIC_URL/accounts/dunder-mifflin/connections/google-ads/customers/{customer_id}/googleAds:searchStream" \
+curl -X POST "$PUBLIC_URL/accounts/dunder-mifflin/connections/google-ads/v25/customers/{customer_id}/googleAds:searchStream" \
   -H "Authorization: Bearer $BEARER_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"query":"SELECT campaign.id, campaign.name, campaign.status, metrics.cost_micros, metrics.clicks, metrics.conversions, metrics.conversions_value FROM campaign WHERE segments.date DURING LAST_30_DAYS AND campaign.status = \"ENABLED\" ORDER BY metrics.cost_micros DESC LIMIT 50"}'
@@ -207,4 +205,4 @@ curl -X POST "$PUBLIC_URL/accounts/dunder-mifflin/connections/google-ads/custome
 - Mutates respect `partialFailure=true` only when explicitly set. Without it, one bad operation rejects the whole batch.
 - `validateOnly=true` is the dry-run flag — use it before any large write. On success the response body is empty `{}` (no `results` array). Do not mistake this for a failure.
 - Prefer `googleAds:searchStream` over `googleAds:search`. The paginated `:search` endpoint returns `PAGE_SIZE_NOT_SUPPORTED` for some queries on v23; `searchStream` has no such restriction and matches the common-case access pattern.
-- v23 is past current GA. Plan to bump the proxy pin to v22+ in a follow-up; v23-only fields (granular invoice details, new asset types) are unavailable on v23.
+- Include the current REST version in every path. Studio does not pin or rewrite it. A 404 for `/v23/v25/customers:` means Studio still prepended a version; report that as a Studio bug rather than omitting `/v25`.

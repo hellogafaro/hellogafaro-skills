@@ -4,9 +4,9 @@ Accounts exposes the Meta Marketing API verbatim. The Worker handles auth, rate 
 
 ## Agent Tool
 
-Use the single `metaAds` provider tool with HTTPie/Postman-style input: `account_id`, `method`, provider-relative `url`, `params`, and `body`. Use Graph API paths such as `/act_<id>/insights`, `/act_<id>/campaigns`, or `/<object_id>`. Do not include `graph.facebook.com`, `access_token`, auth headers, or tokens.
+Pass `connection_id`, `method`, `path`, `params`, and `body` to Studio `connections_execute` or `POST /connections/{connection_id}`. Use Graph API paths including the current version, such as `/v25.0/{account_id}/insights`, `/v25.0/{account_id}/campaigns`, or `/v25.0/<object_id>`. Do not include `graph.facebook.com`, `access_token`, auth headers, or tokens.
 
-Upstream: https://developers.facebook.com/docs/marketing-api. Proxy pinned to Graph API `v23.0`.
+Upstream: https://developers.facebook.com/docs/marketing-api. Confirm the current Graph version from the Marketing API changelog before a new call.
 
 ## Endpoint
 
@@ -14,7 +14,7 @@ Upstream: https://developers.facebook.com/docs/marketing-api. Proxy pinned to Gr
 ANY /accounts/{account_id}/connections/meta-ads/<graph-path>
 ```
 
-The Worker prepends `https://graph.facebook.com/v23.0`, appends `access_token` as a query param, and substitutes `{account_id}` (already in `act_<id>` form) into the path. Pass `{account_id}` in templates instead of hardcoding ids.
+Studio prepends `https://graph.facebook.com` only, appends `access_token` as a query param, and substitutes `{account_id}` (already in `act_` form) into the path. Pass `{account_id}` in templates instead of hardcoding ids. Catalog paths below omit the Graph version; prefix them with `/v25.0` or the current changelog version.
 
 Auth is automatic. Never include `access_token` or `Authorization`.
 
@@ -148,12 +148,13 @@ Report runs expire after 30 days.
 Campaign-level insights for last 30 days:
 
 ```bash
-curl -X GET "$PUBLIC_URL/accounts/dunder-mifflin/connections/meta-ads/{account_id}/insights?level=campaign&date_preset=last_30d&fields=campaign_id,campaign_name,spend,impressions,clicks,ctr,cpc,actions,action_values,purchase_roas&action_breakdowns=action_type&limit=200" \
+curl -X GET "$PUBLIC_URL/accounts/dunder-mifflin/connections/meta-ads/v25.0/{account_id}/insights?level=campaign&date_preset=last_30d&fields=campaign_id,campaign_name,spend,impressions,clicks,ctr,cpc,actions,action_values,purchase_roas&action_breakdowns=action_type&limit=200" \
   -H "Authorization: Bearer $BEARER_TOKEN"
 ```
 
 ## Pitfalls
 
+- Start every Meta path with the current Graph version (`/v25.0/{account_id}/insights`). Studio prepends `https://graph.facebook.com` only.
 - Use the `{account_id}` placeholder; it already includes the `act_` prefix. Do not add `act_` again.
 - ROAS in `purchase_roas` is keyed by attribution window. Always state the window via `action_attribution_windows=['1d_view','7d_click']` when comparing.
 - `actions` is an array of `{action_type, value}` pairs. Filter precisely (e.g. `offsite_conversion.fb_pixel_purchase` for purchases).

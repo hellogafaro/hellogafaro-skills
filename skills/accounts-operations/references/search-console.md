@@ -4,7 +4,7 @@ Studio exposes the Google Search Console APIs verbatim. The Worker handles auth,
 
 ## Agent Tool
 
-Use the single `searchConsole` provider tool with HTTPie/Postman-style input: `account_id`, `method`, provider-relative `url`, `params`, and `body`. Use `/webmasters/...` for Sites, Sitemaps, and Search Analytics, or `/v1/urlInspection/...` for URL Inspection. Do not include Google hosts, OAuth tokens, auth headers, or API keys.
+Pass `connection_id`, `method`, `path`, `params`, and `body` to Studio `connections_execute` or `POST /connections/{connection_id}`. Use `/webmasters/` for Sites, Sitemaps, and Search Analytics, or `/v1/urlInspection/` for URL Inspection. Keep those prefixes; they are part of the upstream path. Do not include Google hosts, OAuth tokens, auth headers, or API keys.
 
 Upstream:
 

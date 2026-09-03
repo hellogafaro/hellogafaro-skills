@@ -11,6 +11,7 @@ When Hello Gafaro Studio MCP tools are available, use them. Otherwise call Studi
 
 ## Provider references
 
+- [references/api.md](references/api.md)
 - [references/shopify.md](references/shopify.md)
 - [references/klaviyo.md](references/klaviyo.md)
 - [references/meta-ads.md](references/meta-ads.md)
@@ -37,7 +38,7 @@ When Hello Gafaro Studio MCP tools are available, use them. Otherwise call Studi
 
 ## Studio REST
 
-Every request: `curl -H "Authorization: Bearer $BEARER_TOKEN" "$PUBLIC_URL{path}"`.
+Use [references/api.md](references/api.md) for the HTTP contract. Every request: `curl -H "Authorization: Bearer $BEARER_TOKEN" "$PUBLIC_URL{path}"`.
 
 ## Accounts
 

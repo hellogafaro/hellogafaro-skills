@@ -12,6 +12,7 @@ const removedAccountsOpsSkill = ["hellogafaro", "accounts", "ops"].join("-");
 
 const expectedResources = {
   "accounts-operations": [
+    "references/api.md",
     "references/shopify.md",
     "references/klaviyo.md",
     "references/meta-ads.md",

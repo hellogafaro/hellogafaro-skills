@@ -4,7 +4,7 @@ Studio exposes the PostHog private REST and HogQL Query APIs verbatim. The Worke
 
 ## Agent Tool
 
-Use the single `postHog` provider tool with HTTPie/Postman-style input: `account_id`, `method`, provider-relative `url`, `params`, and `body`. Use private REST paths such as `/api/projects/{project_id}/query/`, `/api/environments/{environment_id}/query/`, or `/api/organizations/{organization_id}/dashboards/`. This is customer PostHog through Accounts, not the local Hello Gafaro PostHog MCP. Do not include PostHog hosts, Personal API Keys, auth headers, or tokens.
+Pass `connection_id`, `method`, `path`, `params`, and `body` to Studio `connections_execute` or `POST /connections/{connection_id}`. Use private REST paths including `/api`, such as `/api/projects/{project_id}/query/`, `/api/environments/{environment_id}/query/`, or `/api/organizations/{organization_id}/dashboards/`. This is customer PostHog through Studio, not a local PostHog MCP. Do not include PostHog hosts, Personal API Keys, auth headers, or tokens.
 
 Upstream: https://posthog.com/docs/api.
 
@@ -14,7 +14,7 @@ Upstream: https://posthog.com/docs/api.
 ANY /accounts/{account_id}/connections/posthog/<api-path>
 ```
 
-The Worker prepends the credential's `host` (default `https://us.i.posthog.com`; EU clouds use `https://eu.i.posthog.com`) and injects `Authorization: Bearer <personal_api_key>`. Three placeholders are substituted from the credential:
+Studio prepends the credential's `host` only (default `https://us.i.posthog.com`; EU clouds use `https://eu.i.posthog.com`) and injects `Authorization: Bearer <personal_api_key>`. Keep `/api` in the path. Three placeholders are substituted from the credential:
 
 - `{project_id}` → the PostHog project id.
 - `{environment_id}` → environment id when the credential pins one.

@@ -4,9 +4,9 @@ Studio exposes the TikTok Business API verbatim. The Worker handles auth, rate l
 
 ## Agent Tool
 
-Use the single `tiktokAds` provider tool with HTTPie/Postman-style input: `account_id`, `method`, provider-relative `url`, `params`, and `body`. Use TikTok Business API paths such as `/open_api/v1.3/campaign/get/` or `/open_api/v1.3/report/integrated/get/`. Include `advertiser_id` as the provider requires. Do not include `business-api.tiktok.com`, `Access-Token`, auth headers, or tokens.
+Pass `connection_id`, `method`, `path`, `params`, and `body` to Studio `connections_execute` or `POST /connections/{connection_id}`. Use TikTok Business API paths including the version, such as `/open_api/v1.3/campaign/get/` or `/open_api/v1.3/report/integrated/get/`. Include `advertiser_id` as the provider requires. Do not include `business-api.tiktok.com`, `Access-Token`, auth headers, or tokens.
 
-Upstream: https://business-api.tiktok.com/portal/docs. Proxy pinned to version `v1.3`.
+Upstream: https://business-api.tiktok.com/portal/docs. Confirm the current Business API version before a new call.
 
 ## Endpoint
 
@@ -14,7 +14,7 @@ Upstream: https://business-api.tiktok.com/portal/docs. Proxy pinned to version `
 ANY /accounts/{account_id}/connections/tiktok-ads/<api-path>
 ```
 
-The Worker prepends `https://business-api.tiktok.com/open_api/v1.3` and injects the `Access-Token` header. The literal `{advertiser_id}` is substituted with the credential's advertiser id; TikTok uses it as a query parameter even on POST endpoints.
+Studio prepends `https://business-api.tiktok.com` only and injects the `Access-Token` header. The literal `{advertiser_id}` is substituted with the credential's advertiser id; TikTok uses it as a query parameter even on POST endpoints. Catalog paths below omit `/open_api/v1.3`; send `/open_api/v1.3/campaign/get/`, not `/campaign/get/`.
 
 All responses follow the envelope `{code: 0, message: "OK", data: {...}, request_id: "..."}`. Non-zero `code` signals a provider error — always check it, even on HTTP 200.
 
@@ -164,7 +164,7 @@ Async flow for >10k rows:
 Daily campaign report for the last 30 days:
 
 ```bash
-curl -X GET "$PUBLIC_URL/accounts/dunder-mifflin/connections/tiktok-ads/report/integrated/get/?advertiser_id={advertiser_id}&report_type=BASIC&data_level=AUCTION_CAMPAIGN&dimensions=%5B%22campaign_id%22%2C%22stat_time_day%22%5D&metrics=%5B%22spend%22%2C%22impressions%22%2C%22clicks%22%2C%22conversion%22%2C%22cost_per_conversion%22%5D&start_date=2026-04-01&end_date=2026-04-30&page_size=200" \
+curl -X GET "$PUBLIC_URL/accounts/dunder-mifflin/connections/tiktok-ads/open_api/v1.3/report/integrated/get/?advertiser_id={advertiser_id}&report_type=BASIC&data_level=AUCTION_CAMPAIGN&dimensions=%5B%22campaign_id%22%2C%22stat_time_day%22%5D&metrics=%5B%22spend%22%2C%22impressions%22%2C%22clicks%22%2C%22conversion%22%2C%22cost_per_conversion%22%5D&start_date=2026-04-01&end_date=2026-04-30&page_size=200" \
   -H "Authorization: Bearer $BEARER_TOKEN"
 ```
 

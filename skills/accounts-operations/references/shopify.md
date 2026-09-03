@@ -4,11 +4,11 @@ Studio exposes the Shopify Admin API verbatim. The Worker handles auth, `{api_ve
 
 ## Agent Tool
 
-Use the single `shopify` provider tool with HTTPie/Postman-style input: `account_id`, `method`, provider-relative `url`, `params`, and `body`. Use `/admin/api/2026-01/graphql.json` for Admin GraphQL and `/admin/api/2026-01/<resource>.json` for Admin REST. Do not include the shop domain, auth headers, or tokens.
+Pass `connection_id`, `method`, `path`, `params`, and `body` to Studio `connections_execute` or `POST /connections/{connection_id}`. Use `/admin/api/{api_version}/graphql.json` for Admin GraphQL and `/admin/api/{api_version}/<resource>.json` for Admin REST. Put the current stable Admin API version in the path. Do not include the shop domain, auth headers, or tokens.
 
-Upstream: https://shopify.dev/docs/api/admin (Admin REST + Admin GraphQL). Proxy pinned to API version `2026-01`.
+Upstream: https://shopify.dev/docs/api/admin (Admin REST + Admin GraphQL) and https://shopify.dev/docs/api/usage/versioning. Confirm the latest stable version before a new call.
 
-> Status: REST Admin API is legacy as of 2024-10. New apps after 2025-04 must use GraphQL. The REST resources still work on 2026-01, but prefer GraphQL whenever possible. Per https://shopify.dev/docs/api/usage/versioning the 2026-01 surface is supported for ~12 months from release.
+> Status: REST Admin API is legacy as of 2024-10. New apps after 2025-04 must use GraphQL. Prefer GraphQL whenever possible.
 
 ## Endpoint
 
@@ -16,7 +16,7 @@ Upstream: https://shopify.dev/docs/api/admin (Admin REST + Admin GraphQL). Proxy
 ANY /accounts/{account_id}/connections/shopify/admin/<rest-or-graphql-path>
 ```
 
-Every path must start with `/admin/`. The Worker substitutes `{api_version}` with `2026-01` and prepends `https://<credential.domain>`. The `X-Shopify-Access-Token` header is injected.
+Every path must start with `/admin/`. Studio substitutes `{api_version}` when that placeholder is used, and prepends `https://<credential.domain>` only. The `X-Shopify-Access-Token` header is injected. You may also pass a concrete version such as `/admin/api/2026-07/graphql.json`.
 
 Two surfaces share the same proxy:
 
@@ -628,7 +628,7 @@ curl -X POST "$PUBLIC_URL/accounts/dunder-mifflin/connections/shopify/admin/api/
 
 ## Pitfalls
 
-- The proxy pins `{api_version}` to `2026-01`. Use the placeholder and let the Worker fill it. If real Shopify rejects the version (HTTP 406), the version constant in `apps/backend/src/domains/integrations/shopify/client.ts` is ahead of what Shopify currently exposes — bump it down or wait for the version to ship.
+- Pass the Admin API version in the path (`/admin/api/2026-07/graphql.json` or `/admin/api/{api_version}/graphql.json`). Look up the latest stable version from Shopify versioning docs. Studio prepends the shop domain and injects the access token; it should not hide the version.
 - `DraftOrderInput` does not accept a `note` field directly; use `noteAttributes: [{name, value}]` for free-text annotations.
 - `productCreate` always creates a default variant. Calling `productVariantsBulkCreate` immediately after with `optionValues: [{ optionName: "Title", name: "Default Title" }]` returns userError "The variant 'Default Title' already exists." Update the existing variant via `productVariantsBulkUpdate`, or pass option values that differ from `Default Title`.
 - `customerEmailMarketingConsentUpdate` and `customerSmsMarketingConsentUpdate` may return `customer: null` with an empty `userErrors` array when the access scope or the customer's prior consent state blocks the change. Treat `null` customer as a permission-gated outcome, not a transport error.

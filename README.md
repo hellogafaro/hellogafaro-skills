@@ -12,7 +12,7 @@ Notion skill database rows should act as a mapping layer. The durable skill inst
 
 ## accounts management
 
-The `accounts-operations` skill is a self-contained usage contract for the live Hello Gafaro Studio API. It includes account and connection management, provider routing references, permits any available HTTP client, and never requires an implementation repository checkout.
+The `accounts-operations` skill is a self-contained usage contract for live Hello Gafaro Studio. Use Studio MCP (`connections_execute`) when those tools are available, or Studio REST with curl. It includes account and connection management, raw provider paths, and never requires an implementation repository checkout.
 
 ## rules
 

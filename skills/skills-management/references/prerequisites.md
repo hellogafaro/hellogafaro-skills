@@ -2,33 +2,18 @@
 
 ## Resolve the source
 
-1. Find the canonical skills repository from project instructions or the current repository remote.
-2. For Hello Gafaro, the canonical remote is `hellogafaro/hellogafaro-skills`.
-3. Use the real checkout. Do not edit `.agents/skills`, `.claude/skills`, global skill directories, plugin caches, or other deployed copies.
-4. Fetch the remote before comparing state when the result depends on current GitHub content.
+1. Find the skill in the live Notion Skills library.
+2. Download the complete skill directory, including supporting files, before changing it.
+3. Treat the Notion page ID as the stable source identity.
+4. Do not edit `.agents/skills`, BB user skill directories, provider directories, plugin caches, or the generated GitHub mirror.
+5. If the skill is missing from Notion but exists in GitHub or an installation, treat that copy as migration input, not as a new canonical source.
 
-## Verify Git
+## Verify Notion
 
-Run from the source repository:
+Confirm that the selected connection can search, download, and upload skills. Fetch the target Skills database before creating a page so its current data source and title property are known. Never store connection tokens, page IDs, or database IDs in the skill itself.
 
-```bash
-git status --short --branch
-git remote -v
-git fetch --prune origin
-git status --short --branch
-```
+After an upload, download the skill again and compare its `SKILL.md` instructions and supporting files with the intended source. Notion may normalize Markdown formatting and emits only standard skill frontmatter.
 
-Preserve unrelated changes. Stop if the requested skill overlaps uncommitted work that cannot be safely separated.
+## Verify distribution only when needed
 
-## Verify GitHub CLI
-
-```bash
-command -v gh
-gh --version
-gh auth status
-gh repo view hellogafaro/hellogafaro-skills --json nameWithOwner,url,visibility
-```
-
-GitHub skill management requires `gh` 2.95 or newer. If it is missing or old, report the blocker and propose the smallest platform-appropriate install or upgrade command. Do not change system software without approval.
-
-If authentication or repository access fails, stop and report the exact access blocker. Never use another account as an unapproved fallback, and never print `gh auth token` output.
+For GitHub backup or installation work, verify the generated repository, GitHub CLI version, authentication, and repository access. Never edit the mirror to fix a Notion skill. If the mirror differs, repair or rerun the Notion-to-GitHub sync.

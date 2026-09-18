@@ -1,6 +1,9 @@
 ---
-name: documents-operations
-description: Use when work involves finding, creating, updating, consolidating, or formatting durable documentation in the Notion Documents database.
+name: |-
+  documents-operations
+description: |-
+  Use when work involves finding, creating, updating, consolidating, or formatting durable documentation in the Notion Documents database.
+notion_page_id: 3dffc798-2e43-8175-b1e5-d85d588e05b7
 ---
 
 # documents-operations

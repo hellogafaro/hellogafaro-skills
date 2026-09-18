@@ -1,6 +1,9 @@
 ---
-name: reporting
-description: Use when preparing or reviewing a durable report, performance summary, KPI update, anomaly memo, or other decision-facing analytical writeup.
+name: |-
+  reporting
+description: |-
+  Use when preparing or reviewing a durable report, performance summary, KPI update, anomaly memo, or other decision-facing analytical writeup.
+notion_page_id: 3dffc798-2e43-8185-a413-cc04ed81327d
 ---
 
 # reporting

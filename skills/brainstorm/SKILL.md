@@ -1,6 +1,9 @@
 ---
-name: brainstorm
-description: Use when the user wants an interactive thinking session to stress-test an unresolved plan, design, product decision, architecture, or implementation approach through focused questions, without producing a durable artifact by default.
+name: |-
+  brainstorm
+description: |-
+  Use when the user wants an interactive thinking session to stress-test an unresolved plan, design, product decision, architecture, or implementation approach through focused questions, without producing a durable artifact by default.
+notion_page_id: 3dffc798-2e43-81c0-8dda-dc51c65d63f2
 ---
 
 # brainstorm

@@ -1,6 +1,9 @@
 ---
-name: accounts-operations
-description: Use when work needs connected client account data, account or connection management, or provider-native reads and confirmed writes through Hello Gafaro Studio for Shopify, Klaviyo, Meta Ads, Google Ads, TikTok Ads, PostHog, GA4, or Search Console.
+name: |-
+  accounts-operations
+description: |-
+  Use when work needs connected client account data, account or connection management, or provider-native reads and confirmed writes through Hello Gafaro Studio for Shopify, Klaviyo, Meta Ads, Google Ads, TikTok Ads, PostHog, GA4, or Search Console.
+notion_page_id: 3dafc798-2e43-8093-8c0d-fc9aa6d44580
 ---
 
 # accounts-operations
@@ -43,23 +46,23 @@ Use [references/api.md](references/api.md) for the HTTP contract. Every request:
 ## Accounts
 
 | Method | Path | Body | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `GET` | `/accounts` | none | list all |
 | `POST` | `/accounts` | `{id, name, currency, goal}` | `id` matches `^[a-z0-9][a-z0-9-]*$`; `goal` is `leads` or `sales`; `currency` is free text |
-| `GET` | `/accounts/{account_id}` | none | |
+| `GET` | `/accounts/{account_id}` | none |  |
 | `PATCH` | `/accounts/{account_id}` | any of `{name, currency, goal}` | at least one field |
 | `DELETE` | `/accounts/{account_id}` | none | cascades: deletes all of the account's connections too |
 
 ## Connections
 
 | Method | Path | Body | Notes |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `GET` | `/connections` | none | all accounts |
 | `GET` | `/accounts/{account_id}/connections` | none | one account |
 | `POST` | `/connections` | `{account_id, platform, credential?, metadata?}` | one connection per platform per account (`409` if it already exists) |
 | `GET` | `/connections/{connection_id}` | none | never returns credentials |
 | `PATCH` | `/connections/{connection_id}` | any of `{credential, metadata, status}` | setting `credential` auto-sets `status: connected` |
-| `DELETE` | `/connections/{connection_id}` | none | |
+| `DELETE` | `/connections/{connection_id}` | none |  |
 | `POST` | `/connections/{connection_id}` | see Execute | run a provider operation |
 | `POST` | `/connections/{connection_id}/authorize` | Shopify needs `{shop, client_id, client_secret}`; others send `{}` | see Credential entry |
 
@@ -91,7 +94,7 @@ MCP: `connections_execute` with `method`, `path`, `params`, `body`.
 
 REST:
 
-```http
+```javascript
 POST /connections/{connection_id}
 Authorization: Bearer {BEARER_TOKEN}
 
@@ -108,7 +111,7 @@ Authorization: Bearer {BEARER_TOKEN}
 Look up the current official version before a new or changed call. Then pass that version in `path`.
 
 | Provider | Host Studio adds | Path you pass |
-|---|---|---|
+| --- | --- | --- |
 | Shopify | shop domain | `/admin/api/2026-07/graphql.json` |
 | Klaviyo | `https://a.klaviyo.com` | `/api/metrics` |
 | Meta Ads | `https://graph.facebook.com` | `/v25.0/{account_id}/insights` |
@@ -127,7 +130,7 @@ Google Ads `customers:listAccessibleCustomers` returns every customer the OAuth 
 Per-provider templates substitute well-known fields from the credential into the path (and, for TikTok, into `query` and `body` too). Use placeholders, not hardcoded ids.
 
 | Provider | Placeholders |
-|---|---|
+| --- | --- |
 | Shopify | `{api_version}` |
 | Meta Ads | `{account_id}` (the `act_` ad-account id) |
 | Google Ads | `{customer_id}`, `{login_customer_id}` |
@@ -144,7 +147,7 @@ Success: `{ "account": "<account_id>", "platform": "<platform>", "method": "<ver
 Error: `{ "error": { "code": "<code>", "message": "<message>", "details": [] } }`.
 
 | Status | Code | Meaning |
-|---|---|---|
+| --- | --- | --- |
 | `400` | `invalid_request` | malformed body, unsafe or absolute path, secret key in `query`/`body` |
 | `401` | `unauthorized` | missing bearer token |
 | `403` | `forbidden` | wrong bearer token |

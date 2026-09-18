@@ -1,6 +1,9 @@
 ---
-name: shopify-chargeback
-description: Use when investigating a Shopify payment dispute, preparing chargeback evidence, building the required response documents, or submitting an approved response through Shopify.
+name: |-
+  shopify-chargeback
+description: |-
+  Use when investigating a Shopify payment dispute, preparing chargeback evidence, building the required response documents, or submitting an approved response through Shopify.
+notion_page_id: 3dffc798-2e43-81b6-a104-dcc1e13de363
 ---
 
 # shopify-chargeback

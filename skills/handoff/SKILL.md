@@ -1,6 +1,9 @@
 ---
-name: handoff
-description: Use when the user wants a copyable context-rich handoff that lets another person, model, or agent continue unresolved work without repeating important discovery.
+name: |-
+  handoff
+description: |-
+  Use when the user wants a copyable context-rich handoff that lets another person, model, or agent continue unresolved work without repeating important discovery.
+notion_page_id: 3dffc798-2e43-81c3-96a9-fe86a7f896e0
 ---
 
 # handoff

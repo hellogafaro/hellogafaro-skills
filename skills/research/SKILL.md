@@ -1,6 +1,9 @@
 ---
-name: research
-description: Use when a question needs current external evidence, source comparison, public facts, citations, or research-backed decision support.
+name: |-
+  research
+description: |-
+  Use when a question needs current external evidence, source comparison, public facts, citations, or research-backed decision support.
+notion_page_id: 3dffc798-2e43-818e-9a51-e8c7a802e57f
 ---
 
 # research

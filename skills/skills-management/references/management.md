@@ -4,8 +4,8 @@
 
 Treat a rename as one atomic migration:
 
-1. Rename the source directory.
-2. Update frontmatter, H1, inventory tests, references, and routing instructions.
+1. Rename the canonical Notion skill.
+2. Update its exported name, H1, references, and routing instructions.
 3. Remove or migrate every old installed name.
 4. Install the new name and verify agents discover only the replacement.
 5. Search again for the old name before completion.
@@ -14,7 +14,7 @@ Never leave both names installed unless the user explicitly requests a compatibi
 
 ## Remove
 
-Confirm the skill is not referenced by another skill, project instruction, script, test, or installation manifest. Remove it from source and inventories, then remove approved installed copies. Do not delete local or remote state without explicit approval.
+Confirm the skill is not referenced by another skill, project instruction, script, test, or installation manifest. Remove its Skill designation in Notion, then remove approved generated and installed copies. Do not delete local or remote state without explicit approval.
 
 ## Review
 
@@ -22,8 +22,9 @@ Check trigger specificity, overlap, structure, source ownership, mutable configu
 
 ## Distribution policy
 
-- Source lives in the canonical GitHub repository.
+- First-party source lives in Notion.
+- GitHub is a generated backup and distribution mirror.
 - Project installations live once in `.agents/skills` and are committed when the project must work from a fresh clone.
-- `.claude/skills` points to `../.agents/skills`.
-- Broad personal skills may use user scope when they should be available in every project.
+- Broad shared skills use BB user scope when they should be available in every project.
 - Project-specific skills stay project-scoped to avoid routing noise and accidental cross-project behavior.
+- Third-party and BB plugin skills remain owned by their upstream source and do not move into Notion.

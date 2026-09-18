@@ -1,10 +1,9 @@
 ---
-name: unslop
-description: Use when writing or editing prose to remove recognizable AI patterns, tighten language, and add a natural human voice to user-facing text.
-license: MIT
-metadata:
-  upstream: https://github.com/cursor/plugins/tree/main/pstack/skills/unslop
-  upstream-commit: bdf7aa355337897f167153e05069aca505dae17c
+name: |-
+  unslop
+description: |-
+  Use when writing or editing prose to remove recognizable AI patterns, tighten language, and add a natural human voice to user-facing text.
+notion_page_id: 3dffc798-2e43-810e-af3c-cd392f3e0da8
 ---
 
 # unslop
@@ -42,43 +41,49 @@ Removing patterns is half the job. Sterile, voiceless writing is just as obvious
 
 ### Language
 
-7. **AI vocabulary.** Additionally, crucial, delve, enduring, enhance, fostering, garner, interplay, intricate, landscape used abstractly, pivotal, showcase, tapestry used abstractly, testament, underscore, vibrant. Replace with plain words.
-8. **Fancy ways to say "is".** "serves as", "stands as", "boasts", "features". Just say "is" or "has".
-9. **"Not just X, but Y."** State the point directly instead.
-10. **Rule of three.** Forcing ideas into groups of three. Use the natural number.
-11. **Synonym cycling.** Protagonist, main character, central figure, hero all in one paragraph. Pick one, repeat it.
-12. **False ranges.** "from X to Y" where X and Y aren't on a meaningful scale. List topics directly.
+1. **AI vocabulary.** Additionally, crucial, delve, enduring, enhance, fostering, garner, interplay, intricate, landscape used abstractly, pivotal, showcase, tapestry used abstractly, testament, underscore, vibrant. Replace with plain words.
+2. **Fancy ways to say "is".** "serves as", "stands as", "boasts", "features". Just say "is" or "has".
+3. **"Not just X, but Y."** State the point directly instead.
+4. **Rule of three.** Forcing ideas into groups of three. Use the natural number.
+5. **Synonym cycling.** Protagonist, main character, central figure, hero all in one paragraph. Pick one, repeat it.
+6. **False ranges.** "from X to Y" where X and Y aren't on a meaningful scale. List topics directly.
 
 ### Style
 
-13. **Em dash overuse.** Avoid em dashes entirely. Use periods or commas only, with no parentheses, en dashes, or hyphen-as-dash substitutes. Reaching for parentheses instead just trades one tell for another. If a thought needs separation, end the sentence or use a comma.
-14. **Colon overuse.** Colons are fine before a list or example, not as mid-sentence connectors. "If you're coming from traditional automation: instead of registering event handlers, you describe conditions" gains nothing from the colon. Rewrite to let the point stand on its own without comparison framing. "Describing when the scheduler should fire works best as plain English." Same meaning, no crutch punctuation.
-15. **Boldface overuse.** Don't bold every proper noun or acronym.
-16. **Inline-header lists.** The tell is a bold label and colon that restates the line: "**Performance:** Performance improved." Convert those to prose. A bold lead-in that ends in a period, names the item, and is followed by genuinely new detail, such as "**Schema in TypeScript.** Tables live in one file.", is fine.
-17. **Title case headings.** Use sentence case.
-18. **Decorative emojis.** Remove from headings and bullets.
-19. **Curly quotes.** Replace with straight quotes.
+1. **Em dash overuse.** Avoid em dashes entirely. Use periods or commas only, with no parentheses, en dashes, or hyphen-as-dash substitutes. Reaching for parentheses instead just trades one tell for another. If a thought needs separation, end the sentence or use a comma.
+2. **Colon overuse.** Colons are fine before a list or example, not as mid-sentence connectors. "If you're coming from traditional automation: instead of registering event handlers, you describe conditions" gains nothing from the colon. Rewrite to let the point stand on its own without comparison framing. "Describing when the scheduler should fire works best as plain English." Same meaning, no crutch punctuation.
+3. **Boldface overuse.** Don't bold every proper noun or acronym.
+4. **Inline-header lists.** The tell is a bold label and colon that restates the line: "**Performance:** Performance improved." Convert those to prose. A bold lead-in that ends in a period, names the item, and is followed by genuinely new detail, such as "**Schema in TypeScript.** Tables live in one file.", is fine.
+5. **Title case headings.** Use sentence case.
+6. **Decorative emojis.** Remove from headings and bullets.
+7. **Curly quotes.** Replace with straight quotes.
 
 ### Communication artifacts
 
-20. **Chatbot phrases.** "I hope this helps!", "Let me know if", "Of course!", "Certainly!", "Found the smoking gun!" Remove.
-21. **Cutoff disclaimers.** "While specific details are limited". Find sources or remove.
-22. **Sycophantic tone.** "Great question! You're absolutely right!" Respond directly.
+1. **Chatbot phrases.** "I hope this helps!", "Let me know if", "Of course!", "Certainly!", "Found the smoking gun!" Remove.
+2. **Cutoff disclaimers.** "While specific details are limited". Find sources or remove.
+3. **Sycophantic tone.** "Great question! You're absolutely right!" Respond directly.
 
 ### Filler
 
-23. **Filler phrases.** "In order to" becomes "To". "Due to the fact that" becomes "Because". Delete "It is important to note that".
-24. **Excessive hedging.** "could potentially possibly be argued that it might" becomes "may".
-25. **Generic conclusions.** "The future looks bright." State specific plans or facts.
+1. **Filler phrases.** "In order to" becomes "To". "Due to the fact that" becomes "Because". Delete "It is important to note that".
+2. **Excessive hedging.** "could potentially possibly be argued that it might" becomes "may".
+3. **Generic conclusions.** "The future looks bright." State specific plans or facts.
 
 ### Jargon
 
-26. **Abstract metaphor nouns.** Substrate, wedge, vector, locus, vantage, nexus, primitive used as a noun, harness used as a metaphor, surface as in "API surface", bedrock, scaffolding used as a metaphor, modality, paradigm, gold-plating, ratchet used as a metaphor, evacuate for moving code, endgame, north star, flywheel. These read as technical but usually have a plainer concrete word. "Substrate" becomes "base". "Wedge in" becomes "add". "Vector" becomes "way" or "method". "Gold-plating" becomes "more than the job needs". "Ratchet" becomes the mechanism's real name or "a limit that only tightens". "Evacuate" becomes "move out". "Endgame" becomes "the last phase". Pick the concrete word.
+1. **Abstract metaphor nouns.** Substrate, wedge, vector, locus, vantage, nexus, primitive used as a noun, harness used as a metaphor, surface as in "API surface", bedrock, scaffolding used as a metaphor, modality, paradigm, gold-plating, ratchet used as a metaphor, evacuate for moving code, endgame, north star, flywheel. These read as technical but usually have a plainer concrete word. "Substrate" becomes "base". "Wedge in" becomes "add". "Vector" becomes "way" or "method". "Gold-plating" becomes "more than the job needs". "Ratchet" becomes the mechanism's real name or "a limit that only tightens". "Evacuate" becomes "move out". "Endgame" becomes "the last phase". Pick the concrete word.
 
 ### Plain speech
 
-27. **Say what it does, not how it feels.** "the database stays close at hand", "SQL you can read", "types that follow your schema" name a feeling. The fix names the mechanism or a number: "`.toSQL()` returns the exact string sent to the database", "a column rename fails the build". Ask what the sentence tells the reader to do or know, then write that. If you can't restate it as a concrete instruction, fact, or number, cut it. One more check: if the sentence could appear unchanged in another project's docs, it says nothing about this one. Cut it.
-28. **Shorten or split dense sentences.** If the reader has to backtrack to parse a sentence, break it in two or drop clauses. One idea per sentence.
-29. **Active voice.** Prefer it. Catch "is/are/was/were + past participle" and name the actor: "queries are validated" becomes "the compiler validates queries", "the file is parsed by the loader" becomes "the loader parses the file". Passive is fine only when the actor is unknown or genuinely doesn't matter.
-30. **Cut adverbs, or use a stronger verb.** "runs quickly" becomes "is fast" or the number. "significantly improves" becomes the measured delta. An adverb propping up a weak verb means the verb is wrong.
-31. **Prefer the plain word.** "utilize" becomes "use", "leverage" becomes "use", "facilitate" becomes "help", "numerous" becomes "many", "in the event that" becomes "if". The fancier synonym is rarely clearer.
+1. **Say what it does, not how it feels.** "the database stays close at hand", "SQL you can read", "types that follow your schema" name a feeling. The fix names the mechanism or a number: "`.toSQL()` returns the exact string sent to the database", "a column rename fails the build". Ask what the sentence tells the reader to do or know, then write that. If you can't restate it as a concrete instruction, fact, or number, cut it. One more check: if the sentence could appear unchanged in another project's docs, it says nothing about this one. Cut it.
+2. **Shorten or split dense sentences.** If the reader has to backtrack to parse a sentence, break it in two or drop clauses. One idea per sentence.
+3. **Active voice.** Prefer it. Catch "is/are/was/were + past participle" and name the actor: "queries are validated" becomes "the compiler validates queries", "the file is parsed by the loader" becomes "the loader parses the file". Passive is fine only when the actor is unknown or genuinely doesn't matter.
+4. **Cut adverbs, or use a stronger verb.** "runs quickly" becomes "is fast" or the number. "significantly improves" becomes the measured delta. An adverb propping up a weak verb means the verb is wrong.
+5. **Prefer the plain word.** "utilize" becomes "use", "leverage" becomes "use", "facilitate" becomes "help", "numerous" becomes "many", "in the event that" becomes "if". The fancier synonym is rarely clearer.
+
+## Provenance
+
+- Upstream: [https://github.com/cursor/plugins/tree/main/pstack/skills/unslop](https://github.com/cursor/plugins/tree/main/pstack/skills/unslop)
+- Upstream commit: `bdf7aa355337897f167153e05069aca505dae17c`
+- License: MIT. See `LICENSE.md`.

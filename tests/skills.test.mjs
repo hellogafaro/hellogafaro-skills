@@ -80,10 +80,30 @@ function parseFrontmatter(markdown) {
   assert.ok(match, "SKILL.md must start with YAML frontmatter");
 
   const data = {};
-  for (const line of match[1].split("\n")) {
+  const lines = match[1].split("\n");
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
     const pair = line.match(/^([a-zA-Z0-9_-]+):\s*(.*)$/);
-    if (pair) data[pair[1]] = pair[2].replace(/^["']|["']$/g, "");
+    if (!pair) continue;
+
+    const [, key, value] = pair;
+
+    if (/^[|>][-+]?$/u.test(value)) {
+      const parts = [];
+
+      while (lines[index + 1]?.startsWith("  ")) {
+        parts.push(lines[index + 1].slice(2));
+        index += 1;
+      }
+
+      data[key] = parts.join("\n");
+      continue;
+    }
+
+    data[key] = value.replace(/^["']|["']$/g, "");
   }
+
   return data;
 }
 
@@ -183,7 +203,8 @@ test("skills use portable host state", async () => {
 
     const file = path.join(skillsDir, entry);
     const text = await readFile(file, "utf8");
-    const notionIds = text.match(new RegExp(hardcodedNotionId.source, "gi")) ?? [];
+    const body = text.replace(/^---\n[\s\S]*?\n---\n?/u, "");
+    const notionIds = body.match(new RegExp(hardcodedNotionId.source, "gi")) ?? [];
 
     if (entry === path.join("tasks-operations", "SKILL.md")) {
       assert.deepEqual(notionIds.sort(), [...allowedNotionIds].sort());

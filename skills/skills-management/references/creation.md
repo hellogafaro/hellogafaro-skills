@@ -3,9 +3,9 @@
 ## Define the skill
 
 1. Gather the task, domain, trigger phrases, use cases, required tools, deterministic scripts, reference material, and safety boundaries.
-2. Search the source inventory for an existing or neighboring skill before creating one.
+2. Search the Notion Skills library for an existing or neighboring skill before creating one.
 3. Prefer extending a clear existing owner over adding overlapping skills.
-4. Use a lowercase hyphenated directory name. The frontmatter `name` and H1 must match it.
+4. Use a stable lowercase hyphenated skill name. The exported frontmatter `name` and H1 must match it.
 
 ## Write the entrypoint
 
@@ -25,6 +25,6 @@ description: Use when ...
 - Keep references one level deep and link every required resource from `SKILL.md`.
 - State compatibility requirements only when they materially affect execution.
 
-## Integrate
+## Save and verify
 
-Update the repository inventory and resource tests in the same change. Check neighboring skills for routing overlap and update durable project instructions when the new skill must take precedence over a built-in or legacy skill.
+Create the page in the Notion Skills database and upload the complete skill directory. Do not add tags unless the user asks for grouping. Download the saved skill and verify its name, description, instructions, and supporting files. Check neighboring skills for routing overlap and update durable project instructions when the new skill must take precedence over a built-in or legacy skill.

@@ -1,6 +1,9 @@
 ---
-name: shopiworks-clickup-sync
-description: Use when replicating verified Minicoton or Somomu work from Notion tasks and Timesheets into the external provider's ClickUp workspace in Spanish.
+name: |-
+  shopiworks-clickup-sync
+description: |-
+  Use when replicating verified Minicoton or Somomu work from Notion tasks and Timesheets into the external provider's ClickUp workspace in Spanish.
+notion_page_id: 3dffc798-2e43-8174-ab15-e851ed1722b5
 ---
 
 # shopiworks-clickup-sync
@@ -50,7 +53,7 @@ When a ClickUp task was created or first matched, add one concise English confir
 
 Report results in lettered Project groups with numbered items:
 
-```text
+```txt
 A. Minicoton
    1. Task title · Created · 60 min · ClickUp URL
 

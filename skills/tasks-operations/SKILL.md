@@ -1,6 +1,9 @@
 ---
-name: tasks-operations
-description: Use when Notion work involves finding, creating, updating, completing, or reviewing tasks; extracting tasks from Meetings or Documents; planning workload; or logging and reporting task or meeting time.
+name: |-
+  tasks-operations
+description: |-
+  Use when Notion work involves finding, creating, updating, completing, or reviewing tasks; extracting tasks from Meetings or Documents; planning workload; or logging and reporting task or meeting time.
+notion_page_id: 3dffc798-2e43-81a1-a8a0-da8a2bb83323
 ---
 
 # tasks-operations

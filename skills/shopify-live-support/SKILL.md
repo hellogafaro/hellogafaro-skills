@@ -1,6 +1,9 @@
 ---
-name: shopify-live-support
-description: Use when routing, conducting, or closing Shopify support conversations for merchant issues including payments, billing, shipping, orders, checkout, storefront, apps, technical defects, account access, and Shopify Payments.
+name: |-
+  shopify-live-support
+description: |-
+  Use when routing, conducting, or closing Shopify support conversations for merchant issues including payments, billing, shipping, orders, checkout, storefront, apps, technical defects, account access, and Shopify Payments.
+notion_page_id: 3dffc798-2e43-816f-ba63-f238b5cae59d
 ---
 
 # shopify-live-support
@@ -77,7 +80,7 @@ Break a complex case into two or three short messages rather than one dense para
 
 Open with two or three short messages when the case needs context:
 
-```text
+```txt
 Hi, I need help with [specific issue] for [store]
 [One short message with the key IDs, dates, and current status]
 Could you [specific action] and confirm who owns the next step?

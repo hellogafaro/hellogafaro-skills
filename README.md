@@ -1,23 +1,30 @@
-# hellogafaro skills
+# Hello Gafaro skills
 
-Central source for Hello Gafaro agent skills and supporting scripts.
+Generated backup of Hello Gafaro's first-party Notion Skills.
 
-Notion skill database rows should act as a mapping layer. The durable skill instructions live in this repo under `skills/{skill-id}/SKILL.md`.
+Notion is the source of truth. Do not edit skill content in this repository. Each
+`notion_page_id` identifies the canonical Notion page from which the directory
+was exported.
 
-## structure
+## Distribution
 
-- `skills/` contains shared and specialist agent skills.
-- `workers/` contains Notion worker code when a custom agent needs code outside instructions.
-- `tests/` keeps the skill inventory and metadata honest.
+- BB shared installations live in its user skill directory.
+- Project-specific installations live once in `.agents/skills`.
+- Provider-specific copies are not maintained.
+- Third-party and BB plugin skills remain with their upstream owners and are not
+  mirrored here.
 
-## accounts management
+The repository is a backup and distribution snapshot. It is not required for BB
+to use skills exported directly from Notion.
 
-The `accounts-operations` skill is a self-contained usage contract for live Hello Gafaro Studio. Use Studio MCP (`connections_execute`) when those tools are available, or Studio REST with curl. It includes account and connection management, raw provider paths, and never requires an implementation repository checkout.
+## Structure
 
-## rules
+- `skills/` contains the complete Notion exports, including supporting files.
+- `tests/` validates the exported inventory and portable content.
 
-- Keep `SKILL.md` focused on workflow and hard rules.
-- Keep mutable config out of skill entrypoints.
-- Use lowercase hyphen skill ids.
-- Use sentence case display names.
+## Rules
+
+- Change a skill in Notion, then refresh this generated snapshot.
+- Never sync edits from GitHub back into Notion.
+- Keep lowercase hyphen skill IDs and trigger-first descriptions.
 - Do not add removed legacy skills.

@@ -1,6 +1,9 @@
 ---
-name: calendar-operations
-description: Use when work involves reviewing calendars, checking availability or conflicts, preparing meetings, or creating, moving, rescheduling, and canceling events through Composio.
+name: |-
+  calendar-operations
+description: |-
+  Use when work involves reviewing calendars, checking availability or conflicts, preparing meetings, or creating, moving, rescheduling, and canceling events through Composio.
+notion_page_id: 3dffc798-2e43-8199-b3cb-fcf247dfdf73
 ---
 
 # calendar-operations

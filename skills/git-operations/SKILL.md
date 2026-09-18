@@ -1,6 +1,9 @@
 ---
-name: git-operations
-description: Use when work involves Git or GitHub operations, including commits, staging, branches, pushes, pull requests, merges, tags, releases, or release notes.
+name: |-
+  git-operations
+description: |-
+  Use when work involves Git or GitHub operations, including commits, staging, branches, pushes, pull requests, merges, tags, releases, or release notes.
+notion_page_id: 3dffc798-2e43-8122-9dcc-f8443b6357eb
 ---
 
 # git-operations
@@ -51,7 +54,7 @@ selection stable while still removing invalid values from the result set.
 
 Default PR body:
 
-```md
+```markdown
 ## Summary
 - What changed.
 

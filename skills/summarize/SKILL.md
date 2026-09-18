@@ -1,6 +1,9 @@
 ---
-name: summarize
-description: Use when the user asks for a concise completion summary, recap, wrap-up, PM handoff note, or factual account of work delivered and verified.
+name: |-
+  summarize
+description: |-
+  Use when the user asks for a concise completion summary, recap, wrap-up, PM handoff note, or factual account of work delivered and verified.
+notion_page_id: 3dffc798-2e43-81cf-9d25-e3fbea829f79
 ---
 
 # summarize

@@ -1,6 +1,9 @@
 ---
-name: email-operations
-description: Use when work involves searching, reading, triaging, drafting, sending, or changing email through Composio across one or more mailboxes.
+name: |-
+  email-operations
+description: |-
+  Use when work involves searching, reading, triaging, drafting, sending, or changing email through Composio across one or more mailboxes.
+notion_page_id: 3dffc798-2e43-816f-bc5f-ef5e1d24ff31
 ---
 
 # email-operations

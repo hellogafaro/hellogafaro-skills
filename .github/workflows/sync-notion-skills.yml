@@ -1,0 +1,54 @@
+name: Sync Notion skills
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-notion-skills
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+
+      - name: Install Infisical CLI
+        run: npm install --global @infisical/cli@0.43.132
+
+      - name: Export skills from Notion
+        env:
+          INFISICAL_SERVICE_TOKEN: ${{ secrets.INFISICAL_SERVICE_TOKEN }}
+          NOTION_SKILLS_DATA_SOURCE_ID: ${{ vars.NOTION_SKILLS_DATA_SOURCE_ID }}
+        run: >-
+          infisical run
+          --token "$INFISICAL_SERVICE_TOKEN"
+          --projectId 4135fce4-59df-4bdb-ad85-247f949f1ef2
+          --env prod
+          --path /github/skills-sync
+          --silent
+          -- node scripts/sync-notion-skills.mjs
+
+      - name: Validate generated skills
+        run: npm run check
+
+      - name: Commit generated changes
+        run: |
+          if git diff --quiet -- skills; then
+            echo "Skills are already current."
+            exit 0
+          fi
+          git add skills
+          git diff --staged --check
+          GIT_AUTHOR_NAME="github-actions[bot]" \
+          GIT_AUTHOR_EMAIL="41898282+github-actions[bot]@users.noreply.github.com" \
+          GIT_COMMITTER_NAME="github-actions[bot]" \
+          GIT_COMMITTER_EMAIL="41898282+github-actions[bot]@users.noreply.github.com" \
+            git commit -m "chore: sync skills from Notion"
+          git push origin HEAD:main

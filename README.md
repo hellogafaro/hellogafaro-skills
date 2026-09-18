@@ -17,6 +17,22 @@ was exported.
 The repository is a backup and distribution snapshot. It is not required for BB
 to use skills exported directly from Notion.
 
+## Synchronization
+
+The `Sync Notion skills` GitHub Action runs hourly and can also be started
+manually. It uses a time-limited, read-only Infisical service token scoped to
+`prod:/github/skills-sync`, reads `NOTION_ACCESS_TOKEN`, downloads every page in
+the configured Notion Skills data source, validates the exports, and commits
+only real changes.
+
+The workflow requires this repository secret:
+
+- `INFISICAL_SERVICE_TOKEN`
+
+It also requires this repository variable:
+
+- `NOTION_SKILLS_DATA_SOURCE_ID`
+
 ## Structure
 
 - `skills/` contains the complete Notion exports, including supporting files.

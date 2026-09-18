@@ -19,7 +19,7 @@ to use skills exported directly from Notion.
 
 ## Synchronization
 
-The `Sync Notion skills` GitHub Action runs hourly and can also be started
+The `Sync Notion skills` GitHub Action runs daily at 03:17 UTC and can also be started
 manually. It uses a time-limited, read-only Infisical service token scoped to
 `prod:/github/skills-sync`, reads `NOTION_ACCESS_TOKEN`, downloads every page in
 the configured Notion Skills data source, validates the exports, and commits

@@ -23,6 +23,22 @@ Write a compact completion summary that the user can forward without cleanup.
 
 Use one to three short paragraphs by default. Use compact bullets only when several repositories, commits, PRs, or deliverables need separate lines. Do not add a heading unless the user asks for one.
 
+## Agent handoffs
+
+When a specialist reports work to another agent, the summary is internal input. It is not finished Notion copy and must not be pasted into a task comment.
+
+Include:
+
+- the requesting or reply-to thread and the Notion task URL when known;
+- what changed, why it matters, and which feedback or decision it addresses;
+- the current state and the prior result this supersedes;
+- repositories, branches, every relevant commit or pull request, and verification that actually ran;
+- the blocker or next action that changes the handoff;
+- one tracked-time estimate;
+- an artifact manifest listing every new or revised file with its local path, intended filename, file type, and purpose.
+
+Use the same facts and artifact manifest when correcting or resending a handoff so the receiver can detect a duplicate. A local path is allowed only in this internal manifest so the receiving agent can collect the file. Do not describe it as a durable link.
+
 ## Verification
 
 Review live state before making claims. Check the relevant Git status, commits, pushed branch, PR state, artifact, and QA result. If a required source is blocked, name only the missing source and why it affects the summary.

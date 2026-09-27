@@ -12,23 +12,11 @@ A run takes one task from brief to an approved, recorded result: a fresh brief, 
 
 ## Start a run
 
-1. Read the task with the task system's read tool. Take the repository or workspace it names. Do not change the task.
-2. Find the BB project for that repository with `bb project list`. If the task names no repository, use the personal project. If more than one project matches, ask which one.
-3. If the current thread is already in that project and holds nothing else, start here. Otherwise spawn a fresh thread there and let it start the run:
-
-```javascript
-bb thread spawn --project <project-id> --prompt-file <brief>
-```
-
-The brief is one paragraph: the task link, the instruction to run the command below and reply with the run id, and the instruction to leave decision cards to the person.
-
-1. Start the workflow from the origin thread:
-
-```javascript
-bb workflows run --name one-full-run --args '{"task":"<task url>"}' --json
-```
-
-1. Reply with the run id and the origin thread. Copy the workflow's preview directive once, on its own line, when the tool returns one.
+- Read the task with the task system's read tool and take the repository or workspace it names. Do not change the task.
+- Find the BB project for that repository with `bb project list`. A task with no repository runs in the personal project. Ask when more than one project matches.
+- Start from the current thread only when it is already in that project and holds nothing else. Otherwise spawn a fresh thread there with `bb thread spawn --project <project-id> --prompt-file <brief>`, where the brief is one paragraph: the task link, the instruction to run the start command and reply with the run id, and the instruction to leave decision cards to the person.
+- The start command, run from the origin thread, is `bb workflows run --name one-full-run --args '{"task":"<task url>"}' --json`.
+- Reply with the run id and the origin thread. Copy the workflow's preview directive once, on its own line, when the tool returns one.
 
 ## Rules
 
@@ -39,5 +27,5 @@ bb workflows run --name one-full-run --args '{"task":"<task url>"}' --json
 
 ## Resume or inspect
 
-- `bb workflows status <run-id>` and `bb workflows history <run-id>` from a thread in the run's project.
-- Resume after a stop, restart, or script edit with the same command plus `--resume <run-id>`. Finished steps replay; the first changed step and everything after it runs live.
+- `bb workflows status <run-id>` and `bb workflows history <run-id>` work from a thread in the run's project.
+- Resume after a stop, restart, or script edit with the same start command plus `--resume <run-id>`. Finished steps replay; the first changed step and everything after it runs live.

@@ -40,11 +40,11 @@ jobs:
 
       - name: Commit generated changes
         run: |
-          if git diff --quiet -- skills; then
+          git add -A skills
+          if git diff --staged --quiet; then
             echo "Skills are already current."
             exit 0
           fi
-          git add skills
           git diff --staged --check
           GIT_AUTHOR_NAME="github-actions[bot]" \
           GIT_AUTHOR_EMAIL="41898282+github-actions[bot]@users.noreply.github.com" \

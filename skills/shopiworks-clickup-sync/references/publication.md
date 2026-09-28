@@ -6,6 +6,8 @@ Update the already matched ClickUp task. Create one only for an authorized Notio
 
 Write Spanish titles, descriptions, comments, and time entry notes for the provider. Include only the status, changes, decisions, constraints, checks, results, deliverables, and client-safe links they need. Keep the text short and easy to scan. Do not mention Notion, synchronization, internal workflows, private discussion, internal-only links, credentials, or unsupported claims.
 
+Write only what the provider asked for and can use: the result, how to use it, and the proof. Leave out problems found and fixed during the work, internal incidents or regressions, and notes about things outside the request. Mention one only when the provider reported it, is still affected, or has to act. Apply the same filter to attachments: send a client copy of a report without those sections, never the internal proof as is.
+
 Map a verified Notion state only to a live ClickUp status with the same meaning. Add a short completion comment only when it adds useful result context not already present. Do not repeat the task body or an existing comment. Close ClickUp only after verifying Notion completion and its outcome. Never infer completion, ownership, dates, or time from an external status.
 
 If completed Notion work lacks required time or useful completion evidence, repair it through `tasks-operations` only when authorized and the facts are confirmed. Otherwise skip and report the affected publication. Do not reopen completed Notion work to repair missing time.

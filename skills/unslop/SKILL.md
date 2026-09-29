@@ -24,6 +24,8 @@ Edit text to remove AI patterns and add human voice.
 - Remove chatbot phrases, sycophantic tone, filler, hedging, and generic conclusions.
 - Prefer the plain word, active voice, and one idea per sentence.
 - Removing patterns is half the job. Sterile, voiceless writing is just as obvious.
+- Write it clean as you draft. A cleanup pass afterwards misses what the first draft baked in.
+- Never fabricate a link, citation, or quote. Link only what you produced or read.
 
 ## Provenance
 

@@ -1,0 +1,61 @@
+---
+name: |-
+  investigate
+description: |-
+  Use when asked how something works, what is wrong or why it fails, or why something was built or decided a certain way, in code, computers, accounts, campaigns, or documents. Finds the answer from evidence and explains it with sources. Use research for public, external facts.
+notion_page_id: 3eafc798-2e43-81c7-b1fa-fbfa2bb398e3
+---
+
+# investigate
+
+Three questions, one discipline: collect the evidence first, then see what story it supports.
+
+| Question | Mode |
+| --- | --- |
+| How does it work? | Explain |
+| What is wrong, or why does it fail? | Diagnose |
+| Why is it this way, or why did we decide that? | Trace the decision |
+
+## Evidence rules
+
+- Look at the real thing. Run it, open it, query it, read the live value. Code shape, summaries, and reports are leads, not proof.
+- Cite every claim: file and line, commit, task, email, message, metric with its date range, screenshot path. What you can't cite is inference. Label it.
+- Hedge on purpose. Say "because" only for direct evidence and "likely" or "appears to" for indirect evidence.
+- Keep more than one explanation alive until evidence rules it out. Before concluding, ask what you would see if another explanation were true, and look for it.
+- Show contradictions between sources. Don't pick the one that fits.
+- Name the gaps: what you searched and didn't find. "We couldn't find out" beats a confident guess.
+- Send large payloads (logs, traces, exports, long threads) to a child or a script and keep only the reduced finding.
+
+## Explain
+
+1. Size the question. Narrow: read and explain in one pass. Broad: split it into parts, explore them in parallel children, then combine.
+2. Trace the flow from trigger to outcome: what starts it, each step, where data goes, the decision points.
+3. Answer in this shape: overview (what it is and why it exists), key parts, how it works, where things live, gotchas.
+4. For "are we sure?" or "is this right?", add a critique sorted into fix now, worth considering, noted, and dismissed with the reason.
+
+## Diagnose
+
+1. Reproduce the symptom yourself where it happens. If it won't reproduce, narrow the conditions or add logging until it does. If you truly can't, say what you tried and what blocked you.
+2. Capture the signal before theorizing: the exact error, logs, a trace, the metric before and after, a screenshot.
+3. List the hypotheses. Rule them out with evidence, each time running the check that eliminates the most. Don't guess; add instrumentation.
+4. After a restart, update, or settings change, suspect state and recent changes first: caches, profiles, credentials, settings, and what changed when.
+5. Keep asking why until you reach the cause. A guard that hides the symptom is not a fix.
+6. Confirm the mechanism: predict something from it and check that it happens.
+7. Look for the same pattern elsewhere within your scope.
+
+Report the symptom, how you reproduced it, the root cause with evidence, what you ruled out, the fix or recommended fix, and how to verify it. Diagnose only unless asked to fix. The fix belongs to the owning agent.
+
+## Trace the decision
+
+1. Anchor on the exact thing (lines of code, a setting, a campaign, a task) and when it last changed: git blame and log, change history, task dates.
+2. Search every source you can reach: git history and pull requests, Notion tasks, projects, and meeting notes, email, WhatsApp, ClickUp, account change logs. Use one child per source when the question is broad.
+3. Defensive-looking things (retries, limits, flags, guards, exclusions) often trace to an incident. Search near the change date.
+4. Don't infer intent from shape. Something that makes sense today may exist for a reason that no longer applies, or for no reason.
+
+Report the decision, each reason with its citation, competing explanations, and the gaps.
+
+## Provenance
+
+- Adapted from [pstack](https://github.com/poteto/plugins/tree/main/pstack) (how, why, fix-root-causes, runtime-forensics).
+- Upstream commit: `74dd2291e8e37b12fd6dc49b2acbd655c6bdaf12`
+- License: MIT, Copyright (c) 2026 Lauren Tan. See `LICENSE.md`.

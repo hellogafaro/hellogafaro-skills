@@ -27,7 +27,7 @@ Use these database IDs as discovery entry points. Fetch a source's current datab
 - Search before creating. Update the existing record when it owns the same work, even when thin or stale.
 - Never assume project, people, dates, duration, status, or relations. Ask one focused question when a missing fact could change the result.
 - After a write, fetch the affected page and confirm the change persisted.
-- Record actual time only in Timesheets. Ask when duration is missing and never infer it.
+- Record only the actual duration and date in Timesheets. Ask when either is missing and never infer it. Never set a billable flag or record or report a time of day.
 
 ## Workflow
 

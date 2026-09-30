@@ -2,7 +2,7 @@
 
 ## Time and completion
 
-Record actual time only in Timesheets. Ask when duration is missing and never infer it. Round reported time up to the next 15 minutes.
+Record only the actual duration and date in Timesheets. Ask when either is missing and never infer it. Preserve exact minutes in entries and reports; do not round them. Never set a billable flag or record or report a time of day. If an external API requires a start timestamp, use a date-only technical anchor at the start of the stated date and never mention that anchor to users or clients.
 
 A task entry needs the task reference as its name, Owner, Task, Project, Date, and Minutes. A non-task entry such as a meeting omits Task, uses a short description, and uses the Meeting's single verified Project. Never set calculated Hours.
 

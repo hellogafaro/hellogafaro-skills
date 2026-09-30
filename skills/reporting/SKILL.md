@@ -10,6 +10,10 @@ notion_page_id: 3dffc798-2e43-8185-a413-cc04ed81327d
 
 Create reports that help the intended reader understand what matters and decide what to do. Apply these principles regardless of source, tool, domain, or output surface.
 
+## Canvas boundary
+
+When the output is a proof or report canvas, present evidence only: goal, method, observations, confidence, and the review verdict when one exists. Put recommendations requiring action, deploy steps, rollout checklists, next steps, follow-ups, open issues, known limits, and pre-existing bugs in the handoff, PR description, or task via Dash. A limit that changes how the proof should be read may stay as one short sentence beside the relevant evidence, never as its own section or checklist. This boundary takes precedence over the general report shapes below. Plan canvases may retain steps; notes and mockups keep their own purpose.
+
 ## Principles
 
 - Lead with the conclusion or most important change.
@@ -35,6 +39,6 @@ Adapt the structure to the ask rather than forcing a template.
 
 ## Review
 
-Before handing off, confirm that the period and baseline are correct, metrics are internally consistent, claims are supported, caveats are visible, and recommendations follow from the evidence.
+Before handing off, confirm that the period and baseline are correct, metrics are internally consistent, claims are supported, caveats are visible, and recommendations follow from the evidence. For a proof or report canvas, also check the rendered headings and body for handoff material, including renamed sections, cards, and footers; remove it before delivery.
 
 The report is complete when the shortest useful version gives the right reader enough context, evidence, uncertainty, and direction to act.

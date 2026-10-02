@@ -13,8 +13,11 @@
 - Keep the main file compact and move edge cases into focused references.
 - Update scripts only when deterministic behavior changes.
 - Remove stale instructions instead of leaving competing workflows.
+- When a user corrects behavior, put the rule in its canonical skill and relevant references, then inspect consuming agents and project instructions for conflicts. Update authorized conflicting instructions; a preferences file alone does not propagate the correction.
 - Never add secrets, account ids, tokens, mailbox selectors, database ids, or other mutable routing data.
 
 ## Validate
 
 Upload the complete revised directory to the existing Notion skill page. Download it again and compare the body and supporting files. Notion may normalize Markdown tables, code-fence aliases, and list numbering. Confirm that the meaning remains intact. Do not trigger GitHub synchronization or replace installed copies without reviewing the result and obtaining any required approval.
+
+After approved synchronization, read the installation through BB and record its revision. Confirm that consuming instructions agree with the correction and that only one intended installation is discovered. State that existing running sessions may retain an older snapshot until their configuration is assembled again.

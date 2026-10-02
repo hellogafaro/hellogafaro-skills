@@ -6,7 +6,7 @@ Use the selected Notion connection. Resolve live property names and option value
 
 Search before creating. Update the existing record when it owns the same work, even when thin or stale. Read related Projects, Meetings, Documents, tasks, and source links only when they affect scope, ownership, timing, or execution.
 
-Apply an exact routine change when the user identifies the record and action. For ambiguous or bulk changes, workload judgment, unclear ownership, or a missing fact that could change the result, inspect Notion and ask one focused question. Never assume project, people, dates, duration, status, or relations.
+Apply an exact routine change when the user identifies the record and action. Inspect Notion before resolving ambiguous or bulk changes, workload conflicts, or unclear ownership. Never assume project, people, dates, duration, status, or relations. Ask one focused question when a missing fact could change the result. Resolve priority through explicit instructions or clear urgency and deadline context as described below.
 
 After a write, fetch the affected page and confirm the change persisted. If the result is uncertain, read current state before retrying. Do not retry through another connector. Use the fetched canonical Notion page URL in output. Do not expose raw query URLs that omit `/p/`.
 
@@ -14,9 +14,17 @@ After a write, fetch the affected page and confirm the change persisted. If the 
 
 Create one task per real outcome. Do not turn vague ideas, passive information, or unowned discussion into tasks. An active task needs a clear name, Owner, Assignee, Project, Priority, Status, Recurrence, and Due date. Backlog work may omit the due date.
 
+Priority is mandatory for an active task. Preserve an explicit priority. When none is stated, use clear task urgency and deadline context to select the appropriate live Priority option through routine judgment. A launch needed today has high urgency. Never silently clear priority to avoid resolving it. If priority remains materially ambiguous, ask one focused question before declaring the task prepared. Verify the saved Priority along with the other necessary fields.
+
 Start titles with a verb when natural. Use sentence case, normally no more than 12 words. Avoid colons, filler, and client or project names unless needed for clarity.
 
-Write a short body with the work, why it matters, and enough context to execute it. Add constraints, evidence, unknowns, source pages, assets, files, or the GitHub repository only when useful. Do not repeat properties, prescribe obvious steps, speculate, or pad the task with generic sections or checklists. Add acceptance criteria only when they clarify done.
+Write two or three short paragraphs explaining the work and why it is needed, followed by bullets containing only useful context in ordinary sentences. Keep the whole brief concise. A full task means complete necessary fields and enough context to execute, not an implementation specification.
+
+Do not add headings, Done when lists, acceptance criteria or checklists, product-photo sections, generic steps, speculative requirements, or repeated operational properties. Include necessary constraints, dependencies, unknowns, source links, assets, and repository context only when they help someone execute the accepted work. Do not add requirements to make the record look complete.
+
+Refer to the client team or project, not individual conversation participants. Owner and Assignee retain the actual individual owners. Preserve the team's accepted request as work to do, not a transcript, personal attribution, quoted wording, or conversational chronology.
+
+Context bullets are complete sentences. Do not use key-value prose such as Source:, Repository:, Asset:, or "her wording was". Weave necessary links into sentences. Omit source history that gives the executor no useful context. Store working photos and files in Assets and mention them in useful context; use body attachments only when Assets cannot hold the file. Do not create comments merely to preserve trimmed source history or hold an asset. Real discussion, feedback, decisions, and delivered results can be comments.
 
 Internal tasks use English unless the user asks otherwise. Project language applies to client-facing work, not internal records by default.
 

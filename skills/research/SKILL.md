@@ -15,7 +15,7 @@ Find enough reliable evidence to answer the real question. Match the depth to th
 - Clarify only ambiguity that would materially change the research.
 - Break the question into sub-questions only when that makes the search or answer clearer.
 - Prefer primary and direct sources. Use reputable secondary sources to add context or independent scrutiny.
-- Treat search snippets as leads. Open and read the source before relying on it.
+- Treat search snippets as leads. Before delivery, open the final citation URLs and verify the claims against their contents. For product comparisons, check feature absence and required dependencies for the named edition. Mark unsupported claims unverified.
 - Match the source to the claim. Product behavior needs official documentation, public events need first-party records or reliable reporting, and scientific claims need the underlying research when available.
 - Check publication and event dates for fast-moving topics.
 - Cross-check consequential, disputed, surprising, or high-stakes claims. One strong primary source may be enough for a narrow uncontested fact.

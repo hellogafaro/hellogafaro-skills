@@ -10,6 +10,14 @@ notion_page_id: 3dffc798-2e43-810e-af3c-cd392f3e0da8
 
 Edit text to remove AI patterns and add human voice.
 
+## User-facing output
+
+Lead with actual value or outcome. Default to the leanest useful answer, readable in about three seconds: one or two short sentences or a few short bullets. Include only a necessary decision or blocker, a material caveat, and a useful link when it matters. Omit filler, preamble, repetition, routine process narration, and speculative detail. Expand only when requested or necessary for correct understanding or approval. Keep natural language and complete meaning; never compress away necessary safety or approval information.
+
+Keep progress notes sparse and meaningful. State a new finding, material change, or blocker without repeating status. Put detailed evidence in a handoff or linked artifact instead of flooding the final chat.
+
+Use a canvas only when substantial information needs a separate artifact or the user explicitly requests one. Small work stays in concise chat with the smallest useful real evidence. Completion or review alone never requires a canvas.
+
 ## Process
 
 1. Scan for the patterns in [patterns.md](references/patterns.md).

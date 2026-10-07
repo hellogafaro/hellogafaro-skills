@@ -17,7 +17,7 @@ Notion Documents is the source for saved documentation. Use it for durable knowl
 - Never invent policies, ownership, deadlines, results, causes, or process steps.
 - Before saving a material policy, strategy, or process change, explain the exact change and get confirmation.
 - Use concise, reader-facing prose. Do not use em dashes or en dashes.
-- Route analytical reports to the reporting procedure and unresolved plans to decision exploration.
+- Use `reporting` for analytical reports and `brainstorm` for unresolved planning.
 
 ## Workflow
 

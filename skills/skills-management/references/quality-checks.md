@@ -16,6 +16,8 @@ Run representative cases on the capability tiers intended to use the skills. Com
 
 ## Structural checks
 
+Check named skill handoffs against the current inventory. Exercise nested calls: verification requesting visual evidence must return a verdict, not recursively start delivery; prose editing must return text, not rerun its caller. Missing named owners must produce an explicit gap, not guessed substitution.
+
 Validate names, descriptions, local links, complete exports, and installations against source hashes. Check that mandatory references are reachable, old names are removed, and model/host names appear only where technically necessary or in provenance. Compare always-loaded metadata separately from loaded bodies; character or word counts are not measured model-token cost.
 
 ## Research basis

@@ -16,4 +16,4 @@ Give the shortest accurate account of what happened and what it means for the re
 
 Omit time by default. At closure or on request, include relevant actual recorded time. Label requested effort estimates separately; never report an automatic rounded estimate as tracked time.
 
-A recap does not create tasks, log time, contact stakeholders, or mark work Done. Select the completion-record capability for authorized closure, or the continuation capability when another owner must resume work.
+A recap does not create tasks, log time, contact stakeholders, or mark work Done. Use `deliver` for authorized closure, or `handoff` when another owner must resume work.

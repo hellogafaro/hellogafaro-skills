@@ -2,7 +2,7 @@
 
 ## Task journal and artifacts
 
-Prepare comments and replies as drafts for user approval under the delivery and communication-approval procedure before posting them to people. The journal procedure below describes what an approved post should contain, not permission to publish it. Continue factual internal record and asset maintenance within the authorized scope while approval is pending.
+Prepare comments and replies as drafts for user approval under `deliver` before posting them to people. The journal procedure below describes what an approved post should contain, not permission to publish it. Continue factual internal record and asset maintenance within the authorized scope while approval is pending.
 
 Use each part of a task for one job. Properties hold operational state, including the mandatory Priority for active work. The body explains the accepted current work in two or three short paragraphs followed by useful context bullets in ordinary sentences. Follow the prose rules in records-and-tasks.md. Keep necessary constraints, blockers, and useful links concise, without headings, Done when lists, acceptance checklists, generic steps, speculative requirements, or repeated properties. Update the body when accepted feedback makes it stale.
 
@@ -12,7 +12,7 @@ Record feedback, reviewable revisions, approvals, rejections, corrections, block
 
 Reply to the discussion that owns the continuing conversation. Start a new page-level discussion only when the subject changes. A local revision and its later approved push may be separate replies when the approval between them matters, but the second reply must add only the new fact. Do not repeat the branch, tests, caveats, and history.
 
-Treat specialist handoffs as internal evidence, not publishable copy. Write fresh prose in the task's language and apply the prose-editing procedure. State what changed, which feedback it addresses, what a teammate can review, and the next real step. Weave useful links into sentences. Keep agent names, command output, raw branch choreography, repeated test counts, and machine-local paths out of the comment. Put detailed QA in an attached report when it remains useful.
+Treat specialist handoffs as internal evidence, not publishable copy. Write fresh prose in the task's language and apply `write`. State what changed, which feedback it addresses, what a teammate can review, and the next real step. Weave useful links into sentences. Keep agent names, command output, raw branch choreography, repeated test counts, and machine-local paths out of the comment. Put detailed QA in an attached report when it remains useful.
 
 Keep the body focused on the accepted current work. Write delivery comments about what was delivered, how to use it, and useful evidence. Leave out problems found and fixed during the work and notes about things outside the task, even when a handoff lists them as incidents or open items. Keep one only when someone still has to act on it, it still affects the result, or the user asks for it. A real follow-up becomes its own task or a line in the report to the user, not a caveat in the body.
 

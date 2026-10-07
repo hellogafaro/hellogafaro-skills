@@ -21,7 +21,7 @@ Write every user-facing message like a real merchant rather than a support scrip
 - Do not open a replacement chat while an active one exists. If a security challenge, MFA, or owner verification appears, ask the user to complete it; never bypass it.
 - Obtain explicit user approval before accepting, authorizing, or submitting a money-related, irreversible, or legally consequential action.
 - Never use deception, guilt, threats, repeated pressure, false praise, or attempts to make an advisor break policy.
-- Route card-network chargebacks to the dedicated Shopify dispute-response procedure.
+- Use `shopify-chargeback` for card-network dispute responses.
 - Chat messages are plain text only: no em dashes, Markdown, tables, or key/value dumps.
 
 ## Workflow

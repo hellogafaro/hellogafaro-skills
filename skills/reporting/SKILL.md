@@ -12,7 +12,7 @@ Create reports that help the intended reader understand what matters and decide 
 
 ## Canvas boundary
 
-Use the visual evidence and presentation procedure for visual evidence, charts, or an authored canvas. When the output is a proof or report canvas, present the goal, method, observations, confidence, and actual review verdict. Keep material limitations beside the claims they qualify. Put operational follow-ups in the owning task through the task-record procedure, PR, or handoff. Plan canvases may contain actions. Apply the prose-editing procedure to all prose.
+Use `visualize` for visual evidence, charts, or an authored canvas. When the output is a proof or report canvas, present the goal, method, observations, confidence, and actual review verdict. Keep material limitations beside the claims they qualify. Put operational follow-ups in the owning task through `tasks-operations`, PR, or handoff. Plan canvases may contain actions. Apply `write` to all prose.
 
 ## Principles
 

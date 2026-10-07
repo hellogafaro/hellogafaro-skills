@@ -8,6 +8,8 @@ notion_page_id: 3dffc798-2e43-810e-af3c-cd392f3e0da8
 
 # write
 
+When called to edit prose, return the edited text to the caller. Do not start a recap, handoff, or delivery workflow unless that is the actual request.
+
 Lead with the result or decision. Include only what the reader needs to understand it and act correctly.
 
 - Quick answers need one or two complete sentences. Use bullets or a compact comparison for distinct choices; prose for connected reasoning; headings for longer answers.
@@ -16,7 +18,7 @@ Lead with the result or decision. Include only what the reader needs to understa
 - Match the recipient's language and established voice. Remove repetition, filler, hype, and generic advice. Prefer concrete verbs, ordinary words, sentence case, and straight quotes. Avoid decorative emojis and em dashes in authored prose; quoted and technical content stays exact.
 - While working, report meaningful changes or blockers, not tool narration. Before sending, cut sentences that change neither what the reader knows nor what they should do.
 
-For substantial editing, consult [patterns](references/patterns.md) and [natural voice](references/adding-soul.md). Select the recap or continuation capability when the requested output needs its evidence contract. Writing never authorizes sending or publication.
+For substantial editing, consult [patterns](references/patterns.md) and [natural voice](references/adding-soul.md). For a requested recap use `summarize`; for transferring unfinished work use `handoff`. Writing never authorizes sending or publication.
 
 ## Provenance
 

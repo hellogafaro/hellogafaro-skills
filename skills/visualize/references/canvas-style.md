@@ -80,7 +80,7 @@ The footer is always present. It is the signature and the trace: the agent that 
 
 ## Content by kind
 
-Proof and report canvases contain the goal, method, observations, confidence, and actual review verdict. Include every material qualification needed to interpret the evidence, beside the relevant claim or in a compact coverage section when several claims share it. Do not hide uncertainty to keep the layout short. Operational follow-ups belong in the owning task, PR, or handoff through the task-record procedure. Plan canvases may contain actions; notes and mockups keep their own purpose.
+Proof and report canvases contain the goal, method, observations, confidence, and actual review verdict. Include every material qualification needed to interpret the evidence, beside the relevant claim or in a compact coverage section when several claims share it. Do not hide uncertainty to keep the layout short. Operational follow-ups belong in the owning task, PR, or handoff through `tasks-operations`. Plan canvases may contain actions; notes and mockups keep their own purpose.
 
 ## Components
 
@@ -113,7 +113,7 @@ Proof and report canvases contain the goal, method, observations, confidence, an
 - Label every plot: title with the metric, unit, legend when more than one series, source and range caption. Say when a value is a mean, p95, or normalized.
 - Do not fill gaps with invented values or placeholder charts. If decision-critical data is missing, state what blocks the conclusion. A useful partial report may show verified evidence with its coverage and limitations explicit.
 - Numbers: tabular figures, thin space thousands separator, unit after the number, deltas with sign and comparison period.
-- Copy: short sentences, concrete nouns, honest status. In plans, include owner, risk, and rollback on consequential steps. Apply the the prose-editing procedure skill.
+- Copy: short sentences, concrete nouns, honest status. In plans, include owner, risk, and rollback on consequential steps. Apply `write`.
 - Dark mode: the kit handles it through `prefers-color-scheme`. Do not hardcode colors in markup.
 - Narrow screens: the kit collapses grids. Do not hide content to fit.
 

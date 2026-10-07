@@ -10,7 +10,7 @@ Use a screenshot for a static state. Use a recording or ordered captures when th
 
 Keep original captures. Annotated copies may highlight the relevant region but must not alter the behavior being claimed. Use accurate captions and redact only what the audience must not receive. Keep evidence linked to its capture conditions and revision.
 
-For a generated report or chart, verify the underlying values and units through the analytical-report procedure, render it, and inspect labels and legibility. For an application change, confirm relevant side effects through the outcome-verification procedure; a visible success message alone does not prove persistence.
+For a generated report or chart, verify the underlying values and units through `reporting`, render it, and inspect labels and legibility. For an application change, confirm relevant side effects through `verify`; a visible success message alone does not prove persistence.
 
 Attach evidence through the host's file mechanism. Store it with the owning task or PR when authorized so another reviewer can inspect it without access to the local machine. An earlier screenshot is stale if the relevant implementation or state changed.
 

@@ -12,7 +12,7 @@ Write only what the provider asked for and can use: the result, how to use it, a
 
 Map a verified Notion state only to a live ClickUp status with the same meaning. Add a short completion comment only when it adds useful result context not already present. Do not repeat the task body or an existing comment. Close ClickUp only after verifying Notion completion and its outcome. Never infer completion, ownership, dates, or time from an external status.
 
-If completed Notion work lacks useful completion evidence, repair it through the task-record procedure only when authorized and the facts are confirmed; otherwise skip and report. Never invent or silently claim actual time. Record missing time only when authorized and confirmed, without reopening completed Notion work. If the user explicitly authorizes publication before time is known, publish the verified result without a time entry and flag actual time as pending to Johan for later reconciliation in the internal report; otherwise skip and report the affected publication.
+If completed Notion work lacks useful completion evidence, repair it through `tasks-operations` only when authorized and the facts are confirmed; otherwise skip and report. Never invent or silently claim actual time. Record missing time only when authorized and confirmed, without reopening completed Notion work. If the user explicitly authorizes publication before time is known, publish the verified result without a time entry and flag actual time as pending to Johan for later reconciliation in the internal report; otherwise skip and report the affected publication.
 
 ## Tag the right person
 

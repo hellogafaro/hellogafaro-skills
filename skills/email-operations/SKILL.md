@@ -27,4 +27,4 @@ Read only the relevant files under `references/` for the current operation.
 1. Check available connections, resolve authorized mailboxes, inspect live operation schemas, and search narrowly: [mailboxes-and-access.md](references/mailboxes-and-access.md).
 2. Review and triage the inbox with the flag and queue format: [review-and-triage.md](references/review-and-triage.md).
 3. Draft in the user's voice, show the full message, and send or archive only under the approval rules: [draft-and-send.md](references/draft-and-send.md).
-4. Surface open loops, propose Notion tasks through the task-record procedure, and apply the completion checklist: [tasks-and-follow-ups.md](references/tasks-and-follow-ups.md).
+4. Surface open loops, propose Notion tasks through `tasks-operations`, and apply the completion checklist: [tasks-and-follow-ups.md](references/tasks-and-follow-ups.md).

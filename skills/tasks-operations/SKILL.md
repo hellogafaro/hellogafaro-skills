@@ -24,7 +24,7 @@ Use these database IDs as discovery entry points. Fetch a source's current datab
 
 ## Hard rules
 
-- Before posting any human-facing Notion comment, reply, mention, or completion update, follow the communication-approval procedure. Show the exact draft and destination and wait for approval to post. Internal task maintenance may continue within scope; do not use another field to bypass the communication gate.
+- Before posting any human-facing Notion comment, reply, mention, or completion update, follow `deliver`'s communication-approval reference only, not its full closure workflow. Show the exact draft and destination and wait for approval to post. Internal task maintenance may continue within scope; do not use another field to bypass the communication gate.
 - Search before creating. Update the existing record when it owns the same work, even when thin or stale.
 - Never assume project, people, dates, duration, status, or relations. Ask one focused question when a missing fact could change the result.
 - Write task bodies as two or three short paragraphs followed by useful context bullets in ordinary sentences. No headings, Done when lists, acceptance checklists, generic steps, speculative requirements, or repeated properties. A full task means complete necessary fields and sufficient concise context.
@@ -36,7 +36,7 @@ Use these database IDs as discovery entry points. Fetch a source's current datab
 
 ## Workflow
 
-For intake or decomposition, first follow [triage and slicing](references/triage-and-slicing.md). For completed-work coordination, the delivery and communication-approval procedure owns the cross-system handover while this skill owns Notion records and actual time.
+For intake or decomposition, first follow [triage and slicing](references/triage-and-slicing.md). For completed-work coordination, `deliver` owns the cross-system handover while this skill owns Notion records and actual time.
 
 1. Resolve the live schema, Owner, and Assignee, then find, create, or update the task: [records-and-tasks.md](references/records-and-tasks.md).
 2. Before assigning or planning, inspect the Project and the Assignee's load: [workload.md](references/workload.md).

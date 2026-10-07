@@ -2,7 +2,7 @@
 name: |-
   tasks-operations
 description: |-
-  Use when triaging accepted work, finding, creating, updating, completing, or reviewing Notion tasks; extracting confirmed actions; planning workload and dependencies; or recording and reporting actual task or meeting time.
+  Triages and maintains Notion tasks, workload, dependencies, and actual Timesheets. Use for accepted work records and completion, not tentative ideas or automatic human-facing comments.
 notion_page_id: 3dffc798-2e43-81a1-a8a0-da8a2bb83323
 ---
 
@@ -24,7 +24,7 @@ Use these database IDs as discovery entry points. Fetch a source's current datab
 
 ## Hard rules
 
-- Before posting any human-facing Notion comment, reply, mention, or completion update, use `deliver` and its communication-approval procedure. Show the exact draft and destination and wait for approval to post. Internal task maintenance may continue within scope; do not use another field to bypass the communication gate.
+- Before posting any human-facing Notion comment, reply, mention, or completion update, follow the communication-approval procedure. Show the exact draft and destination and wait for approval to post. Internal task maintenance may continue within scope; do not use another field to bypass the communication gate.
 - Search before creating. Update the existing record when it owns the same work, even when thin or stale.
 - Never assume project, people, dates, duration, status, or relations. Ask one focused question when a missing fact could change the result.
 - Write task bodies as two or three short paragraphs followed by useful context bullets in ordinary sentences. No headings, Done when lists, acceptance checklists, generic steps, speculative requirements, or repeated properties. A full task means complete necessary fields and sufficient concise context.
@@ -36,7 +36,7 @@ Use these database IDs as discovery entry points. Fetch a source's current datab
 
 ## Workflow
 
-For intake or decomposition, first follow [triage and slicing](references/triage-and-slicing.md). For completed-work coordination, `deliver` owns the cross-system handover while this skill owns Notion records and actual time.
+For intake or decomposition, first follow [triage and slicing](references/triage-and-slicing.md). For completed-work coordination, the delivery and communication-approval procedure owns the cross-system handover while this skill owns Notion records and actual time.
 
 1. Resolve the live schema, Owner, and Assignee, then find, create, or update the task: [records-and-tasks.md](references/records-and-tasks.md).
 2. Before assigning or planning, inspect the Project and the Assignee's load: [workload.md](references/workload.md).

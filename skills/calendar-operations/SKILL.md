@@ -2,7 +2,7 @@
 name: |-
   calendar-operations
 description: |-
-  Use when work involves reviewing calendars, checking availability or conflicts, preparing meetings, or creating, moving, rescheduling, and canceling events. Discover and verify the active agent's available connections, calendars, tools, and permissions before acting.
+  Reviews authorized calendars for availability, conflicts, and meeting preparation, or creates and changes events on request after verifying the account, calendar, tool capabilities, and permissions.
 notion_page_id: 3dffc798-2e43-8199-b3cb-fcf247dfdf73
 ---
 
@@ -14,6 +14,7 @@ Treat live calendars as the source for availability, commitments, attendees, rec
 
 - Resolve the authorized account and calendar before reading or acting. Pass verified selectors on each call when supported. An owner-bound or shared connection is not per-user access; verify authority before using it.
 - Never move or cancel an event without a direct request. Draft attendee communication when useful, but sending it requires separate authorization.
+- Before sending any human-facing attendee message or invitation, show the exact text, destination, and attendees and obtain approval to send.
 - Never infer timezone from a name, company, phone number, or email domain.
 - Never invent attendees, addresses, availability, links, locations, recurrence, or event details.
 - For recurring events, when the change scope is missing, do not mutate and ask. Never make a broader change than requested.

@@ -2,7 +2,7 @@
 name: |-
   shopify-live-support
 description: |-
-  Use when routing, conducting, or closing Shopify support conversations for merchant issues including payments, billing, shipping, orders, checkout, storefront, apps, technical defects, account access, and Shopify Payments.
+  Routes and prepares Shopify merchant support conversations about payments, billing, shipping, orders, checkout, storefronts, apps, technical defects, or account access, and closes approved conversations with a verified outcome.
 notion_page_id: 3dffc798-2e43-816f-ba63-f238b5cae59d
 ---
 
@@ -10,9 +10,9 @@ notion_page_id: 3dffc798-2e43-816f-ba63-f238b5cae59d
 
 ## Goal
 
-Prepare and support resolution of a Shopify issue, or leave it with a named owner, documented case, concrete next action, and deadline. When the user asks for live support without naming a channel, default to chat preparation. Before contacting an advisor or sending a reply, follow `deliver` and obtain approval for the exact communication. A request for help does not approve unseen messages. If a phone conversation cannot satisfy that approval boundary, prepare a call brief for the user rather than conducting an unscripted call autonomously.
+Prepare and support resolution of a Shopify issue, or leave it with a named owner, documented case, concrete next action, and deadline. When the user asks for live support without naming a channel, default to chat preparation. Before contacting an advisor or sending a reply, show the exact draft and destination and obtain approval to send. A request for help does not approve unseen messages. If a phone conversation cannot satisfy that approval boundary, prepare a call brief for the user rather than conducting an unscripted call autonomously.
 
-Use `write` for every user-facing message so it sounds like a real merchant rather than a support script.
+Write every user-facing message like a real merchant rather than a support script.
 
 ## Hard rules
 
@@ -21,7 +21,7 @@ Use `write` for every user-facing message so it sounds like a real merchant rath
 - Do not open a replacement chat while an active one exists. If a security challenge, MFA, or owner verification appears, ask the user to complete it; never bypass it.
 - Obtain explicit user approval before accepting, authorizing, or submitting a money-related, irreversible, or legally consequential action.
 - Never use deception, guilt, threats, repeated pressure, false praise, or attempts to make an advisor break policy.
-- For card-network chargebacks, use the dedicated `shopify-chargeback` skill.
+- Route card-network chargebacks to the dedicated Shopify dispute-response procedure.
 - Chat messages are plain text only: no em dashes, Markdown, tables, or key/value dumps.
 
 ## Workflow

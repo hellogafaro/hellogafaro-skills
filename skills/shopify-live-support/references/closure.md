@@ -15,6 +15,6 @@ Never press **End chat**. Ask the advisor to close the conversation, then wait u
 
 ## 9. Recap and follow-up
 
-When asked for a recap, use the `summarize` skill's compact handoff style but omit any tracked-time sentence. Include only the verified issue, owner, case/transcript location, decision, deadline, required evidence, and next action. Distinguish precisely among a resolution, a submitted request, a submitted escalation, a promised escalation, a pending reference, and a promised email. Never describe an escalation as if the underlying issue is resolved.
+When asked for a recap, include only the verified issue, owner, case/transcript location, decision, deadline, required evidence, and next action; omit tracked time. Distinguish precisely among a resolution, a submitted request, a submitted escalation, a promised escalation, a pending reference, and a promised email. Never describe an escalation as if the underlying issue is resolved.
 
 If a follow-up is required, reply to the existing transcript or case rather than opening a duplicate chat unless Shopify instructs otherwise. Recheck the primary record before following up: the dispute, tracking event, payout, billing item, or reproduced error may have changed.

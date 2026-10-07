@@ -2,7 +2,7 @@
 name: |-
   shopify-chargeback
 description: |-
-  Use when investigating a Shopify payment dispute, preparing chargeback evidence, building the required response documents, or submitting an approved response through Shopify.
+  Investigates Shopify payment disputes, gathers chargeback evidence, prepares response documents for the live form, and submits only the exact merchant-approved response after verifying the case state.
 notion_page_id: 3dffc798-2e43-81b6-a104-dcc1e13de363
 ---
 
@@ -36,11 +36,11 @@ Ask one focused question at a time for evidence that is missing and could materi
 
 ## Build the response
 
-Create the case in the active work location or a directory confirmed by the user. Preserve originals. Use a document-creation skill when available, or the current host's native document and PDF capabilities. Produce one self-contained file for each live upload field. Use the exact field names when naming files so their destination is obvious.
+Create the case in the active work location or a directory confirmed by the user. Preserve originals. Use available document and PDF capabilities. Produce one self-contained file for each live upload field. Use the exact field names when naming files so their destination is obvious.
 
 Each document should open with a short case summary, then present the strongest evidence first. Include only facts relevant to that field. Add clear captions, readable dates, identifiers, and short explanations of what each item proves. Reuse evidence across files when the live form calls for it.
 
-Apply `write` to every narrative, caption, translation, and form response. Write as the merchant in plain, natural language. Lead with the strongest verified fact. Avoid legal theater, generic claims, repetition, em dashes, and unsupported conclusions.
+Write every narrative, caption, translation, and form response as the merchant in plain, natural language. Lead with the strongest verified fact. Avoid legal theater, generic claims, repetition, em dashes, and unsupported conclusions.
 
 Check every generated file. Confirm the pages are readable, correctly ordered, complete, within the live upload limit, and free of accidental secrets or unrelated personal data. Show the user the proposed response reason, field-to-file mapping, and complete text-field answers.
 
@@ -48,6 +48,6 @@ Check every generated file. Confirm the pages are readable, correctly ordered, c
 
 Preparing the case does not authorize uploading or submission. Obtain explicit approval for the exact final response. Refresh the dispute immediately before acting and stop if its status, deadline, requirements, or saved response changed.
 
-After approval, upload each file to its verified field and confirm the form retained it. Review the final reason, text, files, order, store, amount, and deadline before submitting. Never refund, cancel, edit the order, contact the customer, or make another Shopify change unless separately authorized.
+After approval, upload each file to its verified field and confirm the form retained it. Review the final reason, text, files, order, store, amount, and deadline before submitting. Before any customer-facing message, show its exact draft and destination and obtain separate approval to send. Never refund, cancel, edit the order, contact the customer, or make another Shopify change unless separately authorized.
 
 After submission, verify the dispute status and save the confirmation or reference available in Shopify. Report what was submitted, the deadline or next review state, and any item Shopify did not accept.

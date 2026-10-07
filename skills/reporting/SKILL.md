@@ -2,7 +2,7 @@
 name: |-
   reporting
 description: |-
-  Use when preparing or reviewing a durable report, performance summary, KPI update, anomaly memo, or other decision-facing analytical writeup.
+  Produces decision-facing reports, KPI updates, and anomaly analyses from verified evidence. Use for analytical interpretation with comparisons and limitations, not simple work recaps.
 notion_page_id: 3dffc798-2e43-8185-a413-cc04ed81327d
 ---
 
@@ -12,7 +12,7 @@ Create reports that help the intended reader understand what matters and decide 
 
 ## Canvas boundary
 
-Use `visualize` for visual evidence, charts, or an authored canvas. When the output is a proof or report canvas, present the goal, method, observations, confidence, and actual review verdict. Keep material limitations beside the claims they qualify. Put operational follow-ups in the owning task through `tasks-operations`, PR, or handoff. Plan canvases may contain actions. Apply `write` to all prose.
+Use the visual evidence and presentation procedure for visual evidence, charts, or an authored canvas. When the output is a proof or report canvas, present the goal, method, observations, confidence, and actual review verdict. Keep material limitations beside the claims they qualify. Put operational follow-ups in the owning task through the task-record procedure, PR, or handoff. Plan canvases may contain actions. Apply the prose-editing procedure to all prose.
 
 ## Principles
 

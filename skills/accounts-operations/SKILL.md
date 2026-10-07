@@ -2,7 +2,7 @@
 name: |-
   accounts-operations
 description: |-
-  Use when work needs connected client account data, account or connection management, or provider-native reads and confirmed writes through Hello Gafaro Studio for Shopify, Klaviyo, Meta Ads, Google Ads, TikTok Ads, PostHog, GA4, or Search Console.
+  Handles connected client-account lookup, connection management, and provider-native reads or approved writes through Hello Gafaro Studio for Shopify, Klaviyo, Meta Ads, Google Ads, TikTok Ads, PostHog, GA4, and Search Console.
 notion_page_id: 3dafc798-2e43-8093-8c0d-fc9aa6d44580
 ---
 
@@ -17,6 +17,7 @@ When Hello Gafaro Studio MCP tools are available, use them. Otherwise call Studi
 - Read `PUBLIC_URL` and `BEARER_TOKEN` from the environment, host secrets, or an uncommitted `.env` without printing them. Never hardcode a token.
 - Never call `/accounts/{id}/credentials*`, `GET` or `PUT /accounts/{id}/connections/{provider}`, or `/accounts/{id}/{provider}/*`. These legacy routes return decrypted credentials in plain JSON. Everything needed is in the references below.
 - Do not perform writes (create, update, delete, or execute-write) unless the user explicitly asks.
+- Before any provider operation sends a human-facing message or notification, show its exact draft and destination and obtain separate approval to send.
 
 ## Workflow
 

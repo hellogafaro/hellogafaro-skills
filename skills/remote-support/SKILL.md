@@ -2,7 +2,7 @@
 name: |-
   remote-support
 description: |-
-  Use when providing owner-approved remote support of a Windows PC or Mac over the customer's Tailscale network and standard SSH, including connection checks, onboarding plans, printers, disk cleanup, and service diagnostics.
+  Guides owner-approved Windows or Mac support over the customer's Tailscale network and standard SSH, including connection checks, onboarding plans, printer issues, disk cleanup, and service diagnostics.
 notion_page_id: 3f2fc798-2e43-81b7-a5ed-dccbd4fc5c0f
 ---
 
@@ -23,7 +23,7 @@ This skill is reusable guidance, not permission to change a machine. Confirm the
 
 Keep customer-specific inventory outside this skill in the owner's approved system. Resolve the customer, exact expected Tailscale `CurrentTailnet.Name`, approved overlay DNS name, OS, support username, owner, and authorization there. A short overlay name may differ from the OS name; record the verified mapping. Missing, blank, ambiguous, or mismatched information means stop and ask. Never guess a target, fall back to public/LAN DNS, or switch tailnets without approval.
 
-The host's secure credential mechanism supplies an approved temporary private-key file outside this skill. No particular secret provider or agent/harness-specific secrets skill is required. Never retrieve secret values into tool results, logs, or chat. Do not embed keys, passwords, account IDs, or customer inventory in the skill. Key scope, rotation, and human password access are owner policy; do not mint per-machine keys or passwords as a troubleshooting workaround.
+The host's secure credential mechanism supplies an approved temporary private-key file outside this skill. No particular secret provider is required. Never retrieve secret values into tool results, logs, or chat. Do not embed keys, passwords, account IDs, or customer inventory in the skill. Key scope, rotation, and human password access are owner policy; do not mint per-machine keys or passwords as a troubleshooting workaround.
 
 Use `scripts/ssh-session.sh` with explicit `--host`, `--user`, `--tailnet`, and `--identity-file`. It verifies live Tailscale membership and reachability, connects to the verified peer's overlay IP, and requires a previously verified SSH host key. It neither retrieves nor deletes the supplied key. The credential owner handles its secure cleanup after the session.
 

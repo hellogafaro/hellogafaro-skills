@@ -10,6 +10,6 @@ Before recommending a meeting, confirm it has a clear outcome, the user is neede
 
 Confirm conflicts actually overlap and need the user. Respect explicit direction, protected time, confirmed commitments, key relationships, and travel. Recommend which event to keep or move, name the deciding factor, and offer a specific replacement slot. Do not hand the decision back as a vague question.
 
-Treat same-day external changes as important when they affect preparation or commitments. For a user-initiated same-day cancellation, draft a short apology or reschedule note. Apply `write`, but do not send without separate approval through `email-operations`.
+Treat same-day external changes as important when they affect preparation or commitments. For a user-initiated same-day cancellation, draft a short apology or reschedule note using the approved communication procedure. Show its exact text and destination and obtain approval before sending.
 
 Protect travel and out-of-office windows. When practical, leave space around travel and respect a real buffer pattern. Flag external requests under two hours unless urgency or relationship importance justifies them.

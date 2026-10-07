@@ -2,7 +2,7 @@
 name: |-
   documents-operations
 description: |-
-  Use when work involves finding, creating, updating, consolidating, or formatting durable documentation in the Notion Documents database.
+  Finds and maintains durable documentation in the Notion Documents database, including creating, updating, consolidating, and formatting canonical pages while avoiding duplicates and unconfirmed policy changes.
 notion_page_id: 3dffc798-2e43-8175-b1e5-d85d588e05b7
 ---
 
@@ -16,8 +16,8 @@ Notion Documents is the source for saved documentation. Use it for durable knowl
 - Never store or guess database IDs, page IDs, property names, relation targets, templates, or option values.
 - Never invent policies, ownership, deadlines, results, causes, or process steps.
 - Before saving a material policy, strategy, or process change, explain the exact change and get confirmation.
-- Apply `write`. Do not use em dashes or en dashes.
-- Reports belong to `reporting`. Unresolved planning belongs to `brainstorm`.
+- Use concise, reader-facing prose. Do not use em dashes or en dashes.
+- Route analytical reports to the reporting procedure and unresolved plans to decision exploration.
 
 ## Workflow
 

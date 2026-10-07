@@ -2,7 +2,7 @@
 name: |-
   investigate
 description: |-
-  Use when asked how something works, what is wrong or why it fails, or why something was built or decided a certain way, in code, computers, accounts, campaigns, or documents. Finds the answer from evidence and explains it with sources. Use research for public, external facts.
+  Explains internal behavior, diagnoses failures, and traces past decisions from evidence. Use for how or why questions about existing systems, not broad public research or unrequested fixes.
 notion_page_id: 3eafc798-2e43-81c7-b1fa-fbfa2bb398e3
 ---
 
@@ -30,7 +30,7 @@ Three questions, one discipline: collect the evidence first, then see what story
 
 1. Size the question. Narrow: read and explain in one pass. Broad: split it into parts, explore them in parallel children, then combine.
 2. Trace the flow from trigger to outcome: what starts it, each step, where data goes, the decision points.
-3. Answer in this shape: overview (what it is and why it exists), key parts, how it works, where things live, gotchas.
+3. Answer the question first, then include only the flow, source pointers, and caveats needed to understand it.
 4. For "are we sure?" or "is this right?", add a critique sorted into fix now, worth considering, noted, and dismissed with the reason.
 
 ## Diagnose
@@ -50,7 +50,7 @@ Report the symptom, how you reproduced it, the root cause with evidence, what yo
 ## Trace the decision
 
 1. Anchor on the exact thing (lines of code, a setting, a campaign, a task) and when it last changed: git blame and log, change history, task dates.
-2. Search every source you can reach: git history and pull requests, Notion tasks, projects, and meeting notes, email, WhatsApp, ClickUp, account change logs. Use one child per source when the question is broad.
+2. Search relevant source categories near the change: revision history, work records, decisions, communication, and operational logs. Expand only when evidence leaves a material gap. Delegate independent bounded searches when their benefit exceeds coordination cost, not one worker per available system.
 3. Defensive-looking things (retries, limits, flags, guards, exclusions) often trace to an incident. Search near the change date.
 4. Don't infer intent from shape. Something that makes sense today may exist for a reason that no longer applies, or for no reason.
 

@@ -2,19 +2,18 @@
 name: |-
   summarize
 description: |-
-  Use when asked for a concise recap of work, findings, or delivered results. Report verified state without performing closure, inventing time, or turning a recap into a new assignment.
+  Recaps work, findings, or delivered results concisely from verified state. Use for summaries only, without performing closure, estimating tracked time, or assigning new work.
 notion_page_id: 3dffc798-2e43-81cf-9d25-e3fbea829f79
 ---
 
 # summarize
 
-Give the reader the shortest accurate account of what happened and what it means for them.
+Give the shortest accurate account of what happened and what it means for the reader.
 
-1. Read the relevant current evidence. Verify artifact, PR, release, and check status before describing them. An earlier summary is a lead, not proof of current state.
-2. Lead with the result. Include the material change, useful evidence or canonical link, and any blocker or next action that affects the reader.
-3. Distinguish completed work from proposed, unverified, or pending work. Include only links and revision details the audience needs to inspect or use the result.
-4. Apply `write`. Default to a short paragraph or a few bullets. Expand only when the requested recap needs it; do not repeat tool output or list every commit by default.
+1. Check current evidence before describing artifact, review, or release state. Earlier summaries are leads, not proof.
+2. Lead with the result. Include material changes, useful proof or links, and only blockers or next actions that affect the reader. Keep proposed, pending, unverified, and completed work distinct.
+3. Use a short paragraph or a few bullets; expand only for the requested recap. Omit tool narration and exhaustive commit lists.
 
-Omit time by default. At closure, include actual recorded time only when relevant or requested and identify it accurately. If asked for an effort estimate, label it as an estimate and keep it separate from actual Timesheets. Never produce an automatic rounded "tracked time" estimate.
+Omit time by default. At closure or on request, include relevant actual recorded time. Label requested effort estimates separately; never report an automatic rounded estimate as tracked time.
 
-Summarizing does not create tasks, log time, send stakeholder messages, or mark work Done. Use `deliver` for those authorized closure actions. Use `handoff` when another person or agent needs enough context to continue unfinished work.
+A recap does not create tasks, log time, contact stakeholders, or mark work Done. Select the completion-record capability for authorized closure, or the continuation capability when another owner must resume work.

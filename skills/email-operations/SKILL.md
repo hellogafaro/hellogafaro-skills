@@ -2,7 +2,7 @@
 name: |-
   email-operations
 description: |-
-  Use when work involves searching, reading, triaging, drafting, sending, or changing email across one or more mailboxes. Discover and verify the active agent's available connections, accounts, tools, and permissions before acting.
+  Reviews, triages, drafts, and sends email across authorized mailboxes, verifying available connections, account ownership, tool capabilities, and permissions before any read or approved change.
 notion_page_id: 3dffc798-2e43-816f-bc5f-ef5e1d24ff31
 ---
 
@@ -27,4 +27,4 @@ Read only the relevant files under `references/` for the current operation.
 1. Check available connections, resolve authorized mailboxes, inspect live operation schemas, and search narrowly: [mailboxes-and-access.md](references/mailboxes-and-access.md).
 2. Review and triage the inbox with the flag and queue format: [review-and-triage.md](references/review-and-triage.md).
 3. Draft in the user's voice, show the full message, and send or archive only under the approval rules: [draft-and-send.md](references/draft-and-send.md).
-4. Surface open loops, propose Notion tasks through `tasks-operations`, and apply the completion checklist: [tasks-and-follow-ups.md](references/tasks-and-follow-ups.md).
+4. Surface open loops, propose Notion tasks through the task-record procedure, and apply the completion checklist: [tasks-and-follow-ups.md](references/tasks-and-follow-ups.md).

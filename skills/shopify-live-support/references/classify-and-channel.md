@@ -15,11 +15,11 @@ Identify:
 - whether there is an in-product record with a deadline (dispute, payout hold, order, billing invoice, shipping claim);
 - the desired outcome: fix, refund, dispute response, trace, escalation, policy answer, or documented follow-up.
 
-For card-network chargebacks, use the dedicated `shopify-chargeback` skill. Prepare evidence in the Shopify Admin dispute record or third-party payment provider before its deadline, and submit it only with explicit user authorization. Live support is an escalation channel, not necessarily the system of record.
+For card-network chargebacks, use the dedicated Shopify dispute-response procedure. Prepare evidence in the Shopify Admin dispute record or third-party payment provider before its deadline, and submit it only with explicit user authorization. Live support is an escalation channel, not necessarily the system of record.
 
 ## 2. Choose and preserve the support channel
 
-Use chat unless the user specifies phone or chat is unavailable. For phone support, use the available calling tool to place and conduct the call. Keep the same case packet, authorization boundaries, advocacy sequence, and completion criteria across both channels. Do not redirect a callable support workflow to the user.
+Use chat unless the user specifies phone or chat is unavailable. For phone support, use an available calling tool only when each human-facing message can meet the exact-draft, destination, and approval boundary before delivery; otherwise prepare a call brief for the user. Keep the same case packet, authorization boundaries, advocacy sequence, and completion criteria across both channels.
 
 For chat, use the browser automation available in the current host. Do not require provider-specific browser commands.
 

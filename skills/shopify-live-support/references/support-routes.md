@@ -16,7 +16,7 @@ Read exactly one primary reference unless the issue genuinely crosses categories
 
 | Issue | Primary record/owner | Use live chat for |
 |---|---|---|
-| Card chargeback or payment dispute | Dedicated `shopify-chargeback` skill | Route out of this skill unless the task is only to contact live support about record access or a Shopify-side defect. |
+| Card chargeback or payment dispute | Dedicated Shopify dispute-response procedure | Route out of live support unless the task is only to contact support about record access or a Shopify-side defect. |
 | Shopify Payments payout, reserve, hold, or verification | Shopify Payments/payout record | Eligibility, review status, account-specific escalation, and the case trail. |
 | Shopify Shipping label, carrier delay, service refund, or claim | Shopify Support/Shopify Shipping when the label was bought through Shopify | Carrier trace, claim eligibility, service refund process, and label-account escalation. Use the carrier directly only when the merchant bought the label directly. |
 | Order, fulfillment, refund, or inventory behavior | Shopify Admin order/fulfillment record | Product behavior, audit trail, or escalation after collecting the order/timeline. |

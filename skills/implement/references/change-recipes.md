@@ -6,7 +6,7 @@ Trace the caller's intended use before writing internals. Implement one end-to-e
 
 ## Bug
 
-Reproduce the symptom on the affected surface and record the baseline. Use `investigate` to distinguish candidate causes and confirm the mechanism. When a cheap local test exists, demonstrate that it fails for the intended reason before applying the fix, then passes afterwards. Otherwise retain a repeatable runtime reproduction and state the test limitation. Prove the original reproduction passes on the same surface. Failed reproduction is not proof that the bug is absent.
+Reproduce the symptom on the affected surface and record the baseline. Use the evidence-based diagnosis procedure to distinguish candidate causes and confirm the mechanism. When a cheap local test exists, demonstrate that it fails for the intended reason before applying the fix, then passes afterwards. Otherwise retain a repeatable runtime reproduction and state the test limitation. Prove the original reproduction passes on the same surface. Failed reproduction is not proof that the bug is absent.
 
 ## Refactor
 

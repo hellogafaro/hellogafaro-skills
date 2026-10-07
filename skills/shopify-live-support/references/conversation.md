@@ -1,6 +1,6 @@
 # Conducting the conversation
 
-Apply `deliver`'s communication-approval procedure to every outgoing human-facing message in this reference. Draft the exact wording and obtain approval before sending, including opening messages, acknowledgements, nudges, and escalation or closure requests. The timing guidance never overrides approval; if a session may expire, alert the user here rather than sending an unapproved keepalive.
+For every outgoing human-facing message, show the exact draft and destination and obtain approval before sending, including opening messages, acknowledgements, nudges, and escalation or closure requests. The timing guidance never overrides approval; if a session may expire, alert the user here rather than sending an unapproved keepalive.
 
 ## 4. Start the conversation cleanly
 

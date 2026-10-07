@@ -20,7 +20,7 @@ Install an explicit project skill from the generated mirror:
 gh skill install OWNER/REPOSITORY SKILL --dir .agents/skills
 ```
 
-Use an explicit skill list for curated projects. Do not use `--all` when the project intentionally carries only a subset. Shared installations belong in BB's user skill directory, not in provider-specific directories.
+Use an explicit skill list for curated projects. Do not use `--all` when the project intentionally carries only a subset. Shared installations belong in the host's discovered shared directory, not duplicated provider-specific directories.
 
 ## Inspect and update
 
@@ -40,6 +40,6 @@ After Notion changes:
 2. Let the configured sync generate the GitHub change.
 3. Inspect the generated diff and commit status.
 4. Run installation update checks.
-5. Apply approved updates and verify BB discovery.
+5. Apply approved updates and verify runtime discovery.
 
 Do not run legacy copy-based deployment after GitHub CLI installation. It removes provenance metadata and recreates duplicate trees.

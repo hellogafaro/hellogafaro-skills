@@ -2,39 +2,17 @@
 name: |-
   research
 description: |-
-  Use when a question needs current external evidence, source comparison, public facts, citations, or research-backed decision support.
+  Answers questions requiring current public evidence, source comparison, or citations. Use for external facts and research-backed decisions rather than diagnosing a private system.
 notion_page_id: 3dffc798-2e43-818e-9a51-e8c7a802e57f
 ---
 
 # research
 
-Find enough reliable evidence to answer the real question. Match the depth to the uncertainty, stakes, and pace of change.
+Find enough reliable evidence to answer the question. Match depth to uncertainty, stakes, and how quickly the facts change.
 
-## Approach
+1. Resolve only ambiguity that changes the research. Split independent questions when useful; avoid a source quota or unnecessary delegation.
+2. Prefer primary sources appropriate to the claim. Search snippets are leads: open the sources used in the answer and check publication dates, context, dependencies, and limits.
+3. Cross-check consequential or disputed claims. Separate observed facts, source claims, inference, and predictions. Investigate contradictions instead of selecting the convenient source.
+4. Stop when the answer is stable and remaining gaps are explicit. If evidence is missing, name what could decide the question rather than inventing certainty.
 
-- Clarify only ambiguity that would materially change the research.
-- Break the question into sub-questions only when that makes the search or answer clearer.
-- Prefer primary and direct sources. Use reputable secondary sources to add context or independent scrutiny.
-- Treat search snippets as leads. Before delivery, open the final citation URLs and verify the claims against their contents. For product comparisons, check feature absence and required dependencies for the named edition. Mark unsupported claims unverified.
-- Match the source to the claim. Product behavior needs official documentation, public events need first-party records or reliable reporting, and scientific claims need the underlying research when available.
-- Check publication and event dates for fast-moving topics.
-- Cross-check consequential, disputed, surprising, or high-stakes claims. One strong primary source may be enough for a narrow uncontested fact.
-- Use community sources for lived experience and practitioner signal, not as a substitute for stronger evidence.
-- Stop when the evidence supports a stable answer and the remaining gaps are named. Do not chase a source quota.
-
-## Synthesis
-
-- Separate sourced fact from inference.
-- Explain disagreement when source definitions, methods, incentives, or dates account for it.
-- State uncertainty and unanswered questions where they affect the conclusion.
-- Never invent a citation or imply that a source supports more than it does.
-
-## Output
-
-- Lead with the answer or decision-relevant finding.
-- Cite claims near the text they support.
-- Synthesize across sources instead of summarizing each source in sequence.
-- Include only the findings, disagreement, limitations, and next research that matter to the ask.
-- Add a separate source list only when the user requests one or it improves reuse.
-
-Before sending, read and apply `write`. Preserve meaning, citations, URLs, names, dates, numbers, and calibrated uncertainty.
+Lead with the answer and cite claims near their supporting links. Explain only disagreements and caveats that affect the decision. Use a separate source list when it helps reuse, not by default. Public research does not authorize private-system changes, external communication, or saving a document.

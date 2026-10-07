@@ -2,7 +2,7 @@
 name: |-
   visualize
 description: |-
-  Use when gathering visual evidence, inspecting a rendered result, comparing design options, exploring a prototype, or presenting a diagram, chart, before/after, or portable HTML artifact. Preserve the shared design kit for authored canvases; use verify to judge whether evidence proves the outcome.
+  Gathers visual evidence and presents design options, prototypes, diagrams, charts, and before/after comparisons. Use when seeing an artifact or difference supports a decision or verification.
 notion_page_id: 3f2fc798-2e43-81dd-a988-c40858f35ddc
 ---
 
@@ -13,7 +13,7 @@ Make the relevant difference visible. Choose the smallest visual that answers th
 ## Choose the job
 
 - **Observe or gather proof:** capture the actual interface, interaction, or rendered artifact. Read [visual evidence](references/visual-evidence.md) before recording or comparing results.
-- **Explore a choice:** show distinct alternatives that answer the same design question. Read [options and prototypes](references/options-and-prototypes.md). Use `brainstorm` for the decision and `implement` for production code.
+- **Explore a choice:** show distinct alternatives that answer the same design question. Read [options and prototypes](references/options-and-prototypes.md). Use the decision-clarification procedure for the decision and the implementation procedure for production code.
 - **Explain or present:** use a diagram for relationships, a chart for measured comparisons, or a portable HTML canvas for a substantial standalone plan, report, notes, or mockup. Use the host's native diagram renderer when it is enough.
 
 State whether the visual is observed evidence, a proposed design, or an illustrative explanation. A generated image or mockup is never evidence that an implementation exists. Ask for missing decision-critical data rather than filling a chart or report with invented values.
@@ -30,8 +30,8 @@ Use one self-contained HTML file for a canvas, with inline styles and no build s
 
 Render every authored artifact and inspect its important states, including narrow layout where relevant. For a long canvas, inspect the top, middle, and bottom. For options, inspect each variant. Fix overflow, clipping, unreadable labels, and broken interactions before presenting it. If rendering is unavailable, report that limit instead of claiming visual QA.
 
-Attach the real screenshot, clip, or file with a concise explanation of what it shows. A local path or an unverified attachment is not delivery. Use `verify` to assess whether the captured evidence supports the requested outcome; use `reporting` for analytical claims and `deliver` for completion records and stakeholder communication.
+Attach the real screenshot, clip, or file with a concise explanation of what it shows. A local path or an unverified attachment is not delivery. Use the outcome-verification procedure to assess whether the captured evidence supports the requested outcome; use the analytical-report procedure for analytical claims and the delivery and communication-approval procedure for completion records and stakeholder communication.
 
-For a requested Notion save, use `documents-operations` for a durable document or `tasks-operations` for task evidence. Use the upload's exact native attachment or embed reference and fetch the saved destination to verify it. Keep private material within its approved audience; do not publish it merely to obtain an embed.
+For a requested Notion save, use the durable-document procedure for a durable document or the task-record procedure for task evidence. Use the upload's exact native attachment or embed reference and fetch the saved destination to verify it. Keep private material within its approved audience; do not publish it merely to obtain an embed.
 
-Proof and report canvases contain evidence and the material limits needed to interpret it. Operational follow-ups belong in the owning task, PR, or handoff. Plan canvases may contain actions. Apply `write` and keep the chat shorter than the artifact.
+Proof and report canvases contain evidence and the material limits needed to interpret it. Operational follow-ups belong in the owning task, PR, or handoff. Plan canvases may contain actions. Apply the prose-editing procedure and keep the chat shorter than the artifact.

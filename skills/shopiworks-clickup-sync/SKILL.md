@@ -2,7 +2,7 @@
 name: |-
   shopiworks-clickup-sync
 description: |-
-  Use when importing Minicoton or Somomu ClickUp requests assigned to Johan into Notion, or publishing verified Notion work and Timesheets to the provider's ClickUp tasks in Spanish.
+  Imports Johan's Minicoton or Somomu ClickUp requests into Notion, or publishes verified Notion outcomes and actual time to matched provider ClickUp tasks in Spanish.
 notion_page_id: 3dffc798-2e43-8174-ab15-e851ed1722b5
 ---
 
@@ -12,13 +12,13 @@ Follow ClickUp intake, Notion execution, then ClickUp client-facing updates for 
 
 ## Hard rules
 
-Before engaging a person through ClickUp, show the exact comment or reply, destination, mentions, and attachments and obtain approval to post under `deliver`. A sync or completion request does not approve unseen communication. Continue authorized record reconciliation separately and report pending communication as unsent.
+Before any human-facing message, including a ClickUp or internal Notion comment, show the exact draft, destination, mentions, and attachments and obtain approval to post. A sync or completion request does not approve unseen communication. Continue authorized record reconciliation separately and report pending communication as unsent.
 
 For Johan's time entries, record only the actual duration and date. Omit `billable` from every write and keep times of day out of user and client reports; follow [publication.md](references/publication.md) for API date handling.
 
-Use `tasks-operations` with the selected Notion connection for every Notion task, Project, completion, and Timesheet operation. Use the connected ClickUp MCP's dedicated tools (`clickup_get_task`, `clickup_create_comment`, `clickup_add_time_entry`, and so on) for every ClickUp read and write. Do not use Composio's ClickUp toolkit, a personal API token, or an ad hoc API call; Composio's ClickUp comment tools silently drop real mentions.
+Use the task-record procedure with the selected Notion connection for every Notion task, Project, completion, and Timesheet operation. Use the connected ClickUp MCP's dedicated tools (`clickup_get_task`, `clickup_create_comment`, `clickup_add_time_entry`, and so on) for ClickUp reads and writes, except the documented time-entry correction fallback in [publication.md](references/publication.md). Do not use Composio's ClickUp comment tools, a personal API token, or an ad hoc API call; Composio's ClickUp comment tools silently drop real mentions.
 
-Apply `write` to all English and Spanish prose. Write concise natural English in Notion and concise natural neutral Spanish for the external provider in ClickUp. Rewrite for the reader rather than copying raw Spanish into Notion or raw English into ClickUp.
+Write concise natural English in Notion and concise natural neutral Spanish for the external provider in ClickUp. Rewrite for the reader rather than copying raw Spanish into Notion or raw English into ClickUp.
 
 ## Workflow
 

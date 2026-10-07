@@ -1,40 +1,19 @@
-# Creation
+# Skill authoring
 
-## Define the skill
+Define one outcome and its trigger before writing. Search the canonical library for an existing owner; extend a clear owner rather than add overlap.
 
-1. Gather the task, domain, trigger phrases, use cases, required tools, deterministic scripts, reference material, and safety boundaries.
-2. Search the Notion Skills library for an existing or neighboring skill before creating one.
-3. Prefer extending a clear existing owner over adding overlapping skills.
-4. Use a stable lowercase hyphenated skill name. The exported frontmatter `name` and H1 must match it.
+## Metadata
 
-## Write the entrypoint
+Use a stable lowercase hyphenated name. Match the directory, frontmatter name, and H1. The description is discovery metadata, not a condensed procedure: state what the skill does, when it applies, and the nearest exclusion only if it prevents ambiguity. Use concrete request terms and neutral third-person wording. Do not list every synonym or name neighboring skills to route around them.
 
-Every skill requires `SKILL.md` with:
+## Body
 
-```yaml
----
-name: example-skill
-description: Use when ...
----
-```
+Open with the outcome, then the steps that change the result. Put required inputs, authority boundaries, observable completion conditions, and missing-input behavior beside the relevant action. Keep general knowledge out. Use a small example only when it resolves a real ambiguity.
 
-- Make the description trigger-first and specific.
-- Keep the entrypoint concise and put critical behavior first.
-- Use `references/` for detail loaded only when needed.
-- Use `scripts/` only for deterministic operations that would otherwise be regenerated.
-- Keep references one level deep and link every required resource from `SKILL.md`.
-- State compatibility requirements only when they materially affect execution.
+Inline what every invocation needs. Move branch-specific detail to directly linked references with an explicit loading condition. Keep one owner for each procedure. Discover neighboring capabilities from the current registry; use explicit local file links when required to find a resource. Preserve concrete domain and protocol names where removing them would make execution ambiguous.
 
-## Author for reliable invocation
+Read project commands, recipients, accounts, and model availability at runtime. Do not bake the authoring host or its defaults into portable procedures. Isolate unavoidable platform commands in conditional adapters. Prefer deterministic scripts for repeatable validation; do not introduce a script solely to claim automation.
 
-Use focused action names and a trigger for each distinct branch. State the outcome first, then the steps that change the result. Give each consequential step an observable completion condition and an honest missing-input path. Keep authorization boundaries beside the action they govern.
+## Publish
 
-Keep one owner for each rule. Route to neighboring skills rather than copying their procedures. Inline what every invocation needs; put branch-specific detail behind a conditional reference. Read commands, configuration, recipients, and project facts from their live source instead of caching them in shared instructions.
-
-Before publishing, inspect a normal case, a missing-input case, and the nearest neighboring skill's case. Check whether the intended skill triggers, stops at its boundary, and produces evidence appropriate to the request. Structural validation and scenario walkthroughs do not prove real-world behavior; report which validation actually ran.
-
-This structure is informed by [Matt Pocock's writing-for-agents](https://github.com/mattpocock/skills/blob/main/skills/productivity/writing-for-agents/SKILL.md) and [pstack](https://github.com/cursor/plugins/tree/main/pstack). Borrow the procedure, not another platform's tool names or permissions.
-
-## Save and verify
-
-Create the page in the Notion Skills database and upload the complete skill directory. Do not add tags unless the user asks for grouping. Download the saved skill and verify its name, description, instructions, and supporting files. Check neighboring skills for routing overlap and update durable project instructions when the new skill must take precedence over a built-in or legacy skill.
+Validate metadata, links, reference reachability, and scenario behavior through [quality checks](quality-checks.md). Create the skill in the discovered canonical collection and upload the complete directory. Re-download and verify before approved distribution. Preserve provenance and licenses without burdening every invocation with research notes.

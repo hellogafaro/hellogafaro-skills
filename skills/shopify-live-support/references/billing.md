@@ -4,7 +4,7 @@
 
 Use this reference for Shopify invoices, plans, subscriptions, app charges, billing credits, duplicate or unexpected charges, proration, and billing ownership. Start from **Settings > Billing** or the relevant app billing record.
 
-Identify whether Shopify, an app developer, a payment provider, or a card issuer owns the disputed charge. Use the dedicated `shopify-chargeback` skill for card-network disputes. Do not describe a charge as unauthorized, refundable, or erroneous until the record or advisor confirms it.
+Identify whether Shopify, an app developer, a payment provider, or a card issuer owns the disputed charge. Use the dedicated Shopify dispute-response procedure for card-network disputes. Do not describe a charge as unauthorized, refundable, or erroneous until the record or advisor confirms it.
 
 ## Evidence
 

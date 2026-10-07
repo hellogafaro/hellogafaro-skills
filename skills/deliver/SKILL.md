@@ -2,32 +2,18 @@
 name: |-
   deliver
 description: |-
-  Use when handing over finished work or reconciling its completion records, proof, actual time, and stakeholder communication. Use summarize for a recap only and handoff when another owner must continue unfinished work.
+  Reconciles finished work, proof, task records, actual time, and approved stakeholder communication. Use for completion, not a recap alone or transfer of unfinished work.
 notion_page_id: 3f2fc798-2e43-814c-acf0-f70c2773e6e7
 ---
 
 # deliver
 
-Get the verified result to its intended audience and reconcile the records that make it usable. This skill coordinates existing owners; it does not replace their procedures or grant new permissions.
+Get verified work to its audience and reconcile the records that make it usable. Coordinate existing procedures without expanding authority.
 
-## Establish the delivery state
+1. Read the owning task, project context, accepted outcome, evidence, and current artifact or release. Resolve audience, channel, language, and permissions. Ask only for missing facts that change delivery.
+2. Verify required outcomes. Distinguish implementation ready, PR ready, merged, deployed, and production-verified. Close only what the task requested; failed or unverified requirements remain blockers.
+3. Use the task-record capability to link proof, reconcile state, and draft a useful result comment. Read existing records before retrying to prevent duplicate comments, assets, or time entries.
+4. Reconcile actual duration and date under the time-record procedure. Ask when missing; never infer human time from runtime or an estimate. Reuse matching entries. Required unresolved time prevents Done; repair missing time on completed work without reopening it.
+5. Before any human-facing post or send, follow [communication approval](references/communication-approval.md) and the channel's stricter rules. Show the exact draft and destination, obtain approval, then verify delivery. Internal comments also require approval. Continue authorized internal work while drafts wait.
 
-Read the owning task, project context, accepted outcome, evidence, and current artifact or release state. Resolve recipients, channels, language, and approval boundaries from those sources. Ask only for missing facts that change delivery.
-
-Use `verify` when the outcome has not been proven. Keep implementation ready, PR ready, merged, deployed, and verified in production distinct. Close only the outcome the task actually requested. Failed or unverified required checks remain blockers, not a completed delivery.
-
-## Reconcile the record
-
-Use `tasks-operations` to find or update the canonical task, link the relevant PR or artifact, retain useful evidence, and draft a concise delivered-result comment. Posting the comment requires approval under [communication approval](references/communication-approval.md), including internal Notion comments. Read existing records before retrying so the same result, attachment, or time entry is not posted twice.
-
-Time belongs at closure, not on every summary or handoff. Use only actual duration and date under `tasks-operations`. Ask when missing; do not infer human time from agent runtime or invent an estimate. Check for an existing matching entry before creating another. Do not mark a task Done while its required time remains unresolved, and do not reopen completed work merely to repair missing time.
-
-## Communicate
-
-Prepare the shortest audience-specific update with the result, useful proof, and any action needed. Internal reviewers need readiness and risks; customers need what is available and how to use it. Do not announce a feature as live from a PR alone.
-
-Follow [communication approval](references/communication-approval.md) before engaging another human on any channel. Show the exact draft and destination, then obtain approval before sending or posting. For email, also follow `email-operations`; for a project-specific provider, use its applicable skill. Continue authorized internal work while the communication waits and label it unsent. Verify the resulting message or comment after an authorized send.
-
-## Finish
-
-Report what was delivered and what, if anything, still needs the user. Mention actual recorded time only when useful at closure or explicitly requested. If delivery is incomplete, identify the outstanding proof, time, record, or communication instead of claiming everything is done. Use `summarize` for the final recap and `handoff` if another owner must continue.
+Internal reviewers need readiness and risks; customers need what is available and how to use it. Never announce a PR as live. Report delivered state and any outstanding proof, time, record, or communication. Mention actual time only when useful at closure or requested. Transfer unfinished work with enough evidence to continue, not a false completion claim.

@@ -12,4 +12,4 @@ Search Documents before creating. Read likely matches and update the page that a
 
 Link project-specific documents to the matching live Project. A document with no real Project may remain unlinked. Never invent a Project merely to satisfy the relation.
 
-Use the live Type options. Documentation covers SOPs, how-to guides, operating processes, internal references, and decision records. Template covers reusable starting points. Strategy covers settled approaches and decisions. Reports, KPI updates, performance summaries, and analytical writeups belong to `reporting`. Unresolved planning belongs to `brainstorm`.
+Use the live Type options. Documentation covers SOPs, how-to guides, operating processes, internal references, and decision records. Template covers reusable starting points. Strategy covers settled approaches and decisions. Route reports, KPI updates, performance summaries, and analytical writeups to the reporting procedure; unresolved planning belongs in decision exploration.

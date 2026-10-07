@@ -2,7 +2,7 @@
 
 ## Draft and send
 
-Before drafting, identify the ask, decision, deadline, blocker, owner, and smallest useful next action. Read the full current thread and relevant sent messages from the same mailbox. Derive voice from the user's own messages in that thread, not from the sender. Match the language, register, warmth, brevity, greeting, and sign-off already in use. Keep the current conversation language unless asked to switch. Apply `write` without flattening the user's voice.
+Before drafting, identify the ask, decision, deadline, blocker, owner, and smallest useful next action. Read the full current thread and relevant sent messages from the same mailbox. Derive voice from the user's own messages in that thread, not from the sender. Match the language, register, warmth, brevity, greeting, and sign-off already in use. Keep the current conversation language unless asked to switch. Edit for clarity without flattening the user's voice.
 
 Draft the shortest complete reply. Preserve the subject and native thread for replies. For new messages, use a concise purpose-led subject. Reply to existing human participants by default. Exclude the user's addresses, duplicates, no-reply addresses, automated systems, mailing lists, and bounced recipients. Ask before drafting when the audience is unsafe or unclear.
 

@@ -4,7 +4,7 @@ Before sending or posting communication to another human, show the exact propose
 
 This applies to customers, colleagues, providers, and support advisors across email, Notion comments and replies, ClickUp, chat, support conversations, and other human-facing channels. It includes proactive completion comments and replies without a mention. A broad instruction to finish, sync, or work autonomously is not approval for unseen wording. Stricter channel rules, such as email's exact-version send instruction, still apply.
 
-Approval covers only the shown version and destination. A material change to wording, recipients, attachments, or context needs renewed approval. Recheck the conversation before sending. If delivery is uncertain, inspect the destination before retrying and verify the final message after sending.
+Approval covers only the shown version and destination. Any change to wording, recipients, destination, or attachments needs renewed approval. Changed context that affects the approved communication also needs renewed approval. Recheck the conversation before sending. If delivery is uncertain, inspect the destination before retrying and verify the final message after sending.
 
 Continue authorized non-communication work while the draft waits. Routine internal task fields, factual documentation, verified actual-time entries, implementation, and checks may proceed within the accepted scope. Do not hide a reply in a task body, notification, assignment, or status change to bypass approval. If an operational write also sends a message or invitation to another person, obtain approval for that effect first.
 

@@ -13,7 +13,7 @@
 - Keep the main file compact and move edge cases into focused references.
 - Update scripts only when deterministic behavior changes.
 - Remove stale instructions instead of leaving competing workflows.
-- When a user corrects behavior, put the rule in its canonical skill and relevant references, then inspect consuming agents and project instructions for conflicts. Update authorized conflicting instructions; a preferences file alone does not propagate the correction.
+- Route feedback to the narrowest responsible layer before editing shared guidance. A task defect or project-specific preference is not automatically a skill rule. For an explicitly requested reusable correction or an approved generalizable lesson, update the existing canonical owner and relevant consumers, then verify the affected behavior. If the rule was adequate but missed, fix its discovery or execution rather than duplicating it. Inferred organization-wide policy needs approval before publication.
 - Never add secrets, account ids, tokens, mailbox selectors, database ids, or other mutable routing data.
 
 ## Validate

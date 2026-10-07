@@ -19,6 +19,8 @@ Implement the accepted outcome with the smallest understandable change. Read the
 
 The contract is ready when each slice has an observable result and a feasible check. Keep a small request small; do not manufacture a specification or task for every code edit.
 
+Before changing the artifact, capture the relevant baseline or reproduction and select an evidence location. Follow the visual-evidence capability for screenshots, recordings, or comparisons. Retain meaningful checkpoints and final proof through cleanup; do not collect every tool action or fabricate a missing baseline.
+
 ## Choose the smallest solution
 
 Ask in order: is the change needed; does the codebase already do it; can the standard library, native platform, or an installed dependency do it; what is the smallest clear implementation left? A native control is suitable only when it meets the actual UX and accessibility requirements.

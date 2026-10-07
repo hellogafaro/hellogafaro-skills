@@ -10,6 +10,8 @@ notion_page_id: 3f2fc798-2e43-811e-a813-cce628d2f4e9
 
 Prove the requested outcome on the artifact people will use. A clean build, plausible screenshot, or another agent's report is supporting evidence, not a substitute for observing the behavior.
 
+For explicitly rejected results or unexpected evidence contradicting an accepted requirement, outcome, or result already presented to the user, follow [correction routing](references/corrections.md). Expected red tests and disproven implementation hypotheses remain ordinary iteration, not a correction review.
+
 1. Read the request and project-specific verification instructions. Identify the final revision or artifact, expected observable result, material edge cases, and what must remain unchanged.
 2. Select the smallest checks that can disprove correctness. Reuse existing tests and real user paths. For a regression, replay the original failure; for performance, repeat the baseline conditions; for a document or account change, check the source facts and persisted destination.
 3. Run the checks against the actual result. Inspect side effects as well as visible state. Exercise negative or permission cases when the changed boundary requires them. Respect the owner's scope and authorization; a verification request does not authorize a production transaction.

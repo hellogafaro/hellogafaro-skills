@@ -40,7 +40,7 @@ Create the case in the active work location or a directory confirmed by the user
 
 Each document should open with a short case summary, then present the strongest evidence first. Include only facts relevant to that field. Add clear captions, readable dates, identifiers, and short explanations of what each item proves. Reuse evidence across files when the live form calls for it.
 
-Apply `unslop` to every narrative, caption, translation, and form response. Write as the merchant in plain, natural language. Lead with the strongest verified fact. Avoid legal theater, generic claims, repetition, em dashes, and unsupported conclusions.
+Apply `write` to every narrative, caption, translation, and form response. Write as the merchant in plain, natural language. Lead with the strongest verified fact. Avoid legal theater, generic claims, repetition, em dashes, and unsupported conclusions.
 
 Check every generated file. Confirm the pages are readable, correctly ordered, complete, within the live upload limit, and free of accidental secrets or unrelated personal data. Show the user the proposed response reason, field-to-file mapping, and complete text-field answers.
 

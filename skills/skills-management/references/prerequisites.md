@@ -5,7 +5,7 @@
 1. Find the skill in the live Notion Skills library.
 2. Download the complete skill directory, including supporting files, before changing it.
 3. Treat the Notion page ID as the stable source identity.
-4. Do not edit `.agents/skills`, BB user skill directories, provider directories, plugin caches, or the generated GitHub mirror.
+4. Do not edit `.agents/skills`, BB user skill directories, Capy Drive installed skills, provider directories, plugin caches, or the generated GitHub mirror. Edit a staging copy of the complete Notion download, upload it to Notion, and reinstall only from a verified fresh download.
 5. If the skill is missing from Notion but exists in GitHub or an installation, treat that copy as migration input, not as a new canonical source.
 
 ## Verify Notion
@@ -17,3 +17,5 @@ After an upload, download the skill again and compare its `SKILL.md` instruction
 ## Verify distribution only when needed
 
 For GitHub backup or installation work, verify the generated repository, GitHub CLI version, authentication, and repository access. Never edit the mirror to fix a Notion skill. If the mirror differs, repair or rerun the Notion-to-GitHub sync.
+
+For Capy, use Notion MCP and an approved writable Drive scope; GitHub and `gh skill` are not required. The archive installer requires Python 3.9 or newer and PyYAML. Verify these dependencies before preparing an installation.

@@ -8,7 +8,7 @@ Preserve verified facts, decisions, constraints, warnings, examples, commands, p
 
 Use a concise sentence-case title that names the subject. Avoid vague titles such as `Notes`, `Documentation`, or `Information`. Use a date only when time distinguishes the document. Do not repeat the title in the body or set a page icon.
 
-Open with one to three short sentences explaining what the document covers and when it matters. Apply `unslop`. Use plain language, short paragraphs, active voice, and specific facts. Explain unavoidable jargon. Use numbered lists for ordered steps, bullets for real lists, and tables only for exact mappings or repeated comparisons.
+Open with one to three short sentences explaining what the document covers and when it matters. Apply `write`. Use plain language, short paragraphs, active voice, and specific facts. Explain unavoidable jargon. Use numbered lists for ordered steps, bullets for real lists, and tables only for exact mappings or repeated comparisons.
 
 Do not use em dashes or en dashes. Cut filler introductions, decorative formatting, generic best practices, speculation, repeated conclusions, and empty sections.
 

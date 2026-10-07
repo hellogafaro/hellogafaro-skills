@@ -35,6 +35,8 @@ Three questions, one discipline: collect the evidence first, then see what story
 
 ## Diagnose
 
+Stay within the authorized environment and change scope. Prefer existing logs and read-only observation. Temporary local instrumentation is appropriate only when local diagnostic edits are allowed; preserve unrelated work, avoid secrets, and remove only the instrumentation this run added. Changing production logging, data, or configuration needs explicit authorization. If instrumentation is not allowed, report the evidence gap rather than treating diagnosis as permission to write.
+
 1. Reproduce the symptom yourself where it happens. If it won't reproduce, narrow the conditions or add logging until it does. If you truly can't, say what you tried and what blocked you.
 2. Capture the signal before theorizing: the exact error, logs, a trace, the metric before and after, a screenshot.
 3. List the hypotheses. Rule them out with evidence, each time running the check that eliminates the most. Don't guess; add instrumentation.

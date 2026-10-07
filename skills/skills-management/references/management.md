@@ -26,5 +26,6 @@ Check trigger specificity, overlap, structure, source ownership, mutable configu
 - GitHub is a generated backup and distribution mirror.
 - Project installations live once in `.agents/skills` and are committed when the project must work from a fresh clone.
 - Broad shared skills use BB user scope when they should be available in every project.
+- Broad shared Capy skills use the approved organization or user Drive scope. Download directly from Notion and maintain provenance outside installed skill folders; follow [Capy installation and refresh](capy-installation.md).
 - Project-specific skills stay project-scoped to avoid routing noise and accidental cross-project behavior.
-- Third-party and BB plugin skills remain owned by their upstream source and do not move into Notion.
+- Third-party, BB plugin, and Capy system skills remain owned by their upstream source and do not move into Notion or get replaced by first-party refreshes.

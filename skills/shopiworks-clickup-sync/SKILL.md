@@ -16,7 +16,7 @@ For Johan's time entries, record only the actual duration and date. Omit `billab
 
 Use `tasks-operations` with the selected Notion connection for every Notion task, Project, completion, and Timesheet operation. Use the connected ClickUp MCP's dedicated tools (`clickup_get_task`, `clickup_create_comment`, `clickup_add_time_entry`, and so on) for every ClickUp read and write. Do not use Composio's ClickUp toolkit, a personal API token, or an ad hoc API call; Composio's ClickUp comment tools silently drop real mentions.
 
-Apply `unslop` to all English and Spanish prose. Write concise natural English in Notion and concise natural neutral Spanish for the external provider in ClickUp. Rewrite for the reader rather than copying raw Spanish into Notion or raw English into ClickUp.
+Apply `write` to all English and Spanish prose. Write concise natural English in Notion and concise natural neutral Spanish for the external provider in ClickUp. Rewrite for the reader rather than copying raw Spanish into Notion or raw English into ClickUp.
 
 ## Workflow
 

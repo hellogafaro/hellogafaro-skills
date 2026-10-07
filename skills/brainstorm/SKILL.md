@@ -2,18 +2,22 @@
 name: |-
   brainstorm
 description: |-
-  Use when the user wants an interactive thinking session to stress-test an unresolved plan, design, product decision, architecture, or implementation approach through focused questions, without producing a durable artifact by default.
+  Use when a plan, product decision, design, or implementation approach needs clarification or competing options. Resolve consequential decisions in short rounds without implementing or saving a plan by default.
 notion_page_id: 3dffc798-2e43-81c0-8dda-dc51c65d63f2
 ---
 
 # brainstorm
 
-Interview me relentlessly about every aspect of this plan until we reach a shared understanding.
+Help the user reach a decision, not endure an interview. Start with the desired outcome and the uncertainty that changes the next action.
 
-Walk down each branch of the design tree, resolving dependencies between decisions one by one.
+1. Read the available context. Investigate facts you can observe instead of asking the user to retrieve them. Separate facts, assumptions, and genuine choices.
+2. Identify which choices depend on others. Ask only questions whose prerequisites are settled. Default to one consequential question; group up to three independent questions when that saves a turn.
+3. Give a recommendation with each question and the tradeoff that could change it. Use short options rather than an essay. Skip questions whose answer would not change the work.
+4. When the choice depends on appearance or interaction, use `visualize` to compare two or three genuinely different options. When it depends on measurable behavior, propose the smallest safe experiment and run it within the authorized scope. Label sketches and prototypes as proposals, not implementation evidence.
+5. Incorporate the answer, retire rejected branches, and resolve the next dependency. If new evidence invalidates a premise, say what changed rather than defending the previous option.
 
-For each question, provide your recommended answer.
+Stop when the chosen direction, material constraints, and remaining uncertainty are clear enough for the next requested action. Return a short decision recap and the one next decision if one remains. Do not explore every hypothetical edge case or repeat settled questions.
 
-Ask the questions one at a time.
+A brainstorming request authorizes discussion and read-only discovery, not production changes, external publication, or persistent planning records. Use `documents-operations` or `tasks-operations` only when saving or execution is authorized. Apply `write` to the conversation.
 
-If a question can be answered by exploring the codebase, explore the codebase instead.
+The decision-dependency approach is informed by [Matt Pocock's grilling skill](https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md); concrete alternatives are informed by [pstack's architect skill](https://github.com/cursor/plugins/blob/main/pstack/skills/architect/SKILL.md).

@@ -16,7 +16,7 @@ Notion Documents is the source for saved documentation. Use it for durable knowl
 - Never store or guess database IDs, page IDs, property names, relation targets, templates, or option values.
 - Never invent policies, ownership, deadlines, results, causes, or process steps.
 - Before saving a material policy, strategy, or process change, explain the exact change and get confirmation.
-- Apply `unslop`. Do not use em dashes or en dashes.
+- Apply `write`. Do not use em dashes or en dashes.
 - Reports belong to `reporting`. Unresolved planning belongs to `brainstorm`.
 
 ## Workflow

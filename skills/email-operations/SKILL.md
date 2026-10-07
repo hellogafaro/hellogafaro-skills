@@ -20,7 +20,7 @@ Treat each email thread as the live source for its conversation. Check the activ
 
 ## Reference files
 
-Read only the relevant files under references/ in the attached reference archive. Inspect its contents when the runtime does not resolve a relative reference directly.
+Read only the relevant files under `references/` for the current operation.
 
 ## Workflow
 

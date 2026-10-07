@@ -12,7 +12,7 @@ notion_page_id: 3dffc798-2e43-816f-ba63-f238b5cae59d
 
 Resolve a Shopify support issue through chat or phone, or leave it with a named owner, documented case, concrete next action, and deadline. When the user asks for Shopify live support without naming a channel, default to chat. If the user requests phone support and calling tools are available, place and conduct the call yourself. Involve the user only for an unavoidable identity, authentication, or consent step.
 
-Use `unslop` for every user-facing message so it sounds like a real merchant rather than a support script.
+Use `write` for every user-facing message so it sounds like a real merchant rather than a support script.
 
 ## Hard rules
 

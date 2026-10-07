@@ -2,7 +2,7 @@
 name: |-
   tasks-operations
 description: |-
-  Use when Notion work involves finding, creating, updating, completing, or reviewing tasks; extracting tasks from Meetings or Documents; planning workload; or logging and reporting task or meeting time.
+  Use when triaging accepted work, finding, creating, updating, completing, or reviewing Notion tasks; extracting confirmed actions; planning workload and dependencies; or recording and reporting actual task or meeting time.
 notion_page_id: 3dffc798-2e43-81a1-a8a0-da8a2bb83323
 ---
 
@@ -34,6 +34,8 @@ Use these database IDs as discovery entry points. Fetch a source's current datab
 - Record only the actual duration and date in Timesheets. Ask when either is missing and never infer it. Never set a billable flag or record or report a time of day.
 
 ## Workflow
+
+For intake or decomposition, first follow [triage and slicing](references/triage-and-slicing.md). For completed-work coordination, `deliver` owns the cross-system handover while this skill owns Notion records and actual time.
 
 1. Resolve the live schema, Owner, and Assignee, then find, create, or update the task: [records-and-tasks.md](references/records-and-tasks.md).
 2. Before assigning or planning, inspect the Project and the Assignee's load: [workload.md](references/workload.md).

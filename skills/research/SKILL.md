@@ -37,4 +37,4 @@ Find enough reliable evidence to answer the real question. Match the depth to th
 - Include only the findings, disagreement, limitations, and next research that matter to the ask.
 - Add a separate source list only when the user requests one or it improves reuse.
 
-Before sending, read and apply `unslop`. Preserve meaning, citations, URLs, names, dates, numbers, and calibrated uncertainty.
+Before sending, read and apply `write`. Preserve meaning, citations, URLs, names, dates, numbers, and calibrated uncertainty.

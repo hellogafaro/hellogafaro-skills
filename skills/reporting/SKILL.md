@@ -12,7 +12,7 @@ Create reports that help the intended reader understand what matters and decide 
 
 ## Canvas boundary
 
-When the output is a proof or report canvas, present evidence only: goal, method, observations, confidence, and the review verdict when one exists. Put recommendations requiring action, deploy steps, rollout checklists, next steps, follow-ups, open issues, known limits, and pre-existing bugs in the handoff, PR description, or task via Dash. A limit that changes how the proof should be read may stay as one short sentence beside the relevant evidence, never as its own section or checklist. This boundary takes precedence over the general report shapes below. Plan canvases may retain steps; notes and mockups keep their own purpose.
+Use `visualize` for visual evidence, charts, or an authored canvas. When the output is a proof or report canvas, present the goal, method, observations, confidence, and actual review verdict. Keep material limitations beside the claims they qualify. Put operational follow-ups in the owning task through `tasks-operations`, PR, or handoff. Plan canvases may contain actions. Apply `write` to all prose.
 
 ## Principles
 

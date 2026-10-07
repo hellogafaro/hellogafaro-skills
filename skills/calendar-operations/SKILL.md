@@ -21,7 +21,7 @@ Treat live calendars as the source for availability, commitments, attendees, rec
 
 ## Reference files
 
-Read only the relevant files under references/ in the attached reference archive. Inspect its contents when the runtime does not resolve a relative reference directly.
+Read only the relevant files under `references/` for the current operation.
 
 ## Workflow
 

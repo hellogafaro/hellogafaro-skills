@@ -18,7 +18,7 @@ Use `verify` when the outcome has not been proven. Keep implementation ready, PR
 
 ## Reconcile the record
 
-Use `tasks-operations` to find or update the canonical task, link the relevant PR or artifact, retain useful evidence, and write a concise delivered-result comment. Read existing records before retrying so the same result, attachment, or time entry is not posted twice.
+Use `tasks-operations` to find or update the canonical task, link the relevant PR or artifact, retain useful evidence, and draft a concise delivered-result comment. Posting the comment requires approval under [communication approval](references/communication-approval.md), including internal Notion comments. Read existing records before retrying so the same result, attachment, or time entry is not posted twice.
 
 Time belongs at closure, not on every summary or handoff. Use only actual duration and date under `tasks-operations`. Ask when missing; do not infer human time from agent runtime or invent an estimate. Check for an existing matching entry before creating another. Do not mark a task Done while its required time remains unresolved, and do not reopen completed work merely to repair missing time.
 
@@ -26,7 +26,7 @@ Time belongs at closure, not on every summary or handoff. Use only actual durati
 
 Prepare the shortest audience-specific update with the result, useful proof, and any action needed. Internal reviewers need readiness and risks; customers need what is available and how to use it. Do not announce a feature as live from a PR alone.
 
-Use the channel's existing procedure and authorization. For email, follow `email-operations`; for a project-specific provider, use its applicable skill. A request to close internal work is not permission to send a customer message. Show a draft when sending is not authorized, and label it unsent. Verify the resulting message or comment after an authorized send.
+Follow [communication approval](references/communication-approval.md) before engaging another human on any channel. Show the exact draft and destination, then obtain approval before sending or posting. For email, also follow `email-operations`; for a project-specific provider, use its applicable skill. Continue authorized internal work while the communication waits and label it unsent. Verify the resulting message or comment after an authorized send.
 
 ## Finish
 

@@ -2,6 +2,8 @@
 
 ## Task journal and artifacts
 
+Prepare comments and replies as drafts for user approval under `deliver` before posting them to people. The journal procedure below describes what an approved post should contain, not permission to publish it. Continue factual internal record and asset maintenance within the authorized scope while approval is pending.
+
 Use each part of a task for one job. Properties hold operational state, including the mandatory Priority for active work. The body explains the accepted current work in two or three short paragraphs followed by useful context bullets in ordinary sentences. Follow the prose rules in records-and-tasks.md. Keep necessary constraints, blockers, and useful links concise, without headings, Done when lists, acceptance checklists, generic steps, speculative requirements, or repeated properties. Update the body when accepted feedback makes it stale.
 
 Comments hold real discussion, feedback, decisions, and delivered results. Do not create a comment merely to archive source history trimmed from the brief or to hold an asset. Refer to the client team or project in prose, not individual conversation participants; actual individual owners stay in Owner and Assignee. Preserve an accepted request as work to do, not a transcript or personal attribution.

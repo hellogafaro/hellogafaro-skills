@@ -2,6 +2,8 @@
 
 ## Publish verified work to ClickUp
 
+Draft human-facing comments, replies, and mentions for approval under `deliver` before posting. Approval must cover the exact destination, content, and attachments. The instructions below apply after that approval; a request to sync records does not authorize unseen messages or notifications intended to engage another person.
+
 Update the already matched ClickUp task. Create one only for an authorized Notion outcome with no existing match after searching. Preserve useful customer-authored request context. Do not overwrite it with an internal task dump.
 
 Write Spanish titles, descriptions, comments, and time entry notes for the provider. Preserve established UI labels and technical English terms in Spanish prose, including «All Products» and «breadcrumbs». Include only the status, changes, decisions, constraints, checks, results, deliverables, and client-safe links they need. Keep the text short and easy to scan. Do not mention Notion, synchronization, internal workflows, private discussion, internal-only links, credentials, or unsupported claims.

@@ -10,12 +10,13 @@ notion_page_id: 3dffc798-2e43-816f-ba63-f238b5cae59d
 
 ## Goal
 
-Resolve a Shopify support issue through chat or phone, or leave it with a named owner, documented case, concrete next action, and deadline. When the user asks for Shopify live support without naming a channel, default to chat. If the user requests phone support and calling tools are available, place and conduct the call yourself. Involve the user only for an unavoidable identity, authentication, or consent step.
+Prepare and support resolution of a Shopify issue, or leave it with a named owner, documented case, concrete next action, and deadline. When the user asks for live support without naming a channel, default to chat preparation. Before contacting an advisor or sending a reply, follow `deliver` and obtain approval for the exact communication. A request for help does not approve unseen messages. If a phone conversation cannot satisfy that approval boundary, prepare a call brief for the user rather than conducting an unscripted call autonomously.
 
 Use `write` for every user-facing message so it sounds like a real merchant rather than a support script.
 
 ## Hard rules
 
+- Human-facing messages, including opening contact, replies, nudges, and requests to close a conversation, require the user's approval before sending. Monitoring a transcript and preparing evidence may continue without posting. An inactivity warning is not an exception to approval.
 - Never press **End chat**. Ask the advisor to close the conversation, then wait until the interface confirms that the advisor ended it.
 - Do not open a replacement chat while an active one exists. If a security challenge, MFA, or owner verification appears, ask the user to complete it; never bypass it.
 - Obtain explicit user approval before accepting, authorizing, or submitting a money-related, irreversible, or legally consequential action.

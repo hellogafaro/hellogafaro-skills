@@ -1,5 +1,7 @@
 # Conducting the conversation
 
+Apply `deliver`'s communication-approval procedure to every outgoing human-facing message in this reference. Draft the exact wording and obtain approval before sending, including opening messages, acknowledgements, nudges, and escalation or closure requests. The timing guidance never overrides approval; if a session may expire, alert the user here rather than sending an unapproved keepalive.
+
 ## 4. Start the conversation cleanly
 
 Write like a real merchant in a professional but relaxed conversation. Use warm, natural, simple English. Always begin sentences with a capital letter and correctly capitalize people, brands, products, teams, and identifiers. Use plain text only in chat messages. Do not use em dashes, Markdown formatting, tables, or form-like key/value pairs.
@@ -47,7 +49,7 @@ Never use deception, guilt, threats, repeated pressure, false praise, or attempt
 
 ## 6. Respect authorization boundaries
 
-Act autonomously to investigate, explain, request options, open or update a support case, and attach user-approved evidence. Obtain explicit user approval before accepting, authorizing, or submitting a money-related, irreversible, or legally consequential action, including refunds, credits, charges, billing changes, settlements, final disputes or claims, account closure, app uninstall, data deletion, user/permission changes, or security-setting changes.
+Investigate and prepare explanations, options, and evidence within scope. Contacting an advisor, opening or updating a human-facing case, and sending attachments require approval for the exact communication. Separately obtain explicit approval before accepting, authorizing, or submitting a money-related, irreversible, or legally consequential action, including refunds, credits, charges, billing changes, settlements, final disputes or claims, account closure, app uninstall, data deletion, user/permission changes, or security-setting changes.
 
 If the advisor presents such an action, ask for a written handoff instead of deciding: "Please email the case reference, available options, amount or account impact, deadline, and exact next step. I need merchant approval before accepting or making that change." Ask them to record pending merchant approval or preserve the deadline when possible. Do not claim that approval has been granted.
 
@@ -58,7 +60,7 @@ If the advisor presents such an action, ask for a written handoff instead of dec
 - Prefer several brief messages over a long dense paragraph, but do not split a simple point unnecessarily or send consecutive nudges before the advisor has had time to respond.
 - Inspect the transcript and session state silently every 15 to 30 seconds while the conversation is active. Frequent inspection does not justify frequent messages.
 - Acknowledge a new advisor response promptly. If the advisor is investigating and there is no new response, send one concise check-in after about five minutes. Reset that timer after a meaningful progress update, and do not send repeated nudges unless the advisor gave a shorter return time or the interface signals closure.
-- If the chat shows an inactivity warning, countdown, "still there" prompt, or possible closure, reply immediately that the merchant is present and ask to keep the session open while requesting the next concrete update. Do not wait for the normal follow-up interval.
+- If the chat shows an inactivity warning, countdown, "still there" prompt, or possible closure, immediately show the user a proposed keepalive and request approval. Send it only after approval, even if the session may otherwise expire.
 - Ask for one concrete action at a time: file, escalate, trace, reproduce, enable, credit, or email the case. Ask who owns the next step and when it will happen.
 - After every send, verify the message appears in the transcript before sending another one. If a send result is uncertain, inspect the transcript and input before retrying. Never duplicate a message blindly or send so quickly that Shopify can merge or drop messages.
 - Attach requested evidence only after confirming it is relevant and contains no unnecessary sensitive data.

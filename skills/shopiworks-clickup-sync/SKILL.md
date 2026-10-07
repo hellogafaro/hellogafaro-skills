@@ -12,6 +12,8 @@ Follow ClickUp intake, Notion execution, then ClickUp client-facing updates for 
 
 ## Hard rules
 
+Before engaging a person through ClickUp, show the exact comment or reply, destination, mentions, and attachments and obtain approval to post under `deliver`. A sync or completion request does not approve unseen communication. Continue authorized record reconciliation separately and report pending communication as unsent.
+
 For Johan's time entries, record only the actual duration and date. Omit `billable` from every write and keep times of day out of user and client reports; follow [publication.md](references/publication.md) for API date handling.
 
 Use `tasks-operations` with the selected Notion connection for every Notion task, Project, completion, and Timesheet operation. Use the connected ClickUp MCP's dedicated tools (`clickup_get_task`, `clickup_create_comment`, `clickup_add_time_entry`, and so on) for every ClickUp read and write. Do not use Composio's ClickUp toolkit, a personal API token, or an ad hoc API call; Composio's ClickUp comment tools silently drop real mentions.

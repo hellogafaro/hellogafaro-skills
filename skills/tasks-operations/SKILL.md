@@ -24,6 +24,7 @@ Use these database IDs as discovery entry points. Fetch a source's current datab
 
 ## Hard rules
 
+- Before posting any human-facing Notion comment, reply, mention, or completion update, use `deliver` and its communication-approval procedure. Show the exact draft and destination and wait for approval to post. Internal task maintenance may continue within scope; do not use another field to bypass the communication gate.
 - Search before creating. Update the existing record when it owns the same work, even when thin or stale.
 - Never assume project, people, dates, duration, status, or relations. Ask one focused question when a missing fact could change the result.
 - Write task bodies as two or three short paragraphs followed by useful context bullets in ordinary sentences. No headings, Done when lists, acceptance checklists, generic steps, speculative requirements, or repeated properties. A full task means complete necessary fields and sufficient concise context.

@@ -19,17 +19,13 @@ Implement the accepted outcome with the smallest understandable change, whether 
 
 The contract is ready when each slice has an observable result and a feasible check. Keep a small request small; do not manufacture a specification or task for every code edit.
 
-Before changing the artifact, identify the claims and smallest final checks, capture the relevant baseline or reproduction, and select an evidence location. Confirm that the checks and intended publication are feasible within available access and authority. Save useful check output when it runs rather than reconstructing it from chat at closure. Follow `artifacts` for screenshots, recordings, or comparisons. Retain meaningful checkpoints and final proof through cleanup; do not collect every tool action or fabricate a missing baseline.
+Before changing the artifact, identify the claims and smallest final checks, and capture the relevant baseline or reproduction. Confirm that the checks and intended publication are feasible within available access and authority. When a deliverable will be reviewed, save its check output as it runs rather than reconstructing it from chat at closure. Follow `artifacts` for screenshots, recordings, or comparisons. Retain only the baseline and final proof a reviewer needs through cleanup; never every tool action or step in between, and never a fabricated baseline.
 
 ## Choose the smallest solution
 
-Stop at the first step that works, for code or anything else:
+Apply the Make line of the global instructions: needed, already existing, smallest complete. Existing means the project's own code or content, a template, past work, the standard library, the platform, or an installed dependency or tool. A native control fits only when it meets the real UX and accessibility needs.
 
-1. Is the change needed? Drop what nobody asked for.
-2. Does something existing already do it: the project's own code or content, a template, past work, the standard library, the platform, or an installed dependency or tool? Reuse it. A native control fits only when it meets the real UX and accessibility needs.
-3. Otherwise make the smallest complete version.
-
-Never cut trust-boundary validation, security, error handling, data integrity, or accessibility to make it smaller. Small means less unnecessary machinery, not compressed code or copy. Logic with a branch, a loop, parsing, money, or security leaves one small test behind. For repetitive changes, prove one unit, then use a rerunnable script or codemod when that makes the rest safer. Report what you skipped or left unchecked.
+Small means less unnecessary machinery, not compressed code or copy. Logic with a branch, a loop, parsing, money, or security leaves one small test behind. For repetitive changes, prove one unit, then use a rerunnable script or codemod when that makes the rest safer. Report what you skipped or left unchecked.
 
 ## Execute and prove
 

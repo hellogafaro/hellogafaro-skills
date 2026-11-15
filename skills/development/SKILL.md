@@ -29,15 +29,15 @@ Every playbook that produces a change ends with [git and PRs](references/git-and
 
 ## Size the work
 
-Pick the path before the first step and say which one you took. A request moves up a path mid-way when evidence shows it is bigger; it never moves down.
+Pick the path before the first step. A request moves up a path mid-way when evidence shows it is bigger; it never moves down.
 
-- **Simple.** One clear change or question with a small blast radius, no money moved, no new data collected, and no customer-facing behavior changed. Read only the matching playbook and `verify`, and close through `deliver`. Where a step says "through `investigate`" or "through `implement`", apply its intent (diagnose with evidence, make the smallest change) without opening those skills. Reproduce, change, verify on the surface, report. No task unless one exists or the user asked for one. A replayed reproduction that passes on the same surface is a passed check even without a verification recipe; only the recipe item is reported as unverified.
+- **Simple.** One clear change or question with a small blast radius, no money moved, no new data collected, and no customer-facing behavior changed. Read only the matching playbook and `verify`. Where a step says "through `investigate`" or "through `implement`", apply its intent (diagnose with evidence, make the smallest change) without opening those skills; the same holds for `deliver` when there is no task, pull request, or message to send: clean up and close in a few sentences. Reproduce, change, verify on the surface, report. Save no evidence file: the failing-then-passing output in the reply is the proof. No task unless one exists or the user asked for one. A replayed reproduction that passes on the same surface is a passed check even without a verification recipe; only the recipe item is reported as unverified.
 - **Complex.** Several parts, an unsettled design, dependencies, a customer-facing change, or more than one owner. Run the full playbook with intake, `brainstorm` for real forks, slices, and `deliver`. A change that collects personal data or feeds an audience also states its consent basis in the contract.
 - **Data-critical.** The result depends on figures, comparisons, or patterns, or it will move money, budgets, inventory, or audiences by a computed amount. Every number goes through `analyze` before it is stated or acted on, with the script and data retained, and the approval step shows the computed figures. This adds to complex; it does not replace it.
 
 ## Size the intake
 
-Intake is one lookup, not a ritual. Use the task the request names. Otherwise, for client or brand work, search Notion once for a task that owns it and attach to it. Accepted or substantial client or brand work with no task gets one created before the first change. Other work needs no task unless the user asks, as `AGENTS.md` says. Either way, close through `deliver`, which reconciles any task and ends with the close-out list.
+Intake is one lookup, not a ritual. Use the task the request names. Otherwise, for client or brand work, search Notion once for a task that owns it and attach to it. Accepted or substantial client or brand work with no task gets one created before the first change. Other work needs no task unless the user asks, as `AGENTS.md` says. Work with a task closes through `deliver`, which reconciles it.
 
 ## Verify on the real surface
 

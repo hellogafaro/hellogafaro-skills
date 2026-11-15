@@ -15,7 +15,7 @@ Help the user reach a decision, not endure an interview. Start with the desired 
 1. Read the available context. Separate facts, assumptions, and genuine choices.
 2. Map which choices depend on others, and ask only questions whose prerequisites are settled. Default to one consequential question; group up to three independent ones when that saves a turn.
 3. Give each question a recommendation and the tradeoff that could change it. Use short options, not an essay. Skip questions whose answer would not change the work.
-4. When the choice depends on appearance or interaction, use `artifacts` to compare two or three genuinely different options. When it depends on measurable behavior, propose the smallest safe experiment and run it within the authorized scope. Label sketches and prototypes as proposals, not implementation evidence.
+4. When a choice reads faster as a picture than as prose (appearance, interaction, a flow, a structure, or options weighed on several criteria), use `artifacts` to show two or three genuinely different options side by side. When it depends on measurable behavior, propose the smallest safe experiment and run it within the authorized scope. Label sketches and prototypes as proposals, not implementation evidence.
 5. Incorporate the answer, retire rejected branches, and resolve the next dependency. If new evidence invalidates a premise, say what changed instead of defending the earlier option.
 
 Stop when the chosen direction, material constraints, and remaining uncertainty are clear enough for the next requested action. Return a short decision recap and the one next decision, if any. Do not explore every hypothetical edge case or repeat settled questions.

@@ -25,7 +25,7 @@ Turn a marketing request for a brand into planned, executed, and measured work. 
 
 ## Size the work
 
-Decide the path before the first step and say which one you took.
+Decide the path before the first step.
 
 - A simple request is one clear change or question with a small blast radius, no money moved, no new data collected, and no customer-facing behavior changed. Where a playbook step says "through `investigate`" or "through `implement`", apply its intent (diagnose with evidence, make the smallest change) without opening those skills: reproduce, change, verify on the surface, report. A replayed reproduction that passes on the same surface is a passed check even when the project has no verification recipe; only the recipe item is reported as unverified.
 - A complex request has several parts, an unsettled design, dependencies, a customer-facing change, or more than one owner. Run the full playbook with intake, `brainstorm` for real forks, slices, and `deliver`. A change that collects personal data or feeds an audience also states its consent basis in the contract.

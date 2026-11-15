@@ -32,15 +32,15 @@ Each run is a row in Runs with its own `RUN-` ID, linked to its automation throu
 | Project | The Projects row it works for; the agent runs in its folder. Empty means no project, for work on no codebase such as a digest or a reminder |
 | Assignee | The one person it runs for; set it to the person who asked. Each installation runs only the automations assigned to its user, so an empty Assignee never runs |
 | Status | `Disabled` or `Enabled`. Anything but `Enabled` never runs |
-| Agent | `Claude Code`, `Codex`, or `OpenCode` |
-| Model | Optional; empty uses the agent's default. Pick a model such as `Opus 5.5` or `GPT-6.1 Sol`; Notion Code turns it into the agent's model ID (`claude-opus-5-5`, `gpt-6.1-sol`). For a new model, add an option named the same way |
-| Effort | Optional: `Low`, `Medium`, `High`, `Xhigh`, or `Max`; empty uses the agent's default. Codex's highest is `Xhigh`, so `Max` runs as `Xhigh`. OpenCode needs a Model to set it |
+| Agent | The harness that runs it, an option of the Agent select. It must be installed on the machine that runs the automation; `ntncode doctor` checks the installed ones |
+| Model | Optional; empty uses the harness's default. Pick an option of the Model select, and Notion Code turns it into the harness's model ID. For a new model, add an option named like the others |
+| Effort | Optional; empty uses the harness's default. Pick an option of the Effort select. A harness runs a level it lacks as its nearest one or refuses the row, and `ntncode doctor` names a row that won't run |
 | Schedule properties | When it runs: Start, Time zone, Repeat, and the rest. Read [schedules](references/schedules.md) before setting them |
 | Page body | The prompt, written as the next section says |
 
 ## Write the prompt
 
-The page body holds only what the run must do. Each run already gets the title, when it was scheduled and started (`<trigger>`), the project folder, the organization's and project's instructions (including the bot's name), the run instructions for automations, and the reports of the automation's three latest runs (`<previous-runs>`). Never repeat those in the body, and leave out background a run doesn't act on.
+The page body holds only what the run must do. Each run already gets the title, when it was scheduled and started (`<trigger>`), the project folder, the global, project, and run instructions, which include the bot's name, and the reports of the automation's three latest runs (`<previous-runs>`). Never repeat those in the body, and leave out background a run doesn't act on.
 
 Use this structure, with no other headings:
 
@@ -59,7 +59,7 @@ Runs only read secrets and can't ask for new ones. When a step needs a secret, c
 1. Search the database before creating a row. Update the row that already owns the same work instead of adding a second one.
 2. Write the prompt as above.
 3. Set the schedule properties following [schedules](references/schedules.md), and state the next three run times in your reply so the person can check them.
-4. Create a new row as `Disabled`, and leave Status as it is when you change a row. Only the assignee sets `Enabled`. The sync accepts an automation only when its assignee made the last edit, and otherwise keeps the previous version, so an agent's own edit never runs. Setting `Disabled` always takes effect, whoever does it.
+4. Create a new row as `Disabled`, and leave Status as it is when you change a row. Only the assignee sets `Enabled`. The sync accepts an automation only when its assignee made the last edit, and otherwise keeps the previous version. Notion's MCP server edits as the person it is signed in as, so an edit made there counts as the assignee's and goes live at the next sync: change an enabled row only when the person asked for that change, and report the exact text before and after. An edit through Executor's Notion app shows as the bot and waits until the assignee edits the row. Setting `Disabled` always takes effect, whoever does it.
 5. Rehearse it, as the next section says, before the person enables it.
 6. To pause an automation, set Status to `Disabled`. Don't delete a row; its history stays with it.
 7. After a write, fetch the row again and confirm every property and the body persisted.

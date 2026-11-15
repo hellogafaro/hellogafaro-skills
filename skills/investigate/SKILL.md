@@ -14,7 +14,7 @@ Collect the evidence first, then see what story it supports. Use Explain for how
 
 - Before collecting, identify the evidence that could decide the question. Own and retain the reproduction, decisive failed checks, and final confirmation, and return them with the finding. Use `artifacts` for visual packaging; persist to a task only when one owns the accepted work.
 - Look at the real thing: run, open, or query it, and read the live value. Code shape, summaries, and reports are leads, not proof.
-- Cite every claim: file and line, commit, task, email, message, metric with its date range, screenshot path. Label anything you can't cite as inference.
+- Cite every claim: file and line, commit, task, email, message, metric with its date range, screenshot path. Label anything you can't cite as inferred, or as a guess when no cited evidence supports it.
 - Say "because" only for direct evidence, and "likely" or "appears to" for indirect evidence.
 - Keep more than one explanation alive until evidence rules it out. Before concluding, ask what you would see if another explanation were true, and look for it.
 - Show contradictions between sources instead of picking the one that fits.

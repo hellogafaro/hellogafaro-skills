@@ -29,9 +29,10 @@ Each run is a row in Runs with its own `RUN-` ID, linked to its automation throu
 | --- | --- |
 | ID | `AUT-` and a number, set by Notion. Use it to refer to an automation in replies, prompts, and runs |
 | Title | The client or area, then what it does, such as `Jackfir publish Black Friday theme`. Keep task IDs, dates, and links in the prompt |
-| Project | The Projects row it works for; the agent runs in its folder. Empty means no project, for work on no codebase such as a digest or a reminder |
+| Project | The Projects row it works for; the agent runs in `~/projects/<Path>`, where Path is that row's folder, such as `jackfir` or `g4f4r0/notion-code`. Empty means no project, for work on no codebase such as a digest or a reminder |
+| Repository | Optional, in GitHub's `owner/repo` form, such as `hellogafaro/jackfir-shopify-theme`. Set it when the run works in one repository: the agent then runs in that repository's folder inside the project's Path, which must be a clone of it. It needs a Project |
 | Assignee | The one person it runs for; set it to the person who asked. Each installation runs only the automations assigned to its user, so an empty Assignee never runs |
-| Status | `Disabled` or `Enabled`. Anything but `Enabled` never runs |
+| Status | `Disabled`, `Enabled`, or `Archived`. Only `Enabled` runs on its schedule. `Archived` is for an automation that is done, such as a one-time run that completed; it never runs, not even by hand, and the default view hides it |
 | Agent | The harness that runs it, an option of the Agent select. It must be installed on the machine that runs the automation; `ntncode doctor` checks the installed ones |
 | Model | Optional; empty uses the harness's default. Pick an option of the Model select, and Notion Code turns it into the harness's model ID. For a new model, add an option named like the others |
 | Effort | Optional; empty uses the harness's default. Pick an option of the Effort select. A harness runs a level it lacks as its nearest one or refuses the row, and `ntncode doctor` names a row that won't run |
@@ -59,9 +60,9 @@ Runs only read secrets and can't ask for new ones. When a step needs a secret, c
 1. Search the database before creating a row. Update the row that already owns the same work instead of adding a second one.
 2. Write the prompt as above.
 3. Set the schedule properties following [schedules](references/schedules.md), and state the next three run times in your reply so the person can check them.
-4. Create a new row as `Disabled`, and leave Status as it is when you change a row. Only the assignee sets `Enabled`. The sync accepts an automation only when its assignee made the last edit, and otherwise keeps the previous version. Notion's MCP server edits as the person it is signed in as, so an edit made there counts as the assignee's and goes live at the next sync: change an enabled row only when the person asked for that change, and report the exact text before and after. An edit through Executor's Notion app shows as the bot and waits until the assignee edits the row. Setting `Disabled` always takes effect, whoever does it.
+4. Create a new row as `Disabled`, and leave Status as it is when you change a row. Only the assignee sets `Enabled`. The sync accepts an automation only when its assignee made the last edit, and otherwise keeps the previous version. Notion's MCP server edits as the person it is signed in as, so an edit made there counts as the assignee's and goes live at the next sync: change an enabled row only when the person asked for that change, and report the exact text before and after. An edit through Executor's Notion app shows as the bot and waits until the assignee edits the row. Setting `Disabled` or `Archived` always takes effect, whoever does it.
 5. Rehearse it, as the next section says, before the person enables it.
-6. To pause an automation, set Status to `Disabled`. Don't delete a row; its history stays with it.
+6. To pause an automation, set Status to `Disabled`. When it is done for good, such as a one-time run that completed, set `Archived`. Don't delete a row; its history stays with it.
 7. After a write, fetch the row again and confirm every property and the body persisted.
 8. After the assignee enables it, run `ntncode status` and confirm its next three runs; `ntncode doctor` names any row that won't run and why.
 

@@ -28,4 +28,4 @@ Check trigger specificity, overlap, structure, source ownership, mutable configu
 - Shared skills use the approved user or organization scope. Discover its path rather than copying another host layout. Follow [the filesystem adapter](filesystem-installation.md) where applicable and keep provenance outside skill folders.
 - Project-specific skills stay project-scoped to avoid routing noise and accidental cross-project behavior.
 - Third-party, plugin, and system skills remain owned by their upstream source and do not move into Notion or get replaced by first-party refreshes. Plugin-supplied skills, such as `notion-skill-updater`, are not edited; edits to our skills go through this skill.
-- Axo owns skill edits and distribution. Other bots report skill issues to Axo.
+- The skill library owner is responsible for skill edits and distribution. Other bots report skill issues to that owner.

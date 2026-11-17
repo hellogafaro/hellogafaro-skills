@@ -2,7 +2,7 @@
 
 ## Inspect before editing
 
-1. Download and read the entire selected Notion skill and every reference needed for the requested change. In Executor, find the Notion connection by its label "Hello Gafaro", never by a stored account ID, and download with `tools.notion.api.agentSkills.getSkillDirectory`.
+1. Download and read the entire selected Notion skill and every reference needed for the requested change. In Executor, find the workspace's Notion connection by its current label, never by a stored account ID, and download with `tools.notion.api.agentSkills.getSkillDirectory`.
 2. Search the canonical library and active runtime inventories for its name, installation paths, and consumers.
 3. Compare installed or GitHub copies with the Notion download before attributing drift.
 4. Identify whether the correction belongs in the skill, a reference, a script, project instructions, or mutable configuration.

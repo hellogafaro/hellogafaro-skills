@@ -24,7 +24,7 @@ These database IDs are discovery entry points. In each run, fetch a source's cur
 
 ## Hard rules
 
-- Post task comments directly, without Johan's approval, following the comment rules here. Every client update or small progress step gets a short comment with only what changed: what was sent, the options, what's open, who we're waiting on, the email thread link, and attached files such as designs or screenshots. Log the time the same day. Prefer several small comments over one dense one.
+- Post task comments directly, without the workspace owner's approval, following the comment rules here. Every client update or small progress step gets a short comment with only what changed: what was sent, the options, what's open, who we're waiting on, the email thread link, and attached files such as designs or screenshots. Log the time the same day. Prefer several small comments over one dense one.
 - Search before creating. Update the existing record when it owns the same work, even when thin or stale.
 - Never assume project, people, dates, duration, status, or relations. Ask one focused question when a missing fact could change the result.
 - Write task bodies as two or three short paragraphs, then useful context bullets in ordinary sentences. No headings, Done when lists, acceptance checklists, generic steps, speculative requirements, or repeated properties. A full task means complete necessary fields and sufficient concise context.
